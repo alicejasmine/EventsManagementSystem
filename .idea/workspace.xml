@@ -2,10 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="2674d3f8-2908-4213-8648-f87c288a4736" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/src/BE/Event.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/dal/EventDAO.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/dal/DatabaseConnector.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/dal/DatabaseConnector.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/DAL/EventDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/DAL/EventDAO.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -58,7 +55,7 @@
       <workItem from="1678890921074" duration="3644000" />
       <workItem from="1678906993346" duration="420000" />
       <workItem from="1678907481571" duration="2033000" />
-      <workItem from="1678955097465" duration="5925000" />
+      <workItem from="1678955097465" duration="6667000" />
     </task>
     <servers />
   </component>

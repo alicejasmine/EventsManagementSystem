@@ -47,6 +47,10 @@ public class EventDAO {
 
     //CRUD operations create delete update read events
 
+    /**
+     * Method to create a new event in the table Event
+     **/
+
     public Event createEvent(Event event) throws SQLException {
 
         try (Connection connection = databaseConnector.getConnection()) {
@@ -72,6 +76,9 @@ public class EventDAO {
         }
     }
 
+    /**
+     * Method to delete an event from the table Event
+     **/
 
     public void deleteEvent(int id) {
         try (Connection connection = databaseConnector.getConnection()) {
@@ -86,6 +93,10 @@ public class EventDAO {
 
     }
 
+
+    /**
+     * Method to update one or more event fields in the table Event
+     **/
     public void updateEvent(Event event) {
         try (Connection connection = databaseConnector.getConnection()) {
             String sql = "UPDATE Event SET Name = COALESCE(?, Name), Location = COALESCE(?, Location), " +
@@ -111,6 +122,10 @@ public class EventDAO {
 
     }
 
+
+    /**
+     * Method to read all events in the Event table and return them as a list
+     **/
     public List<Event> getAllEvents() throws SQLException {
         List<Event> events = new ArrayList<>();
 
