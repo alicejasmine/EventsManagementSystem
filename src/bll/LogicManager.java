@@ -1,7 +1,7 @@
 package bll;
 
-import be.Event;
-import DAL.EventDAO;
+import be.*;
+import dal.EventDAO;
 
 import java.sql.SQLException;
 import java.util.List;
@@ -20,7 +20,7 @@ public class LogicManager {
         eventDAO.updateEvent(e);
     }
 
-    public List<Event> getAllEvents() throws SQLException {
+    public List<Event> getAllEvents() {
         return eventDAO.getAllEvents();
     }
 

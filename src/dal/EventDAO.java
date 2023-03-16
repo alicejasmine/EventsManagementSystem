@@ -1,4 +1,4 @@
-package DAL;
+package dal;
 
 import com.microsoft.sqlserver.jdbc.SQLServerException;
 import be.Event;
@@ -122,36 +122,37 @@ public class EventDAO {
 
     }
 
-
     /**
      * Method to read all events in the Event table and return them as a list
      **/
-    public List<Event> getAllEvents() throws SQLException {
-        List<Event> events = new ArrayList<>();
+    public List<Event> getAllEvents()  {
+        ArrayList<Event> events = new ArrayList<>();
 
         try (Connection connection = databaseConnector.getConnection()) {
             String sql = "SELECT * FROM Event";
             Statement statement = connection.createStatement();
-            ResultSet resultSet = statement.executeQuery(sql);
 
-            while (resultSet.next()) {
-                int id = resultSet.getInt("EventID");
-                String name = resultSet.getString("Name");
-                String location = resultSet.getString("Location");
-                Date date = resultSet.getDate("Date");
-                Time time = resultSet.getTime("Time");
-                String notes = resultSet.getString("Notes");
-                Time endTime = resultSet.getTime("EndTime");
-                String locationGuidance = resultSet.getString("LocationGuidance");
+            if(statement.execute(sql)) {
+                ResultSet resultSet = statement.getResultSet();
 
-                Event event = new Event(id, name, location, date, time, notes, endTime, locationGuidance);
-                events.add(event);
+                while (resultSet.next()) {
+                    int id = resultSet.getInt("EventID");
+                    String name = resultSet.getString("Name");
+                    String location = resultSet.getString("Location");
+                    Date date = resultSet.getDate("Date");
+                    Time time = resultSet.getTime("Time");
+                    String notes = resultSet.getString("Notes");
+                    Time endTime = resultSet.getTime("EndTime");
+                    String locationGuidance = resultSet.getString("LocationGuidance");
+
+                    Event event = new Event(id, name, location, date, time, notes, endTime, locationGuidance);
+                    events.add(event);
+                }
             }
-
         } catch (SQLException e) {
             throw new RuntimeException(e);
         }
-
         return events;
     }
+
 }

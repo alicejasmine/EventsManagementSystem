@@ -2,16 +2,13 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="6b6accbf-011a-4378-9949-54377a8186c9" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/.gitignore" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/gui/controller/MainViewController.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/gui/model/Model.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/gui/view/MainView.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/BE/Event.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/be/Event.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/BLL/LogicManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/bll/LogicManager.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Main.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/bll/LogicManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/bll/LogicManager.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/dal/DatabaseConnector.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/dal/DatabaseConnector.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/dal/EventDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/dal/EventDAO.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/gui/controller/MainViewController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/gui/controller/MainViewController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/gui/model/Model.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/gui/model/Model.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/gui/view/MainView.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/gui/view/MainView.fxml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />

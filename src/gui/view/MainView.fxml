@@ -14,15 +14,15 @@
 
 <BorderPane xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gui.controller.MainViewController">
    <center>
-      <AnchorPane prefHeight="400.0" prefWidth="593.0">
+      <AnchorPane>
          <children>
-            <TableView fx:id="eventTV" layoutX="6.0" layoutY="6.0" prefHeight="400.0" prefWidth="599.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="1.0" AnchorPane.topAnchor="0.0">
+            <TableView fx:id="eventTV" layoutX="6.0" layoutY="6.0" prefHeight="400.0" prefWidth="599.0" AnchorPane.bottomAnchor="15.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
               <columns>
-                  <TableColumn fx:id="eventIDTV" minWidth="0.0" prefWidth="67.0" text="Event ID" />
-                <TableColumn fx:id="eventNameTV" prefWidth="172.0" text="Event Name" />
-                <TableColumn fx:id="eventLocalTV" minWidth="0.0" prefWidth="127.0" text="Location" />
-                  <TableColumn fx:id="eventDateTV" prefWidth="113.0" text="Date" />
-                  <TableColumn fx:id="eventTimeTV" prefWidth="118.0" text="Time" />
+                  <TableColumn fx:id="columnEventIDTV" minWidth="0.0" prefWidth="67.0" text="Event ID" />
+                <TableColumn fx:id="columnEventNameTV" prefWidth="172.0" text="Event Name" />
+                <TableColumn fx:id="columnEventLocalTV" minWidth="0.0" prefWidth="127.0" text="Location" />
+                  <TableColumn fx:id="columnEventDateTV" prefWidth="113.0" text="Date" />
+                  <TableColumn fx:id="columnEventTimeTV" prefWidth="118.0" text="Time" />
               </columns>
             </TableView>
          </children>
