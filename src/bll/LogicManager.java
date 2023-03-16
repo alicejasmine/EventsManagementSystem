@@ -1,6 +1,6 @@
-package BLL;
+package bll;
 
-import BE.Event;
+import be.Event;
 import DAL.EventDAO;
 
 import java.sql.SQLException;

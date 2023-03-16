@@ -1,4 +1,4 @@
-package BE;
+package be;
 
 import java.sql.Date;
 import java.sql.Time;

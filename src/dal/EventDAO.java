@@ -1,7 +1,7 @@
 package DAL;
 
-import BE.Event;
 import com.microsoft.sqlserver.jdbc.SQLServerException;
+import be.Event;
 
 import java.sql.*;
 import java.util.ArrayList;
