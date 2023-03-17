@@ -9,6 +9,15 @@ public class Model {
 
     private LogicManager bll = new LogicManager();
 
+    // to create a singleton for our model.
+    private static Model model;
+
+    public static Model getModel(){
+        if(model == null)
+            model = new Model();
+        return model;
+    }
+
     public void loadEventList() {
         events.clear();
         events.addAll(bll.getAllEvents());

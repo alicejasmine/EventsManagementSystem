@@ -5,9 +5,12 @@ import be.Event;
 import gui.model.*;
 import javafx.event.*;
 import javafx.fxml.*;
+import javafx.scene.*;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.*;
+import javafx.stage.*;
 
+import java.io.*;
 import java.net.*;
 import java.sql.*;
 import java.util.*;
@@ -50,7 +53,7 @@ public class MainViewController implements Initializable{
 
 
 
-    private Model model = new Model();
+    private Model model = Model.getModel();
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
@@ -81,7 +84,15 @@ public class MainViewController implements Initializable{
                     }
                 } );
     }
-    public void newEvent(ActionEvent actionEvent) {
+    public void newEvent(ActionEvent actionEvent) throws IOException {
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/gui/view/NewEventView.fxml"));
+        Parent root = loader.load();
+        NewEventViewController controller = loader.getController();
+        Stage stage = new Stage();
+        Scene scene = new Scene(root);
+        stage.setTitle("Add new Event");
+        stage.setScene(scene);
+        stage.show();
     }
 
     public void deleteEvent(ActionEvent actionEvent) {
