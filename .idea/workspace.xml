@@ -2,13 +2,18 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="6b6accbf-011a-4378-9949-54377a8186c9" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/src/gui/controller/EditEventController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/gui/view/EditEventView.fxml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/EventsManagementSystem.iml" beforeDir="false" afterPath="$PROJECT_DIR$/EventsManagementSystem.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/be/Event.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/be/Event.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/bll/LogicManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/bll/LogicManager.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/dal/DatabaseConnector.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/dal/DatabaseConnector.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/dal/EventDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/dal/EventDAO.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/gui/controller/MainViewController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/gui/controller/MainViewController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/gui/controller/NewEventViewController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/gui/controller/NewEventViewController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/gui/model/Model.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/gui/model/Model.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/gui/view/MainView.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/gui/view/MainView.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/gui/view/NewEventView.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/gui/view/NewEventView.fxml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -18,6 +23,7 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
+        <option value="FxmlFile" />
         <option value="Class" />
       </list>
     </option>
@@ -45,7 +51,7 @@
     "SHARE_PROJECT_CONFIGURATION_FILES": "true",
     "WebServerToolWindowFactoryState": "false",
     "last_opened_file_path": "C:/Users/Don/Documents/GitHub/EventsManagementSystem/.idea",
-    "project.structure.last.edited": "Project",
+    "project.structure.last.edited": "Libraries",
     "project.structure.proportion": "0.15",
     "project.structure.side.proportion": "0.3137931"
   }
@@ -61,7 +67,7 @@
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
-      <changelist id="2674d3f8-2908-4213-8648-f87c288a4736" name="Changes" comment="" />
+      <changelist id="6b6accbf-011a-4378-9949-54377a8186c9" name="Changes" comment="" />
       <created>1678890919483</created>
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
@@ -70,6 +76,7 @@
       <workItem from="1678906993346" duration="420000" />
       <workItem from="1678907481571" duration="2033000" />
       <workItem from="1678955097465" duration="7673000" />
+      <workItem from="1679135870751" duration="15877000" />
     </task>
     <servers />
   </component>

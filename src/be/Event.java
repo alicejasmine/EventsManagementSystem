@@ -28,6 +28,16 @@ public class Event {
 
     }
 
+    public Event(String name, String location, Date date, Time time, String notes, Time endTime, String locationGuidance) {
+        this.name = name;
+        this.location = location;
+        this.date = date;
+        this.time = time;
+        this.notes = notes;
+        this.endTime = endTime;
+        this.locationGuidance = locationGuidance;
+    }
+
     public int getId() {
         return id;
     }

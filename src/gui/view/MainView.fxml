@@ -31,6 +31,7 @@
    <bottom>
       <HBox alignment="CENTER_RIGHT" prefHeight="50.0" prefWidth="1000.0" BorderPane.alignment="CENTER">
          <children>
+            <Label fx:id="errorInfoLabel" alignment="CENTER" prefHeight="46.0" prefWidth="672.0" wrapText="true" HBox.hgrow="ALWAYS" />
             <ButtonBar prefHeight="50.0" prefWidth="298.0">
               <buttons>
                 <Button fx:id="newEventButton" mnemonicParsing="false" onAction="#newEvent" text="New Event" />
@@ -75,15 +76,15 @@
                         <Insets left="5.0" />
                      </padding>
                   </Label>
-                  <Label prefHeight="42.0" prefWidth="102.0" text="Notes:">
+                  <Label prefHeight="42.0" prefWidth="102.0" text="End Time:">
+                     <VBox.margin>
+                        <Insets />
+                     </VBox.margin>
                      <padding>
                         <Insets left="5.0" />
                      </padding>
                   </Label>
-                  <Label prefHeight="42.0" prefWidth="102.0" text="End Time:">
-                     <VBox.margin>
-                        <Insets top="50.0" />
-                     </VBox.margin>
+                  <Label prefHeight="42.0" prefWidth="102.0" text="Notes:">
                      <padding>
                         <Insets left="5.0" />
                      </padding>
@@ -92,6 +93,9 @@
                      <padding>
                         <Insets left="5.0" />
                      </padding>
+                     <VBox.margin>
+                        <Insets top="50.0" />
+                     </VBox.margin>
                   </Label>
                </children>
             </VBox>
@@ -120,14 +124,14 @@
                         <Insets left="5.0" />
                      </padding>
                   </Label>
-                  <Label fx:id="eventNotesLabel" alignment="TOP_LEFT" prefHeight="92.0" prefWidth="212.0" text="Event Notes." wrapText="true" VBox.vgrow="ALWAYS">
-                     <padding>
-                        <Insets left="5.0" top="12.0" />
-                     </padding>
-                  </Label>
                   <Label fx:id="eventEndTimeLabel" prefHeight="42.0" text="Event Time">
                      <padding>
                         <Insets left="5.0" />
+                     </padding>
+                  </Label>
+                  <Label fx:id="eventNotesLabel" alignment="TOP_LEFT" prefHeight="92.0" prefWidth="212.0" text="Event Notes." wrapText="true" VBox.vgrow="ALWAYS">
+                     <padding>
+                        <Insets left="5.0" top="12.0" />
                      </padding>
                   </Label>
                   <Label fx:id="locationGuidanceLabel" alignment="TOP_LEFT" prefHeight="67.0" text="Information about the location if necessary." wrapText="true">

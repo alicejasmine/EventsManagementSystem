@@ -51,7 +51,7 @@ public class EventDAO {
      * Method to create a new event in the table Event
      **/
 
-    public Event createEvent(Event event) throws SQLException {
+    public Event createEvent(Event event) {
 
         try (Connection connection = databaseConnector.getConnection()) {
             String sql = "INSERT INTO EVENT(Name, Location, Date, Time, Notes, EndTime, LocationGuidance) VALUES (?,?,?,?,?,?,?)";

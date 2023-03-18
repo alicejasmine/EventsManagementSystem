@@ -9,9 +9,7 @@ import java.util.List;
 public class LogicManager {
     private EventDAO eventDAO=new EventDAO();
 
-    public Event createEvent(Event e) throws SQLException {
-        return eventDAO.createEvent(e);
-    }
+    public Event createEvent(Event e) {return eventDAO.createEvent(e);}
     public void deleteEvent(Event e){
         eventDAO.deleteEvent(e.getId());
     }

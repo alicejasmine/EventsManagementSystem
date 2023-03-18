@@ -18,6 +18,7 @@ import java.util.Date;
 
 public class MainViewController implements Initializable{
 
+
     @FXML
     private Label
             eventNameLabel,
@@ -28,7 +29,8 @@ public class MainViewController implements Initializable{
             eventEndTimeLabel,
             locationGuidanceLabel,
             userNameLabel,
-            userAccessLabel;
+            userAccessLabel,
+            errorInfoLabel;
 
     @FXML
     private Button
@@ -60,14 +62,23 @@ public class MainViewController implements Initializable{
         eventTV.setItems(model.getObsEvents());
         model.loadEventList();
 
+
         columnEventIDTV.setCellValueFactory(new PropertyValueFactory<>("id"));
         columnEventNameTV.setCellValueFactory(new PropertyValueFactory<>("name"));
         columnEventLocalTV.setCellValueFactory(new PropertyValueFactory<>("location"));
         columnEventDateTV.setCellValueFactory(new PropertyValueFactory<>("date"));
         columnEventTimeTV.setCellValueFactory(new PropertyValueFactory<>("time"));
 
-        eventInfoView();
 
+
+        eventInfoView();
+        deleteListener();
+    }
+
+    private void deleteListener(){
+        eventTV.getSelectionModel().selectedItemProperty().addListener(((observable, oldValue, newValue) -> {
+            deleteEventButton.setDisable(newValue == null);
+        }));
     }
 
     private void eventInfoView(){
@@ -84,7 +95,25 @@ public class MainViewController implements Initializable{
                     }
                 } );
     }
-    public void newEvent(ActionEvent actionEvent) throws IOException {
+    private void deleteAlert(){
+        Event selectedEvent = null;
+        if(eventTV.getSelectionModel().getSelectedItem() != null){
+            selectedEvent = eventTV.getSelectionModel().getSelectedItem();
+            Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
+            alert.setTitle("Event deletion confirmation");
+            alert.setHeaderText("Do you really want to DELETE " + selectedEvent.getName() + "?");
+
+            Optional<ButtonType> result = alert.showAndWait();
+            if (result.get() == ButtonType.OK) {
+                errorInfoLabel.setText("Event "+selectedEvent.getName()+" has been deleted.");
+                model.deleteEvent(selectedEvent);
+            } else {
+                alert.close();
+            }
+        }else  errorInfoLabel.setText("Please select an event to be deleted.");
+    }
+    @FXML
+    private void newEvent(ActionEvent actionEvent) throws IOException {
         FXMLLoader loader = new FXMLLoader(getClass().getResource("/gui/view/NewEventView.fxml"));
         Parent root = loader.load();
         NewEventViewController controller = loader.getController();
@@ -95,10 +124,30 @@ public class MainViewController implements Initializable{
         stage.show();
     }
 
-    public void deleteEvent(ActionEvent actionEvent) {
+
+    @FXML
+    private void deleteEvent(ActionEvent actionEvent){
+        deleteAlert();
     }
 
-    public void editEvent(ActionEvent actionEvent) {
+
+    @FXML
+    private void editEvent(ActionEvent actionEvent) throws IOException{
+        Event editEvent = null;
+        if(eventTV.getSelectionModel().getSelectedItem() != null){
+            editEvent = eventTV.getSelectionModel().getSelectedItem();
+
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/gui/view/EditEventView.fxml"));
+            Parent root = loader.load();
+            EditEventController controller = loader.getController();
+            controller.setEvent(editEvent);
+            controller.setEditEventValues(editEvent);
+            Stage stage = new Stage();
+            Scene scene = new Scene(root);
+            stage.setTitle("Edit Event");
+            stage.setScene(scene);
+            stage.show();
+        }else errorInfoLabel.setText("Please select an event to be edited.");
     }
 
     public void logOutUser(ActionEvent actionEvent) {
