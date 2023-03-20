@@ -3,6 +3,11 @@ package bll;
 import java.awt.*;
 import java.io.File;
 import java.io.IOException;
+import java.util.Random;
+import java.util.UUID;
+
+import be.Event;
+import be.Ticket;
 import org.apache.pdfbox.Loader;
 import org.apache.pdfbox.pdmodel.common.PDRectangle;
 import org.apache.pdfbox.text.*;
@@ -16,14 +21,17 @@ public class TicketLogicManager {
 
 
     public static void main(String[] args) throws IOException {
-        writeEventInfoOnPDF();
+        //writeEventInfoOnPDF();
+        for(int i = 0; i < 100; i++){
+            System.out.println(generateType1UUID());}
     }
 
-    public static void writeEventInfoOnPDF() throws IOException {
+    public static void writeEventInfoOnPDF(Event event, Ticket ticket) throws IOException {
 
 
         String inputFilePath = "resources/ticket-party.pdf";
-        String outputFilePath = "resources/ticket-party-edit.pdf";
+        String outputFilePath = "resources/ticket-party"+ ticket.getTicketID()+ ".pdf";
+
         File inputFile = new File(inputFilePath);
         PDDocument doc = Loader.loadPDF(inputFile);
         PDPage page = doc.getPage(0);
@@ -52,20 +60,20 @@ public class TicketLogicManager {
         contentStream.beginText();
 
         contentStream.newLineAtOffset(x, y);
-        contentStream.showText("EASV PARTY");
+        contentStream.showText(event.getName());
 
         contentStream.setTextMatrix(Matrix.getTranslateInstance(x, y - 30));
         contentStream.setFont(pdfFont, 18);
         contentStream.newLine();
-        contentStream.showText("Location: EASV Bar");
+        contentStream.showText(event.getLocation());
 
         contentStream.setTextMatrix(Matrix.getTranslateInstance(x, y - 60));
         contentStream.newLine();
-        contentStream.showText("Date: 2023-03-15");
+        contentStream.showText(event.getDate().toString());
 
         contentStream.setTextMatrix(Matrix.getTranslateInstance(x, y - 90));
         contentStream.newLine();
-        contentStream.showText("Time: 10:00");
+        contentStream.showText(event.getTime().toString());
         contentStream.endText();
 
         contentStream.close();
@@ -82,6 +90,28 @@ public class TicketLogicManager {
         System.out.println(pageText);
 
         editedDoc.close();
+    }
+
+    private static long get64LeastSignificantBits() {
+        Random random = new Random();
+        long random63BitLong = random.nextLong() & 0x3FFFFFFFFFFFFFFFL;
+        long variant3BitFlag = 0x8000000000000000L;
+        return random63BitLong | variant3BitFlag;
+    }
+
+    private static long get64MostSignificantBits() {
+        final long currentTimeMillis = System.currentTimeMillis();
+        final long time_low = (currentTimeMillis & 0x0000_0000_FFFF_FFFFL) << 32;
+        final long time_mid = ((currentTimeMillis >> 32) & 0xFFFF) << 16;
+        final long version = 1 << 12;
+        final long time_hi = ((currentTimeMillis >> 48) & 0x0FFF);
+        return time_low | time_mid | version | time_hi;
+    }
+
+    public static UUID generateType1UUID() {
+        long most64SigBits = get64MostSignificantBits();
+        long least64SigBits = get64LeastSignificantBits();
+        return new UUID(most64SigBits, least64SigBits);
     }
 }
 
