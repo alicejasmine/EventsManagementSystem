@@ -2,18 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="6b6accbf-011a-4378-9949-54377a8186c9" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/src/gui/controller/EditEventController.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/gui/view/EditEventView.fxml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/bll/TicketLogicManager.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/EventsManagementSystem.iml" beforeDir="false" afterPath="$PROJECT_DIR$/EventsManagementSystem.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/be/Event.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/be/Event.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/bll/LogicManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/bll/LogicManager.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/dal/EventDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/dal/EventDAO.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/gui/controller/MainViewController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/gui/controller/MainViewController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/gui/controller/NewEventViewController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/gui/controller/NewEventViewController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/gui/model/Model.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/gui/model/Model.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/gui/view/MainView.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/gui/view/MainView.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/gui/view/NewEventView.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/gui/view/NewEventView.fxml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -50,8 +40,8 @@
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "SHARE_PROJECT_CONFIGURATION_FILES": "true",
     "WebServerToolWindowFactoryState": "false",
-    "last_opened_file_path": "C:/Users/Don/Documents/GitHub/EventsManagementSystem/.idea",
-    "project.structure.last.edited": "Libraries",
+    "last_opened_file_path": "C:/Users/alice/Downloads/pdfbox/xmpbox-3.0.0-alpha3.jar",
+    "project.structure.last.edited": "Modules",
     "project.structure.proportion": "0.15",
     "project.structure.side.proportion": "0.3137931"
   }
