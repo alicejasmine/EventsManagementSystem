@@ -3,11 +3,13 @@ package bll;
 import java.awt.*;
 import java.io.File;
 import java.io.IOException;
+import java.util.List;
 import java.util.Random;
 import java.util.UUID;
 
 import be.Event;
 import be.Ticket;
+import dal.*;
 import org.apache.pdfbox.Loader;
 import org.apache.pdfbox.pdmodel.common.PDRectangle;
 import org.apache.pdfbox.text.*;
@@ -19,11 +21,22 @@ import org.apache.pdfbox.util.Matrix;
 
 public class TicketLogicManager {
 
+    private TicketDAO ticketDAO = new TicketDAO();
 
     public static void main(String[] args) throws IOException {
         //writeEventInfoOnPDF();
-        for(int i = 0; i < 100; i++){
-            System.out.println(generateType1UUID());}
+        //for(int i = 0; i < 100; i++){
+        //    System.out.println(generateType1UUID());}
+    }
+
+    public List<Ticket> getAllTickets() {
+        return ticketDAO.getAllTickets();
+    }
+
+    public void crateTicket(String customerName, String customerEmail, int eventID){
+        String str = generateType1UUID().toString();
+        Ticket ticket = new Ticket(str, customerName, customerEmail, eventID);
+        ticketDAO.createTicket(ticket);
     }
 
     public static void writeEventInfoOnPDF(Event event, Ticket ticket) throws IOException {

@@ -1,6 +1,7 @@
 package gui.controller;
 
 
+import be.*;
 import be.Event;
 import gui.model.*;
 import javafx.event.*;
@@ -20,6 +21,14 @@ public class MainViewController implements Initializable{
 
 
     @FXML
+    private Tab ticketsTab;
+
+    @FXML
+    private TextField
+            customerNameTF,
+            customerEmailTF;
+
+    @FXML
     private Label
             eventNameLabel,
             eventLocalLabel,
@@ -30,18 +39,26 @@ public class MainViewController implements Initializable{
             locationGuidanceLabel,
             userNameLabel,
             userAccessLabel,
-            errorInfoLabel;
+            errorInfoLabel,
+            eventNameLabelTicketTab;
 
     @FXML
     private Button
             newEventButton,
             deleteEventButton,
             editEventButton,
-            logOutButton;
+            logOutButton,
+            printtTicketButton,
+            saveTicketButton,
+            newTicketButton;
 
-
+    // Table views
     @FXML
     private TableView<Event> eventTV;
+    @FXML
+    private TableView<Ticket> ticketTV;
+
+    // Event Columns
     @FXML
     private TableColumn<Event, Integer> columnEventIDTV;
     @FXML
@@ -53,6 +70,16 @@ public class MainViewController implements Initializable{
     @FXML
     private TableColumn<Event, Time> columnEventTimeTV;
 
+    // Ticket Columns
+    @FXML
+    private TableColumn<Event, Integer> eventIDTTV;
+    @FXML
+    private TableColumn<Ticket, String> customerNameTTV;
+    @FXML
+    private TableColumn<Ticket, String> customerEmailTTV;
+    @FXML
+    private TableColumn<Ticket, String> ticketUUIDTTV;
+
 
 
     private Model model = Model.getModel();
@@ -60,8 +87,10 @@ public class MainViewController implements Initializable{
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         eventTV.setItems(model.getObsEvents());
-        model.loadEventList();
+        ticketTV.setItems(model.getObsTickets());
 
+        model.loadEventList();
+        model.loadTicketList();
 
         columnEventIDTV.setCellValueFactory(new PropertyValueFactory<>("id"));
         columnEventNameTV.setCellValueFactory(new PropertyValueFactory<>("name"));
@@ -71,13 +100,21 @@ public class MainViewController implements Initializable{
 
 
 
+        eventIDTTV.setCellValueFactory(new PropertyValueFactory<>("eventID"));
+        customerNameTTV.setCellValueFactory(new PropertyValueFactory<>("customerName"));
+        customerEmailTTV.setCellValueFactory(new PropertyValueFactory<>("customerEmail"));
+        ticketUUIDTTV.setCellValueFactory(new PropertyValueFactory<>("ticketID"));
+
+
+
         eventInfoView();
         deleteListener();
     }
 
     private void deleteListener(){
-        eventTV.getSelectionModel().selectedItemProperty().addListener(((observable, oldValue, newValue) -> {
-            deleteEventButton.setDisable(newValue == null);
+        eventTV.getSelectionModel().selectedItemProperty().addListener(((observable, oldValue, selectedUser) -> {
+            deleteEventButton.setDisable(selectedUser == null);
+            ticketsTab.setDisable(selectedUser == null);
         }));
     }
 
@@ -94,6 +131,15 @@ public class MainViewController implements Initializable{
                         locationGuidanceLabel.setText(selectedUser.getLocationGuidance());
                     }
                 } );
+    }
+
+    private void createNewTicket(){
+        if(!customerNameTF.getText().isEmpty()&&!customerEmailTF.getText().isEmpty()){
+            String customerName = customerNameTF.getText();
+            String customerEmail= customerEmailTF.getText();
+            int eventID = eventTV.getSelectionModel().getSelectedItem().getId();
+            model.addTicket(customerName, customerEmail, eventID);
+        }
     }
     private void deleteAlert(){
         Event selectedEvent = null;
@@ -154,4 +200,13 @@ public class MainViewController implements Initializable{
     }
 
 
+    public void newTicket(ActionEvent actionEvent) {
+        createNewTicket();
+    }
+
+    public void printTicket(ActionEvent actionEvent) {
+    }
+
+    public void saveTicket(ActionEvent actionEvent) {
+    }
 }
