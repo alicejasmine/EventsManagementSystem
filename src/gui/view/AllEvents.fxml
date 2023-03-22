@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import io.github.palexdev.materialfx.controls.MFXButton?>
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
@@ -33,18 +32,17 @@
     <bottom>
         <HBox alignment="CENTER_LEFT" prefHeight="50.0" prefWidth="1000.0" BorderPane.alignment="CENTER">
             <children>
-            <MFXButton fx:id="newEventButton" onAction="#newEvent" prefHeight="25.0" prefWidth="70.0" styleClass="blue-button" text="Create">
+            <Button fx:id="newEventButton" mnemonicParsing="false" onAction="#newEvent" prefWidth="70.0" styleClass="blue-button" text="Create">
                <HBox.margin>
-                  <Insets left="18.0" right="10.0" />
-               </HBox.margin></MFXButton>
-            <MFXButton fx:id="editEventButton" onAction="#editEvent" prefHeight="31.0" prefWidth="70.0" styleClass="blue-button" text="Edit">
+                  <Insets left="16.0" right="10.0" />
+               </HBox.margin></Button>
+            <Button fx:id="editEventButton" mnemonicParsing="false" onAction="#editEvent" prefWidth="70.0" styleClass="blue-button" text="Edit">
                <HBox.margin>
                   <Insets right="10.0" />
-               </HBox.margin>
-            </MFXButton>
-            <MFXButton fx:id="deleteEventButton" onAction="#deleteEvent" prefHeight="31.0" prefWidth="70.0" styleClass="red-button" stylesheets="@../../css/style.css" text="Delete" />
+               </HBox.margin></Button>
+            <Button fx:id="deleteEventButton" styleClass="red-button" mnemonicParsing="false" onAction="#deleteEvent" prefWidth="70.0" text="Delete" />
                 <Label fx:id="errorInfoLabel" alignment="CENTER_RIGHT" prefHeight="46.0" prefWidth="368.0" wrapText="true" />
-            <MFXButton fx:id="ticketInfo" onAction="#ticketInfo" prefHeight="31.0" prefWidth="81.0" styleClass="blue-button" text="Ticket Info" />
+            <Button fx:id="ticketInfo" mnemonicParsing="false" onAction="#ticketInfo" prefWidth="81.0" styleClass="blue-button" text="Ticket Info" />
             </children>
         </HBox>
     </bottom>
@@ -54,11 +52,11 @@
     <top>
         <HBox prefHeight="50.0" BorderPane.alignment="CENTER">
             <children>
-            <MFXButton fx:id="homeButton" alignment="CENTER" onAction="#home" prefHeight="31.0" prefWidth="70.0" styleClass="blue-button" text="Home">
+            <Button fx:id="homeButton" mnemonicParsing="false" onAction="#home" prefWidth="70.0" styleClass="blue-button" text="Home">
                <HBox.margin>
                   <Insets left="18.0" top="9.0" />
                </HBox.margin>
-            </MFXButton>
+            </Button>
                 <Label alignment="CENTER" prefHeight="49.0" prefWidth="595.0" text="All Events">
                     <font>
                         <Font name="System Bold" size="18.0" />
