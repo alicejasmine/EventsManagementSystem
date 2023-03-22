@@ -1,0 +1,13 @@
+#newEventButton, #editEventButton, #ticketInfo, #homeButton {
+    -fx-background-color: #4B56F7;
+    -fx-text-fill: white;
+    -fx-background-radius: 50px;
+    -fx-padding: 7px 0 7px 0;
+}
+
+#deleteEventButton {
+    -fx-background-color: #EE6559;
+    -fx-text-fill: white;
+    -fx-background-radius: 50px;
+    -fx-padding: 7px 0 7px 0;
+}
