@@ -1,0 +1,157 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ButtonBar?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+<AnchorPane prefHeight="500.0" prefWidth="1000.0" style="-fx-background-color: C9C5C5;" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gui.controller.TicketViewVersion2Controller">
+   <children>
+      <AnchorPane layoutX="28.0" layoutY="116.0" minHeight="307.0" minWidth="0.0" prefHeight="307.0" prefWidth="198.0">
+         <children>
+            <HBox layoutX="22.0" minHeight="346.0" prefHeight="346.0" prefWidth="278.0">
+               <children>
+                  <VBox prefHeight="400.0" prefWidth="86.0">
+                     <children>
+                        <Label text="Location:">
+                           <padding>
+                              <Insets left="5.0" />
+                           </padding>
+                           <VBox.margin>
+                              <Insets top="15.0" />
+                           </VBox.margin>
+                        </Label>
+                        <Label prefHeight="42.0" prefWidth="102.0" text="Date:">
+                           <VBox.margin>
+                              <Insets />
+                           </VBox.margin>
+                           <padding>
+                              <Insets left="5.0" />
+                           </padding>
+                        </Label>
+                        <Label prefHeight="42.0" prefWidth="102.0" text="Start Time:">
+                           <padding>
+                              <Insets left="5.0" />
+                           </padding>
+                        </Label>
+                        <Label prefHeight="42.0" prefWidth="102.0" text="Notes:">
+                           <padding>
+                              <Insets left="5.0" />
+                           </padding>
+                           <VBox.margin>
+                              <Insets />
+                           </VBox.margin>
+                        </Label>
+                        <Label layoutX="10.0" layoutY="203.0" prefHeight="42.0" prefWidth="102.0" text="Location info:">
+                           <padding>
+                              <Insets left="5.0" />
+                           </padding>
+                           <VBox.margin>
+                              <Insets top="70.0" />
+                           </VBox.margin>
+                        </Label>
+                     </children>
+                  </VBox>
+                  <VBox minHeight="305.0" prefHeight="323.0" prefWidth="193.0" HBox.hgrow="ALWAYS">
+                     <children>
+                        <Label text="TEXT">
+                           <VBox.margin>
+                              <Insets top="15.0" />
+                           </VBox.margin>
+                           <padding>
+                              <Insets left="5.0" />
+                           </padding>
+                        </Label>
+                        <Label fx:id="eventEndTimeLabel" text="TEXT">
+                           <padding>
+                              <Insets left="5.0" />
+                           </padding>
+                           <VBox.margin>
+                              <Insets top="13.0" />
+                           </VBox.margin>
+                        </Label>
+                        <Label fx:id="eventEndTimeLabel1" layoutX="10.0" layoutY="80.0" text="TEXT">
+                           <padding>
+                              <Insets left="5.0" />
+                           </padding>
+                           <VBox.margin>
+                              <Insets top="25.0" />
+                           </VBox.margin>
+                        </Label>
+                        <Label fx:id="locationGuidanceLabel" alignment="TOP_LEFT" prefHeight="67.0" prefWidth="188.0" text="TEXT" wrapText="true">
+                           <VBox.margin>
+                              <Insets />
+                           </VBox.margin>
+                           <padding>
+                              <Insets left="5.0" top="25.0" />
+                           </padding>
+                        </Label>
+                        <Label fx:id="locationGuidanceLabel1" alignment="TOP_LEFT" layoutX="10.0" layoutY="140.0" prefHeight="67.0" prefWidth="188.0" text="TEXT" wrapText="true">
+                           <padding>
+                              <Insets left="5.0" top="25.0" />
+                           </padding>
+                           <VBox.margin>
+                              <Insets top="45.0" />
+                           </VBox.margin>
+                        </Label>
+                     </children>
+                  </VBox>
+               </children>
+            </HBox>
+         </children>
+      </AnchorPane>
+      <Label layoutX="492.0" layoutY="16.0" text="Label">
+         <font>
+            <Font size="36.0" />
+         </font>
+      </Label>
+      <Text layoutX="368.0" layoutY="53.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Event: ">
+         <font>
+            <Font size="36.0" />
+         </font>
+      </Text>
+      <Label layoutX="405.0" layoutY="86.0" text="Sold Tickets information">
+         <font>
+            <Font name="System Bold" size="14.0" />
+         </font>
+         <padding>
+            <Insets left="5.0" />
+         </padding>
+      </Label>
+      <TableView layoutX="410.0" layoutY="116.0" prefHeight="320.0" prefWidth="516.0">
+        <columns>
+          <TableColumn prefWidth="116.0" text="Customer Name" />
+          <TableColumn prefWidth="140.800048828125" text="Customer email" />
+            <TableColumn prefWidth="244.79998779296875" text="TicketID" />
+        </columns>
+      </TableView>
+      <Button fx:id="homeButton" layoutX="51.0" layoutY="27.0" mnemonicParsing="false" onAction="#home" prefWidth="70.0" styleClass="blue-button" stylesheets="@../../css/style.css" text="Home" />
+      <ButtonBar layoutX="372.0" layoutY="454.0" prefHeight="40.0" prefWidth="200.0" stylesheets="@../../css/style.css">
+        <buttons>
+            <Button mnemonicParsing="false" styleClass="red-button" text="Delete" />
+          <Button mnemonicParsing="false" styleClass="blue-button" text="Create" />
+        </buttons>
+      </ButtonBar>
+      <ButtonBar layoutX="710.0" layoutY="454.0" prefHeight="40.0" prefWidth="200.0" stylesheets="@../../css/style.css">
+        <buttons>
+          <Button mnemonicParsing="false" styleClass="blue-button" text="Save" visible="false" />
+            <Button mnemonicParsing="false" styleClass="blue-button" text="Print" visible="false" />
+        </buttons>
+      </ButtonBar>
+      <Label layoutX="43.0" layoutY="86.0" prefHeight="20.0" prefWidth="155.0" text="Event information">
+         <font>
+            <Font name="System Bold" size="14.0" />
+         </font>
+         <padding>
+            <Insets left="5.0" />
+         </padding>
+      </Label>
+   </children>
+</AnchorPane>
