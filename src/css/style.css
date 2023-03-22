@@ -6,9 +6,17 @@
     -fx-padding: 7px 0 7px 0;
 }
 
+
+.blue-button:hover{
+    -fx-opacity: 0.8;
+}
 .red-button {
     -fx-background-color: #EE6559;
     -fx-text-fill: white;
     -fx-background-radius: 50px;
     -fx-padding: 7px 0 7px 0;
+}
+
+.red-button:hover{
+    -fx-opacity: 0.8;
 }
