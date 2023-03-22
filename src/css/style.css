@@ -1,4 +1,5 @@
-#newEventButton, #editEventButton, #ticketInfo, #homeButton {
+
+.blue-button{
     -fx-background-color: #4B56F7;
     -fx-text-fill: white;
     -fx-background-radius: 50px;

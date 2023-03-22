@@ -10,26 +10,25 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-
 <AnchorPane prefHeight="500.0" prefWidth="1000.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gui.controller.HomeViewController">
    <children>
-      <Text layoutX="363.0" layoutY="51.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Event Management System EASV Bar">
+      <Text layoutX="207.0" layoutY="61.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Event Management System EASV Bar">
          <font>
-            <Font size="18.0" />
+            <Font size="36.0" />
          </font>
       </Text>
-      <Text layoutX="114.0" layoutY="89.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Upcoming events">
-         <font>
-            <Font size="14.0" />
-         </font>
-      </Text>
-      <Text layoutX="114.0" layoutY="302.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Recently added events">
+      <Text layoutX="115.0" layoutY="111.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Upcoming events">
          <font>
             <Font size="14.0" />
          </font>
       </Text>
-      <Button layoutX="88.0" layoutY="454.0" mnemonicParsing="false" text="Manage events" />
-      <TilePane layoutX="96.0" layoutY="100.0" prefHeight="152.0" prefWidth="803.0">
+      <Text layoutX="121.0" layoutY="291.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Recently added events">
+         <font>
+            <Font size="14.0" />
+         </font>
+      </Text>
+      <Button layoutX="121.0" layoutY="454.0" mnemonicParsing="false" onAction="#manageAllEvents" prefHeight="32.0" prefWidth="97.0" styleClass="blue-button" stylesheets="@../../css/style.css" text="Manage events" />
+      <TilePane layoutX="90.0" layoutY="116.0" prefHeight="152.0" prefWidth="803.0">
          <children>
             <StackPane prefHeight="150.0" prefWidth="200.0">
                <children>
@@ -93,7 +92,7 @@
             </StackPane>
          </children>
       </TilePane>
-      <TilePane layoutX="81.0" layoutY="296.0" prefHeight="152.0" prefWidth="803.0">
+      <TilePane layoutX="96.0" layoutY="296.0" prefHeight="152.0" prefWidth="803.0">
          <children>
             <StackPane prefHeight="150.0" prefWidth="200.0">
                <children>
