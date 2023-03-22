@@ -50,12 +50,12 @@
                         </VBox>
                         <VBox prefHeight="370.0" prefWidth="480.0" spacing="18.0" HBox.hgrow="ALWAYS">
                             <children>
-                                <TextField fx:id="neNameTF" promptText="Event Name">
+                                <TextField fx:id="neNameTF" promptText="Name">
                                     <VBox.margin>
                                         <Insets right="5.0" top="10.0" />
                                     </VBox.margin>
                                 </TextField>
-                                <TextField fx:id="neLocationTF" promptText="Event location">
+                                <TextField fx:id="neLocationTF" promptText="Email">
                                     <VBox.margin>
                                         <Insets right="5.0" />
                                     </VBox.margin>
