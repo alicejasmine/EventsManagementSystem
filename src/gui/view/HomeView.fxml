@@ -1,9 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import io.github.palexdev.materialfx.controls.MFXButton?>
-<?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Button?>
-<?import javafx.scene.control.Label?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.StackPane?>
 <?import javafx.scene.layout.TilePane?>
@@ -33,61 +31,21 @@
             <StackPane prefHeight="150.0" prefWidth="200.0">
                <children>
                   <MFXButton fx:id="up1Button" buttonType="RAISED" depthLevel="LEVEL5" onAction="#homeEventSelectionUpcoming1" prefHeight="102.0" prefWidth="138.0" rippleColor="#bcba40" style="-fx-background-color: #279af1;" text=" " />
-                  <Label fx:id="upcoming1LabelName" mouseTransparent="true" text="Label">
-                     <StackPane.margin>
-                        <Insets bottom="50.0" top="20.0" />
-                     </StackPane.margin>
-                  </Label>
-                  <Label fx:id="upcoming1LabelDate" focusTraversable="false" mouseTransparent="true" text="Label">
-                     <StackPane.margin>
-                        <Insets top="40.0" />
-                     </StackPane.margin>
-                  </Label>
                </children>
             </StackPane>
             <StackPane prefHeight="150.0" prefWidth="200.0">
                <children>
                   <MFXButton fx:id="up2Button" buttonType="RAISED" depthLevel="LEVEL5" onAction="#homeEventSelectionUpcoming2" prefHeight="102.0" prefWidth="138.0" rippleColor="#bcba40" style="-fx-background-color: #279af1;" text=" " />
-                  <Label fx:id="upcoming2LabelName" mouseTransparent="true" text="Label">
-                     <StackPane.margin>
-                        <Insets bottom="50.0" top="20.0" />
-                     </StackPane.margin>
-                  </Label>
-                  <Label fx:id="upcoming2LabelDate" focusTraversable="false" mouseTransparent="true" text="Label">
-                     <StackPane.margin>
-                        <Insets top="40.0" />
-                     </StackPane.margin>
-                  </Label>
                </children>
             </StackPane>
             <StackPane prefHeight="150.0" prefWidth="200.0">
                <children>
                   <MFXButton fx:id="up3Button" buttonType="RAISED" depthLevel="LEVEL5" onAction="#homeEventSelectionUpcoming3" prefHeight="102.0" prefWidth="138.0" rippleColor="#bcba40" style="-fx-background-color: #279af1;" text=" " />
-                  <Label fx:id="upcoming3LabelName" mouseTransparent="true" text="Label">
-                     <StackPane.margin>
-                        <Insets bottom="50.0" top="20.0" />
-                     </StackPane.margin>
-                  </Label>
-                  <Label fx:id="upcoming3LabelDate" focusTraversable="false" mouseTransparent="true" text="Label">
-                     <StackPane.margin>
-                        <Insets top="40.0" />
-                     </StackPane.margin>
-                  </Label>
                </children>
             </StackPane>
             <StackPane prefHeight="150.0" prefWidth="200.0">
                <children>
                   <MFXButton fx:id="up4Button" buttonType="RAISED" depthLevel="LEVEL5" onAction="#homeEventSelectionUpcoming4" prefHeight="102.0" prefWidth="138.0" rippleColor="#bcba40" style="-fx-background-color: #279af1;" text=" " />
-                  <Label fx:id="upcoming4LabelName" mouseTransparent="true" text="Label">
-                     <StackPane.margin>
-                        <Insets bottom="50.0" top="20.0" />
-                     </StackPane.margin>
-                  </Label>
-                  <Label fx:id="upcoming4LabelDate" focusTraversable="false" mouseTransparent="true" text="Label">
-                     <StackPane.margin>
-                        <Insets top="40.0" />
-                     </StackPane.margin>
-                  </Label>
                </children>
             </StackPane>
          </children>
