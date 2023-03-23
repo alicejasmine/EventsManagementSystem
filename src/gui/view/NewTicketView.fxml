@@ -10,7 +10,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="450.0" prefWidth="600.0" style="-fx-background-color: C9C5C5;" stylesheets="@../../css/style.css" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gui.controller.NewTicketController">
+<AnchorPane prefHeight="450.0" prefWidth="600.0" style="-fx-background-color: C9C5C5;" stylesheets="@../../css/style.css" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gui.controller.NewTicketView">
     <children>
         <VBox layoutX="130.0" layoutY="89.0" prefHeight="200.0" prefWidth="100.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
             <children>
@@ -50,12 +50,12 @@
                         </VBox>
                         <VBox prefHeight="370.0" prefWidth="480.0" spacing="18.0" HBox.hgrow="ALWAYS">
                             <children>
-                                <TextField fx:id="neNameTF" promptText="Name">
+                                <TextField fx:id="customerNameTF" promptText="Name">
                                     <VBox.margin>
                                         <Insets right="5.0" top="10.0" />
                                     </VBox.margin>
                                 </TextField>
-                                <TextField fx:id="neLocationTF" promptText="Email">
+                                <TextField fx:id="customerEmailTF" promptText="Email">
                                     <VBox.margin>
                                         <Insets right="5.0" />
                                     </VBox.margin>

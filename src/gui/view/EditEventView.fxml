@@ -13,145 +13,148 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="450.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gui.controller.EditEventController">
-   <children>
-      <VBox prefHeight="200.0" prefWidth="100.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
-         <children>
-            <HBox alignment="CENTER" maxHeight="30.0" prefHeight="30.0" prefWidth="200.0" VBox.vgrow="ALWAYS">
-               <children>
-                  <Label prefHeight="27.0" prefWidth="155.0" text="Edit Event">
-                     <font>
-                        <Font name="System Bold" size="18.0" />
-                     </font>
-                  </Label>
-               </children>
-            </HBox>
-            <HBox prefHeight="100.0" prefWidth="200.0" VBox.vgrow="ALWAYS">
-               <children>
-                  <VBox maxWidth="100.0" minWidth="-Infinity" prefHeight="200.0" prefWidth="100.0">
-                     <children>
-                        <Label prefHeight="42.0" prefWidth="102.0" text="*Event Title:">
-                           <padding>
-                              <Insets left="5.0" />
-                           </padding>
-                           <VBox.margin>
-                              <Insets left="5.0" />
-                           </VBox.margin>
+<AnchorPane prefHeight="450.0" prefWidth="600.0" style="-fx-background-color: C9C5C5;" stylesheets="@../../css/style.css" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gui.controller.EditEventController">
+    <children>
+        <VBox prefHeight="200.0" prefWidth="100.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+            <children>
+                <HBox alignment="CENTER" maxHeight="30.0" prefHeight="30.0" prefWidth="200.0" VBox.vgrow="ALWAYS">
+                    <children>
+                        <Label alignment="CENTER" prefHeight="27.0" prefWidth="155.0" text="Edit Event">
+                            <font>
+                                <Font name="System Bold" size="18.0" />
+                            </font>
                         </Label>
-                        <Label prefHeight="42.0" prefWidth="102.0" text="*Location:">
-                           <padding>
-                              <Insets left="5.0" />
-                           </padding>
-                           <VBox.margin>
-                              <Insets left="5.0" />
-                           </VBox.margin>
-                        </Label>
-                        <Label prefHeight="42.0" prefWidth="102.0" text="Date:">
-                           <VBox.margin>
-                              <Insets left="5.0" />
-                           </VBox.margin>
-                           <padding>
-                              <Insets left="5.0" />
-                           </padding>
-                        </Label>
-                        <Label prefHeight="42.0" prefWidth="102.0" text="*Time:">
-                           <padding>
-                              <Insets left="5.0" />
-                           </padding>
-                           <VBox.margin>
-                              <Insets left="5.0" top="15.0" />
-                           </VBox.margin>
-                        </Label>
-                        <Label prefHeight="42.0" prefWidth="102.0" text="End Time:">
-                           <padding>
-                              <Insets left="5.0" />
-                           </padding>
-                           <VBox.margin>
-                              <Insets left="5.0" top="15.0" />
-                           </VBox.margin>
-                        </Label>
-                        <Label prefHeight="42.0" prefWidth="102.0" text="*Notes:">
-                           <padding>
-                              <Insets left="5.0" />
-                           </padding>
-                           <VBox.margin>
-                              <Insets left="5.0" top="15.0" />
-                           </VBox.margin>
-                        </Label>
-                        <Label prefHeight="42.0" prefWidth="102.0" text="Location Info:">
-                           <padding>
-                              <Insets left="5.0" />
-                           </padding>
-                           <VBox.margin>
-                              <Insets left="5.0" top="20.0" />
-                           </VBox.margin>
-                        </Label>
-                     </children>
-                  </VBox>
-                  <VBox prefHeight="370.0" prefWidth="480.0" spacing="18.0" HBox.hgrow="ALWAYS">
-                     <children>
-                        <TextField fx:id="editNameTF" promptText="Event Name">
-                           <VBox.margin>
-                              <Insets right="5.0" top="10.0" />
-                           </VBox.margin>
-                        </TextField>
-                        <TextField fx:id="editLocationTF" promptText="Event location">
-                           <VBox.margin>
-                              <Insets right="5.0" />
-                           </VBox.margin>
-                        </TextField>
-                        <MFXDatePicker fx:id="datePickerEditEvent" prefHeight="38.0" prefWidth="264.0" />
-                        <HBox prefHeight="34.0" prefWidth="500.0">
-                           <children>
-                              <MFXComboBox fx:id="editTimeCBH" promptText="Hour" />
-                              <Label alignment="CENTER" prefHeight="38.0" prefWidth="28.0" text=":">
-                                 <font>
-                                    <Font name="System Bold" size="18.0" />
-                                 </font>
-                              </Label>
-                              <MFXComboBox fx:id="editTimeCBM" promptText="Min" />
-                           </children>
-                        </HBox>
-                        <HBox prefHeight="34.0" prefWidth="500.0">
-                           <children>
-                              <MFXComboBox fx:id="editExitTimeCBH" promptText="Hour" />
-                              <Label alignment="CENTER" prefHeight="38.0" prefWidth="28.0" text=":">
-                                 <font>
-                                    <Font name="System Bold" size="18.0" />
-                                 </font>
-                              </Label>
-                              <MFXComboBox fx:id="editExitTimeCBM" promptText="Min" />
-                           </children>
-                        </HBox>
-                        <TextArea fx:id="editNotesTF" prefHeight="46.0" prefWidth="495.0" promptText="Event Notes">
-                           <VBox.margin>
-                              <Insets right="5.0" />
-                           </VBox.margin>
-                        </TextArea>
-                        <TextArea fx:id="editLocationInfoTF" prefHeight="45.0" prefWidth="495.0" promptText="Event Location Information (Parking, Directions, etc.)- Optional">
-                           <VBox.margin>
-                              <Insets right="5.0" />
-                           </VBox.margin>
-                        </TextArea>
-                     </children>
-                  </VBox>
-               </children>
-            </HBox>
-            <HBox alignment="CENTER_RIGHT" maxHeight="-Infinity" minHeight="-Infinity" prefHeight="30.0" prefWidth="200.0" VBox.vgrow="ALWAYS">
-               <children>
-                  <Label fx:id="editErrorLabel" wrapText="true" HBox.hgrow="ALWAYS" />
-                  <ButtonBar maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="30.0" prefWidth="201.0">
-                     <buttons>
-                        <Button fx:id="editEventButton" mnemonicParsing="false" onAction="#editEvent" text="edit event" />
-                        <Button fx:id="editCancelButton" layoutX="135.0" layoutY="13.0" mnemonicParsing="false" onAction="#cancelEditWindow" text="cancel" />
-                     </buttons>
-                     <padding>
-                        <Insets bottom="5.0" right="5.0" />
-                     </padding>
-                  </ButtonBar>
-               </children>
-            </HBox>
-         </children>
-      </VBox>
-   </children>
+                    </children>
+                </HBox>
+                <HBox prefHeight="100.0" prefWidth="200.0" VBox.vgrow="ALWAYS">
+                    <children>
+                        <VBox maxWidth="100.0" minWidth="-Infinity" prefHeight="200.0" prefWidth="100.0">
+                            <children>
+                                <Label prefHeight="42.0" prefWidth="102.0" text="*Event Title:">
+                                    <padding>
+                                        <Insets left="5.0" />
+                                    </padding>
+                                    <VBox.margin>
+                                        <Insets left="5.0" />
+                                    </VBox.margin>
+                                </Label>
+                                <Label prefHeight="42.0" prefWidth="102.0" text="*Location:">
+                                    <padding>
+                                        <Insets left="5.0" />
+                                    </padding>
+                                    <VBox.margin>
+                                        <Insets left="5.0" />
+                                    </VBox.margin>
+                                </Label>
+                                <Label prefHeight="42.0" prefWidth="102.0" text="Date:">
+                                    <VBox.margin>
+                                        <Insets left="5.0" />
+                                    </VBox.margin>
+                                    <padding>
+                                        <Insets left="5.0" />
+                                    </padding>
+                                </Label>
+                                <Label prefHeight="42.0" prefWidth="102.0" text="*Time:">
+                                    <padding>
+                                        <Insets left="5.0" />
+                                    </padding>
+                                    <VBox.margin>
+                                        <Insets left="5.0" top="15.0" />
+                                    </VBox.margin>
+                                </Label>
+                                <Label prefHeight="42.0" prefWidth="102.0" text="End Time:">
+                                    <padding>
+                                        <Insets left="5.0" />
+                                    </padding>
+                                    <VBox.margin>
+                                        <Insets left="5.0" top="15.0" />
+                                    </VBox.margin>
+                                </Label>
+                                <Label prefHeight="42.0" prefWidth="102.0" text="*Notes:">
+                                    <padding>
+                                        <Insets left="5.0" />
+                                    </padding>
+                                    <VBox.margin>
+                                        <Insets left="5.0" top="15.0" />
+                                    </VBox.margin>
+                                </Label>
+                                <Label prefHeight="42.0" prefWidth="102.0" text="Location Info:">
+                                    <padding>
+                                        <Insets left="5.0" />
+                                    </padding>
+                                    <VBox.margin>
+                                        <Insets left="5.0" top="20.0" />
+                                    </VBox.margin>
+                                </Label>
+                            </children>
+                        </VBox>
+                        <VBox prefHeight="370.0" prefWidth="480.0" spacing="18.0" HBox.hgrow="ALWAYS">
+                            <children>
+                                <TextField fx:id="editNameTF" promptText="Event Name">
+                                    <VBox.margin>
+                                        <Insets right="5.0" top="10.0" />
+                                    </VBox.margin>
+                                </TextField>
+                                <TextField fx:id="editLocationTF" promptText="Event location">
+                                    <VBox.margin>
+                                        <Insets right="5.0" />
+                                    </VBox.margin>
+                                </TextField>
+                                <MFXDatePicker fx:id="datePickerEditEvent" prefHeight="38.0" prefWidth="264.0" />
+                                <HBox prefHeight="34.0" prefWidth="500.0">
+                                    <children>
+                                        <MFXComboBox fx:id="editTimeCBH" promptText="Hour" />
+                                        <Label alignment="CENTER" prefHeight="38.0" prefWidth="28.0" text=":">
+                                            <font>
+                                                <Font name="System Bold" size="18.0" />
+                                            </font>
+                                        </Label>
+                                        <MFXComboBox fx:id="editTimeCBM" promptText="Min" />
+                                    </children>
+                                </HBox>
+                                <HBox prefHeight="34.0" prefWidth="500.0">
+                                    <children>
+                                        <MFXComboBox fx:id="editExitTimeCBH" promptText="Hour" />
+                                        <Label alignment="CENTER" prefHeight="38.0" prefWidth="28.0" text=":">
+                                            <font>
+                                                <Font name="System Bold" size="18.0" />
+                                            </font>
+                                        </Label>
+                                        <MFXComboBox fx:id="editExitTimeCBM" promptText="Min" />
+                                    </children>
+                                </HBox>
+                                <TextArea fx:id="editNotesTF" prefHeight="46.0" prefWidth="495.0" promptText="Event Notes">
+                                    <VBox.margin>
+                                        <Insets right="5.0" />
+                                    </VBox.margin>
+                                </TextArea>
+                                <TextArea fx:id="editLocationInfoTF" prefHeight="45.0" prefWidth="495.0" promptText="Event Location Information (Parking, Directions, etc.)- Optional">
+                                    <VBox.margin>
+                                        <Insets right="5.0" />
+                                    </VBox.margin>
+                                </TextArea>
+                            </children>
+                        </VBox>
+                    </children>
+                </HBox>
+                <HBox alignment="CENTER_RIGHT" maxHeight="-Infinity" minHeight="-Infinity" prefHeight="30.0" prefWidth="200.0" VBox.vgrow="ALWAYS">
+                    <children>
+                        <Label fx:id="editErrorLabel" wrapText="true" HBox.hgrow="ALWAYS" />
+                        <ButtonBar maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="30.0" prefWidth="201.0">
+                            <buttons>
+                                <Button fx:id="editEventButton" mnemonicParsing="false" onAction="#editEvent" styleClass="blue-button" stylesheets="@../../css/style.css" text="Edit Event" />
+                                <Button fx:id="editCancelButton" layoutX="135.0" layoutY="13.0" mnemonicParsing="false" onAction="#cancelEditWindow" styleClass="blue-button" text="Cancel" />
+                            </buttons>
+                            <padding>
+                                <Insets bottom="5.0" right="5.0" />
+                            </padding>
+                        </ButtonBar>
+                    </children>
+               <VBox.margin>
+                  <Insets bottom="5.0" />
+               </VBox.margin>
+                </HBox>
+            </children>
+        </VBox>
+    </children>
 </AnchorPane>
