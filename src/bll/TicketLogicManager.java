@@ -53,101 +53,120 @@ public class TicketLogicManager {
     }
 
     /**
-     * Method to print event info on a ticket using Apache PDFbox libraries and QR code */
-    public static PDDocument writeEventInfoOnTicket(Event event, Ticket ticket) throws IOException, WriterException {
+     * Method to print event info on a ticket using Apache PDFbox libraries and QR code
+     */
+    public static PDDocument writeEventInfoOnTicket(Event event, Ticket ticket) {
+
+        try {
+            String inputFilePath = "resources/ticketType1-input.pdf";
+            File inputFile = new File(inputFilePath);
+            PDDocument doc = Loader.loadPDF(inputFile);
+            PDPage page = doc.getPage(0);
+
+            //Create a new content stream to write on the ticket
+            //5th parameters needs to be true to have right coordinate system and text not upside down
+            PDPageContentStream contentStream = new PDPageContentStream(doc, page, PDPageContentStream.AppendMode.APPEND, true, true);
 
 
-        String inputFilePath = "resources/ticketType1-input.pdf";
-        File inputFile = new File(inputFilePath);
-        PDDocument doc = Loader.loadPDF(inputFile);
-        PDPage page = doc.getPage(0);
+            PDFont pdfFont = new PDType1Font(Standard14Fonts.FontName.HELVETICA_BOLD);
+            contentStream.setFont(pdfFont, 25);
+            contentStream.setNonStrokingColor(Color.white);
 
-        //Create a new content stream to write on the ticket
-        //5th parameters needs to be true to have right coordinate system and text not upside down
-        PDPageContentStream contentStream = new PDPageContentStream(doc, page, PDPageContentStream.AppendMode.APPEND, true, true);
+            PDRectangle pageSize = page.getMediaBox();
+            float pageWidth = pageSize.getWidth();
+            float pageHeight = pageSize.getHeight();
 
+            float margin = 20;
+            float x = pageWidth / 4;
+            float y = pageHeight - margin;
 
-        PDFont pdfFont = new PDType1Font(Standard14Fonts.FontName.HELVETICA_BOLD);
-        contentStream.setFont(pdfFont, 25);
-        contentStream.setNonStrokingColor(Color.white);
+            //Write Event Info
+            contentStream.beginText();
 
-        PDRectangle pageSize = page.getMediaBox();
-        float pageWidth = pageSize.getWidth();
-        float pageHeight = pageSize.getHeight();
+            contentStream.newLineAtOffset(x, y);
+            contentStream.showText(event.getName());
 
-        float margin = 20;
-        float x = pageWidth / 4;
-        float y = pageHeight - margin;
+            contentStream.setTextMatrix(Matrix.getTranslateInstance(x, y - 30));
+            contentStream.setFont(pdfFont, 18);
+            contentStream.newLine();
+            contentStream.showText(event.getLocation());
 
-        //Write Event Info
-        contentStream.beginText();
+            contentStream.setTextMatrix(Matrix.getTranslateInstance(x, y - 50));
+            contentStream.newLine();
+            contentStream.showText(event.getDate().toString());
 
-        contentStream.newLineAtOffset(x, y);
-        contentStream.showText(event.getName());
+            contentStream.setTextMatrix(Matrix.getTranslateInstance(x, y - 70));
+            contentStream.newLine();
+            contentStream.showText("Start time: " + event.getTime().toString());
 
-        contentStream.setTextMatrix(Matrix.getTranslateInstance(x, y - 30));
-        contentStream.setFont(pdfFont, 18);
-        contentStream.newLine();
-        contentStream.showText(event.getLocation());
+            contentStream.setTextMatrix(Matrix.getTranslateInstance(x, y - 90));
+            contentStream.newLine();
+            contentStream.showText(event.getNotes());
 
-        contentStream.setTextMatrix(Matrix.getTranslateInstance(x, y - 50));
-        contentStream.newLine();
-        contentStream.showText(event.getDate().toString());
+            contentStream.setTextMatrix(Matrix.getTranslateInstance(x, y - 110));
+            contentStream.newLine();
+            contentStream.showText("End Time: " + event.getEndTime().toString());
 
-        contentStream.setTextMatrix(Matrix.getTranslateInstance(x, y - 70));
-        contentStream.newLine();
-        contentStream.showText("Start time: " + event.getTime().toString());
+            contentStream.setTextMatrix(Matrix.getTranslateInstance(x, y - 130));
+            contentStream.newLine();
+            contentStream.showText("Location guidance: " + event.getLocationGuidance());
 
-        contentStream.setTextMatrix(Matrix.getTranslateInstance(x, y - 90));
-        contentStream.newLine();
-        contentStream.showText(event.getNotes());
-
-        contentStream.setTextMatrix(Matrix.getTranslateInstance(x, y - 110));
-        contentStream.newLine();
-        contentStream.showText("End Time: " + event.getEndTime().toString());
-
-        contentStream.setTextMatrix(Matrix.getTranslateInstance(x, y - 130));
-        contentStream.newLine();
-        contentStream.showText("Location guidance: " + event.getLocationGuidance());
-
-        contentStream.endText();
+            contentStream.endText();
 
 
-        //Write QR CODE
+            //Write QR CODE
 
-        int qrCodeSize = 80;
-        BitMatrix bitMatrix = new MultiFormatWriter().encode(ticket.getTicketID(), BarcodeFormat.QR_CODE, qrCodeSize, qrCodeSize);
-        BufferedImage qrImage = MatrixToImageWriter.toBufferedImage(bitMatrix);
-        PDImageXObject qrImageXObject = LosslessFactory.createFromImage(doc, qrImage);
-        contentStream.drawImage(qrImageXObject, margin, (pageHeight - qrCodeSize) / 2 + 5, qrCodeSize, qrCodeSize);
-        contentStream.close();
-
-        return doc;
-    }
-
-
-    /**
-     * method to save the ticket with the last 4 digits of the ticketID*/
-    public void saveTicket(Event event, Ticket ticket) throws IOException, WriterException {
-
-        PDDocument document=writeEventInfoOnTicket(event,ticket);
-        String s=ticket.getTicketID();
-        String outputFilePath = "resources/Ticket-"+event.getName()+"-"+s.substring(s.length()-4)+ ".pdf";
-        File outputFile = new File(outputFilePath);
-        document.save(outputFile);
-        document.close();
-
-    }
-
-    /**
-     * method to print the ticket */
-    public void printTicket(PDDocument document) throws IOException, PrinterException {
-        PrinterJob job = PrinterJob.getPrinterJob();
-        job.setPageable(new PDFPageable(document));
-        if (job.printDialog()) {
-            job.print();
+            int qrCodeSize = 80;
+            BitMatrix bitMatrix = new MultiFormatWriter().encode(ticket.getTicketID(), BarcodeFormat.QR_CODE, qrCodeSize, qrCodeSize);
+            BufferedImage qrImage = MatrixToImageWriter.toBufferedImage(bitMatrix);
+            PDImageXObject qrImageXObject = LosslessFactory.createFromImage(doc, qrImage);
+            contentStream.drawImage(qrImageXObject, margin, (pageHeight - qrCodeSize) / 2 + 5, qrCodeSize, qrCodeSize);
+            contentStream.close();
+            return doc;
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        } catch (WriterException e) {
+            throw new RuntimeException(e);
         }
-        document.close();
+
+
+    }
+
+
+    /**
+     * method to save the ticket with the last 4 digits of the ticketID
+     */
+    public static void saveTicket(Event event, Ticket ticket) {
+        try {
+            PDDocument document = writeEventInfoOnTicket(event, ticket);
+            String s = ticket.getTicketID();
+            String outputFilePath = "resources/Ticket-" + event.getName() + "-" + s.substring(s.length() - 4) + ".pdf";
+            File outputFile = new File(outputFilePath);
+            document.save(outputFile);
+            document.close();
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
+
+
+    }
+
+    /**
+     * method to print the ticket
+     */
+    public void printTicket(PDDocument document) {
+        try {
+            PrinterJob job = PrinterJob.getPrinterJob();
+            job.setPageable(new PDFPageable(document));
+            if (job.printDialog()) {
+                job.print();
+            }
+            document.close();
+        } catch (IOException | PrinterException e) {
+
+        }
+
+
     }
 
     private static long get64LeastSignificantBits() {

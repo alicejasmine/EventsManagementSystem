@@ -84,13 +84,13 @@ public class TicketViewController {
         stage.show();
     }
 
-    public void saveTicket(ActionEvent actionEvent) throws IOException, WriterException {
+    public void saveTicket(ActionEvent actionEvent)  {
         Ticket selectedTicket=ticketsTV.getSelectionModel().getSelectedItem();
         Event selectedEvent=model.getSelectedEvent();
         model.saveTicket(selectedEvent,selectedTicket);
     }
 
-    public void printTicket(ActionEvent actionEvent) throws IOException, PrinterException, WriterException {
+    public void printTicket(ActionEvent actionEvent)  {
         Ticket selectedTicket=ticketsTV.getSelectionModel().getSelectedItem();
         Event selectedEvent=model.getSelectedEvent();
         model.printTicket(selectedEvent,selectedTicket);

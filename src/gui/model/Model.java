@@ -126,11 +126,11 @@ public class Model {
         return eventFilteredTickets;
     }
 
-    public void saveTicket(Event event, Ticket ticket) throws IOException, WriterException {
+    public void saveTicket(Event event, Ticket ticket)  {
         tlm.saveTicket(event, ticket);
     }
 
-    public void printTicket(Event event, Ticket ticket) throws IOException, WriterException, PrinterException {
+    public void printTicket(Event event, Ticket ticket) {
 
         tlm.printTicket(tlm.writeEventInfoOnTicket(event, ticket));
     }
