@@ -8,7 +8,7 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane prefHeight="500.0" prefWidth="1000.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gui.controller.HomeViewController">
+<AnchorPane prefHeight="500.0" prefWidth="1000.0" style="-fx-background-color: C9C5C5;" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gui.controller.HomeViewController">
    <children>
       <Text layoutX="207.0" layoutY="61.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Event Management System EASV Bar">
          <font>
