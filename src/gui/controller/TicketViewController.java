@@ -14,8 +14,10 @@ import javafx.stage.*;
 
 import java.awt.print.PrinterException;
 import java.io.*;
+import java.net.URL;
 
 public class TicketViewController {
+
     @FXML
     private Button homeButton, newTicketButton;
     @FXML
@@ -25,7 +27,8 @@ public class TicketViewController {
             eventStartTimeLabel,
             eventNotesLabel,
             eventGuidanceLocationLabel,
-            eventNameLabel;
+            eventNameLabel,
+            errorLabel;
     @FXML
     private TableView<Ticket> ticketsTV;
     @FXML
@@ -84,15 +87,34 @@ public class TicketViewController {
         stage.show();
     }
 
-    public void saveTicket(ActionEvent actionEvent)  {
-        Ticket selectedTicket=ticketsTV.getSelectionModel().getSelectedItem();
-        Event selectedEvent=model.getSelectedEvent();
-        model.saveTicket(selectedEvent,selectedTicket);
-    }
+    public void saveTicket(ActionEvent actionEvent) {
+        Ticket selectedTicket = ticketsTV.getSelectionModel().getSelectedItem();
+        Event selectedEvent = model.getSelectedEvent();
+        if ((selectedEvent == null) || (selectedTicket == null)){
+            errorLabel.setText("Please select a ticket to save");
+        }
+        else{
+        String s = selectedTicket.getTicketID();
+        String filename = "Ticket-" + selectedEvent.getName() + "-" + s.substring(s.length() - 4) + ".pdf";
+        File file = new File("resources/" + filename);
+            if (file.exists()) {
+                errorLabel.setText("Error: File already saved");
+            } else {
+                model.saveTicket(selectedEvent, selectedTicket);
+                errorLabel.setText("File saved in resources folder");
+            }
 
-    public void printTicket(ActionEvent actionEvent)  {
-        Ticket selectedTicket=ticketsTV.getSelectionModel().getSelectedItem();
-        Event selectedEvent=model.getSelectedEvent();
-        model.printTicket(selectedEvent,selectedTicket);
+    }}
+
+    public void printTicket(ActionEvent actionEvent) {
+        Ticket selectedTicket = ticketsTV.getSelectionModel().getSelectedItem();
+        Event selectedEvent = model.getSelectedEvent();
+
+        if ((selectedEvent != null) && (selectedTicket != null)) {
+            model.printTicket(selectedEvent, selectedTicket);
+        } else {
+            errorLabel.setText("Please select a ticket to print");
+        }
+
     }
 }

@@ -133,14 +133,10 @@
         </columns>
       </TableView>
       <Button fx:id="homeButton" layoutX="51.0" layoutY="27.0" mnemonicParsing="false" onAction="#home" prefWidth="70.0" styleClass="blue-button" stylesheets="@../../css/style.css" text="Home" />
-      <ButtonBar layoutX="372.0" layoutY="454.0" prefHeight="40.0" prefWidth="200.0" stylesheets="@../../css/style.css">
+      <ButtonBar layoutX="400.0" layoutY="454.0" prefHeight="40.0" prefWidth="200.0" stylesheets="@../../css/style.css">
         <buttons>
-            <Button mnemonicParsing="false" styleClass="red-button" text="Delete" />
           <Button fx:id="newTicketButton" mnemonicParsing="false" onAction="#openNewTicketView" styleClass="blue-button" text="Create" />
-        </buttons>
-      </ButtonBar>
-      <ButtonBar layoutX="710.0" layoutY="454.0" prefHeight="40.0" prefWidth="200.0" stylesheets="@../../css/style.css">
-        <buttons>
+            <Button mnemonicParsing="false" styleClass="red-button" text="Delete" visible="false" />
           <Button mnemonicParsing="false" onAction="#saveTicket" styleClass="blue-button" text="Save" />
             <Button mnemonicParsing="false" onAction="#printTicket" styleClass="blue-button" text="Print" />
         </buttons>
@@ -153,5 +149,6 @@
             <Insets left="5.0" />
          </padding>
       </Label>
+      <Label fx:id="errorLabel" layoutX="113.0" layoutY="466.0" />
    </children>
 </AnchorPane>
