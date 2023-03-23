@@ -12,7 +12,7 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane prefHeight="500.0" prefWidth="1000.0" style="-fx-background-color: C9C5C5;" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gui.controller.TicketViewController">
+<AnchorPane prefHeight="500.0" prefWidth="1000.0" style="-fx-background-color: C9C5C5;" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gui.controller.TicketViewController">
    <children>
       <AnchorPane layoutX="28.0" layoutY="116.0" minHeight="307.0" minWidth="0.0" prefHeight="307.0" prefWidth="198.0">
          <children>
@@ -141,8 +141,8 @@
       </ButtonBar>
       <ButtonBar layoutX="710.0" layoutY="454.0" prefHeight="40.0" prefWidth="200.0" stylesheets="@../../css/style.css">
         <buttons>
-          <Button mnemonicParsing="false" styleClass="blue-button" text="Save" visible="false" />
-            <Button mnemonicParsing="false" styleClass="blue-button" text="Print" visible="false" />
+          <Button mnemonicParsing="false" onAction="#saveTicket" styleClass="blue-button" text="Save" />
+            <Button mnemonicParsing="false" onAction="#printTicket" styleClass="blue-button" text="Print" />
         </buttons>
       </ButtonBar>
       <Label layoutX="43.0" layoutY="86.0" prefHeight="20.0" prefWidth="155.0" text="Event information">

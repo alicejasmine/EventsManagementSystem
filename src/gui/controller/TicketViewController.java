@@ -3,6 +3,7 @@ package gui.controller;
 
 import be.*;
 import be.Event;
+import com.google.zxing.WriterException;
 import gui.model.*;
 import javafx.event.*;
 import javafx.fxml.*;
@@ -11,6 +12,7 @@ import javafx.scene.control.*;
 import javafx.scene.control.cell.*;
 import javafx.stage.*;
 
+import java.awt.print.PrinterException;
 import java.io.*;
 
 public class TicketViewController {
@@ -34,17 +36,18 @@ public class TicketViewController {
     private TableColumn<Ticket, String> columnTicketID;
 
     private Event selectedEvent;
+
     private Model model = Model.getModel();
 
 
-    public void ticketViewLaunch(){
+    public void ticketViewLaunch() {
         selectedEvent = model.getSelectedEvent();
         model.loadTicketList();
         setTV();
         setLabels();
     }
 
-    private void setTV(){
+    private void setTV() {
         ticketsTV.setItems(model.eventFilteredTickets());
 
         columnCustomerName.setCellValueFactory(new PropertyValueFactory<>("customerName"));
@@ -52,7 +55,7 @@ public class TicketViewController {
         columnTicketID.setCellValueFactory(new PropertyValueFactory<>("ticketID"));
     }
 
-    private void setLabels(){
+    private void setLabels() {
         eventDateLabel.setText(selectedEvent.getDate().toString());
         eventLocationLabel.setText(selectedEvent.getLocation());
         eventGuidanceLocationLabel.setText(selectedEvent.getLocationGuidance());
@@ -79,5 +82,17 @@ public class TicketViewController {
         stage.setTitle("Add new Event");
         stage.setScene(scene);
         stage.show();
+    }
+
+    public void saveTicket(ActionEvent actionEvent) throws IOException, WriterException {
+        Ticket selectedTicket=ticketsTV.getSelectionModel().getSelectedItem();
+        Event selectedEvent=model.getSelectedEvent();
+        model.saveTicket(selectedEvent,selectedTicket);
+    }
+
+    public void printTicket(ActionEvent actionEvent) throws IOException, PrinterException, WriterException {
+        Ticket selectedTicket=ticketsTV.getSelectionModel().getSelectedItem();
+        Event selectedEvent=model.getSelectedEvent();
+        model.printTicket(selectedEvent,selectedTicket);
     }
 }

@@ -77,7 +77,6 @@ public class TicketLogicManager {
 
         float margin = 20;
         float x = pageWidth / 4;
-        System.out.println(x);
         float y = pageHeight - margin;
 
         //Write Event Info
@@ -129,11 +128,11 @@ public class TicketLogicManager {
 
     /**
      * method to save the ticket with the last 4 digits of the ticketID*/
-    public static void saveTicket(Event event, Ticket ticket) throws IOException, WriterException {
+    public void saveTicket(Event event, Ticket ticket) throws IOException, WriterException {
 
         PDDocument document=writeEventInfoOnTicket(event,ticket);
         String s=ticket.getTicketID();
-        String outputFilePath = "resources/Ticket"+s.substring(s.length()-4)+ ".pdf";
+        String outputFilePath = "resources/Ticket-"+event.getName()+"-"+s.substring(s.length()-4)+ ".pdf";
         File outputFile = new File(outputFilePath);
         document.save(outputFile);
         document.close();
@@ -142,7 +141,7 @@ public class TicketLogicManager {
 
     /**
      * method to print the ticket */
-    public static void printPDF(PDDocument document) throws IOException, PrinterException {
+    public void printTicket(PDDocument document) throws IOException, PrinterException {
         PrinterJob job = PrinterJob.getPrinterJob();
         job.setPageable(new PDFPageable(document));
         if (job.printDialog()) {
