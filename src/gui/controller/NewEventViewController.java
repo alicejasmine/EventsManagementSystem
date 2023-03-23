@@ -16,7 +16,7 @@ import java.sql.Date;
 import java.time.*;
 import java.util.*;
 
-public class NewEventViewController implements Initializable{
+public class NewEventViewController{
     @FXML
     private MFXDatePicker datePickerNewEvent;
     @FXML
@@ -73,8 +73,8 @@ public class NewEventViewController implements Initializable{
 
     }
 
-    @Override
-    public void initialize(URL location, ResourceBundle resources) {
+
+    public void launchNewEventWindow(){
         model.loadTime();
 
         timeCBH.setItems(model.getHoursTime());

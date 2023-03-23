@@ -7,6 +7,7 @@ import javafx.collections.*;
 public class Model {
     private ObservableList<Event> events = FXCollections.observableArrayList();
     private ObservableList<Ticket> tickets = FXCollections.observableArrayList();
+    private ObservableList<Ticket> eventFilteredTickets = FXCollections.observableArrayList();
     private ObservableList<Integer> hoursTime = FXCollections.observableArrayList();
     private ObservableList<Integer> minsTime = FXCollections.observableArrayList();
 
@@ -15,20 +16,27 @@ public class Model {
     private final int[] mins = {0,15,30,45};
 
     private LogicManager bll = new LogicManager();
-
     private TicketLogicManager tlm = new TicketLogicManager();
 
     // to create a singleton for our model.
     private static Model model;
+    private Event selectedEvent;
 
+
+    // Getters and Setters
+    public ObservableList<Event> getObsEvents(){return events;}
+    public ObservableList<Ticket> getObsTickets(){return tickets;}
+    public ObservableList<Integer> getHoursTime() {return hoursTime;}
+    public ObservableList<Integer> getMinsTime() {return minsTime;}
+    public Event getSelectedEvent() {return selectedEvent;}
+    public void setSelectedEvent(Event selectedEvent) {this.selectedEvent = selectedEvent;}
     public static Model getModel(){
         if(model == null){
             model = new Model();}
         return model;
     }
 
-
-
+    // loaders
     public void loadTime(){
        hoursTime.clear();
        minsTime.clear();
@@ -40,6 +48,18 @@ public class Model {
         events.clear();
         events.addAll(bll.getAllEvents());
     }
+    public void loadTicketList(){
+        tickets.clear();
+        tickets.addAll(tlm.getAllTickets());
+    }
+    public void loadEventTicketList(){
+        loadTicketList();
+        eventFilteredTickets().clear();
+        eventFilteredTickets();
+    }
+
+
+    //Event methods
     public void addEvent(Event event){
         bll.createEvent(event);
         loadEventList();
@@ -54,18 +74,20 @@ public class Model {
         bll.update(event);
         loadEventList();
     }
-    public void loadTicketList(){
-        tickets.clear();
-        tickets.addAll(tlm.getAllTickets());
-    }
+
+    // Ticket methods
     public void addTicket(String customerName, String customerEmail, int eventID){
         tlm.crateTicket(customerName, customerEmail, eventID);
         loadTicketList();
     }
-
-    public ObservableList<Event> getObsEvents(){return events;}
-    public ObservableList<Ticket> getObsTickets(){return tickets;}
-    public ObservableList<Integer> getHoursTime() {return hoursTime;}
-    public ObservableList<Integer> getMinsTime() {return minsTime;}
+    public ObservableList<Ticket> eventFilteredTickets(){
+        eventFilteredTickets.clear();
+        for (Ticket ticket:tickets) {
+            if(ticket.getEventID() == selectedEvent.getId()){
+                eventFilteredTickets.add(ticket);
+            }
+        }
+        return eventFilteredTickets;
+    }
 
 }

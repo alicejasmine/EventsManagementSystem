@@ -12,7 +12,7 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane prefHeight="500.0" prefWidth="1000.0" style="-fx-background-color: C9C5C5;" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gui.controller.TicketViewVersion2Controller">
+<AnchorPane prefHeight="500.0" prefWidth="1000.0" style="-fx-background-color: C9C5C5;" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gui.controller.TicketViewController">
    <children>
       <AnchorPane layoutX="28.0" layoutY="116.0" minHeight="307.0" minWidth="0.0" prefHeight="307.0" prefWidth="198.0">
          <children>
@@ -61,7 +61,7 @@
                   </VBox>
                   <VBox minHeight="305.0" prefHeight="323.0" prefWidth="193.0" HBox.hgrow="ALWAYS">
                      <children>
-                        <Label text="TEXT">
+                        <Label fx:id="eventLocationLabel" text="TEXT">
                            <VBox.margin>
                               <Insets top="15.0" />
                            </VBox.margin>
@@ -69,7 +69,7 @@
                               <Insets left="5.0" />
                            </padding>
                         </Label>
-                        <Label fx:id="eventEndTimeLabel" text="TEXT">
+                        <Label fx:id="eventDateLabel" text="TEXT">
                            <padding>
                               <Insets left="5.0" />
                            </padding>
@@ -77,7 +77,7 @@
                               <Insets top="13.0" />
                            </VBox.margin>
                         </Label>
-                        <Label fx:id="eventEndTimeLabel1" layoutX="10.0" layoutY="80.0" text="TEXT">
+                        <Label fx:id="eventStartTimeLabel" layoutX="10.0" layoutY="80.0" text="TEXT">
                            <padding>
                               <Insets left="5.0" />
                            </padding>
@@ -85,20 +85,20 @@
                               <Insets top="25.0" />
                            </VBox.margin>
                         </Label>
-                        <Label fx:id="locationGuidanceLabel" alignment="TOP_LEFT" prefHeight="67.0" prefWidth="188.0" text="TEXT" wrapText="true">
+                        <Label fx:id="eventNotesLabel" alignment="TOP_LEFT" prefHeight="114.0" prefWidth="200.0" text="TEXT" wrapText="true" VBox.vgrow="ALWAYS">
                            <VBox.margin>
-                              <Insets />
+                              <Insets top="25.0" />
                            </VBox.margin>
                            <padding>
-                              <Insets left="5.0" top="25.0" />
+                              <Insets left="5.0" />
                            </padding>
                         </Label>
-                        <Label fx:id="locationGuidanceLabel1" alignment="TOP_LEFT" layoutX="10.0" layoutY="140.0" prefHeight="67.0" prefWidth="188.0" text="TEXT" wrapText="true">
+                        <Label fx:id="eventGuidanceLocationLabel" alignment="TOP_LEFT" layoutX="10.0" layoutY="140.0" prefHeight="101.0" prefWidth="197.0" text="TEXT" wrapText="true" VBox.vgrow="ALWAYS">
                            <padding>
-                              <Insets left="5.0" top="25.0" />
+                              <Insets left="5.0" />
                            </padding>
                            <VBox.margin>
-                              <Insets top="45.0" />
+                              <Insets />
                            </VBox.margin>
                         </Label>
                      </children>
@@ -107,7 +107,7 @@
             </HBox>
          </children>
       </AnchorPane>
-      <Label layoutX="492.0" layoutY="16.0" text="Label">
+      <Label fx:id="eventNameLabel" layoutX="492.0" layoutY="16.0" text="Label">
          <font>
             <Font size="36.0" />
          </font>
@@ -125,18 +125,18 @@
             <Insets left="5.0" />
          </padding>
       </Label>
-      <TableView layoutX="410.0" layoutY="116.0" prefHeight="320.0" prefWidth="516.0">
+      <TableView fx:id="ticketsTV" layoutX="410.0" layoutY="116.0" prefHeight="320.0" prefWidth="516.0">
         <columns>
-          <TableColumn prefWidth="116.0" text="Customer Name" />
-          <TableColumn prefWidth="140.800048828125" text="Customer email" />
-            <TableColumn prefWidth="244.79998779296875" text="TicketID" />
+          <TableColumn fx:id="columnCustomerName" prefWidth="116.0" text="Customer Name" />
+          <TableColumn fx:id="columnCustomerEmail" prefWidth="140.800048828125" text="Customer email" />
+            <TableColumn fx:id="columnTicketID" prefWidth="244.79998779296875" text="TicketID" />
         </columns>
       </TableView>
       <Button fx:id="homeButton" layoutX="51.0" layoutY="27.0" mnemonicParsing="false" onAction="#home" prefWidth="70.0" styleClass="blue-button" stylesheets="@../../css/style.css" text="Home" />
       <ButtonBar layoutX="372.0" layoutY="454.0" prefHeight="40.0" prefWidth="200.0" stylesheets="@../../css/style.css">
         <buttons>
             <Button mnemonicParsing="false" styleClass="red-button" text="Delete" />
-          <Button mnemonicParsing="false" styleClass="blue-button" text="Create" />
+          <Button fx:id="newTicketButton" mnemonicParsing="false" onAction="#openNewTicketView" styleClass="blue-button" text="Create" />
         </buttons>
       </ButtonBar>
       <ButtonBar layoutX="710.0" layoutY="454.0" prefHeight="40.0" prefWidth="200.0" stylesheets="@../../css/style.css">
