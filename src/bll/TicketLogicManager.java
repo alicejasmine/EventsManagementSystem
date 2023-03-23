@@ -2,6 +2,8 @@ package bll;
 
 import java.awt.*;
 import java.awt.image.BufferedImage;
+import java.awt.print.PrinterException;
+import java.awt.print.PrinterJob;
 import java.io.File;
 import java.io.IOException;
 import java.util.List;
@@ -24,6 +26,7 @@ import org.apache.pdfbox.pdmodel.PDDocument;
 import org.apache.pdfbox.pdmodel.PDPage;
 import org.apache.pdfbox.pdmodel.PDPageContentStream;
 import org.apache.pdfbox.pdmodel.font.*;
+import org.apache.pdfbox.printing.PDFPageable;
 import org.apache.pdfbox.util.Matrix;
 
 public class TicketLogicManager {
@@ -31,8 +34,10 @@ public class TicketLogicManager {
     private TicketDAO ticketDAO = new TicketDAO();
     private EventDAO eventDAO = new EventDAO();
 
-    public static void main(String[] args) throws IOException, WriterException {
-        //writeEventInfoOnPDF(eventDAO.getAllEvents().get(0),ticketDAO.getAllTickets().get(0));
+    public static void main(String[] args) throws IOException, WriterException, PrinterException {
+        //saveTicket(eventDAO.getAllEvents().get(0),ticketDAO.getAllTickets().get(0));
+        //PDDocument document= writeEventInfoOnTicket(eventDAO.getAllEvents().get(0),ticketDAO.getAllTickets().get(0));
+        //printPDF(document);
         //for(int i = 0; i < 100; i++){
         //    System.out.println(generateType1UUID());}
     }
@@ -49,12 +54,10 @@ public class TicketLogicManager {
 
     /**
      * Method to print event info on a ticket using Apache PDFbox libraries and QR code */
-    public static void writeEventInfoOnTicket(Event event, Ticket ticket) throws IOException, WriterException {
+    public static PDDocument writeEventInfoOnTicket(Event event, Ticket ticket) throws IOException, WriterException {
 
 
         String inputFilePath = "resources/ticketType1-input.pdf";
-        String outputFilePath = "resources/ticketType1-edit.pdf";
-
         File inputFile = new File(inputFilePath);
         PDDocument doc = Loader.loadPDF(inputFile);
         PDPage page = doc.getPage(0);
@@ -116,17 +119,36 @@ public class TicketLogicManager {
         int qrCodeSize = 80;
         BitMatrix bitMatrix = new MultiFormatWriter().encode(ticket.getTicketID(), BarcodeFormat.QR_CODE, qrCodeSize, qrCodeSize);
         BufferedImage qrImage = MatrixToImageWriter.toBufferedImage(bitMatrix);
-
         PDImageXObject qrImageXObject = LosslessFactory.createFromImage(doc, qrImage);
         contentStream.drawImage(qrImageXObject, margin, (pageHeight - qrCodeSize) / 2 + 5, qrCodeSize, qrCodeSize);
-
         contentStream.close();
-        File outputFile = new File(outputFilePath);
-        doc.save(outputFile);
-        doc.close();
 
-        PDDocument editedDoc = Loader.loadPDF(new File(outputFilePath));
-        editedDoc.close();
+        return doc;
+    }
+
+
+    /**
+     * method to save the ticket with the last 4 digits of the ticketID*/
+    public static void saveTicket(Event event, Ticket ticket) throws IOException, WriterException {
+
+        PDDocument document=writeEventInfoOnTicket(event,ticket);
+        String s=ticket.getTicketID();
+        String outputFilePath = "resources/Ticket"+s.substring(s.length()-4)+ ".pdf";
+        File outputFile = new File(outputFilePath);
+        document.save(outputFile);
+        document.close();
+
+    }
+
+    /**
+     * method to print the ticket */
+    public static void printPDF(PDDocument document) throws IOException, PrinterException {
+        PrinterJob job = PrinterJob.getPrinterJob();
+        job.setPageable(new PDFPageable(document));
+        if (job.printDialog()) {
+            job.print();
+        }
+        document.close();
     }
 
     private static long get64LeastSignificantBits() {
