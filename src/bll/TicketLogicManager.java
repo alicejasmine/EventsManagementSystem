@@ -147,25 +147,27 @@ public class TicketLogicManager {
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
-
-
     }
 
     /**
      * method to print the ticket
      */
-    public void printTicket(PDDocument document) {
+    public void printTicket(Event event, Ticket ticket) {
+        PDDocument document=writeEventInfoOnTicket(event, ticket);
         try {
             PrinterJob job = PrinterJob.getPrinterJob();
             job.setPageable(new PDFPageable(document));
+            String s = ticket.getTicketID();
+            String fileName="Ticket-" + event.getName() + s.substring(s.length() - 4) +".pdf";
+            job.setJobName(fileName);
             if (job.printDialog()) {
+
                 job.print();
             }
             document.close();
         } catch (IOException | PrinterException e) {
 
         }
-
 
     }
 
