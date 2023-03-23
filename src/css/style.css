@@ -20,3 +20,11 @@
 .red-button:hover{
     -fx-opacity: 0.8;
 }
+
+.event-tile:hover{
+    -fx-opacity: 0.8;
+
+}
+.event-tile{
+    -fx-background-radius:15;
+}

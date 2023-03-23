@@ -8,8 +8,7 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-
-<AnchorPane prefHeight="500.0" prefWidth="1000.0" style="-fx-background-color: D6D7D5;" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gui.controller.HomeViewController">
+<AnchorPane prefHeight="500.0" prefWidth="1000.0" style="-fx-background-color: D6D7D5;" stylesheets="@../../css/style.css" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gui.controller.HomeViewController">
 
    <children>
       <Text layoutX="207.0" layoutY="61.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Event Management System EASV Bar">
@@ -32,22 +31,22 @@
          <children>
             <StackPane prefHeight="150.0" prefWidth="200.0">
                <children>
-                  <MFXButton fx:id="up1Button" buttonType="RAISED" depthLevel="LEVEL5" onAction="#homeEventSelectionUpcoming1" prefHeight="102.0" prefWidth="138.0" rippleColor="#bcba40" style="-fx-background-color: #279af1;" text=" " />
+                  <MFXButton fx:id="up1Button" buttonType="RAISED" depthLevel="LEVEL5" onAction="#homeEventSelectionUpcoming1" prefHeight="102.0" prefWidth="138.0" rippleColor="#bcba40" style="-fx-background-color: #279af1;" styleClass="event-tile" stylesheets="@../../css/style.css" text=" " />
                </children>
             </StackPane>
             <StackPane prefHeight="150.0" prefWidth="200.0">
                <children>
-                  <MFXButton fx:id="up2Button" buttonType="RAISED" depthLevel="LEVEL5" onAction="#homeEventSelectionUpcoming2" prefHeight="102.0" prefWidth="138.0" rippleColor="#bcba40" style="-fx-background-color: #279af1;" text=" " />
+                  <MFXButton fx:id="up2Button" buttonType="RAISED" depthLevel="LEVEL5" onAction="#homeEventSelectionUpcoming2" prefHeight="102.0" prefWidth="138.0" rippleColor="#bcba40" style="-fx-background-color: #279af1;" styleClass="event-tile" text=" " />
                </children>
             </StackPane>
             <StackPane prefHeight="150.0" prefWidth="200.0">
                <children>
-                  <MFXButton fx:id="up3Button" buttonType="RAISED" depthLevel="LEVEL5" onAction="#homeEventSelectionUpcoming3" prefHeight="102.0" prefWidth="138.0" rippleColor="#bcba40" style="-fx-background-color: #279af1;" text=" " />
+                  <MFXButton fx:id="up3Button" buttonType="RAISED" depthLevel="LEVEL5" onAction="#homeEventSelectionUpcoming3" prefHeight="102.0" prefWidth="138.0" rippleColor="#bcba40" style="-fx-background-color: #279af1;" styleClass="event-tile" text=" " />
                </children>
             </StackPane>
             <StackPane prefHeight="150.0" prefWidth="200.0">
                <children>
-                  <MFXButton fx:id="up4Button" buttonType="RAISED" depthLevel="LEVEL5" onAction="#homeEventSelectionUpcoming4" prefHeight="102.0" prefWidth="138.0" rippleColor="#bcba40" style="-fx-background-color: #279af1;" text=" " />
+                  <MFXButton fx:id="up4Button" buttonType="RAISED" depthLevel="LEVEL5" onAction="#homeEventSelectionUpcoming4" prefHeight="102.0" prefWidth="138.0" rippleColor="#bcba40" style="-fx-background-color: #279af1;" styleClass="event-tile" text=" " />
                </children>
             </StackPane>
          </children>
@@ -56,22 +55,22 @@
          <children>
             <StackPane prefHeight="150.0" prefWidth="200.0">
                <children>
-                  <MFXButton fx:id="add1Button" buttonType="RAISED" depthLevel="LEVEL5" onAction="#homeEventSelectionAdd1" prefHeight="102.0" prefWidth="138.0" rippleColor="#bcba40" style="-fx-background-color: #279af1;" text=" " />
+                  <MFXButton fx:id="add1Button" buttonType="RAISED" depthLevel="LEVEL5" onAction="#homeEventSelectionAdd1" prefHeight="102.0" prefWidth="138.0" rippleColor="#bcba40" style="-fx-background-color: #279af1;" styleClass="event-tile" text=" " />
                </children>
             </StackPane>
             <StackPane prefHeight="150.0" prefWidth="200.0">
                <children>
-                  <MFXButton fx:id="add2Button" buttonType="RAISED" depthLevel="LEVEL5" onAction="#homeEventSelectionAdd2" prefHeight="102.0" prefWidth="138.0" rippleColor="#bcba40" style="-fx-background-color: #279af1;" text=" " />
+                  <MFXButton fx:id="add2Button" buttonType="RAISED" depthLevel="LEVEL5" onAction="#homeEventSelectionAdd2" prefHeight="102.0" prefWidth="138.0" rippleColor="#bcba40" style="-fx-background-color: #279af1;" styleClass="event-tile" text=" " />
                </children>
             </StackPane>
             <StackPane prefHeight="150.0" prefWidth="200.0">
                <children>
-                  <MFXButton fx:id="add3Button" buttonType="RAISED" depthLevel="LEVEL5" onAction="#homeEventSelectionAdd3" prefHeight="102.0" prefWidth="138.0" rippleColor="#bcba40" style="-fx-background-color: #279af1;" text=" " />
+                  <MFXButton fx:id="add3Button" buttonType="RAISED" depthLevel="LEVEL5" onAction="#homeEventSelectionAdd3" prefHeight="102.0" prefWidth="138.0" rippleColor="#bcba40" style="-fx-background-color: #279af1;" styleClass="event-tile" text=" " />
                </children>
             </StackPane>
             <StackPane prefHeight="150.0" prefWidth="200.0">
                <children>
-                  <MFXButton fx:id="add4Button" buttonType="RAISED" depthLevel="LEVEL5" onAction="#homeEventSelectionAdd4" prefHeight="102.0" prefWidth="138.0" rippleColor="#bcba40" style="-fx-background-color: #279af1;" text=" " />
+                  <MFXButton fx:id="add4Button" buttonType="RAISED" depthLevel="LEVEL5" onAction="#homeEventSelectionAdd4" prefHeight="102.0" prefWidth="138.0" rippleColor="#bcba40" style="-fx-background-color: #279af1;" styleClass="event-tile" text=" " />
                </children>
             </StackPane>
          </children>
