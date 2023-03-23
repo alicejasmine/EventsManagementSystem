@@ -25,7 +25,7 @@ public class NewTicketView {
             String customerName = customerNameTF.getText();
             String customerEmail= customerEmailTF.getText();
             int eventID = model.getSelectedEvent().getId();
-            System.out.println(customerName + customerEmail + eventID);
+            //System.out.println(customerName + customerEmail + eventID);
             model.addTicket(customerName, customerEmail, eventID);
             model.loadEventTicketList();
         }

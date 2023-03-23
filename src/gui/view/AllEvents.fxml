@@ -40,9 +40,9 @@
                <HBox.margin>
                   <Insets right="10.0" />
                </HBox.margin></Button>
-            <Button fx:id="deleteEventButton" styleClass="red-button" mnemonicParsing="false" onAction="#deleteEvent" prefWidth="70.0" text="Delete" />
-                <Label fx:id="errorInfoLabel" alignment="CENTER_RIGHT" prefHeight="46.0" prefWidth="368.0" wrapText="true" />
-            <Button fx:id="ticketInfo" mnemonicParsing="false" onAction="#ticketInfo" prefWidth="81.0" styleClass="blue-button" text="Ticket Info" />
+            <Button fx:id="deleteEventButton" mnemonicParsing="false" onAction="#deleteEvent" prefWidth="70.0" styleClass="red-button" text="Delete" />
+                <Label fx:id="errorInfoLabel" alignment="CENTER" prefHeight="46.0" prefWidth="368.0" wrapText="true" />
+            <Button fx:id="ticketInfo" mnemonicParsing="false" onAction="#ticketInfo" prefWidth="81.0" styleClass="blue-button" text="Tickets Info" />
             </children>
         </HBox>
     </bottom>

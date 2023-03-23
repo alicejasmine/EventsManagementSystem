@@ -16,7 +16,7 @@ import java.sql.*;
 import java.util.*;
 import java.util.Date;
 
-public class EventsViewController implements Initializable{
+public class EventsViewController implements Initializable {
 
 
     @FXML
@@ -72,24 +72,24 @@ public class EventsViewController implements Initializable{
     }
 
 
-    private void deleteListener(){
+    private void deleteListener() {
 
     }
 
-    private void eventInfoView(){
+    private void eventInfoView() {
         eventTV.getSelectionModel().selectedItemProperty().addListener(
-                (observable, oldValue, selectedUser) ->{
-                    if(selectedUser != null){
+                (observable, oldValue, selectedUser) -> {
+                    if (selectedUser != null) {
                         eventNotesLabel.setText(selectedUser.getNotes());
                         eventEndTimeLabel.setText(selectedUser.getEndTime().toString());
                         locationGuidanceLabel.setText(selectedUser.getLocationGuidance());
                     }
-                } );
+                });
     }
 
-    private void deleteAlert(){
+    private void deleteAlert() {
         Event selectedEvent = null;
-        if(eventTV.getSelectionModel().getSelectedItem() != null){
+        if (eventTV.getSelectionModel().getSelectedItem() != null) {
             selectedEvent = eventTV.getSelectionModel().getSelectedItem();
             Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
             alert.setTitle("Event deletion confirmation");
@@ -97,13 +97,14 @@ public class EventsViewController implements Initializable{
 
             Optional<ButtonType> result = alert.showAndWait();
             if (result.get() == ButtonType.OK) {
-                errorInfoLabel.setText("Event "+selectedEvent.getName()+" has been deleted.");
+                errorInfoLabel.setText("Event " + selectedEvent.getName() + " has been deleted.");
                 model.deleteEvent(selectedEvent);
             } else {
                 alert.close();
             }
-        }else  errorInfoLabel.setText("Please select an event to be deleted.");
+        } else errorInfoLabel.setText("Please select an event to be deleted.");
     }
+
     @FXML
     private void newEvent(ActionEvent actionEvent) throws IOException {
         FXMLLoader loader = new FXMLLoader(getClass().getResource("/gui/view/NewEventView.fxml"));
@@ -119,15 +120,15 @@ public class EventsViewController implements Initializable{
 
 
     @FXML
-    private void deleteEvent(ActionEvent actionEvent){
+    private void deleteEvent(ActionEvent actionEvent) {
         deleteAlert();
     }
 
 
     @FXML
-    private void editEvent(ActionEvent actionEvent) throws IOException{
+    private void editEvent(ActionEvent actionEvent) throws IOException {
         Event editEvent = null;
-        if(eventTV.getSelectionModel().getSelectedItem() != null){
+        if (eventTV.getSelectionModel().getSelectedItem() != null) {
             editEvent = eventTV.getSelectionModel().getSelectedItem();
 
             FXMLLoader loader = new FXMLLoader(getClass().getResource("/gui/view/EditEventView.fxml"));
@@ -140,20 +141,27 @@ public class EventsViewController implements Initializable{
             stage.setTitle("Edit Event");
             stage.setScene(scene);
             stage.show();
-        }else errorInfoLabel.setText("Please select an event to be edited.");
+        } else errorInfoLabel.setText("Please select an event to be edited.");
     }
+
     @FXML
     private void ticketInfo(ActionEvent actionEvent) throws IOException {
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("/gui/view/TicketView.fxml"));
-        Parent root = loader.load();
-        TicketViewController controller = loader.getController();
-        controller.ticketViewLaunch();
-        Stage stage = new Stage();
-        Scene scene = new Scene(root);
-        stage.setTitle("Event and Ticket Information");
-        stage.setScene(scene);
-        stage.show();
+        Event selectedEvent = eventTV.getSelectionModel().getSelectedItem();
+        if (selectedEvent != null) {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/gui/view/TicketView.fxml"));
+            Parent root = loader.load();
+            TicketViewController controller = loader.getController();
+            controller.ticketViewLaunch();
+            Stage stage = new Stage();
+            Scene scene = new Scene(root);
+            stage.setTitle("Event and Ticket Information");
+            stage.setScene(scene);
+            stage.show();
+        } else { errorInfoLabel.setText("Please select an event to see related tickets.");
+        }
+
     }
+
     @FXML
     private void home(ActionEvent actionEvent) throws IOException {
         FXMLLoader loader = new FXMLLoader(getClass().getResource("/gui/view/HomeView.fxml"));
@@ -164,6 +172,7 @@ public class EventsViewController implements Initializable{
         stage.setScene(scene);
         stage.show();
     }
+
     @FXML
     private void logOutUser(ActionEvent actionEvent) {
     }
