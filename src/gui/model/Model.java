@@ -188,7 +188,7 @@ public class Model {
 
     public void printTicket(Event event, Ticket ticket) {
 
-        tlm.printTicket(event, ticket);
+        tlm.printTicket(tlm.writeEventInfoOnTicket(event, ticket));
     }
 }
 
