@@ -7,11 +7,22 @@ import javafx.collections.*;
 
 import java.awt.print.PrinterException;
 import java.io.IOException;
+import java.time.*;
 import java.util.*;
 
 public class Model {
     private ObservableList<Event> events = FXCollections.observableArrayList();
+
+    public ObservableList<Event> getRecentAddedEvents() {
+        return recentAddedEvents;
+    }
+
+    public ObservableList<Event> getUpcomingEvents() {
+        return upcomingEvents;
+    }
+
     private ObservableList<Event> recentAddedEvents = FXCollections.observableArrayList();
+    private ObservableList<Event> upcomingEvents = FXCollections.observableArrayList();
     private ObservableList<Ticket> tickets = FXCollections.observableArrayList();
     private ObservableList<Ticket> eventFilteredTickets = FXCollections.observableArrayList();
     private ObservableList<Integer> hoursTime = FXCollections.observableArrayList();
@@ -91,8 +102,18 @@ public class Model {
 
     public void loadEventTicketList() {
         loadTicketList();
-        eventFilteredTickets().clear();
-        eventFilteredTickets();
+        if(selectedEvent != null){
+            eventFilteredTickets().clear();
+            eventFilteredTickets();
+        }
+    }
+    public void loadUpcoming(){
+        upcomingEvents.clear();
+        upcomingEvents();
+    }
+    public void loadRecentlyAdded(){
+        recentAddedEvents.clear();
+        recentlyAddedEvents();
     }
 
 
@@ -112,22 +133,36 @@ public class Model {
         loadEventList();
     }
     public ObservableList<Event> recentlyAddedEvents(){
-        ArrayList<Integer> recentEventIDs = new ArrayList<>();
-        int id;
+        List<Event> recentEventIDs = new ArrayList<>();
 
-        for(Event event: events){
-            id = event.getId();
-            recentEventIDs.add(id);
+        recentEventIDs.addAll(events);
+
+        Collections.sort(recentEventIDs, Comparator.comparing(Event::getId).reversed());
+
+        recentAddedEvents.addAll(recentEventIDs);
+
+        return recentAddedEvents;
+    }
+    public ObservableList<Event> upcomingEvents(){
+        List<Event> upcomingDates = new ArrayList<>();
+        Date todayDate = Date.from(Instant.now());
+
+        for(Event event:events){
+            if(event.getDate().after(todayDate)){
+                upcomingDates.add(event);
+            }
         }
-        Collections.sort(recentEventIDs);
+        Collections.sort(upcomingDates, Comparator.comparing(Event::getDate));
 
-        for(Event event: events){
-            if(recentEventIDs.contains(event.getId())){
-                recentAddedEvents.add(event);
+        upcomingEvents.addAll(upcomingDates);
+
+        for(Event event: upcomingDates){
+            if(!upcomingEvents.contains(event)){
+                upcomingEvents.add(event);
             }
         }
 
-        return recentAddedEvents;
+        return upcomingEvents;
     }
 
     // Ticket methods

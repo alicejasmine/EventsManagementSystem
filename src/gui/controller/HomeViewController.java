@@ -55,12 +55,40 @@ public class HomeViewController implements Initializable {
         model.loadEventList();
         model.loadTime();
         model.loadTicketList();
-        model.recentlyAddedEvents();
+        model.loadEventTicketList();
+        model.loadUpcoming();
+        model.loadRecentlyAdded();
 
-        add1Button.setText(model.recentlyAddedEvents().get(model.recentlyAddedEvents().size() - 1).getName() + "\n" + model.recentlyAddedEvents().get(model.recentlyAddedEvents().size() - 1).getDate());
-        add2Button.setText(model.recentlyAddedEvents().get(model.recentlyAddedEvents().size() - 2).getName() + "\n" + model.recentlyAddedEvents().get(model.recentlyAddedEvents().size() - 2).getDate());
-        add3Button.setText(model.recentlyAddedEvents().get(model.recentlyAddedEvents().size() - 3).getName() + "\n" + model.recentlyAddedEvents().get(model.recentlyAddedEvents().size() - 3).getDate());
-        add4Button.setText(model.recentlyAddedEvents().get(model.recentlyAddedEvents().size() - 4).getName() + "\n" + model.recentlyAddedEvents().get(model.recentlyAddedEvents().size() - 4).getDate());
+        eventButtonCreation();
+    }
+
+    private void eventButtonCreation(){
+        if(model.getUpcomingEvents() != null){
+            up1Button.setText(model.getUpcomingEvents().get(0).getName() + "\n\n" + model.getUpcomingEvents().get(0).getDate());
+        }else up1Button.setDisable(true);
+        if(model.getUpcomingEvents().size() >= 2){
+            up2Button.setText(model.getUpcomingEvents().get(1).getName() + "\n\n" + model.getUpcomingEvents().get(1).getDate());
+        }else up2Button.setDisable(true);
+        if(model.getUpcomingEvents().size() >= 3){
+            up3Button.setText(model.getUpcomingEvents().get(2).getName() + "\n\n" + model.getUpcomingEvents().get(2).getDate());
+        }else up3Button.setDisable(true);
+        if(model.getUpcomingEvents().size() >= 4) {
+            up4Button.setText(model.getUpcomingEvents().get(3).getName() + "\n\n" + model.getUpcomingEvents().get(3).getDate());
+        }else up4Button.setDisable(true);
+
+
+        if(model.getRecentAddedEvents() != null){
+            add1Button.setText(model.getRecentAddedEvents().get(0).getName() + "\n\n" + model.getRecentAddedEvents().get(0).getDate());
+        } else add1Button.setDisable(true);
+        if(model.getRecentAddedEvents().size() >= 2){
+            add2Button.setText(model.getRecentAddedEvents().get(1).getName() + "\n\n" + model.getRecentAddedEvents().get(1).getDate());
+        } else add2Button.setDisable(true);
+        if(model.getRecentAddedEvents().size() >= 3){
+            add3Button.setText(model.getRecentAddedEvents().get(2).getName() + "\n\n" + model.getRecentAddedEvents().get(2).getDate());
+        } else add3Button.setDisable(true);
+        if(model.getRecentAddedEvents().size() >= 4){
+            add4Button.setText(model.getRecentAddedEvents().get(3).getName() + "\n\n" + model.getRecentAddedEvents().get(3).getDate());
+        } else add4Button.setDisable(true);
     }
 
     private void openEventWindow() {
@@ -80,42 +108,42 @@ public class HomeViewController implements Initializable {
     }
 
     public void homeEventSelectionUpcoming1(ActionEvent actionEvent) {
-        model.setSelectedEvent(model.getObsEvents().get(1));
+        model.setSelectedEvent(model.getUpcomingEvents().get(0));
         openEventWindow();
     }
 
     public void homeEventSelectionUpcoming2(ActionEvent actionEvent) {
-        model.setSelectedEvent(model.getObsEvents().get(1));
+        model.setSelectedEvent(model.getUpcomingEvents().get(1));
         openEventWindow();
     }
 
     public void homeEventSelectionUpcoming3(ActionEvent actionEvent) {
-        model.setSelectedEvent(model.getObsEvents().get(1));
+        model.setSelectedEvent(model.getUpcomingEvents().get(2));
         openEventWindow();
     }
 
     public void homeEventSelectionUpcoming4(ActionEvent actionEvent) {
-        model.setSelectedEvent(model.getObsEvents().get(1));
+        model.setSelectedEvent(model.getUpcomingEvents().get(3));
         openEventWindow();
     }
 
     public void homeEventSelectionAdd1(ActionEvent actionEvent) {
-        model.setSelectedEvent(model.recentlyAddedEvents().get(model.recentlyAddedEvents().size() - 1));
+        model.setSelectedEvent(model.getRecentAddedEvents().get(0));
         openEventWindow();
     }
 
     public void homeEventSelectionAdd2(ActionEvent actionEvent) {
-        model.setSelectedEvent(model.recentlyAddedEvents().get(model.recentlyAddedEvents().size() - 2));
+        model.setSelectedEvent(model.getRecentAddedEvents().get(1));
         openEventWindow();
     }
 
     public void homeEventSelectionAdd3(ActionEvent actionEvent) {
-        model.setSelectedEvent(model.recentlyAddedEvents().get(model.recentlyAddedEvents().size() - 3));
+        model.setSelectedEvent(model.getRecentAddedEvents().get(2));
         openEventWindow();
     }
 
     public void homeEventSelectionAdd4(ActionEvent actionEvent) {
-        model.setSelectedEvent(model.recentlyAddedEvents().get(model.recentlyAddedEvents().size() - 4));
+        model.setSelectedEvent(model.getRecentAddedEvents().get(3));
         openEventWindow();
     }
 }
