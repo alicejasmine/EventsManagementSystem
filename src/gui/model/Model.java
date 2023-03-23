@@ -7,9 +7,11 @@ import javafx.collections.*;
 
 import java.awt.print.PrinterException;
 import java.io.IOException;
+import java.util.*;
 
 public class Model {
     private ObservableList<Event> events = FXCollections.observableArrayList();
+    private ObservableList<Event> recentAddedEvents = FXCollections.observableArrayList();
     private ObservableList<Ticket> tickets = FXCollections.observableArrayList();
     private ObservableList<Ticket> eventFilteredTickets = FXCollections.observableArrayList();
     private ObservableList<Integer> hoursTime = FXCollections.observableArrayList();
@@ -109,6 +111,24 @@ public class Model {
         bll.update(event);
         loadEventList();
     }
+    public ObservableList<Event> recentlyAddedEvents(){
+        ArrayList<Integer> recentEventIDs = new ArrayList<>();
+        int id;
+
+        for(Event event: events){
+            id = event.getId();
+            recentEventIDs.add(id);
+        }
+        Collections.sort(recentEventIDs);
+
+        for(Event event: events){
+            if(recentEventIDs.contains(event.getId())){
+                recentAddedEvents.add(event);
+            }
+        }
+
+        return recentAddedEvents;
+    }
 
     // Ticket methods
     public void addTicket(String customerName, String customerEmail, int eventID) {
@@ -130,8 +150,10 @@ public class Model {
         tlm.saveTicket(event, ticket);
     }
 
+
     public void printTicket(Event event, Ticket ticket) {
 
         tlm.printTicket(tlm.writeEventInfoOnTicket(event, ticket));
     }
 }
+

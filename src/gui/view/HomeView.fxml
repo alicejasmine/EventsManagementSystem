@@ -97,61 +97,21 @@
             <StackPane prefHeight="150.0" prefWidth="200.0">
                <children>
                   <MFXButton fx:id="add1Button" buttonType="RAISED" depthLevel="LEVEL5" onAction="#homeEventSelectionAdd1" prefHeight="102.0" prefWidth="138.0" rippleColor="#bcba40" style="-fx-background-color: #279af1;" text=" " />
-                  <Label fx:id="added1Name" mouseTransparent="true" text="Label">
-                     <StackPane.margin>
-                        <Insets bottom="50.0" top="20.0" />
-                     </StackPane.margin>
-                  </Label>
-                  <Label fx:id="added1Date" focusTraversable="false" mouseTransparent="true" text="Label">
-                     <StackPane.margin>
-                        <Insets top="40.0" />
-                     </StackPane.margin>
-                  </Label>
                </children>
             </StackPane>
             <StackPane prefHeight="150.0" prefWidth="200.0">
                <children>
                   <MFXButton fx:id="add2Button" buttonType="RAISED" depthLevel="LEVEL5" onAction="#homeEventSelectionAdd2" prefHeight="102.0" prefWidth="138.0" rippleColor="#bcba40" style="-fx-background-color: #279af1;" text=" " />
-                  <Label fx:id="added2Name" mouseTransparent="true" text="Label">
-                     <StackPane.margin>
-                        <Insets bottom="50.0" top="20.0" />
-                     </StackPane.margin>
-                  </Label>
-                  <Label fx:id="added2Date" focusTraversable="false" mouseTransparent="true" text="Label">
-                     <StackPane.margin>
-                        <Insets top="40.0" />
-                     </StackPane.margin>
-                  </Label>
                </children>
             </StackPane>
             <StackPane prefHeight="150.0" prefWidth="200.0">
                <children>
                   <MFXButton fx:id="add3Button" buttonType="RAISED" depthLevel="LEVEL5" onAction="#homeEventSelectionAdd3" prefHeight="102.0" prefWidth="138.0" rippleColor="#bcba40" style="-fx-background-color: #279af1;" text=" " />
-                  <Label fx:id="added3Name" mouseTransparent="true" text="Label">
-                     <StackPane.margin>
-                        <Insets bottom="50.0" top="20.0" />
-                     </StackPane.margin>
-                  </Label>
-                  <Label fx:id="added3Date" focusTraversable="false" mouseTransparent="true" text="Label">
-                     <StackPane.margin>
-                        <Insets top="40.0" />
-                     </StackPane.margin>
-                  </Label>
                </children>
             </StackPane>
             <StackPane prefHeight="150.0" prefWidth="200.0">
                <children>
                   <MFXButton fx:id="add4Button" buttonType="RAISED" depthLevel="LEVEL5" onAction="#homeEventSelectionAdd4" prefHeight="102.0" prefWidth="138.0" rippleColor="#bcba40" style="-fx-background-color: #279af1;" text=" " />
-                  <Label fx:id="added4Name" mouseTransparent="true" text="Label">
-                     <StackPane.margin>
-                        <Insets bottom="50.0" top="20.0" />
-                     </StackPane.margin>
-                  </Label>
-                  <Label fx:id="added4Date" focusTraversable="false" mouseTransparent="true" text="Label">
-                     <StackPane.margin>
-                        <Insets top="40.0" />
-                     </StackPane.margin>
-                  </Label>
                </children>
             </StackPane>
          </children>

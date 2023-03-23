@@ -33,12 +33,6 @@ public class HomeViewController implements Initializable {
             upcoming4LabelName, upcoming4LabelDate;
 
 
-    @FXML
-    private Label  // recently added labels
-            added1Name, added1Date,
-            added2Name, added2Date,
-            added3Name, added3Date,
-            added4Name, added4Date;
 
 
     private Model model = Model.getModel();
@@ -61,7 +55,12 @@ public class HomeViewController implements Initializable {
         model.loadEventList();
         model.loadTime();
         model.loadTicketList();
-        System.out.println(model.getObsEvents().size());
+        model.recentlyAddedEvents();
+
+        add1Button.setText(model.recentlyAddedEvents().get(model.recentlyAddedEvents().size() - 1).getName() + "\n" + model.recentlyAddedEvents().get(model.recentlyAddedEvents().size() - 1).getDate());
+        add2Button.setText(model.recentlyAddedEvents().get(model.recentlyAddedEvents().size() - 2).getName() + "\n" + model.recentlyAddedEvents().get(model.recentlyAddedEvents().size() - 2).getDate());
+        add3Button.setText(model.recentlyAddedEvents().get(model.recentlyAddedEvents().size() - 3).getName() + "\n" + model.recentlyAddedEvents().get(model.recentlyAddedEvents().size() - 3).getDate());
+        add4Button.setText(model.recentlyAddedEvents().get(model.recentlyAddedEvents().size() - 4).getName() + "\n" + model.recentlyAddedEvents().get(model.recentlyAddedEvents().size() - 4).getDate());
     }
 
     private void openEventWindow() {
@@ -101,22 +100,22 @@ public class HomeViewController implements Initializable {
     }
 
     public void homeEventSelectionAdd1(ActionEvent actionEvent) {
-        model.setSelectedEvent(model.getObsEvents().get(1));
+        model.setSelectedEvent(model.recentlyAddedEvents().get(model.recentlyAddedEvents().size() - 1));
         openEventWindow();
     }
 
     public void homeEventSelectionAdd2(ActionEvent actionEvent) {
-        model.setSelectedEvent(model.getObsEvents().get(1));
+        model.setSelectedEvent(model.recentlyAddedEvents().get(model.recentlyAddedEvents().size() - 2));
         openEventWindow();
     }
 
     public void homeEventSelectionAdd3(ActionEvent actionEvent) {
-        model.setSelectedEvent(model.getObsEvents().get(1));
+        model.setSelectedEvent(model.recentlyAddedEvents().get(model.recentlyAddedEvents().size() - 3));
         openEventWindow();
     }
 
     public void homeEventSelectionAdd4(ActionEvent actionEvent) {
-        model.setSelectedEvent(model.getObsEvents().get(1));
+        model.setSelectedEvent(model.recentlyAddedEvents().get(model.recentlyAddedEvents().size() - 4));
         openEventWindow();
     }
 }
