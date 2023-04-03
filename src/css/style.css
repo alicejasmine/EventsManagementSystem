@@ -1,5 +1,5 @@
 
-.blue-button{
+.blue-button {
     -fx-background-color: #4B56F7;
     -fx-text-fill: white;
     -fx-background-radius: 50px;
@@ -7,9 +7,10 @@
 }
 
 
-.blue-button:hover{
+.blue-button:hover {
     -fx-opacity: 0.8;
 }
+
 .red-button {
     -fx-background-color: #EE6559;
     -fx-text-fill: white;
@@ -17,14 +18,46 @@
     -fx-padding: 7px 0 7px 0;
 }
 
-.red-button:hover{
+.red-button:hover {
     -fx-opacity: 0.8;
 }
 
-.event-tile:hover{
+
+.light-blue-button {
+    -fx-background-color: #00AEEF;
+    -fx-text-fill: white;
+    -fx-padding: 7px 0 7px 0;
+    -fx-background-radius: 50px;
+
+}
+
+.event-tile:hover {
     -fx-opacity: 0.8;
 
 }
-.event-tile{
-    -fx-background-radius:15;
+
+.event-tile {
+    -fx-background-radius: 15;
 }
+
+/* LOGIN WINDOW*/
+
+
+.login-area {
+    -fx-background-color: FFFFFF;
+    -fx-opacity: 46%;
+    -fx-background-radius: 25px;
+    -fx-border-radius: 25px;
+
+}
+mfx-text-field {
+    -fx-min-width: 130;
+    -fx-font-family: 'Visby Round CF Medium';
+}
+
+.mfx-text-field .floating-text {
+    -fx-font-family: 'Visby Round CF Medium';
+}
+
+
+

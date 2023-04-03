@@ -1,14 +1,32 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import java.lang.*?>
-<?import java.util.*?>
-<?import javafx.scene.*?>
-<?import javafx.scene.control.*?>
-<?import javafx.scene.layout.*?>
+<?import io.github.palexdev.materialfx.controls.MFXButton?>
+<?import io.github.palexdev.materialfx.controls.MFXPasswordField?>
+<?import io.github.palexdev.materialfx.controls.MFXTextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
 
-<AnchorPane xmlns="http://javafx.com/javafx"
-            xmlns:fx="http://javafx.com/fxml"
-            fx:controller="gui.controller.LogInController"
-            prefHeight="400.0" prefWidth="600.0">
+<AnchorPane prefHeight="650.0" prefWidth="1250.0" styleClass="anchorPane" stylesheets="@../../css/style.css" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gui.controller.LogInController">
+   <children>
+      <ImageView fx:id="backgroundLogin" fitHeight="650.0" fitWidth="1250.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+         <image>
+            <Image url="@../../../resources/images/background-login.png" />
+         </image>
+      </ImageView>
+      <MFXButton computeRadiusMultiplier="false" disable="true" layoutX="466.0" layoutY="146.0" prefHeight="373.0" prefWidth="345.0" styleClass="login-area">
+         <font>
+            <Font />
+         </font></MFXButton>
+      <ImageView fx:id="logoEASV" layoutX="559.0" layoutY="192.0">
+         <image>
+            <Image url="@../../../resources/images/logoEASV.png" />
+         </image>
+      </ImageView>
+      <MFXTextField fx:id="userId" floatMode="INLINE" floatingText="username" layoutX="572.0" layoutY="257.0" prefHeight="49.0" prefWidth="134.0" />
+      <MFXPasswordField floatMode="INLINE" floatingText="password" layoutX="572.0" layoutY="325.0" prefHeight="49.0" prefWidth="134.0" />
+      <MFXButton layoutX="597.0" layoutY="428.0" onAction="#logIn" prefHeight="32.0" prefWidth="84.0" styleClass="light-blue-button" text="Login" />
 
+   </children>
 </AnchorPane>

@@ -4,12 +4,18 @@ import gui.model.*;
 import javafx.fxml.*;
 import javafx.scene.*;
 import javafx.scene.control.*;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 import javafx.stage.*;
 
 import java.awt.event.*;
 import java.io.*;
+import java.net.URL;
+import java.util.ResourceBundle;
 
-public class LogInController {
+public class LogInController implements Initializable{
+    @FXML
+    public ImageView backgroundLogin, logoEASV;
 
     @FXML
     private PasswordField passwordField;
@@ -20,10 +26,28 @@ public class LogInController {
 
     private Model model = Model.getModel();
 
-    public void logIn(ActionEvent actionEvent) {
+
+    @Override
+    public void initialize(URL location, ResourceBundle resources) {
+
+        try {
+            Image backgroundImage = new Image(new FileInputStream("resources/images/background-login.png"));
+            Image logoImage = new Image(new FileInputStream("resources/images/logoEASV.png"));
+            backgroundLogin.setImage(backgroundImage);
+            logoEASV.setImage(logoImage);
+
+
+        } catch (FileNotFoundException e) {
+            throw new RuntimeException(e);
+        }
+
+    }
+
+
+    public void logIn(javafx.event.ActionEvent actionEvent) {
         model.loadUserList();
         model.loginUser(userId.getText(), userPass.getText());
-        if(model.getCurrentUser()!=null){
+        if (model.getCurrentUser() != null) {
             try {
                 Parent root = FXMLLoader.load(getClass().getResource("gui/view/HomeView.fxml"));
                 Scene scene = new Scene(root);
@@ -42,5 +66,7 @@ public class LogInController {
             alert.showAndWait();
         }
     }
-    
+
+
+
 }
