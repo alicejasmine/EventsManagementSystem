@@ -25,6 +25,7 @@ public class Model {
     private ObservableList<Event> upcomingEvents = FXCollections.observableArrayList();
     private ObservableList<Ticket> tickets = FXCollections.observableArrayList();
     private ObservableList<Ticket> eventFilteredTickets = FXCollections.observableArrayList();
+    private ObservableList<User> userObs = FXCollections.observableArrayList();
     private ObservableList<Integer> hoursTime = FXCollections.observableArrayList();
     private ObservableList<Integer> minsTime = FXCollections.observableArrayList();
 
@@ -40,10 +41,18 @@ public class Model {
     private Event selectedEvent;
     private Ticket selectedTicket;
 
+    private User currentUser;
 
-    // Getters and Setters
+
+    /**
+     * Getters and setters.
+     */
     public ObservableList<Event> getObsEvents() {
         return events;
+    }
+
+    public ObservableList<User> getObsUser() {
+        return userObs;
     }
 
     public ObservableList<Ticket> getObsTickets() {
@@ -77,7 +86,17 @@ public class Model {
         return model;
     }
 
-    // loaders
+    public User getCurrentUser() {
+        return currentUser;
+    }
+
+    private void setCurrentUser(User currentUser) {
+        this.currentUser = currentUser;
+    }
+
+    /**
+     * Loading methods.
+     */
     public void loadTime() {
         hoursTime.clear();
         minsTime.clear();
@@ -100,6 +119,11 @@ public class Model {
         tickets.addAll(tlm.getAllTickets());
     }
 
+    public void loadUserList() {
+        userObs.clear();
+        userObs.addAll(bll.getAllUsers());
+    }
+
     public void loadEventTicketList() {
         loadTicketList();
         if(selectedEvent != null){
@@ -116,8 +140,9 @@ public class Model {
         recentlyAddedEvents();
     }
 
-
-    //Event methods
+    /**
+     * Event methods.
+     */
     public void addEvent(Event event) {
         bll.createEvent(event);
         loadEventList();
@@ -165,7 +190,9 @@ public class Model {
         return upcomingEvents;
     }
 
-    // Ticket methods
+    /**
+     * Ticket methods
+     */
     public void addTicket(String customerName, String customerEmail, int eventID) {
         tlm.crateTicket(customerName, customerEmail, eventID);
         loadTicketList();
@@ -187,8 +214,33 @@ public class Model {
 
 
     public void printTicket(Event event, Ticket ticket) {
-
         tlm.printTicket(tlm.writeEventInfoOnTicket(event, ticket));
+    }
+
+    /**
+     * User methods.
+     */
+    public void createUser(User user) {
+        bll.createUser(user);
+        loadUserList();
+    }
+
+    public void deleteUser(User user){
+        bll.deleteUser(user);
+        loadUserList();
+    }
+
+    public void updateUser(User user){
+        bll.updateUser(user);
+        loadUserList();
+    }
+
+    public boolean loginUser(String userName, String userPass) {
+        currentUser = bll.getUser(userName, userPass);
+        if (currentUser==null)
+            return false;
+        else
+            return true;
     }
 }
 
