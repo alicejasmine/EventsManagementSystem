@@ -1,4 +1,7 @@
 
+@import '/css/fonts.css';
+
+
 .blue-button {
     -fx-background-color: #4B56F7;
     -fx-text-fill: white;
@@ -12,10 +15,14 @@
 }
 
 .red-button {
-    -fx-background-color: #EE6559;
+    -fx-background-color: #C00D0D;
     -fx-text-fill: white;
     -fx-background-radius: 50px;
     -fx-padding: 7px 0 7px 0;
+    -fx-min-width: 90px;
+    -fx-min-height: 35px;
+    -fx-font-family: 'Oxygen';
+
 }
 
 .red-button:hover {
@@ -38,6 +45,7 @@
 
 .event-tile {
     -fx-background-radius: 15;
+    /*-fx-background-color: #000000; we add it when adding an image*/
 }
 
 /* LOGIN WINDOW*/
@@ -50,6 +58,7 @@
     -fx-border-radius: 25px;
 
 }
+
 mfx-text-field {
     -fx-min-width: 130;
     -fx-font-family: 'Visby Round CF Medium';
@@ -57,6 +66,46 @@ mfx-text-field {
 
 .mfx-text-field .floating-text {
     -fx-font-family: 'Visby Round CF Medium';
+}
+
+/* HOME */
+.anchorPane-home{
+    -fx-background-color: #F2EAEA;
+
+}
+
+.redMenu {
+    -fx-background-radius: 20 !important;
+    -fx-background-color: #C00D0D !important;
+}
+
+.homeButton-home {
+    -fx-background-color: #FBBC2D;
+    -fx-text-fill: #000000;}
+
+
+.manageEventsButton-home, .specialTicketsButton-home {
+    -fx-background-color: #C00D0D;
+    -fx-text-fill: #fff;
+}
+
+/*common*/
+.homeButton-home,.manageEventsButton-home, .specialTicketsButton-home{
+    -fx-font-family: Barlow;
+    -fx-font-weight: 600;
+    -fx-font-size: 20;
+}
+
+
+
+.event-category{
+    -fx-font-family: Barlow;
+    -fx-font-size: 22;
+}
+
+.username{
+    -fx-font-family: Oxygen;
+    -fx-font-size: 14;
 }
 
 

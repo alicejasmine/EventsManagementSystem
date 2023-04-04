@@ -7,10 +7,14 @@ import javafx.fxml.*;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 import javafx.scene.input.*;
 import javafx.scene.shape.*;
 import javafx.stage.Stage;
 
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.net.*;
 import java.util.*;
@@ -25,13 +29,15 @@ public class HomeViewController implements Initializable {
     public MFXButton add2Button;
     public MFXButton add3Button;
     public MFXButton add4Button;
+
+    @FXML
+    private ImageView logoHome;
     @FXML
     private Label //upcoming labels
             upcoming1LabelName, upcoming1LabelDate,
             upcoming2LabelName, upcoming2LabelDate,
             upcoming3LabelName, upcoming3LabelDate,
             upcoming4LabelName, upcoming4LabelDate;
-
 
 
 
@@ -58,6 +64,15 @@ public class HomeViewController implements Initializable {
         model.loadEventTicketList();
         model.loadUpcoming();
         model.loadRecentlyAdded();
+
+        try {
+            Image logoImage = new Image(new FileInputStream("resources/images/logoEASV.png"));
+            logoHome.setImage(logoImage);
+
+        } catch (FileNotFoundException e) {
+            throw new RuntimeException(e);
+        }
+
 
         eventButtonCreation();
     }

@@ -1,79 +1,92 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import io.github.palexdev.materialfx.controls.MFXButton?>
+<?import java.net.URL?>
 <?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.StackPane?>
 <?import javafx.scene.layout.TilePane?>
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane prefHeight="500.0" prefWidth="1000.0" style="-fx-background-color: D6D7D5;" stylesheets="@../../css/style.css" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gui.controller.HomeViewController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="650.0" prefWidth="1250.0" styleClass="anchorPane-home" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gui.controller.HomeViewController">
 
    <children>
-      <Text layoutX="207.0" layoutY="61.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Event Management System EASV Bar">
-         <font>
-            <Font size="36.0" />
-         </font>
-      </Text>
-      <Text layoutX="115.0" layoutY="111.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Upcoming events">
+      <Text layoutX="392.0" layoutY="124.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="event-category" text="Upcoming events">
          <font>
             <Font size="14.0" />
          </font>
       </Text>
-      <Text layoutX="121.0" layoutY="291.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Recently added events">
+      <Text layoutX="392.0" layoutY="378.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="event-category" text="Recently added events">
          <font>
             <Font size="14.0" />
          </font>
       </Text>
-      <Button defaultButton="true" layoutX="121.0" layoutY="454.0" mnemonicParsing="false" onAction="#manageAllEvents" prefHeight="32.0" prefWidth="97.0" styleClass="blue-button" stylesheets="@../../css/style.css" text="Manage events" />
-      <TilePane layoutX="90.0" layoutY="116.0" prefHeight="152.0" prefWidth="803.0">
+      <TilePane layoutX="373.0" layoutY="138.0" prefHeight="152.0" prefWidth="803.0">
          <children>
             <StackPane prefHeight="150.0" prefWidth="200.0">
                <children>
-                  <MFXButton fx:id="up1Button" buttonType="RAISED" depthLevel="LEVEL5" onAction="#homeEventSelectionUpcoming1" prefHeight="102.0" prefWidth="138.0" rippleColor="#bcba40" style="-fx-background-color: #279af1;" styleClass="event-tile" stylesheets="@../../css/style.css" text=" " />
+                  <MFXButton fx:id="up1Button" buttonType="RAISED" depthLevel="LEVEL5" onAction="#homeEventSelectionUpcoming1" prefHeight="119.0" prefWidth="161.0" rippleColor="#bcba40" styleClass="event-tile" stylesheets="@../../css/style.css" text=" " />
                </children>
             </StackPane>
             <StackPane prefHeight="150.0" prefWidth="200.0">
                <children>
-                  <MFXButton fx:id="up2Button" buttonType="RAISED" depthLevel="LEVEL5" onAction="#homeEventSelectionUpcoming2" prefHeight="102.0" prefWidth="138.0" rippleColor="#bcba40" style="-fx-background-color: #279af1;" styleClass="event-tile" text=" " />
+                  <MFXButton fx:id="up2Button" buttonType="RAISED" depthLevel="LEVEL5" onAction="#homeEventSelectionUpcoming2" prefHeight="119.0" prefWidth="161.0" rippleColor="#bcba40" styleClass="event-tile" text=" " />
                </children>
             </StackPane>
             <StackPane prefHeight="150.0" prefWidth="200.0">
                <children>
-                  <MFXButton fx:id="up3Button" buttonType="RAISED" depthLevel="LEVEL5" onAction="#homeEventSelectionUpcoming3" prefHeight="102.0" prefWidth="138.0" rippleColor="#bcba40" style="-fx-background-color: #279af1;" styleClass="event-tile" text=" " />
+                  <MFXButton fx:id="up3Button" buttonType="RAISED" depthLevel="LEVEL5" onAction="#homeEventSelectionUpcoming3" prefHeight="119.0" prefWidth="161.0" rippleColor="#bcba40" styleClass="event-tile" text=" " />
                </children>
             </StackPane>
             <StackPane prefHeight="150.0" prefWidth="200.0">
                <children>
-                  <MFXButton fx:id="up4Button" buttonType="RAISED" depthLevel="LEVEL5" onAction="#homeEventSelectionUpcoming4" prefHeight="102.0" prefWidth="138.0" rippleColor="#bcba40" style="-fx-background-color: #279af1;" styleClass="event-tile" text=" " />
+                  <MFXButton fx:id="up4Button" buttonType="RAISED" depthLevel="LEVEL5" onAction="#homeEventSelectionUpcoming4" prefHeight="119.0" prefWidth="161.0" rippleColor="#bcba40" styleClass="event-tile" text=" " />
                </children>
             </StackPane>
          </children>
       </TilePane>
-      <TilePane layoutX="96.0" layoutY="296.0" prefHeight="152.0" prefWidth="803.0">
+      <TilePane layoutX="373.0" layoutY="400.0" prefHeight="152.0" prefWidth="803.0">
          <children>
             <StackPane prefHeight="150.0" prefWidth="200.0">
                <children>
-                  <MFXButton fx:id="add1Button" buttonType="RAISED" depthLevel="LEVEL5" onAction="#homeEventSelectionAdd1" prefHeight="102.0" prefWidth="138.0" rippleColor="#bcba40" style="-fx-background-color: #279af1;" styleClass="event-tile" text=" " />
+                  <MFXButton fx:id="add4Button" buttonType="RAISED" depthLevel="LEVEL5" onAction="#homeEventSelectionAdd4" prefHeight="119.0" prefWidth="161.0" rippleColor="#bcba40" styleClass="event-tile" text=" " />
                </children>
             </StackPane>
             <StackPane prefHeight="150.0" prefWidth="200.0">
                <children>
-                  <MFXButton fx:id="add2Button" buttonType="RAISED" depthLevel="LEVEL5" onAction="#homeEventSelectionAdd2" prefHeight="102.0" prefWidth="138.0" rippleColor="#bcba40" style="-fx-background-color: #279af1;" styleClass="event-tile" text=" " />
+                  <MFXButton fx:id="add1Button" buttonType="RAISED" depthLevel="LEVEL5" onAction="#homeEventSelectionAdd1" prefHeight="119.0" prefWidth="161.0" rippleColor="#bcba40" styleClass="event-tile" text=" " />
                </children>
             </StackPane>
             <StackPane prefHeight="150.0" prefWidth="200.0">
                <children>
-                  <MFXButton fx:id="add3Button" buttonType="RAISED" depthLevel="LEVEL5" onAction="#homeEventSelectionAdd3" prefHeight="102.0" prefWidth="138.0" rippleColor="#bcba40" style="-fx-background-color: #279af1;" styleClass="event-tile" text=" " />
+                  <MFXButton fx:id="add2Button" buttonType="RAISED" depthLevel="LEVEL5" onAction="#homeEventSelectionAdd2" prefHeight="119.0" prefWidth="161.0" rippleColor="#bcba40" styleClass="event-tile" text=" " />
                </children>
             </StackPane>
             <StackPane prefHeight="150.0" prefWidth="200.0">
                <children>
-                  <MFXButton fx:id="add4Button" buttonType="RAISED" depthLevel="LEVEL5" onAction="#homeEventSelectionAdd4" prefHeight="102.0" prefWidth="138.0" rippleColor="#bcba40" style="-fx-background-color: #279af1;" styleClass="event-tile" text=" " />
+                  <MFXButton fx:id="add3Button" buttonType="RAISED" depthLevel="LEVEL5" onAction="#homeEventSelectionAdd3" prefHeight="119.0" prefWidth="161.0" rippleColor="#bcba40" styleClass="event-tile" text=" " />
                </children>
             </StackPane>
          </children>
       </TilePane>
+      <MFXButton layoutX="-26.0" layoutY="-9.0" prefHeight="662.0" prefWidth="274.0" styleClass="redMenu" stylesheets="@../../css/style.css" text="Button" textFill="#c00d0d" />
+      <ImageView fx:id="logoHome" fitHeight="102.0" fitWidth="210.0" layoutX="22.0" layoutY="29.0" pickOnBounds="true" preserveRatio="true" AnchorPane.topAnchor="25.0">
+         <image>
+            <Image url="@../../../resources/images/logoEASV.png" />
+         </image>
+      </ImageView>
+      <Button alignment="BASELINE_LEFT" layoutX="18.0" layoutY="148.0" mnemonicParsing="false" prefHeight="47.0" prefWidth="218.0" styleClass="homeButton-home" text="Home" />
+      <Button alignment="BASELINE_LEFT" layoutX="18.0" layoutY="212.0" mnemonicParsing="false" onAction="#manageAllEvents" prefHeight="47.0" prefWidth="218.0" styleClass="manageEventsButton-home" text="Manage Events" />
+      <Button alignment="BASELINE_LEFT" layoutX="18.0" layoutY="277.0" mnemonicParsing="false" prefHeight="47.0" prefWidth="218.0" styleClass="specialTicketsButton-home" text="Special Tickets" />
+      <Label layoutX="972.0" layoutY="28.0" styleClass="username" text="Username" AnchorPane.topAnchor="25.0" />
+      <Button layoutX="1073.0" layoutY="17.0" mnemonicParsing="false" styleClass="red-button" text="Log out" AnchorPane.topAnchor="17.0" />
    </children>
+   <stylesheets>
+      <URL value="@../../css/style.css" />
+      <URL value="@../../css/fonts.css" />
+   </stylesheets>
 </AnchorPane>

@@ -15,7 +15,7 @@ import java.util.ResourceBundle;
 
 public class LogInController implements Initializable{
     @FXML
-    public ImageView backgroundLogin, logoEASV;
+    private ImageView backgroundLogin, logoEASV;
 
     @FXML
     private PasswordField passwordField;
