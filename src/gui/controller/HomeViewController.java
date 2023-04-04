@@ -4,6 +4,7 @@ import gui.model.*;
 import io.github.palexdev.materialfx.controls.*;
 import javafx.event.ActionEvent;
 import javafx.fxml.*;
+import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
@@ -160,5 +161,18 @@ public class HomeViewController implements Initializable {
     public void homeEventSelectionAdd4(ActionEvent actionEvent) {
         model.setSelectedEvent(model.getRecentAddedEvents().get(3));
         openEventWindow();
+    }
+
+
+/**
+ * Method to open Special Tickets window in the same window*/
+    public void specialTickets(ActionEvent actionEvent) throws IOException {
+
+        Parent root=FXMLLoader.load(getClass().getResource("/gui/view/SpecialTickets.fxml"));
+        Stage stage = (Stage) ((Node) actionEvent.getSource()).getScene().getWindow();
+        Scene scene = new Scene(root);
+        stage.setScene(scene);
+        stage.show();
+
     }
 }

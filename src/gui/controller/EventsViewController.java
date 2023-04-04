@@ -187,4 +187,6 @@ public class EventsViewController implements Initializable {
     @FXML
     private void logOutUser(ActionEvent actionEvent) {
     }
+
+
 }

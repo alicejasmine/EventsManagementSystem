@@ -46,11 +46,20 @@
     font-display: swap;
     src: url('fonts/Barlow/Barlow-Light.ttf') format('truetype');
 }
-/* Barlow Condensed Regular */
+/* Barlow SemiCondensed Regular */
 @font-face {
     font-family: 'Barlow SemiCondensed';
     font-style: normal;
     font-weight: 400;
     font-display: swap;
     src: url('fonts/Barlow_Semi_Condensed/BarlowSemiCondensed-Regular.ttf') format('truetype');
+}
+
+/* Barlow Condensed Medium */
+@font-face {
+    font-family: 'Barlow Condensed Medium';
+    font-style: normal;
+    font-weight: 500;
+    font-display: swap;
+    src: url('fonts/Barlow_Condensed/BarlowCondensed-Medium.ttf') format('truetype');
 }

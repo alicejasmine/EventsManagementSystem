@@ -81,7 +81,7 @@
       </ImageView>
       <Button alignment="BASELINE_LEFT" layoutX="18.0" layoutY="148.0" mnemonicParsing="false" prefHeight="47.0" prefWidth="218.0" styleClass="homeButton-home" text="Home" />
       <Button alignment="BASELINE_LEFT" layoutX="18.0" layoutY="214.0" mnemonicParsing="false" onAction="#manageAllEvents" prefHeight="47.0" prefWidth="218.0" styleClass="manageEventsButton-home" text="Manage Events" />
-      <Button alignment="BASELINE_LEFT" layoutX="18.0" layoutY="284.0" mnemonicParsing="false" prefHeight="47.0" prefWidth="218.0" styleClass="specialTicketsButton-home" text="Special Tickets" />
+      <Button alignment="BASELINE_LEFT" layoutX="18.0" layoutY="284.0" mnemonicParsing="false" onAction="#specialTickets" prefHeight="47.0" prefWidth="218.0" styleClass="specialTicketsButton-home" text="Special Tickets" />
       <Label layoutX="972.0" layoutY="28.0" styleClass="username" text="Username" AnchorPane.topAnchor="25.0" />
       <Button layoutX="1073.0" layoutY="17.0" mnemonicParsing="false" styleClass="red-button" text="Log out" AnchorPane.topAnchor="17.0" />
       <MFXButton layoutX="-370.0" prefHeight="662.0" prefWidth="274.0" styleClass="redMenu" stylesheets="@../../css/style.css" text="Button" textFill="#c00d0d" />

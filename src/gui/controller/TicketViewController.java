@@ -10,6 +10,8 @@ import javafx.fxml.*;
 import javafx.scene.*;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.*;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 import javafx.stage.*;
 
 import java.awt.print.PrinterException;
@@ -18,6 +20,9 @@ import java.net.URL;
 
 public class TicketViewController {
 
+
+    @FXML
+    private ImageView backArrow;
     @FXML
     private Button homeButton, newTicketButton;
     @FXML
@@ -28,7 +33,9 @@ public class TicketViewController {
             eventNotesLabel,
             eventGuidanceLocationLabel,
             eventNameLabel,
-            errorLabel;
+            errorLabel,
+            eventEndTimeLabel,
+            AvailableSoldTickets;
     @FXML
     private TableView<Ticket> ticketsTV;
     @FXML
@@ -48,6 +55,7 @@ public class TicketViewController {
         model.loadTicketList();
         setTV();
         setLabels();
+        setBackArrow();
     }
 
     private void setTV() {
@@ -65,6 +73,8 @@ public class TicketViewController {
         eventNotesLabel.setText(selectedEvent.getNotes());
         eventStartTimeLabel.setText(selectedEvent.getTime().toString());
         eventNameLabel.setText(selectedEvent.getName());
+        eventEndTimeLabel.setText(selectedEvent.getName());
+
     }
 
     public void home(ActionEvent actionEvent) throws IOException {
@@ -116,5 +126,16 @@ public class TicketViewController {
             errorLabel.setText("Please select a ticket to print");
         }
 
+    }
+
+    public void setBackArrow(){
+
+        try {
+            Image logoImage = new Image(new FileInputStream("resources/images/backArrow.png"));
+            backArrow.setImage(logoImage);
+
+        } catch (FileNotFoundException e) {
+            throw new RuntimeException(e);
+        }
     }
 }

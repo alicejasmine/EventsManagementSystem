@@ -11,8 +11,10 @@
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
 <?import javafx.scene.layout.HBox?>
-<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.layout.RowConstraints?>
 <?import javafx.scene.text.Font?>
 
 <BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="650.0" prefWidth="1250.0" style="-fx-background-color: C9C5C5;" stylesheets="@../../css/style.css" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gui.controller.EventsViewController">
@@ -67,104 +69,84 @@
                       <Label fx:id="errorInfoLabel" alignment="CENTER" prefHeight="46.0" prefWidth="368.0" wrapText="true" />
                   </children>
               </HBox>
-            <HBox layoutX="907.0" layoutY="172.0" minHeight="-Infinity" minWidth="-Infinity" prefHeight="377.0" prefWidth="311.0" style="-fx-background-color: D9D9D9; -fx-background-radius: 15;">
+            <Label layoutX="518.0" layoutY="51.0" styleClass="title" text="All events" />
+            <Label layoutX="972.0" layoutY="28.0" styleClass="username" text="Username" />
+            <Button layoutX="1073.0" layoutY="17.0" mnemonicParsing="false" styleClass="red-button" text="Log out" />
+            <GridPane layoutX="932.0" layoutY="231.0" prefHeight="316.0" prefWidth="282.0" styleClass="gridPane">
+              <columnConstraints>
+                <ColumnConstraints hgrow="SOMETIMES" maxWidth="198.0" minWidth="10.0" prefWidth="172.6666259765625" />
+                <ColumnConstraints hgrow="SOMETIMES" maxWidth="94.666748046875" minWidth="2.0" prefWidth="27.3333740234375" />
+              </columnConstraints>
+              <rowConstraints>
+                <RowConstraints maxHeight="63.66668701171875" minHeight="10.0" prefHeight="26.3333740234375" vgrow="SOMETIMES" />
+                <RowConstraints maxHeight="111.6666259765625" minHeight="10.0" prefHeight="29.333312988281264" vgrow="SOMETIMES" />
+                <RowConstraints maxHeight="142.0" minHeight="10.0" prefHeight="95.66668701171875" vgrow="SOMETIMES" />
+                  <RowConstraints maxHeight="142.0" minHeight="10.0" prefHeight="86.33331298828125" vgrow="SOMETIMES" />
+              </rowConstraints>
                <children>
-                  <VBox minHeight="-Infinity" minWidth="-Infinity" prefHeight="355.0" prefWidth="195.0">
-                     <children>
-                        <Label styleClass="normal-text" stylesheets="@../../css/style.css" text="Tickets available/sold:">
-                           <padding>
-                              <Insets left="5.0" />
-                           </padding>
-                           <VBox.margin>
-                              <Insets top="15.0" />
-                           </VBox.margin>
-                        </Label>
-                        <Label prefHeight="42.0" prefWidth="102.0" styleClass="normal-text" text="End Time:">
-                           <VBox.margin>
-                              <Insets />
-                           </VBox.margin>
-                           <padding>
-                              <Insets left="5.0" />
-                           </padding>
-                        </Label>
-                        <Label prefHeight="42.0" prefWidth="102.0" styleClass="normal-text" text="Notes:">
-                           <padding>
-                              <Insets left="5.0" />
-                           </padding>
-                        </Label>
-                        <Label prefHeight="42.0" prefWidth="126.0" styleClass="normal-text" text="Location Info:">
-                           <padding>
-                              <Insets left="5.0" />
-                           </padding>
-                           <VBox.margin>
-                              <Insets top="50.0" />
-                           </VBox.margin>
-                        </Label>
-                        <Button fx:id="ticketInfo" mnemonicParsing="false" onAction="#ticketInfo" prefWidth="81.0" styleClass="white-button" text="Tickets Info">
-                           <VBox.margin>
-                              <Insets top="90.0" />
-                           </VBox.margin>
-                        </Button>
-                     </children>
-                     <HBox.margin>
-                        <Insets top="25.0" />
-                     </HBox.margin>
+                  <Label styleClass="normal-text" stylesheets="@../../css/style.css" text="Tickets available/sold:">
                      <padding>
-                        <Insets left="20.0" />
+                        <Insets bottom="20.0" left="20.0" top="20.0" />
                      </padding>
-                  </VBox>
-                  <VBox maxHeight="-Infinity" minHeight="293.0" minWidth="-Infinity" prefHeight="339.0" prefWidth="174.0">
-                     <children>
-                        <Label styleClass="normal-text" text="TEXT">
-                           <VBox.margin>
-                              <Insets left="10.0" top="40.0" />
-                           </VBox.margin>
-                           <padding>
-                              <Insets left="5.0" />
-                           </padding>
-                        </Label>
-                        <Label fx:id="eventEndTimeLabel" styleClass="normal-text" text="TEXT">
-                           <padding>
-                              <Insets left="5.0" />
-                           </padding>
-                           <VBox.margin>
-                              <Insets left="10.0" top="13.0" />
-                           </VBox.margin>
-                        </Label>
-                        <Label fx:id="eventNotesLabel" alignment="TOP_LEFT" minWidth="-Infinity" prefHeight="92.0" prefWidth="103.0" styleClass="normal-text" text="TEXT" wrapText="true" VBox.vgrow="ALWAYS">
-                           <padding>
-                              <Insets left="5.0" top="25.0" />
-                           </padding>
-                           <VBox.margin>
-                              <Insets left="10.0" />
-                           </VBox.margin>
-                        </Label>
-                        <Label fx:id="locationGuidanceLabel" alignment="TOP_LEFT" prefHeight="92.0" prefWidth="99.0" styleClass="normal-text" text="TEXT" wrapText="true">
-                           <VBox.margin>
-                              <Insets left="10.0" />
-                           </VBox.margin>
-                           <padding>
-                              <Insets left="5.0" top="25.0" />
-                           </padding>
-                        </Label>
-                     </children>
-                     <HBox.margin>
+                     <GridPane.margin>
                         <Insets />
-                     </HBox.margin>
-                  </VBox>
+                     </GridPane.margin>
+                  </Label>
+                  <Label fx:id="availableSoldTickets" styleClass="normal-text" text="TEXT" GridPane.columnIndex="1">
+                     <padding>
+                        <Insets left="5.0" />
+                     </padding>
+                  </Label>
+                  <Label prefHeight="42.0" prefWidth="102.0" styleClass="normal-text" text="End Time:" GridPane.rowIndex="1">
+                     <padding>
+                        <Insets bottom="20.0" left="20.0" top="20.0" />
+                     </padding>
+                     <GridPane.margin>
+                        <Insets />
+                     </GridPane.margin>
+                  </Label>
+                  <Label prefHeight="42.0" prefWidth="102.0" styleClass="normal-text" text="Notes:" GridPane.rowIndex="2">
+                     <padding>
+                        <Insets bottom="20.0" left="20.0" top="20.0" />
+                     </padding>
+                     <GridPane.margin>
+                        <Insets />
+                     </GridPane.margin>
+                  </Label>
+                  <Label prefHeight="42.0" prefWidth="126.0" styleClass="normal-text" text="Location Info:" GridPane.rowIndex="3">
+                     <padding>
+                        <Insets bottom="20.0" left="20.0" top="20.0" />
+                     </padding>
+                     <GridPane.margin>
+                        <Insets />
+                     </GridPane.margin>
+                  </Label>
+                  <Label fx:id="eventEndTimeLabel" styleClass="normal-text" text="TEXT" GridPane.columnIndex="1" GridPane.rowIndex="1">
+                     <padding>
+                        <Insets left="5.0" />
+                     </padding>
+                  </Label>
+                  <Label fx:id="eventNotesLabel" alignment="TOP_LEFT" minWidth="-Infinity" prefHeight="92.0" prefWidth="83.0" styleClass="normal-text" text="TEXT" wrapText="true" GridPane.columnIndex="1" GridPane.rowIndex="2">
+                     <padding>
+                        <Insets left="5.0" top="25.0" />
+                     </padding>
+                  </Label>
+                  <Label fx:id="locationGuidanceLabel" alignment="TOP_LEFT" prefHeight="92.0" prefWidth="99.0" styleClass="normal-text" text="TEXT" wrapText="true" GridPane.columnIndex="1" GridPane.rowIndex="3">
+                     <padding>
+                        <Insets left="5.0" top="25.0" />
+                     </padding>
+                  </Label>
                </children>
-            </HBox>
-            <Label layoutX="964.0" layoutY="128.0" minHeight="-Infinity" minWidth="-Infinity" prefHeight="39.0" prefWidth="221.0" styleClass="small-title" text="Event Information">
+            </GridPane>
+            <Button fx:id="ticketInfo" layoutX="932.0" layoutY="569.0" mnemonicParsing="false" onAction="#ticketInfo" prefWidth="81.0" styleClass="white-button" text="Tickets Info" />
+            <Label layoutX="932.0" layoutY="175.0" minHeight="-Infinity" minWidth="-Infinity" prefHeight="39.0" prefWidth="221.0" styleClass="small-title" text="Event Information">
                <font>
                   <Font name="System Bold" size="14.0" />
                </font>
                <padding>
-                  <Insets left="5.0" />
+                  <Insets left="20.0" />
                </padding>
             </Label>
-            <Label layoutX="518.0" layoutY="51.0" styleClass="title" text="All events" />
-            <Label layoutX="972.0" layoutY="28.0" styleClass="username" text="Username" />
-            <Button layoutX="1073.0" layoutY="17.0" mnemonicParsing="false" styleClass="red-button" text="Log out" />
          </children>
       </AnchorPane>
    </top>
