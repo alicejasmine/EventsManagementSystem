@@ -8,6 +8,8 @@ import javafx.fxml.*;
 import javafx.scene.*;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.*;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 import javafx.stage.*;
 
 import java.io.*;
@@ -49,12 +51,21 @@ public class EventsViewController implements Initializable {
     private TableColumn<Event, Date> columnEventDateTV;
     @FXML
     private TableColumn<Event, Time> columnEventTimeTV;
+    @FXML
+    private ImageView logoHome;
 
     private Model model = Model.getModel();
 
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
+        try {
+            Image logoImage = new Image(new FileInputStream("resources/images/logoEASV.png"));
+            logoHome.setImage(logoImage);
+
+        } catch (FileNotFoundException e) {
+            throw new RuntimeException(e);
+        }
         eventTV.setItems(model.getObsEvents());
         model.loadEventList();
 

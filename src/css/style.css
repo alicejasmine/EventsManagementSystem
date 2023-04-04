@@ -1,4 +1,3 @@
-
 @import '/css/fonts.css';
 
 
@@ -10,7 +9,7 @@
 }
 
 
-.blue-button:hover {
+.red-button:hover {
     -fx-opacity: 0.8;
 }
 
@@ -19,14 +18,9 @@
     -fx-text-fill: white;
     -fx-background-radius: 50px;
     -fx-padding: 7px 0 7px 0;
-    -fx-min-width: 90px;
-    -fx-min-height: 35px;
+    -fx-min-width: 75px;
+    -fx-min-height: 30px;
     -fx-font-family: 'Oxygen';
-
-}
-
-.red-button:hover {
-    -fx-opacity: 0.8;
 }
 
 
@@ -35,7 +29,22 @@
     -fx-text-fill: white;
     -fx-padding: 7px 0 7px 0;
     -fx-background-radius: 50px;
+    -fx-min-width: 75px;
+    -fx-min-height: 30px;
+    -fx-font-family: 'Oxygen';
 
+}
+
+.white-button{
+    -fx-background-color: #fff;
+    -fx-text-fill: #000;
+    -fx-border-color:#00AEEF ;
+    -fx-border-radius: 50px;
+    -fx-padding: 7px 0 7px 0;
+    -fx-background-radius: 50px;
+    -fx-min-width: 75px;
+    -fx-min-height: 30px;
+    -fx-font-family: 'Oxygen';
 }
 
 .event-tile:hover {
@@ -68,8 +77,8 @@ mfx-text-field {
     -fx-font-family: 'Visby Round CF Medium';
 }
 
-/* HOME */
-.anchorPane-home{
+
+.anchorPane-home, .anchorPane-events {
     -fx-background-color: #F2EAEA;
 
 }
@@ -79,33 +88,50 @@ mfx-text-field {
     -fx-background-color: #C00D0D !important;
 }
 
-.homeButton-home {
+.homeButton-home, .manageEventsButton-events {
     -fx-background-color: #FBBC2D;
-    -fx-text-fill: #000000;}
+    -fx-text-fill: #000000;
+}
 
 
-.manageEventsButton-home, .specialTicketsButton-home {
+.manageEventsButton-home, .specialTicketsButton-home, .homeButton-events, .specialTicketsButton-events {
     -fx-background-color: #C00D0D;
     -fx-text-fill: #fff;
 }
 
 /*common*/
-.homeButton-home,.manageEventsButton-home, .specialTicketsButton-home{
-    -fx-font-family: Barlow;
-    -fx-font-weight: 600;
+.homeButton-home, .manageEventsButton-home, .specialTicketsButton-home, .homeButton-events, .manageEventsButton-events, .specialTicketsButton-events {
+    -fx-font-family: 'Barlow';
     -fx-font-size: 20;
 }
 
+.homeButton-home:hover, .manageEventsButton-home:hover, .specialTicketsButton-home:hover, .homeButton-events:hover, .manageEventsButton-events:hover, .specialTicketsButton-events:hover{
+   /*-fx-underline: true;*/
+    -fx-font-family: 'Barlow SemiBold';
+}
 
-
-.event-category{
+.small-title{
     -fx-font-family: Barlow;
     -fx-font-size: 22;
 }
 
-.username{
+.title{
+    -fx-font-family: Barlow;
+    -fx-font-size: 36;
+}
+.normal-text{
+    -fx-font-family: Oxygen;
+    -fx-font-size: 17;
+}
+.username {
     -fx-font-family: Oxygen;
     -fx-font-size: 14;
+}
+
+.table-view .table-cell {
+    -fx-font-size: 14;
+    -fx-font-family: 'Barlow Light';
+    -fx-fit-to-width: true;
 }
 
 

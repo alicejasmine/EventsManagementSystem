@@ -19,11 +19,32 @@
 
 /* Barlow SemiBold */
 @font-face {
-    font-family: 'Barlow';
+    font-family: 'Barlow SemiBold';
     font-style: normal;
-    font-weight: 400;
+    font-weight: 600;
     font-display: swap;
     src: url('fonts/Barlow/Barlow-SemiBold.ttf') format('truetype');
+}
+
+
+/* Barlow Bold */
+@font-face {
+    font-family: 'Barlow Bold';
+    font-style: normal;
+    font-weight: 800;
+    font-display: swap;
+    src: url('fonts/Barlow/Barlow-Bold.ttf') format('truetype');
+
+
+}
+
+/* Barlow Light */
+@font-face {
+    font-family: 'Barlow Light';
+    font-style: normal;
+    font-weight: 300;
+    font-display: swap;
+    src: url('fonts/Barlow/Barlow-Light.ttf') format('truetype');
 }
 /* Barlow Condensed Regular */
 @font-face {
