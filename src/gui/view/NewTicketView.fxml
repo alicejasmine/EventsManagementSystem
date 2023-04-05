@@ -10,13 +10,13 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="450.0" prefWidth="600.0" style="-fx-background-color: C9C5C5;" stylesheets="@../../css/style.css" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gui.controller.NewTicketView">
+<AnchorPane prefHeight="450.0" prefWidth="600.0" styleClass="small-windows" stylesheets="@../../css/style.css" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gui.controller.NewTicketViewController">
     <children>
         <VBox layoutX="130.0" layoutY="89.0" prefHeight="200.0" prefWidth="100.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
             <children>
                 <HBox alignment="CENTER" maxHeight="30.0" prefHeight="30.0" prefWidth="200.0" VBox.vgrow="ALWAYS">
                     <children>
-                        <Label alignment="CENTER" prefHeight="27.0" prefWidth="155.0" text="Create New Ticket">
+                        <Label alignment="CENTER" prefHeight="35.0" prefWidth="234.0" styleClass="small-title" text="Create New Ticket" textFill="WHITE">
                             <font>
                                 <Font name="System Bold" size="18.0" />
                             </font>
@@ -26,64 +26,71 @@
                         </Label>
                     </children>
                 </HBox>
-                <HBox prefHeight="344.0" prefWidth="600.0" VBox.vgrow="ALWAYS">
+                <HBox maxHeight="-Infinity" prefHeight="190.0" prefWidth="784.0" VBox.vgrow="ALWAYS">
                     <children>
-                        <VBox maxWidth="100.0" minWidth="-Infinity" prefHeight="200.0" prefWidth="100.0">
+                        <VBox maxHeight="-Infinity" maxWidth="146.0" minWidth="-Infinity" prefHeight="242.0" prefWidth="146.0">
                             <children>
-                                <Label prefHeight="42.0" prefWidth="102.0" text="*Name:">
+                                <Label prefHeight="42.0" prefWidth="150.0" styleClass="small-windows-text" text="*Name:" textFill="WHITE">
                                     <padding>
                                         <Insets left="5.0" />
                                     </padding>
                                     <VBox.margin>
-                                        <Insets left="5.0" />
+                                        <Insets left="40.0" />
                                     </VBox.margin>
                                 </Label>
-                                <Label prefHeight="42.0" prefWidth="102.0" text="*Email:">
+                                <Label prefHeight="42.0" prefWidth="98.0" styleClass="small-windows-text" text="*Email:" textFill="WHITE">
                                     <padding>
                                         <Insets left="5.0" />
                                     </padding>
                                     <VBox.margin>
-                                        <Insets left="5.0" />
+                                        <Insets left="40.0" />
                                     </VBox.margin>
                                 </Label>
                             </children>
                         </VBox>
-                        <VBox prefHeight="370.0" prefWidth="480.0" spacing="18.0" HBox.hgrow="ALWAYS">
+                        <VBox maxHeight="-Infinity" prefHeight="246.0" prefWidth="395.0" spacing="18.0" HBox.hgrow="ALWAYS">
                             <children>
-                                <TextField fx:id="customerNameTF" promptText="Name">
+                                <TextField fx:id="customerNameTF" maxWidth="-Infinity" prefHeight="30.0" prefWidth="310.0" promptText="Name" style="-fx-background-radius: 10;">
                                     <VBox.margin>
                                         <Insets right="5.0" top="10.0" />
                                     </VBox.margin>
                                 </TextField>
-                                <TextField fx:id="customerEmailTF" promptText="Email">
+                                <TextField fx:id="customerEmailTF" maxWidth="-Infinity" prefHeight="30.0" prefWidth="310.0" promptText="Email" style="-fx-background-radius: 10;">
                                     <VBox.margin>
                                         <Insets right="5.0" />
                                     </VBox.margin>
                                 </TextField>
                             </children>
+                     <HBox.margin>
+                        <Insets left="60.0" />
+                     </HBox.margin>
                         </VBox>
                     </children>
                <VBox.margin>
                   <Insets top="23.0" />
                </VBox.margin>
                 </HBox>
-                <HBox alignment="CENTER_RIGHT" maxHeight="-Infinity" minHeight="-Infinity" prefHeight="30.0" prefWidth="200.0" VBox.vgrow="ALWAYS">
-                    <children>
-                        <Label fx:id="creationErrorLabel" wrapText="true" HBox.hgrow="ALWAYS" />
-                        <ButtonBar maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="30.0" prefWidth="201.0">
+            <HBox prefHeight="100.0" prefWidth="200.0">
+               <children>
+                        <ButtonBar maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="54.0" prefWidth="230.0">
                             <buttons>
-                                <Button fx:id="ticketCreateButton" mnemonicParsing="false" onAction="#createTicket" prefHeight="31.0" prefWidth="92.0" styleClass="blue-button" stylesheets="@../../css/style.css" text="Create Ticket" />
-                                <Button fx:id="cancelButton" layoutX="135.0" layoutY="13.0" mnemonicParsing="false" onAction="#cancel" styleClass="blue-button" stylesheets="@../../css/style.css" text="Cancel" />
+                                <Button fx:id="ticketCreateButton" maxHeight="30.0" maxWidth="80.0" minHeight="30.0" minWidth="80.0" mnemonicParsing="false" onAction="#createTicket" prefHeight="30.0" prefWidth="80.0" styleClass="light-blue-button" stylesheets="@../../css/style.css" text="Create Ticket" />
+                                <Button fx:id="cancelButton" layoutX="135.0" layoutY="13.0" maxHeight="30.0" maxWidth="80.0" mnemonicParsing="false" onAction="#cancel" styleClass="red-button" stylesheets="@../../css/style.css" text="Cancel" />
                             </buttons>
                             <padding>
                                 <Insets bottom="5.0" right="5.0" />
                             </padding>
                         </ButtonBar>
-                    </children>
-                    <VBox.margin>
-                        <Insets bottom="5.0" />
-                    </VBox.margin>
-                </HBox>
+                        <Label fx:id="creationErrorLabel" prefHeight="18.0" prefWidth="264.0" textFill="WHITE" wrapText="true">
+                     <HBox.margin>
+                        <Insets left="30.0" top="20.0" />
+                     </HBox.margin>
+                  </Label>
+               </children>
+               <VBox.margin>
+                  <Insets top="50.0" />
+               </VBox.margin>
+            </HBox>
             </children>
         </VBox>
     </children>

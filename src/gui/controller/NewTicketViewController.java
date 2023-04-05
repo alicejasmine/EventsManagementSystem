@@ -6,7 +6,7 @@ import javafx.fxml.*;
 import javafx.scene.control.*;
 import javafx.stage.*;
 
-public class NewTicketView {
+public class NewTicketViewController {
     @FXML
     private TextField customerNameTF;
     @FXML
@@ -29,6 +29,7 @@ public class NewTicketView {
             model.addTicket(customerName, customerEmail, eventID);
             model.loadEventTicketList();
         }
+        else{creationErrorLabel.setText("Insert name and email");}
 
     }
 

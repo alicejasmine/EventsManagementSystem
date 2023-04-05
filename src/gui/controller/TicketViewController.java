@@ -138,4 +138,14 @@ public class TicketViewController {
             throw new RuntimeException(e);
         }
     }
+
+    public void openTicketPreview(ActionEvent actionEvent) throws IOException {
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/gui/view/TicketPreview.fxml"));
+        Parent root = loader.load();
+        Stage stage = new Stage();
+        Scene scene = new Scene(root);
+        stage.setTitle("Ticket Preview");
+        stage.setScene(scene);
+        stage.show();
+    }
 }

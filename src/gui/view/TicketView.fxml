@@ -64,7 +64,7 @@
             <Button mnemonicParsing="false" onAction="#openNewTicketView" styleClass="red-button" text="Delete" />
          </buttons>
       </ButtonBar>
-      <Button fx:id="newTicketButton1" layoutX="51.0" layoutY="562.0" mnemonicParsing="false" text="Ticket Preview">
+      <Button layoutX="51.0" layoutY="562.0" mnemonicParsing="false" onAction="#openTicketPreview" text="Ticket Preview">
          <styleClass>
             <String fx:value="white-button" />
             <String fx:value="ticketPreview-button" />
