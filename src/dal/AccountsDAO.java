@@ -21,18 +21,20 @@ public class AccountsDAO {
     public User createUser(User user) {
 
         try (Connection connection = databaseConnector.getConnection()) {
-            String sql = "INSERT INTO ACCOUNTS(UserName, UserPass) VALUES (?,?)";
+            String sql = "INSERT INTO ACCOUNTS(username, userpass, firstname, lastname) VALUES (?,?,?,?)";
 
             PreparedStatement statement = connection.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
             statement.setString(1, user.getUserName());
             statement.setString(2, user.getUserPass());
+            statement.setString(3, user.getFirstName());
+            statement.setString(4, user.getLastName());
             statement.execute();
 
             ResultSet keys = statement.getGeneratedKeys();
             keys.next();
             int id = keys.getInt(1);
 
-            return new User(id, user.getUserName(), user.getUserPass());
+            return new User(id, user.getUserName(), user.getUserPass(), user.getFirstName(), user.getLastName());
         } catch (SQLException e) {
             throw new RuntimeException(e);
         }
@@ -49,11 +51,13 @@ public class AccountsDAO {
                 ResultSet resultSet = statement.getResultSet();
 
                 while (resultSet.next()) {
-                    int userID = resultSet.getInt("UserID");
-                    String userName = resultSet.getString("UserName");
-                    String userPass = resultSet.getString("UserPass");
+                    int userID = resultSet.getInt("userid");
+                    String userName = resultSet.getString("username");
+                    String userPass = resultSet.getString("userpass");
+                    String firstName = resultSet.getString("firstname");
+                    String lastName = resultSet.getString("lastname");
 
-                    User user = new User(userID, userName, userPass);
+                    User user = new User(userID, userName, userPass, firstName, lastName);
                     users.add(user);
                 }
             }
@@ -65,7 +69,7 @@ public class AccountsDAO {
 
     public void deleteUser(int id) {
         try (Connection connection = databaseConnector.getConnection()) {
-            String sql = "DELETE FROM ACCOUNTS WHERE UserID=?";
+            String sql = "DELETE FROM ACCOUNTS WHERE userid=?";
             PreparedStatement statement = connection.prepareStatement(sql);
             statement.setInt(1, id);
             statement.execute();
@@ -78,13 +82,15 @@ public class AccountsDAO {
 
     public void updateUser(User user) {
         try (Connection connection = databaseConnector.getConnection()) {
-            String sql = "UPDATE ACCOUNTS SET UserName = COALESCE(?, UserName), UserPass = COALESCE(?, UserPass) " + "WHERE UserID = ?";
+            String sql = "UPDATE ACCOUNTS SET username = COALESCE(?, username), userpass = COALESCE(?, userpass), firstname = COALESCE(?, firstname), lastname = COALESCE(?, lastname) " + "WHERE userid = ?";
 
             PreparedStatement statement = connection.prepareStatement(sql);
 
             statement.setString(1, user.getUserName());
             statement.setString(2, user.getUserPass());
-            statement.setInt(3, user.getUserID());
+            statement.setString(3, user.getFirstName());
+            statement.setString(4, user.getLastName());
+            statement.setInt(5, user.getUserID());
             statement.executeUpdate();
 
         } catch (SQLException e) {
@@ -96,15 +102,18 @@ public class AccountsDAO {
     public User loginUser(String userName, String userPass) {
         User user = null;
         try (Connection connection = databaseConnector.getConnection()) {
-            String sql = "SELECT * FROM ACCOUNTS WHERE UserName = " + userName + " AND UserPass = " + userPass + "";
+            String sql = "SELECT * FROM ACCOUNTS WHERE username = " + userName + " AND userpass = " + userPass + "";
 
             PreparedStatement statement = connection.prepareStatement(sql);
 
             if(statement.execute(sql)){
                 ResultSet resultSet = statement.getResultSet();
 
-                int userID = resultSet.getInt("UserID");
-                user = new User(userID, userName, userPass);
+                int userID = resultSet.getInt("userid");
+                String firstName = resultSet.getString("firstname");
+                String lastName = resultSet.getString("lastname");
+
+                user = new User(userID, userName, userPass, firstName, lastName);
 
             }
 

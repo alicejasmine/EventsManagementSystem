@@ -8,7 +8,7 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="650.0" prefWidth="1250.0" styleClass="anchorPane" stylesheets="@../../css/style.css" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gui.controller.LogInController">
+<AnchorPane prefHeight="650.0" prefWidth="1250.0" styleClass="anchorPane" stylesheets="@../../css/style.css" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gui.controller.LogInController">
    <children>
       <ImageView fx:id="backgroundLogin" fitHeight="650.0" fitWidth="1250.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
          <image>
@@ -25,7 +25,7 @@
          </image>
       </ImageView>
       <MFXTextField fx:id="userId" floatMode="INLINE" floatingText="username" layoutX="572.0" layoutY="257.0" prefHeight="49.0" prefWidth="134.0" />
-      <MFXPasswordField floatMode="INLINE" floatingText="password" layoutX="572.0" layoutY="325.0" prefHeight="49.0" prefWidth="134.0" />
+      <MFXPasswordField fx:id="passwordField" floatMode="INLINE" floatingText="password" layoutX="572.0" layoutY="325.0" prefHeight="49.0" prefWidth="134.0" />
       <MFXButton layoutX="597.0" layoutY="428.0" onAction="#logIn" prefHeight="32.0" prefWidth="84.0" styleClass="light-blue-button" text="Login" />
 
    </children>

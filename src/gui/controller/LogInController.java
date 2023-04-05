@@ -1,6 +1,7 @@
 package gui.controller;
 
 import gui.model.*;
+import io.github.palexdev.materialfx.controls.*;
 import javafx.fxml.*;
 import javafx.scene.*;
 import javafx.scene.control.*;
@@ -14,15 +15,13 @@ import java.net.URL;
 import java.util.ResourceBundle;
 
 public class LogInController implements Initializable{
+    @FXML private MFXPasswordField passwordField;
     @FXML
     private ImageView backgroundLogin, logoEASV;
 
     @FXML
-    private PasswordField passwordField;
-    @FXML
     private TextField userId;
-    @FXML
-    private TextField userPass;
+
 
     private Model model = Model.getModel();
 
@@ -40,13 +39,12 @@ public class LogInController implements Initializable{
         } catch (FileNotFoundException e) {
             throw new RuntimeException(e);
         }
-
     }
 
 
     public void logIn(javafx.event.ActionEvent actionEvent) {
         model.loadUserList();
-        model.loginUser(userId.getText(), userPass.getText());
+        model.loginUser(userId.getText(), passwordField.getText());
         if (model.getCurrentUser() != null) {
             try {
                 Parent root = FXMLLoader.load(getClass().getResource("gui/view/HomeView.fxml"));
