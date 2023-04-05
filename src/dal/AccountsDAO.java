@@ -9,10 +9,7 @@ import java.util.*;
 
 public class AccountsDAO {
 
-    /**
-     * This is our data access for the ACCOUNTS table where we store the information on user accounts.
-     * UserID, UserName, and UserPass are the column names for the table.
-     */
+
 
     private DatabaseConnector databaseConnector;
 
@@ -99,27 +96,5 @@ public class AccountsDAO {
 
     }
 
-    public User loginUser(String userName, String userPass) {
-        User user = null;
-        try (Connection connection = databaseConnector.getConnection()) {
-            String sql = "SELECT * FROM ACCOUNTS WHERE username = " + userName + " AND userpass = " + userPass + "";
 
-            PreparedStatement statement = connection.prepareStatement(sql);
-
-            if(statement.execute(sql)){
-                ResultSet resultSet = statement.getResultSet();
-
-                int userID = resultSet.getInt("userid");
-                String firstName = resultSet.getString("firstname");
-                String lastName = resultSet.getString("lastname");
-
-                user = new User(userID, userName, userPass, firstName, lastName);
-
-            }
-
-        } catch (SQLException e){
-            throw new NoSuchElementException(e);
-        }
-        return user;
-    }
 }

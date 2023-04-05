@@ -7,6 +7,7 @@ import java.sql.SQLException;
 import java.util.*;
 
 public class LogicManager {
+
     private EventDAO eventDAO=new EventDAO();
     private AccountsDAO accountsDAO =  new AccountsDAO();
 
@@ -33,11 +34,16 @@ public class LogicManager {
     public User createUser(User user){return accountsDAO.createUser(user);}
 
     public User getUser(String userName, String userPass) {
-        try {
-            return accountsDAO.loginUser(userName, userPass);
+        List<User> users = new ArrayList<>(getAllUsers());
+        User currentUser = null;
+        for (User user:users) {
+            if (user.getUserName().equals(userName)){
+                if(user.getUserPass().equals(userPass)){
+                    currentUser = user;
+                    break;
+                }
+            }
         }
-        catch (NoSuchElementException e){
-            return null;
-        }
+        return currentUser;
     }
 }
