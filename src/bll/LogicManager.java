@@ -35,6 +35,8 @@ public class LogicManager {
 
     public User getUser(String userName, String userPass) {
         List<User> users = new ArrayList<>(getAllUsers());
+        List<Integer> admins = new ArrayList<>(accountsDAO.getAllAdmins());
+
         User currentUser = null;
         for (User user:users) {
             if (user.getUserName().equals(userName)){
@@ -44,6 +46,13 @@ public class LogicManager {
                 }
             }
         }
+
+
+        if(currentUser !=null){
+            currentUser.setAdmin(admins.contains(currentUser.getUserID()));
+            System.out.println(currentUser);
+        }
+
         return currentUser;
     }
 }
