@@ -73,7 +73,7 @@
             </StackPane>
          </children>
       </TilePane>
-      <MFXButton layoutX="-26.0" layoutY="-9.0" maxWidth="1.7976931348623157E308" prefHeight="662.0" prefWidth="274.0" styleClass="redMenu" stylesheets="@../../css/style.css" text="Button" textFill="#c00d0d" />
+      <MFXButton layoutX="-23.0" maxWidth="1.7976931348623157E308" prefHeight="662.0" prefWidth="274.0" styleClass="redMenu" stylesheets="@../../css/style.css" text="Button" textFill="#c00d0d" />
       <ImageView fx:id="logoHome" fitHeight="102.0" fitWidth="210.0" layoutX="22.0" layoutY="29.0" pickOnBounds="true" preserveRatio="true" AnchorPane.topAnchor="25.0">
          <image>
             <Image url="@../../../resources/images/logoEASV.png" />
@@ -83,7 +83,7 @@
       <Button alignment="BASELINE_LEFT" layoutX="18.0" layoutY="214.0" mnemonicParsing="false" onAction="#manageAllEvents" prefHeight="47.0" prefWidth="218.0" styleClass="manageEventsButton-home" text="Manage Events" />
       <Button alignment="BASELINE_LEFT" layoutX="18.0" layoutY="284.0" mnemonicParsing="false" onAction="#specialTickets" prefHeight="47.0" prefWidth="218.0" styleClass="specialTicketsButton-home" text="Special Tickets" />
       <Label layoutX="972.0" layoutY="28.0" styleClass="username" text="Username" AnchorPane.topAnchor="25.0" />
-      <Button layoutX="1073.0" layoutY="17.0" mnemonicParsing="false" styleClass="red-button" text="Log out" AnchorPane.topAnchor="17.0" />
+      <Button layoutX="1073.0" layoutY="17.0" mnemonicParsing="false" onAction="#logout" styleClass="red-button" text="Log out" AnchorPane.topAnchor="17.0" />
       <MFXButton layoutX="-370.0" prefHeight="662.0" prefWidth="274.0" styleClass="redMenu" stylesheets="@../../css/style.css" text="Button" textFill="#c00d0d" />
       <ImageView fx:id="logoHome1" fitHeight="102.0" fitWidth="210.0" layoutX="-322.0" layoutY="38.0" pickOnBounds="true" preserveRatio="true">
          <image>

@@ -46,9 +46,8 @@ public class HomeViewController implements Initializable {
 
 
     public void manageAllEvents(ActionEvent actionEvent) throws IOException {
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("/gui/view/AllEvents.fxml"));
-        Parent root = loader.load();
-        Stage stage = new Stage();
+        Parent root=FXMLLoader.load(getClass().getResource("/gui/view/AllEvents.fxml"));
+        Stage stage = (Stage) ((Node) actionEvent.getSource()).getScene().getWindow();
         Scene scene = new Scene(root);
         stage.setTitle("Event and Ticket Information");
         stage.setScene(scene);
@@ -171,8 +170,18 @@ public class HomeViewController implements Initializable {
         Parent root=FXMLLoader.load(getClass().getResource("/gui/view/SpecialTickets.fxml"));
         Stage stage = (Stage) ((Node) actionEvent.getSource()).getScene().getWindow();
         Scene scene = new Scene(root);
+        stage.setTitle("Special Tickets");
         stage.setScene(scene);
         stage.show();
 
+    }
+
+    public void logout(ActionEvent actionEvent) throws IOException {
+        Parent root=FXMLLoader.load(getClass().getResource("/gui/view/Login.fxml"));
+        Stage stage = (Stage) ((Node) actionEvent.getSource()).getScene().getWindow();
+        Scene scene = new Scene(root);
+        stage.setTitle("Event Manager");
+        stage.setScene(scene);
+        stage.show();
     }
 }

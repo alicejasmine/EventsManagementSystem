@@ -16,7 +16,7 @@
             <children>
                 <HBox alignment="CENTER" maxHeight="30.0" prefHeight="30.0" prefWidth="200.0" VBox.vgrow="ALWAYS">
                     <children>
-                        <Label alignment="CENTER" prefHeight="35.0" prefWidth="234.0" styleClass="small-title" text="Create New Ticket" textFill="WHITE">
+                        <Label alignment="CENTER" prefHeight="47.0" prefWidth="278.0" style="-fx-font-size: 32;" styleClass="small-title" text="Create New Ticket" textFill="WHITE">
                             <font>
                                 <Font name="System Bold" size="18.0" />
                             </font>
