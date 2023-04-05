@@ -16,7 +16,7 @@
 <?import javafx.scene.layout.RowConstraints?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="650.0" prefWidth="1250.0" styleClass="anchorPane-tickets" stylesheets="@../../css/style.css" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gui.controller.TicketViewController">
+<AnchorPane prefHeight="650.0" prefWidth="1250.0" styleClass="anchorPane-tickets" stylesheets="@../../css/style.css" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gui.controller.TicketViewController">
    <children>
       <Label fx:id="eventNameLabel" layoutX="543.0" layoutY="25.0" styleClass="title" text="LABEL">
          <font>
@@ -158,6 +158,6 @@
          </children>
       </GridPane>
       <Label fx:id="errorLabel" layoutX="486.0" layoutY="541.0" prefHeight="17.0" prefWidth="571.0" />
-      <TextField layoutX="987.0" layoutY="86.0" promptText="Search" />
+      <TextField fx:id="textFieldSearchTickets" layoutX="987.0" layoutY="86.0" promptText="Search" />
    </children>
 </AnchorPane>

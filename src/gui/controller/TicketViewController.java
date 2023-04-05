@@ -5,6 +5,8 @@ import be.*;
 import be.Event;
 import com.google.zxing.WriterException;
 import gui.model.*;
+import javafx.beans.value.ChangeListener;
+import javafx.beans.value.ObservableValue;
 import javafx.event.*;
 import javafx.fxml.*;
 import javafx.scene.*;
@@ -17,8 +19,12 @@ import javafx.stage.*;
 import java.awt.print.PrinterException;
 import java.io.*;
 import java.net.URL;
+import java.util.ResourceBundle;
 
-public class TicketViewController {
+public class TicketViewController implements Initializable{
+
+    @FXML
+    private TextField textFieldSearchTickets;
 
 
     @FXML
@@ -48,6 +54,17 @@ public class TicketViewController {
     private Event selectedEvent;
 
     private Model model = Model.getModel();
+
+    public void initialize(URL url, ResourceBundle rb)
+    {
+        textFieldSearchTickets.textProperty().addListener(new ChangeListener<String>() {
+            @Override
+            public void changed(ObservableValue<? extends String> observable, String oldValue, String newValue) {
+                model.search(newValue, selectedEvent.getId());
+            }
+        });
+
+    }
 
 
     public void ticketViewLaunch() {

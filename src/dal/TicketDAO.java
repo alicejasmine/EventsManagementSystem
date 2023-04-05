@@ -66,4 +66,31 @@ public class TicketDAO {
         return tickets;
     }
 
+    public List<Ticket> getTicketForEvent(int idOfEvent) {
+        ArrayList<Ticket> ticketsForEvent = new ArrayList<>();
+
+        try(Connection connection = databaseConnector.getConnection()) {
+            String sql = "SELECT * FROM Tickets WHERE EventID = ?";
+            PreparedStatement pstmt = connection.prepareStatement(sql);
+            pstmt.setInt(1, idOfEvent);
+
+
+                ResultSet resultSet = pstmt.executeQuery();
+                while(resultSet.next()) {
+                    String id = resultSet.getString("TicketID");
+                    String name = resultSet.getString("CustomerName");
+                    String email = resultSet.getString("CustomerEmail");
+                    int eventID = resultSet.getInt("EventID");
+
+                    Ticket t = new Ticket(id, name, email, eventID);
+                    ticketsForEvent.add(t);
+
+
+        }
+    } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+        return ticketsForEvent;
+    }
+
 }

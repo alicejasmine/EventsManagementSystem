@@ -6,6 +6,7 @@ import java.awt.print.PrinterException;
 import java.awt.print.PrinterJob;
 import java.io.File;
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
 import java.util.UUID;
@@ -40,6 +41,18 @@ public class TicketLogicManager {
         //printPDF(document);
         //for(int i = 0; i < 100; i++){
         //    System.out.println(generateType1UUID());}
+    }
+
+    public List<Ticket> searchTickets(String query, int idOfEvent) {
+        List<Ticket> tickets = ticketDAO.getTicketForEvent(idOfEvent);
+        List<Ticket> filtered = new ArrayList<>();
+
+        for(Ticket t : tickets) {
+            if((""+t.getTicketID()).contains(query) || t.getCustomerName().toLowerCase().contains(query.toLowerCase()) || t.getCustomerEmail().toLowerCase().contains(query.toLowerCase())){
+                filtered.add(t);
+            }
+        }
+        return filtered;
     }
 
     public List<Ticket> getAllTickets() {

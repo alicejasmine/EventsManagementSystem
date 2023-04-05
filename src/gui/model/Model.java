@@ -238,5 +238,11 @@ public class Model {
     public void loginUser(String userName, String userPass) {
         currentUser = bll.getUser(userName, userPass);
     }
+
+
+    public void search(String query, int idOfEvent) {
+        eventFilteredTickets.clear();
+        eventFilteredTickets.addAll(tlm.searchTickets(query, idOfEvent));
+    }
 }
 
