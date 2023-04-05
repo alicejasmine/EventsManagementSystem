@@ -49,9 +49,11 @@ public class LogInController implements Initializable{
             try {
                 FXMLLoader loader = new FXMLLoader(getClass().getResource("/gui/view/HomeView.fxml"));
                 Parent root = loader.load();
-                Stage stage = new Stage();
+                HomeViewController controller = loader.getController();
+                controller.setUsernameLabel();
+                Stage stage = (Stage) ((Node) actionEvent.getSource()).getScene().getWindow();
                 Scene scene = new Scene(root);
-                stage.setTitle("Event Manager");
+                stage.setTitle("Home");
                 stage.setScene(scene);
                 stage.show();
             } catch (IOException e) {

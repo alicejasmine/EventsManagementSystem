@@ -30,6 +30,7 @@ public class HomeViewController implements Initializable {
     public MFXButton add2Button;
     public MFXButton add3Button;
     public MFXButton add4Button;
+    public Label usernameLabel;
 
     @FXML
     private ImageView logoHome;
@@ -46,7 +47,11 @@ public class HomeViewController implements Initializable {
 
 
     public void manageAllEvents(ActionEvent actionEvent) throws IOException {
-        Parent root=FXMLLoader.load(getClass().getResource("/gui/view/AllEvents.fxml"));
+
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/gui/view/AllEvents.fxml"));
+        Parent root = loader.load();
+        EventsViewController controller = loader.getController();
+        controller.setUsernameLabel();
         Stage stage = (Stage) ((Node) actionEvent.getSource()).getScene().getWindow();
         Scene scene = new Scene(root);
         stage.setTitle("Event and Ticket Information");
@@ -162,12 +167,18 @@ public class HomeViewController implements Initializable {
         openEventWindow();
     }
 
+    public void setUsernameLabel() {
+        usernameLabel.setText(model.getCurrentUser().getFirstName() + " " + model.getCurrentUser().getLastName());
+    }
 
-/**
+    /**
  * Method to open Special Tickets window in the same window*/
     public void specialTickets(ActionEvent actionEvent) throws IOException {
 
-        Parent root=FXMLLoader.load(getClass().getResource("/gui/view/SpecialTickets.fxml"));
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/gui/view/SpecialTickets.fxml"));
+        Parent root = loader.load();
+        SpecialTicketsController controller = loader.getController();
+        controller.setUsernameLabel();
         Stage stage = (Stage) ((Node) actionEvent.getSource()).getScene().getWindow();
         Scene scene = new Scene(root);
         stage.setTitle("Special Tickets");
@@ -177,6 +188,7 @@ public class HomeViewController implements Initializable {
     }
 
     public void logout(ActionEvent actionEvent) throws IOException {
+
         Parent root=FXMLLoader.load(getClass().getResource("/gui/view/Login.fxml"));
         Stage stage = (Stage) ((Node) actionEvent.getSource()).getScene().getWindow();
         Scene scene = new Scene(root);

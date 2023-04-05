@@ -21,6 +21,7 @@ import java.util.Date;
 public class EventsViewController implements Initializable {
 
 
+    public Label usernameLabel;
     @FXML
     private Label
             eventNotesLabel,
@@ -82,9 +83,8 @@ public class EventsViewController implements Initializable {
         eventInfoView();
     }
 
-
-    private void deleteListener() {
-
+    public void setUsernameLabel() {
+        usernameLabel.setText(model.getCurrentUser().getFirstName() + " " + model.getCurrentUser().getLastName());
     }
 
     private void eventInfoView() {
@@ -175,7 +175,10 @@ public class EventsViewController implements Initializable {
 
     @FXML
     private void home(ActionEvent actionEvent) throws IOException {
-        Parent root=FXMLLoader.load(getClass().getResource("/gui/view/HomeView.fxml"));
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/gui/view/HomeView.fxml"));
+        Parent root = loader.load();
+        HomeViewController controller = loader.getController();
+        controller.setUsernameLabel();
         Stage stage = (Stage) ((Node) actionEvent.getSource()).getScene().getWindow();
         Scene scene = new Scene(root);
         stage.setTitle("Home");
@@ -198,7 +201,10 @@ public class EventsViewController implements Initializable {
 
 
     public void specialTickets(ActionEvent actionEvent) throws IOException {
-        Parent root=FXMLLoader.load(getClass().getResource("/gui/view/SpecialTickets.fxml"));
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/gui/view/SpecialTickets.fxml"));
+        Parent root = loader.load();
+        SpecialTicketsController controller = loader.getController();
+        controller.setUsernameLabel();
         Stage stage = (Stage) ((Node) actionEvent.getSource()).getScene().getWindow();
         Scene scene = new Scene(root);
         stage.setTitle("Special Tickets");

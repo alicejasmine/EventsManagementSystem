@@ -1,5 +1,6 @@
 package gui.controller;
 
+import gui.model.*;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -7,6 +8,7 @@ import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.*;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.stage.Stage;
@@ -20,8 +22,11 @@ import java.util.ResourceBundle;
 public class SpecialTicketsController implements Initializable {
 
 
+    public Label usernameLabel;
     @FXML
     private ImageView logo;
+
+    private Model model = Model.getModel();
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
@@ -33,6 +38,10 @@ public class SpecialTicketsController implements Initializable {
         } catch (FileNotFoundException e) {
             throw new RuntimeException(e);
         }
+    }
+
+    public void setUsernameLabel() {
+        usernameLabel.setText(model.getCurrentUser().getFirstName() + " " + model.getCurrentUser().getLastName());
     }
     public void NewSpecialTicket(ActionEvent actionEvent) throws IOException {
         FXMLLoader loader = new FXMLLoader(getClass().getResource("/gui/view/NewSpecialTicketView.fxml"));
@@ -62,7 +71,10 @@ public class SpecialTicketsController implements Initializable {
     }
 
     public void home(ActionEvent actionEvent) throws IOException {
-        Parent root=FXMLLoader.load(getClass().getResource("/gui/view/HomeView.fxml"));
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/gui/view/HomeView.fxml"));
+        Parent root = loader.load();
+        HomeViewController controller = loader.getController();
+        controller.setUsernameLabel();
         Stage stage = (Stage) ((Node) actionEvent.getSource()).getScene().getWindow();
         Scene scene = new Scene(root);
         stage.setTitle("Home");
@@ -71,7 +83,10 @@ public class SpecialTicketsController implements Initializable {
     }
 
     public void manageAllEvents(ActionEvent actionEvent) throws IOException {
-        Parent root=FXMLLoader.load(getClass().getResource("/gui/view/AllEvents.fxml"));
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/gui/view/AllEvents.fxml"));
+        Parent root = loader.load();
+        EventsViewController controller = loader.getController();
+        controller.setUsernameLabel();
         Stage stage = (Stage) ((Node) actionEvent.getSource()).getScene().getWindow();
         Scene scene = new Scene(root);
         stage.setTitle("Event and Ticket Information");
