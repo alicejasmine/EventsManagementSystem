@@ -7,6 +7,8 @@ public class User {
     private String userPass;
     private String firstName;
     private String lastName;
+
+    private boolean isAdmin;
     public User(int userID, String userName, String userPass, String firstName, String lastName) {
         this.userID = userID;
         this.userName = userName;
@@ -56,6 +58,14 @@ public class User {
         this.lastName = lastName;
     }
 
+    public boolean isAdmin() {
+        return isAdmin;
+    }
+
+    public void setAdmin(boolean admin) {
+        isAdmin = admin;
+    }
+
     @Override
     public String toString() {
         return "User{" +
@@ -64,6 +74,7 @@ public class User {
                 ", userPass='" + userPass + '\'' +
                 ", firstName='" + firstName + '\'' +
                 ", lastName='" + lastName + '\'' +
+                ", isAdmin=" + isAdmin +
                 '}';
     }
 }
