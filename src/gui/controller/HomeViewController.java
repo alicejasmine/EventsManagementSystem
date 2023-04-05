@@ -31,15 +31,11 @@ public class HomeViewController implements Initializable {
     public MFXButton add3Button;
     public MFXButton add4Button;
     public Label usernameLabel;
+    @FXML private Button coordinatorButton;
 
     @FXML
     private ImageView logoHome;
-    @FXML
-    private Label //upcoming labels
-            upcoming1LabelName, upcoming1LabelDate,
-            upcoming2LabelName, upcoming2LabelDate,
-            upcoming3LabelName, upcoming3LabelDate,
-            upcoming4LabelName, upcoming4LabelDate;
+
 
 
 
@@ -111,13 +107,13 @@ public class HomeViewController implements Initializable {
         } else add4Button.setDisable(true);
     }
 
-    private void openEventWindow() {
+    private void openEventWindow(ActionEvent actionEvent) {
         try {
             FXMLLoader loader = new FXMLLoader(getClass().getResource("/gui/view/TicketView.fxml"));
             Parent root = loader.load();
             TicketViewController controller = loader.getController();
             controller.ticketViewLaunch();
-            Stage stage = new Stage();
+            Stage stage = (Stage) ((Node) actionEvent.getSource()).getScene().getWindow();
             Scene scene = new Scene(root);
             stage.setTitle("Event and Ticket Information");
             stage.setScene(scene);
@@ -129,50 +125,54 @@ public class HomeViewController implements Initializable {
 
     public void homeEventSelectionUpcoming1(ActionEvent actionEvent) {
         model.setSelectedEvent(model.getUpcomingEvents().get(0));
-        openEventWindow();
+        openEventWindow(actionEvent);
     }
 
     public void homeEventSelectionUpcoming2(ActionEvent actionEvent) {
         model.setSelectedEvent(model.getUpcomingEvents().get(1));
-        openEventWindow();
+        openEventWindow(actionEvent);
     }
 
     public void homeEventSelectionUpcoming3(ActionEvent actionEvent) {
         model.setSelectedEvent(model.getUpcomingEvents().get(2));
-        openEventWindow();
+        openEventWindow(actionEvent);
     }
 
     public void homeEventSelectionUpcoming4(ActionEvent actionEvent) {
         model.setSelectedEvent(model.getUpcomingEvents().get(3));
-        openEventWindow();
+        openEventWindow(actionEvent);
     }
 
     public void homeEventSelectionAdd1(ActionEvent actionEvent) {
         model.setSelectedEvent(model.getRecentAddedEvents().get(0));
-        openEventWindow();
+        openEventWindow(actionEvent);
     }
 
     public void homeEventSelectionAdd2(ActionEvent actionEvent) {
         model.setSelectedEvent(model.getRecentAddedEvents().get(1));
-        openEventWindow();
+        openEventWindow(actionEvent);
     }
 
     public void homeEventSelectionAdd3(ActionEvent actionEvent) {
         model.setSelectedEvent(model.getRecentAddedEvents().get(2));
-        openEventWindow();
+        openEventWindow(actionEvent);
     }
 
     public void homeEventSelectionAdd4(ActionEvent actionEvent) {
         model.setSelectedEvent(model.getRecentAddedEvents().get(3));
-        openEventWindow();
+        openEventWindow(actionEvent);
     }
 
     public void setUsernameLabel() {
         usernameLabel.setText(model.getCurrentUser().getFirstName() + " " + model.getCurrentUser().getLastName());
+        if(model.getCurrentUser().isAdmin()){
+            coordinatorButton.setVisible(true);
+        }
     }
 
     /**
- * Method to open Special Tickets window in the same window*/
+     * Method to open Special Tickets window in the same window
+     */
     public void specialTickets(ActionEvent actionEvent) throws IOException {
 
         FXMLLoader loader = new FXMLLoader(getClass().getResource("/gui/view/SpecialTickets.fxml"));
@@ -195,5 +195,8 @@ public class HomeViewController implements Initializable {
         stage.setTitle("Event Manager");
         stage.setScene(scene);
         stage.show();
+    }
+
+    public void newUser(ActionEvent actionEvent) {
     }
 }

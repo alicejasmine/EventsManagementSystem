@@ -77,15 +77,6 @@ public class TicketViewController {
 
     }
 
-    public void home(ActionEvent actionEvent) throws IOException {
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("/gui/view/HomeView.fxml"));
-        Parent root = loader.load();
-        Stage stage = new Stage();
-        Scene scene = new Scene(root);
-        stage.setTitle("Home");
-        stage.setScene(scene);
-        stage.show();
-    }
 
     public void openNewTicketView(ActionEvent actionEvent) throws IOException {
         FXMLLoader loader = new FXMLLoader(getClass().getResource("/gui/view/NewTicketView.fxml"));
@@ -145,6 +136,18 @@ public class TicketViewController {
         Stage stage = new Stage();
         Scene scene = new Scene(root);
         stage.setTitle("Ticket Preview");
+        stage.setScene(scene);
+        stage.show();
+    }
+
+    public void returnHome(ActionEvent actionEvent) throws IOException {
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/gui/view/HomeView.fxml"));
+        Parent root = loader.load();
+        HomeViewController controller = loader.getController();
+        controller.setUsernameLabel();
+        Stage stage = (Stage) ((Node) actionEvent.getSource()).getScene().getWindow();
+        Scene scene = new Scene(root);
+        stage.setTitle("Home");
         stage.setScene(scene);
         stage.show();
     }

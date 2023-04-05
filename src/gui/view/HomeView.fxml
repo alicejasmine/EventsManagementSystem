@@ -93,6 +93,7 @@
       <Button alignment="BASELINE_LEFT" layoutX="-326.0" layoutY="157.0" mnemonicParsing="false" prefHeight="47.0" prefWidth="218.0" styleClass="homeButton-home" text="Home" />
       <Button alignment="BASELINE_LEFT" layoutX="-326.0" layoutY="223.0" mnemonicParsing="false" onAction="#manageAllEvents" prefHeight="47.0" prefWidth="218.0" styleClass="manageEventsButton-home" text="Manage Events" />
       <Button alignment="BASELINE_LEFT" layoutX="-326.0" layoutY="293.0" mnemonicParsing="false" prefHeight="47.0" prefWidth="218.0" styleClass="specialTicketsButton-home" text="Special Tickets" />
+      <Button fx:id="coordinatorButton" alignment="BASELINE_LEFT" layoutX="18.0" layoutY="589.0" mnemonicParsing="false" onAction="#newUser" prefHeight="47.0" prefWidth="218.0" styleClass="specialTicketsButton-home" text="Add Coordinator" visible="false" />
    </children>
    <stylesheets>
       <URL value="@../../css/style.css" />
