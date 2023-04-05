@@ -235,12 +235,8 @@ public class Model {
         loadUserList();
     }
 
-    public boolean loginUser(String userName, String userPass) {
+    public void loginUser(String userName, String userPass) {
         currentUser = bll.getUser(userName, userPass);
-        if (currentUser==null)
-            return false;
-        else
-            return true;
     }
 }
 

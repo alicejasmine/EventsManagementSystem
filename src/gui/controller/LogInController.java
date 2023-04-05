@@ -47,9 +47,10 @@ public class LogInController implements Initializable{
         model.loginUser(userId.getText(), passwordField.getText());
         if (model.getCurrentUser() != null) {
             try {
-                Parent root = FXMLLoader.load(getClass().getResource("gui/view/HomeView.fxml"));
-                Scene scene = new Scene(root);
+                FXMLLoader loader = new FXMLLoader(getClass().getResource("/gui/view/HomeView.fxml"));
+                Parent root = loader.load();
                 Stage stage = new Stage();
+                Scene scene = new Scene(root);
                 stage.setTitle("Event Manager");
                 stage.setScene(scene);
                 stage.show();
