@@ -3,7 +3,6 @@ package gui.controller;
 
 import be.*;
 import be.Event;
-import com.google.zxing.WriterException;
 import gui.model.*;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
@@ -16,7 +15,6 @@ import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.stage.*;
 
-import java.awt.print.PrinterException;
 import java.io.*;
 import java.net.URL;
 import java.util.ResourceBundle;
@@ -53,6 +51,7 @@ public class TicketViewController implements Initializable{
 
     private Event selectedEvent;
 
+    private Stage previousWindow;
     private Model model = Model.getModel();
 
     public void initialize(URL url, ResourceBundle rb)
@@ -68,6 +67,7 @@ public class TicketViewController implements Initializable{
 
 
     public void ticketViewLaunch() {
+        this.previousWindow = previousWindow;
         selectedEvent = model.getSelectedEvent();
         model.loadTicketList();
         setTV();
@@ -141,6 +141,14 @@ public class TicketViewController implements Initializable{
         try {
             Image logoImage = new Image(new FileInputStream("resources/images/backArrow.png"));
             backArrow.setImage(logoImage);
+
+            backArrow.setOnMouseClicked(event -> {
+                if (previousWindow != null) {
+                    previousWindow.show();
+                }
+                Stage currentStage = (Stage) backArrow.getScene().getWindow();
+                currentStage.close();
+            });
 
         } catch (FileNotFoundException e) {
             throw new RuntimeException(e);

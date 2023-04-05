@@ -50,7 +50,7 @@ public class LogicManager {
 
         if(currentUser !=null){
             currentUser.setAdmin(admins.contains(currentUser.getUserID()));
-            System.out.println(currentUser);
+
         }
 
         return currentUser;

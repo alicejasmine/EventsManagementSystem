@@ -163,7 +163,7 @@ public class EventsViewController implements Initializable {
             Parent root = loader.load();
             TicketViewController controller = loader.getController();
             controller.ticketViewLaunch();
-            Stage stage = new Stage();
+            Stage stage = (Stage) ((Node) actionEvent.getSource()).getScene().getWindow();
             Scene scene = new Scene(root);
             stage.setTitle("Event and Ticket Information");
             stage.setScene(scene);
