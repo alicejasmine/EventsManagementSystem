@@ -52,6 +52,9 @@ public class TicketViewController implements Initializable{
     private Event selectedEvent;
 
     private Stage previousWindow;
+
+
+
     private Model model = Model.getModel();
 
     public void initialize(URL url, ResourceBundle rb)
@@ -67,7 +70,7 @@ public class TicketViewController implements Initializable{
 
 
     public void ticketViewLaunch() {
-        this.previousWindow = previousWindow;
+
         selectedEvent = model.getSelectedEvent();
         model.loadTicketList();
         setTV();

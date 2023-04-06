@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import io.github.palexdev.materialfx.controls.MFXButton?>
+<?import io.github.palexdev.materialfx.controls.MFXComboBox?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ButtonBar?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.HBox?>
+
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="650.0" prefWidth="1250.0" style="-fx-background-color: C9C5C5;" stylesheets="@../../css/style.css" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gui.controller.CreateSpecialTicketsController">
+   <right>
+      <AnchorPane prefHeight="402.0" prefWidth="284.0" style="-fx-background-color: D9D9D9; -fx-background-radius: 7%;" BorderPane.alignment="CENTER">
+         <BorderPane.margin>
+            <Insets right="10.0" />
+         </BorderPane.margin>
+      </AnchorPane>
+   </right>
+   <top>
+      <AnchorPane minHeight="-Infinity" prefHeight="650.0" prefWidth="200.0" styleClass="anchorPane-events" stylesheets="@../../css/style.css" BorderPane.alignment="CENTER">
+         <children>
+            <MFXButton layoutX="-23.0" maxWidth="1.7976931348623157E308" prefHeight="662.0" prefWidth="274.0" styleClass="redMenu" stylesheets="@../../css/style.css" text=" " textFill="#c00d0d" />
+            <ImageView fx:id="logo" fitHeight="102.0" fitWidth="210.0" layoutX="22.0" layoutY="29.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../../../resources/images/logoEASV.png" />
+               </image>
+            </ImageView>
+            <Button alignment="BASELINE_LEFT" layoutX="18.0" layoutY="152.0" mnemonicParsing="false" onAction="#home" prefHeight="47.0" prefWidth="218.0" styleClass="homeButton-special" text="Home" />
+            <Button alignment="BASELINE_LEFT" layoutX="18.0" layoutY="214.0" mnemonicParsing="false" onAction="#manageAllEvents" prefHeight="47.0" prefWidth="218.0" styleClass="manageEventsButton-special" text="Manage Events" />
+            <Button alignment="BASELINE_LEFT" layoutX="18.0" layoutY="284.0" mnemonicParsing="false" onAction="#openSpecialTicketsOverview" prefHeight="47.0" prefWidth="218.0" styleClass="specialTicketsButton-events" text="Special Tickets" />
+              <HBox alignment="CENTER_LEFT" layoutX="400.0" layoutY="284.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="61.0" prefWidth="356.0">
+                  <children>
+                  <Button mnemonicParsing="false" onAction="#NewSpecialTicket" prefWidth="70.0" styleClass="light-blue-button" text="Create">
+                     <HBox.margin>
+                        <Insets right="30.0" />
+                     </HBox.margin>
+                  </Button>
+                      <Label fx:id="errorInfoLabel" alignment="CENTER" prefHeight="46.0" prefWidth="368.0" wrapText="true" />
+                  </children>
+              </HBox>
+            <Label layoutX="518.0" layoutY="51.0" styleClass="title" text="Create Special Ticket" />
+            <Label fx:id="usernameLabel" layoutX="972.0" layoutY="28.0" styleClass="username" text="Username" />
+            <Button layoutX="1073.0" layoutY="17.0" mnemonicParsing="false" onAction="#logout" styleClass="red-button" text="Log out" />
+            <ButtonBar layoutX="940.0" layoutY="566.0" prefHeight="40.0" prefWidth="200.0" />
+            <Button layoutX="41.0" layoutY="343.0" mnemonicParsing="false" prefHeight="35.0" prefWidth="171.0" styleClass="createSTButton-create" text="Create Special Ticket" />
+            <MFXComboBox floatingText="Ticket Type" layoutX="400.0" layoutY="156.0" />
+            <MFXComboBox floatingText="Event" layoutX="400.0" layoutY="218.0" />
+            <TextField fx:id="ticketTypeTextfield" layoutX="913.0" layoutY="163.0" />
+            <TextField layoutX="913.0" layoutY="222.0" />
+            <Label layoutX="817.0" layoutY="167.0" text="Ticket Type" />
+            <Label layoutX="817.0" layoutY="229.0" text="Max quantity" />
+            <Button layoutX="927.0" layoutY="345.0" mnemonicParsing="false" onAction="#addTicketType" styleClass="white-button" text="Add Type" />
+         </children>
+      </AnchorPane>
+   </top>
+</BorderPane>

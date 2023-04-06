@@ -244,5 +244,7 @@ public class Model {
         eventFilteredTickets.clear();
         eventFilteredTickets.addAll(tlm.searchTickets(query, idOfEvent));
     }
+
+
 }
 

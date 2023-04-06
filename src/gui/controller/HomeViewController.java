@@ -10,8 +10,6 @@ import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
-import javafx.scene.input.*;
-import javafx.scene.shape.*;
 import javafx.stage.Stage;
 
 import java.io.FileInputStream;
@@ -173,15 +171,13 @@ public class HomeViewController implements Initializable {
     /**
      * Method to open Special Tickets window in the same window
      */
-    public void specialTickets(ActionEvent actionEvent) throws IOException {
+    public void specialTicketsOverview(ActionEvent actionEvent) throws IOException {
 
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("/gui/view/SpecialTickets.fxml"));
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/gui/view/SpecialTicketsOverview.fxml"));
         Parent root = loader.load();
-        SpecialTicketsController controller = loader.getController();
-        controller.setUsernameLabel();
         Stage stage = (Stage) ((Node) actionEvent.getSource()).getScene().getWindow();
         Scene scene = new Scene(root);
-        stage.setTitle("Special Tickets");
+        stage.setTitle("Special Tickets Overview");
         stage.setScene(scene);
         stage.show();
 

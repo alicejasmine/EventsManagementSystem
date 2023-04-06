@@ -1,6 +1,5 @@
 package gui.controller;
 
-import be.*;
 import be.Event;
 import gui.model.*;
 import javafx.event.*;
@@ -200,11 +199,9 @@ public class EventsViewController implements Initializable {
 
 
 
-    public void specialTickets(ActionEvent actionEvent) throws IOException {
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("/gui/view/SpecialTickets.fxml"));
+    public void specialTicketsOverview(ActionEvent actionEvent) throws IOException {
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/gui/view/SpecialTicketsOverview.fxml"));
         Parent root = loader.load();
-        SpecialTicketsController controller = loader.getController();
-        controller.setUsernameLabel();
         Stage stage = (Stage) ((Node) actionEvent.getSource()).getScene().getWindow();
         Scene scene = new Scene(root);
         stage.setTitle("Special Tickets");
