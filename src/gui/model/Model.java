@@ -244,7 +244,9 @@ public class Model {
         eventFilteredTickets.clear();
         eventFilteredTickets.addAll(tlm.searchTickets(query, idOfEvent));
     }
-
-
+    
+    public void deleteTicket (Ticket ticket) {
+        tlm.deleteTicket(ticket);
+    }
 }
 

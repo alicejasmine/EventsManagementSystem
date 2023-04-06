@@ -65,6 +65,10 @@ public class TicketLogicManager {
         ticketDAO.createTicket(ticket);
     }
 
+    public void deleteTicket (Ticket ticket) {
+        ticketDAO.deleteTicket(ticket);
+    }
+
     /**
      * Method to print event info on a ticket using Apache PDFbox libraries and QR code
      */

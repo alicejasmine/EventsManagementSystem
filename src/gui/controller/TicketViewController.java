@@ -24,7 +24,6 @@ public class TicketViewController implements Initializable{
     @FXML
     private TextField textFieldSearchTickets;
 
-
     @FXML
     private ImageView backArrow;
     @FXML
