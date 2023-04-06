@@ -55,4 +55,6 @@ public class LogicManager {
 
         return currentUser;
     }
-}
+
+
+    }

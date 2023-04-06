@@ -48,13 +48,13 @@
             <Button layoutX="1073.0" layoutY="17.0" mnemonicParsing="false" onAction="#logout" styleClass="red-button" text="Log out" />
             <ButtonBar layoutX="940.0" layoutY="566.0" prefHeight="40.0" prefWidth="200.0" />
             <Button layoutX="41.0" layoutY="343.0" mnemonicParsing="false" prefHeight="35.0" prefWidth="171.0" styleClass="createSTButton-create" text="Create Special Ticket" />
-            <MFXComboBox floatingText="Ticket Type" layoutX="400.0" layoutY="156.0" />
-            <MFXComboBox floatingText="Event" layoutX="400.0" layoutY="218.0" />
+            <MFXComboBox fx:id="ticketTypeComboBox" floatingText="Ticket Type" layoutX="400.0" layoutY="156.0" />
+            <MFXComboBox fx:id="eventComboBox" floatingText="Event" layoutX="400.0" layoutY="218.0" />
             <TextField fx:id="ticketTypeTextfield" layoutX="913.0" layoutY="163.0" />
-            <TextField layoutX="913.0" layoutY="222.0" />
+            <TextField fx:id="maxQuantityTextfield" layoutX="913.0" layoutY="222.0" />
             <Label layoutX="817.0" layoutY="167.0" text="Ticket Type" />
             <Label layoutX="817.0" layoutY="229.0" text="Max quantity" />
-            <Button layoutX="927.0" layoutY="345.0" mnemonicParsing="false" onAction="#addTicketType" styleClass="white-button" text="Add Type" />
+            <Button layoutX="1090.0" layoutY="159.0" mnemonicParsing="false" onAction="#addTicketType" styleClass="white-button" text="Add Type" />
          </children>
       </AnchorPane>
    </top>

@@ -12,7 +12,9 @@ import java.util.Random;
 import java.util.UUID;
 
 import be.Event;
+import be.SpecialTicket;
 import be.Ticket;
+import be.TicketType;
 import com.google.zxing.BarcodeFormat;
 import com.google.zxing.MultiFormatWriter;
 import com.google.zxing.WriterException;
@@ -34,6 +36,9 @@ public class TicketLogicManager {
 
     private TicketDAO ticketDAO = new TicketDAO();
     private EventDAO eventDAO = new EventDAO();
+    private TicketTypeDAO ticketTypeDAO = new TicketTypeDAO();
+    private SpecialTicketDAO specialTicketDAO = new SpecialTicketDAO();
+
 
     public static void main(String[] args) throws IOException, WriterException, PrinterException {
         //saveTicket(eventDAO.getAllEvents().get(0),ticketDAO.getAllTickets().get(0));
@@ -47,8 +52,8 @@ public class TicketLogicManager {
         List<Ticket> tickets = ticketDAO.getTicketForEvent(idOfEvent);
         List<Ticket> filtered = new ArrayList<>();
 
-        for(Ticket t : tickets) {
-            if((""+t.getTicketID()).contains(query) || t.getCustomerName().toLowerCase().contains(query.toLowerCase()) || t.getCustomerEmail().toLowerCase().contains(query.toLowerCase())){
+        for (Ticket t : tickets) {
+            if (("" + t.getTicketID()).contains(query) || t.getCustomerName().toLowerCase().contains(query.toLowerCase()) || t.getCustomerEmail().toLowerCase().contains(query.toLowerCase())) {
                 filtered.add(t);
             }
         }
@@ -203,5 +208,21 @@ public class TicketLogicManager {
         long least64SigBits = get64LeastSignificantBits();
         return new UUID(most64SigBits, least64SigBits);
     }
-}
 
+
+    public void addTicketType(String ticketTypeName, int maxQuantity) {
+        TicketType ticketType=new TicketType(ticketTypeName,maxQuantity);
+         ticketTypeDAO.createTicketType(ticketType);
+    }
+
+    public void createSpecialTicket(TicketType selectedTicketType, Event selectedEvent) {
+        String str = generateType1UUID().toString();
+        SpecialTicket specialTicket=new SpecialTicket(str,selectedTicketType.getTicketTypeID(),selectedEvent.getId());
+        specialTicketDAO.createSpecialTicket(specialTicket);
+
+    }
+
+    public List<TicketType> getTicketTypes() {
+        return ticketTypeDAO.getAllTicketTypes();
+    }
+}

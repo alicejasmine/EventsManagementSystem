@@ -1,5 +1,6 @@
 package gui.controller;
 
+import gui.model.Model;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -18,21 +19,17 @@ import java.util.ResourceBundle;
 
 public class SpecialTicketsOverviewController implements Initializable {
     @FXML
-    private TableView SpecialOTV;
+    private TableView specialOTV;
     @FXML
-    private TableColumn ColumnTicketTypeOTV, ColumnEventNameOTV, ColumnSoldTicketsOTV,ColumnAvailableTicketsOTV;
+    private TableColumn ColumnTicketTypeOTV, ColumnEventNameOTV, ColumnSoldTicketsOTV, ColumnAvailableTicketsOTV;
+
+    private Model model = Model.getModel();
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
 
-        ColumnTicketTypeOTV.setCellValueFactory(new PropertyValueFactory<>("ticket type"));
-        ColumnEventNameOTV.setCellValueFactory(new PropertyValueFactory<>("event name"));
-        ColumnSoldTicketsOTV.setCellValueFactory(new PropertyValueFactory<>("sold special tickets"));
-        ColumnAvailableTicketsOTV.setCellValueFactory(new PropertyValueFactory<>("available special tickets"));
-
-
+        
     }
-
 
 
     public void home(ActionEvent actionEvent) throws IOException {
@@ -60,7 +57,7 @@ public class SpecialTicketsOverviewController implements Initializable {
     }
 
     public void logout(ActionEvent actionEvent) throws IOException {
-        Parent root=FXMLLoader.load(getClass().getResource("/gui/view/Login.fxml"));
+        Parent root = FXMLLoader.load(getClass().getResource("/gui/view/Login.fxml"));
         Stage stage = (Stage) ((Node) actionEvent.getSource()).getScene().getWindow();
         Scene scene = new Scene(root);
         stage.setTitle("Login");
@@ -82,7 +79,7 @@ public class SpecialTicketsOverviewController implements Initializable {
 
 
     public void openCreateSpecialTicket(ActionEvent actionEvent) throws IOException {
-        Parent root=FXMLLoader.load(getClass().getResource("/gui/view/CreateSpecialTicket.fxml"));
+        Parent root = FXMLLoader.load(getClass().getResource("/gui/view/CreateSpecialTicket.fxml"));
         Stage stage = (Stage) ((Node) actionEvent.getSource()).getScene().getWindow();
         Scene scene = new Scene(root);
         stage.setTitle("Create Special Ticket");

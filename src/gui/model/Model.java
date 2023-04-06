@@ -2,16 +2,16 @@ package gui.model;
 
 import be.*;
 import bll.*;
-import com.google.zxing.WriterException;
 import javafx.collections.*;
 
-import java.awt.print.PrinterException;
-import java.io.IOException;
 import java.time.*;
 import java.util.*;
 
 public class Model {
     private ObservableList<Event> events = FXCollections.observableArrayList();
+    private final ObservableList<SpecialTicket> specialTickets = FXCollections.observableArrayList();
+
+    private final ObservableList<TicketType> ticketType = FXCollections.observableArrayList();
 
     public ObservableList<Event> getRecentAddedEvents() {
         return recentAddedEvents;
@@ -20,6 +20,7 @@ public class Model {
     public ObservableList<Event> getUpcomingEvents() {
         return upcomingEvents;
     }
+
 
     private ObservableList<Event> recentAddedEvents = FXCollections.observableArrayList();
     private ObservableList<Event> upcomingEvents = FXCollections.observableArrayList();
@@ -50,6 +51,7 @@ public class Model {
     public ObservableList<Event> getObsEvents() {
         return events;
     }
+
 
     public ObservableList<User> getObsUser() {
         return userObs;
@@ -119,6 +121,11 @@ public class Model {
         tickets.addAll(tlm.getAllTickets());
     }
 
+    public void loadTicketTypeList() {
+        ticketType.clear();
+        ticketType.addAll(tlm.getTicketTypes());
+    }
+
     public void loadUserList() {
         userObs.clear();
         userObs.addAll(bll.getAllUsers());
@@ -126,16 +133,18 @@ public class Model {
 
     public void loadEventTicketList() {
         loadTicketList();
-        if(selectedEvent != null){
+        if (selectedEvent != null) {
             eventFilteredTickets().clear();
             eventFilteredTickets();
         }
     }
-    public void loadUpcoming(){
+
+    public void loadUpcoming() {
         upcomingEvents.clear();
         upcomingEvents();
     }
-    public void loadRecentlyAdded(){
+
+    public void loadRecentlyAdded() {
         recentAddedEvents.clear();
         recentlyAddedEvents();
     }
@@ -157,7 +166,8 @@ public class Model {
         bll.update(event);
         loadEventList();
     }
-    public ObservableList<Event> recentlyAddedEvents(){
+
+    public ObservableList<Event> recentlyAddedEvents() {
         List<Event> recentEventIDs = new ArrayList<>();
 
         recentEventIDs.addAll(events);
@@ -168,12 +178,13 @@ public class Model {
 
         return recentAddedEvents;
     }
-    public ObservableList<Event> upcomingEvents(){
+
+    public ObservableList<Event> upcomingEvents() {
         List<Event> upcomingDates = new ArrayList<>();
         Date todayDate = Date.from(Instant.now());
 
-        for(Event event:events){
-            if(event.getDate().after(todayDate)){
+        for (Event event : events) {
+            if (event.getDate().after(todayDate)) {
                 upcomingDates.add(event);
             }
         }
@@ -181,8 +192,8 @@ public class Model {
 
         upcomingEvents.addAll(upcomingDates);
 
-        for(Event event: upcomingDates){
-            if(!upcomingEvents.contains(event)){
+        for (Event event : upcomingDates) {
+            if (!upcomingEvents.contains(event)) {
                 upcomingEvents.add(event);
             }
         }
@@ -208,7 +219,7 @@ public class Model {
         return eventFilteredTickets;
     }
 
-    public void saveTicket(Event event, Ticket ticket)  {
+    public void saveTicket(Event event, Ticket ticket) {
         tlm.saveTicket(event, ticket);
     }
 
@@ -225,12 +236,12 @@ public class Model {
         loadUserList();
     }
 
-    public void deleteUser(User user){
+    public void deleteUser(User user) {
         bll.deleteUser(user);
         loadUserList();
     }
 
-    public void updateUser(User user){
+    public void updateUser(User user) {
         bll.updateUser(user);
         loadUserList();
     }
@@ -246,5 +257,27 @@ public class Model {
     }
 
 
+    public void addTicketType(String ticketTypeName, int maxQuantity) {
+        tlm.addTicketType(ticketTypeName, maxQuantity);
+        loadTicketTypeList();
+    }
+
+
+
+    public void createSpecialTicket(TicketType selectedTicketType, Event selectedEvent) {
+
+        tlm.createSpecialTicket(selectedTicketType, selectedEvent);
+
+    }
+
+
+    public ObservableList getSpecialTicketsList() {
+        return specialTickets;
+    }
+
+
+    public ObservableList<TicketType> getTicketType() {
+        return ticketType;
+    }
 }
 

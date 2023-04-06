@@ -1,29 +1,43 @@
 package gui.controller;
 
-import be.SpecialTicket;
-import com.microsoft.sqlserver.jdbc.SQLServerException;
+import be.Event;
+import be.TicketType;
 import gui.model.Model;
+import io.github.palexdev.materialfx.controls.MFXComboBox;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
+import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.control.ComboBox;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 
 import java.io.IOException;
+import java.net.URL;
+import java.util.ResourceBundle;
 
-public class CreateSpecialTicketsController {
+public class CreateSpecialTicketsController implements Initializable {
 
-    private Model model;
+
+    private Model model = Model.getModel();
 
     @FXML
-    private TextField ticketTypeTextfield;
-    @FXML
-    private ComboBox<SpecialTicket> specialTicketComboBox;
+    private TextField ticketTypeTextfield, maxQuantityTextfield;
 
+    @FXML
+    private MFXComboBox ticketTypeComboBox, eventComboBox;
+
+
+    @Override
+    public void initialize(URL location, ResourceBundle resources) {
+        model.loadTicketTypeList();
+        model.loadEventList();
+        ticketTypeComboBox.setItems(model.getTicketType());
+        eventComboBox.setItems(model.getObsEvents());
+
+    }
 
     public void home(ActionEvent actionEvent) throws IOException {
         FXMLLoader loader = new FXMLLoader(getClass().getResource("/gui/view/HomeView.fxml"));
@@ -50,7 +64,7 @@ public class CreateSpecialTicketsController {
     }
 
     public void logout(ActionEvent actionEvent) throws IOException {
-        Parent root=FXMLLoader.load(getClass().getResource("/gui/view/Login.fxml"));
+        Parent root = FXMLLoader.load(getClass().getResource("/gui/view/Login.fxml"));
         Stage stage = (Stage) ((Node) actionEvent.getSource()).getScene().getWindow();
         Scene scene = new Scene(root);
         stage.setTitle("Event Manager");
@@ -69,13 +83,32 @@ public class CreateSpecialTicketsController {
         stage.show();
     }
 
-    public void NewSpecialTicket(ActionEvent actionEvent) {
-    }
+
 
     public void addTicketType(ActionEvent actionEvent) {
+        String list = ticketTypeComboBox.getItems().toString();
+        if (!(list.contains(ticketTypeTextfield.getText())) && !ticketTypeTextfield.getText().isEmpty() && !maxQuantityTextfield.getText().isEmpty()) {
+            int maxQuantity = Integer.parseInt(maxQuantityTextfield.getText());
+            model.addTicketType(ticketTypeTextfield.getText(), maxQuantity);
+        }
+        ticketTypeTextfield.clear();
+        maxQuantityTextfield.clear();
+    }
+
+
+
+    public void NewSpecialTicket(ActionEvent actionEvent) {
+        TicketType selectedTicketType = (TicketType) ticketTypeComboBox.getSelectionModel().getSelectedItem();
+        Event selectedEvent = (Event) eventComboBox.getSelectionModel().getSelectedItem();
+        if (selectedTicketType != null)  { //&& selectedEvent != null)
+            model.createSpecialTicket(selectedTicketType, selectedEvent);
+        }
+    }
+
+
 
     }
 
 
-    }
+
 

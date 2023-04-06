@@ -9,6 +9,7 @@ import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
+import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.stage.Stage;
@@ -24,12 +25,19 @@ public class SpecialTicketsController implements Initializable {
 
     public Label usernameLabel;
     @FXML
+    private TableView specialTIcketsTV;
+
+    @FXML
+    private TableColumn ColumnTicketTypeTV, ColumnEventNameTV, ColumnTicketIDTV;
+    @FXML
     private ImageView logo;
 
     private Model model = Model.getModel();
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
+
+
 
         try {
             Image logoImage = new Image(new FileInputStream("resources/images/logoEASV.png"));
