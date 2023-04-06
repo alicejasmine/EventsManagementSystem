@@ -257,6 +257,7 @@ public class Model {
     }
 
 
+
     public void addTicketType(String ticketTypeName, int maxQuantity) {
         tlm.addTicketType(ticketTypeName, maxQuantity);
         loadTicketTypeList();
@@ -277,7 +278,13 @@ public class Model {
 
 
     public ObservableList<TicketType> getTicketType() {
-        return ticketType;
+        return ticketType;}
+
+    
+    public void deleteTicket (Ticket ticket) {
+        tlm.deleteTicket(ticket);
+
     }
 }
+
 

@@ -93,4 +93,16 @@ public class TicketDAO {
         return ticketsForEvent;
     }
 
+    public void deleteTicket(Ticket ticket) {
+        String sql = "DELETE FROM Tickets WHERE TicketID= ?";
+
+        try (Connection conn = databaseConnector.getConnection();
+             PreparedStatement pstmt = conn.prepareStatement(sql)) {
+
+            pstmt.setString(1, ticket.getTicketID());
+            pstmt.executeUpdate();
+        } catch (SQLException e) {
+            System.out.println(e.getMessage());
+        }
+    }
 }
