@@ -27,11 +27,11 @@ public class SpecialTicketsOverviewController implements Initializable {
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-        //specialOTV.setItems();
-        ColumnTicketTypeOTV.setCellValueFactory(new PropertyValueFactory<>("ticket type"));
-        ColumnEventNameOTV.setCellValueFactory(new PropertyValueFactory<>("event name"));
-        ColumnSoldTicketsOTV.setCellValueFactory(new PropertyValueFactory<>("sold special tickets"));
-        ColumnAvailableTicketsOTV.setCellValueFactory(new PropertyValueFactory<>("available special tickets"));
+        specialOTV.setItems(model.getSpecialTicketInfo());
+        ColumnTicketTypeOTV.setCellValueFactory(new PropertyValueFactory<>("ticketTypeName"));
+        ColumnEventNameOTV.setCellValueFactory(new PropertyValueFactory<>("name"));
+        ColumnSoldTicketsOTV.setCellValueFactory(new PropertyValueFactory<>("soldSpecialTickets"));
+        ColumnAvailableTicketsOTV.setCellValueFactory(new PropertyValueFactory<>("availableSpecialTickets"));
 
     }
 

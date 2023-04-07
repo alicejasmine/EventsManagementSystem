@@ -51,7 +51,7 @@
                       <Label fx:id="errorInfoLabel" alignment="CENTER" prefHeight="46.0" prefWidth="368.0" wrapText="true" />
                   </children>
               </HBox>
-            <Label layoutX="494.0" layoutY="51.0" styleClass="title" text="Special Tickets Availability" />
+            <Label layoutX="494.0" layoutY="51.0" styleClass="title" text="Special Tickets Overview" />
             <Label fx:id="usernameLabel" layoutX="972.0" layoutY="28.0" styleClass="username" text="Username" />
             <Button layoutX="1073.0" layoutY="17.0" mnemonicParsing="false" onAction="#logout" styleClass="red-button" text="Log out" />
             <TextField layoutX="998.0" layoutY="139.0" promptText="Search" />

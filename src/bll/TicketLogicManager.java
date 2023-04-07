@@ -6,15 +6,14 @@ import java.awt.print.PrinterException;
 import java.awt.print.PrinterJob;
 import java.io.File;
 import java.io.IOException;
+import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
 import java.util.UUID;
 
+import be.*;
 import be.Event;
-import be.SpecialTicket;
-import be.Ticket;
-import be.TicketType;
 import com.google.zxing.BarcodeFormat;
 import com.google.zxing.MultiFormatWriter;
 import com.google.zxing.WriterException;
@@ -235,5 +234,13 @@ public class TicketLogicManager {
     public ObservableList getSpecialTicketsWithTicketType()  {
         return ticketTypeDAO.getSpecialTicketsWithTicketType();
 
+    }
+
+    public ObservableList getSpecialTicketInfo() {
+        try {
+            return specialTicketDAO.getSpecialTicketInfo();
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
     }
 }

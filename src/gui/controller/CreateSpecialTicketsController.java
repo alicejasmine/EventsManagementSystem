@@ -11,6 +11,7 @@ import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 
@@ -21,6 +22,7 @@ import java.util.ResourceBundle;
 public class CreateSpecialTicketsController implements Initializable {
 
 
+
     private Model model = Model.getModel();
 
     @FXML
@@ -29,6 +31,9 @@ public class CreateSpecialTicketsController implements Initializable {
     @FXML
     private MFXComboBox ticketTypeComboBox, eventComboBox;
 
+    @FXML
+    private Label usernameLabel;
+
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
@@ -36,7 +41,6 @@ public class CreateSpecialTicketsController implements Initializable {
         model.loadEventList();
         ticketTypeComboBox.setItems(model.getTicketType());
         eventComboBox.setItems(model.getObsEvents());
-
     }
 
     public void home(ActionEvent actionEvent) throws IOException {

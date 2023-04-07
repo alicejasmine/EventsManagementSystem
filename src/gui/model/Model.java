@@ -8,6 +8,7 @@ import java.time.*;
 import java.util.*;
 
 public class Model {
+
     private ObservableList<Event> events = FXCollections.observableArrayList();
     private final ObservableList<SpecialTicket> specialTickets = FXCollections.observableArrayList();
 
@@ -288,6 +289,10 @@ public class Model {
 
     public ObservableList getSpecialTicketsWithTicketType() {
         return tlm.getSpecialTicketsWithTicketType();
+    }
+
+    public ObservableList getSpecialTicketInfo() {
+        return tlm.getSpecialTicketInfo();
     }
 }
 
