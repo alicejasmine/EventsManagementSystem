@@ -15,6 +15,10 @@ public class TicketType {
         this.ticketTypeName = ticketTypeName;
         this.maxQuantity = maxQuantity;
     }
+
+    public TicketType(String ticketTypeName) {
+    }
+
     public int getTicketTypeID() {
         return ticketTypeID;
     }

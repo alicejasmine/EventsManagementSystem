@@ -20,7 +20,9 @@ import com.google.zxing.MultiFormatWriter;
 import com.google.zxing.WriterException;
 import com.google.zxing.client.j2se.MatrixToImageWriter;
 import com.google.zxing.common.BitMatrix;
+import com.microsoft.sqlserver.jdbc.SQLServerException;
 import dal.*;
+import javafx.collections.ObservableList;
 import org.apache.pdfbox.Loader;
 import org.apache.pdfbox.pdmodel.common.PDRectangle;
 import org.apache.pdfbox.pdmodel.graphics.image.LosslessFactory;
@@ -228,5 +230,10 @@ public class TicketLogicManager {
 
     public List<TicketType> getTicketTypes() {
         return ticketTypeDAO.getAllTicketTypes();
+    }
+
+    public ObservableList getSpecialTicketsWithTicketType()  {
+        return ticketTypeDAO.getSpecialTicketsWithTicketType();
+
     }
 }

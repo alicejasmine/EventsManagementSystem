@@ -18,30 +18,7 @@ public class EventDAO {
 
     public static void main(String[] args) throws SQLException {
 
-/* tests CRUD without gui
 
-        EventDAO testEvent = new EventDAO();
-        Event event = new Event();
-        event.setName("test3");
-        event.setLocation("EASV bar");
-        event.setDate(Date.valueOf("2023-05-01"));
-        event.setTime(Time.valueOf("19:00:00"));
-        event.setNotes("free accesss");
-        event.setEndTime(Time.valueOf("02:00:00"));
-        event.setLocationGuidance("easv bar");
-        testEvent.createEvent(event);
-        testEvent.deleteEvent(3);
-        testEvent.updateEvent(new Event(4, "Updated Event Name", "New Location", java.sql.Date.valueOf("2023-03-18"),
-                java.sql.Time.valueOf("19:00:00"), "New notes", java.sql.Time.valueOf("22:00:00"), "New location guidance"));
-
-
-
-        List<Event> events = testEvent.getAllEvents();
-        for (Event event : events) {
-            System.out.println(event.toString());
-        }
-
- */
     }
 
 

@@ -285,6 +285,10 @@ public class Model {
         tlm.deleteTicket(ticket);
 
     }
+
+    public ObservableList getSpecialTicketsWithTicketType() {
+        return tlm.getSpecialTicketsWithTicketType();
+    }
 }
 
 

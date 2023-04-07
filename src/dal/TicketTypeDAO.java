@@ -1,10 +1,11 @@
 package dal;
 
 import be.SpecialTicket;
-import be.Ticket;
+import be.SpecialTicketWithTicketType;
 import be.TicketType;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 
-import javax.swing.plaf.nimbus.State;
 import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
@@ -13,7 +14,9 @@ public class TicketTypeDAO {
 
     private DatabaseConnector databaseConnector;
 
-public TicketTypeDAO(){databaseConnector=new DatabaseConnector();}
+    public TicketTypeDAO() {
+        databaseConnector = new DatabaseConnector();
+    }
 
 
     public TicketType createTicketType(TicketType t) {
@@ -46,7 +49,7 @@ public TicketTypeDAO(){databaseConnector=new DatabaseConnector();}
             String sql = "SELECT * FROM SpecialTicketType";
             Statement statement = connection.createStatement();
 
-            if(statement.execute(sql)) {
+            if (statement.execute(sql)) {
                 ResultSet resultSet = statement.getResultSet();
 
                 while (resultSet.next()) {
@@ -64,5 +67,29 @@ public TicketTypeDAO(){databaseConnector=new DatabaseConnector();}
         return ticketType;
     }
 
+
+    public ObservableList<SpecialTicketWithTicketType> getSpecialTicketsWithTicketType () {
+        ObservableList<SpecialTicketWithTicketType> specialTickets = FXCollections.observableArrayList();
+        String sql = "SELECT tt.TicketTypeName, st.SpecialTicketID, e.Name " +
+                "FROM SpecialTicket st " +
+                "JOIN SpecialTicketType tt ON st.TicketTypeID = tt.TicketTypeID" +
+                 " JOIN Event e ON st.EventID=e.EventID";
+        try (Connection connection = databaseConnector.getConnection()) {
+            PreparedStatement ps = connection.prepareStatement(sql);
+            ResultSet resultSet = ps.executeQuery();
+
+                while (resultSet.next()) {
+                    String ticketTypeName = resultSet.getString("TicketTypeName");
+                    String specialTicketID = resultSet.getString("SpecialTicketID");
+                    String eventName = resultSet.getString("Name");
+                    SpecialTicketWithTicketType specialTicket = new SpecialTicketWithTicketType(ticketTypeName, eventName, specialTicketID);
+                    specialTickets.add(specialTicket);
+                }
+
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+        return specialTickets;
+    }
 
 }
