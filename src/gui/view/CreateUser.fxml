@@ -34,7 +34,7 @@
             <Image url="@../../../resources/images/logoEASV.png" />
          </image>
       </ImageView>
-      <Button fx:id="coordinatorButton" alignment="BASELINE_LEFT" layoutX="18.0" layoutY="589.0" mnemonicParsing="false" prefHeight="47.0" prefWidth="218.0" styleClass="yellow-menuButton" text="Add Coordinator" />
+      <Button fx:id="coordinatorButton" alignment="BASELINE_LEFT" layoutX="18.0" layoutY="589.0" mnemonicParsing="false" prefHeight="47.0" prefWidth="218.0" styleClass="yellow-menuButton" text="Manage Coordinators" />
       <TableView fx:id="userTableView" layoutX="664.0" layoutY="170.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="376.0" prefWidth="627.0" AnchorPane.bottomAnchor="102.0" AnchorPane.leftAnchor="588.0" AnchorPane.rightAnchor="35.0" AnchorPane.topAnchor="172.0">
         <columns>
           <TableColumn fx:id="userNameColumn" prefWidth="220.0" text="User Name" />

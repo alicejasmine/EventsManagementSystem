@@ -17,7 +17,7 @@
 <?import javafx.scene.layout.RowConstraints?>
 <?import javafx.scene.text.Font?>
 
-<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="650.0" prefWidth="1250.0" style="-fx-background-color: C9C5C5;" stylesheets="@../../css/style.css" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gui.controller.EventsViewController">
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="650.0" prefWidth="1250.0" style="-fx-background-color: C9C5C5;" stylesheets="@../../css/style.css" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gui.controller.EventsViewController">
    <right>
       <AnchorPane prefHeight="402.0" prefWidth="284.0" style="-fx-background-color: D9D9D9; -fx-background-radius: 7%;" BorderPane.alignment="CENTER">
          <BorderPane.margin>
@@ -30,6 +30,7 @@
          <children>
             <MFXButton layoutX="-23.0" maxWidth="1.7976931348623157E308" prefHeight="662.0" prefWidth="274.0" styleClass="redMenu" stylesheets="@../../css/style.css" text=" " textFill="#c00d0d" />
             <Button alignment="BASELINE_LEFT" layoutX="18.0" layoutY="148.0" mnemonicParsing="false" onAction="#home" prefHeight="47.0" prefWidth="218.0" styleClass="red-menuButton" text="Home" />
+            <Button fx:id="coordinatorButton" alignment="BASELINE_LEFT" layoutX="18.0" layoutY="589.0" mnemonicParsing="false" onAction="#manageCoordinators" prefHeight="47.0" prefWidth="218.0" styleClass="red-menuButton" text="Manage Coordinators" visible="false" />
             <Button alignment="BASELINE_LEFT" layoutX="18.0" layoutY="214.0" mnemonicParsing="false" prefHeight="47.0" prefWidth="218.0" styleClass="yellow-menuButton" text="Manage Events" />
             <Button alignment="BASELINE_LEFT" layoutX="18.0" layoutY="284.0" mnemonicParsing="false" onAction="#specialTicketsOverview" prefHeight="47.0" prefWidth="218.0" styleClass="red-menuButton" text="Special Tickets" />
             <TableView fx:id="eventTV" layoutX="257.0" layoutY="180.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="376.0" prefWidth="627.0" AnchorPane.bottomAnchor="94.0" AnchorPane.leftAnchor="257.0" AnchorPane.rightAnchor="366.0" AnchorPane.topAnchor="180.0">

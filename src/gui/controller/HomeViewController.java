@@ -198,6 +198,8 @@ public class HomeViewController implements Initializable {
     public void newUser(ActionEvent actionEvent) throws IOException {
         FXMLLoader loader = new FXMLLoader(getClass().getResource("/gui/view/CreateUser.fxml"));
         Parent root = loader.load();
+        CreateUserController controller = loader.getController();
+        controller.setUsernameLabel();
         Stage stage = (Stage) ((Node) actionEvent.getSource()).getScene().getWindow();
         Scene scene = new Scene(root);
         stage.setTitle("Special Tickets");

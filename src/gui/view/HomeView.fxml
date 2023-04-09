@@ -13,7 +13,7 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="650.0" prefWidth="1250.0" styleClass="anchorPane-home" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gui.controller.HomeViewController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="650.0" prefWidth="1250.0" styleClass="anchorPane-home" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gui.controller.HomeViewController">
 
    <children>
       <Text layoutX="392.0" layoutY="124.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="small-title" text="Upcoming events">
@@ -89,7 +89,7 @@
       <Button alignment="BASELINE_LEFT" layoutX="-326.0" layoutY="157.0" mnemonicParsing="false" prefHeight="47.0" prefWidth="218.0" styleClass="homeButton-home" text="Home" />
       <Button alignment="BASELINE_LEFT" layoutX="-326.0" layoutY="223.0" mnemonicParsing="false" onAction="#manageAllEvents" prefHeight="47.0" prefWidth="218.0" styleClass="manageEventsButton-home" text="Manage Events" />
       <Button alignment="BASELINE_LEFT" layoutX="-326.0" layoutY="293.0" mnemonicParsing="false" prefHeight="47.0" prefWidth="218.0" styleClass="specialTicketsButton-home" text="Special Tickets" />
-      <Button fx:id="coordinatorButton" alignment="BASELINE_LEFT" layoutX="18.0" layoutY="589.0" mnemonicParsing="false" onAction="#newUser" prefHeight="47.0" prefWidth="218.0" styleClass="red-menuButton" text="Add Coordinator" visible="false" />
+      <Button fx:id="coordinatorButton" alignment="BASELINE_LEFT" layoutX="18.0" layoutY="589.0" mnemonicParsing="false" onAction="#newUser" prefHeight="47.0" prefWidth="218.0" styleClass="red-menuButton" text="Manage Coordinators" visible="false" />
       <Button layoutX="73.0" layoutY="335.0" mnemonicParsing="false" onAction="#openCreateSpecialTicket" text="Create Special Ticket">
          <styleClass>
             <String fx:value="red-menuButton" />

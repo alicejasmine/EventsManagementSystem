@@ -14,7 +14,7 @@
 <?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.layout.HBox?>
 
-<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="650.0" prefWidth="1250.0" style="-fx-background-color: C9C5C5;" stylesheets="@../../css/style.css" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gui.controller.CreateSpecialTicketsController">
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="650.0" prefWidth="1250.0" style="-fx-background-color: C9C5C5;" stylesheets="@../../css/style.css" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gui.controller.CreateSpecialTicketsController">
    <right>
       <AnchorPane prefHeight="402.0" prefWidth="284.0" style="-fx-background-color: D9D9D9; -fx-background-radius: 7%;" BorderPane.alignment="CENTER">
          <BorderPane.margin>
@@ -31,6 +31,7 @@
                   <Image url="@../../../resources/images/logoEASV.png" />
                </image>
             </ImageView>
+            <Button fx:id="coordinatorButton" alignment="BASELINE_LEFT" layoutX="18.0" layoutY="589.0" mnemonicParsing="false" onAction="#manageCoordinators" prefHeight="47.0" prefWidth="218.0" styleClass="red-menuButton" text="Manage Coordinators" visible="false" />
             <Button alignment="BASELINE_LEFT" layoutX="18.0" layoutY="152.0" mnemonicParsing="false" onAction="#home" prefHeight="47.0" prefWidth="218.0" styleClass="red-menuButton" text="Home" />
             <Button alignment="BASELINE_LEFT" layoutX="18.0" layoutY="214.0" mnemonicParsing="false" onAction="#manageAllEvents" prefHeight="47.0" prefWidth="218.0" styleClass="red-menuButton" text="Manage Events" />
             <Button alignment="BASELINE_LEFT" layoutX="18.0" layoutY="284.0" mnemonicParsing="false" onAction="#openSpecialTicketsOverview" prefHeight="47.0" prefWidth="218.0" styleClass="red-menuButton" text="Special Tickets" />

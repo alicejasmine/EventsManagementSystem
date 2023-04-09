@@ -24,7 +24,8 @@ import java.util.ResourceBundle;
 public class SpecialTicketsController implements Initializable {
 
 
-    public Label usernameLabel;
+    @FXML private Label usernameLabel;
+    @FXML private Button coordinatorButton;
     @FXML
     private TableView specialTIcketsTV;
 
@@ -56,6 +57,9 @@ public class SpecialTicketsController implements Initializable {
 
     public void setUsernameLabel() {
         usernameLabel.setText(model.getCurrentUser().getFirstName() + " " + model.getCurrentUser().getLastName());
+        if(model.getCurrentUser().isAdmin()){
+            coordinatorButton.setVisible(true);
+        }
     }
 
 
@@ -132,4 +136,15 @@ public class SpecialTicketsController implements Initializable {
         stage.show();
     }
 
+    public void manageCoordinators(ActionEvent actionEvent) throws IOException {
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/gui/view/CreateUser.fxml"));
+        Parent root = loader.load();
+        CreateUserController controller = loader.getController();
+        controller.setUsernameLabel();
+        Stage stage = (Stage) ((Node) actionEvent.getSource()).getScene().getWindow();
+        Scene scene = new Scene(root);
+        stage.setTitle("Special Tickets");
+        stage.setScene(scene);
+        stage.show();
+    }
 }

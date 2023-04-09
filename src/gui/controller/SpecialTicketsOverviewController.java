@@ -8,9 +8,7 @@ import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.control.Label;
-import javafx.scene.control.TableColumn;
-import javafx.scene.control.TableView;
+import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
@@ -23,6 +21,9 @@ import java.net.URL;
 import java.util.ResourceBundle;
 
 public class SpecialTicketsOverviewController implements Initializable {
+
+    @FXML
+    private Button coordinatorButton;
     @FXML
     private Label usernameLabel;
     @FXML
@@ -113,6 +114,20 @@ public class SpecialTicketsOverviewController implements Initializable {
 
     public void setUsernameLabel() {
         usernameLabel.setText(model.getCurrentUser().getFirstName() + " " + model.getCurrentUser().getLastName());
+        if(model.getCurrentUser().isAdmin()){
+            coordinatorButton.setVisible(true);
+        }
     }
 
+    public void manageCoordinators(ActionEvent actionEvent) throws IOException {
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/gui/view/CreateUser.fxml"));
+        Parent root = loader.load();
+        CreateUserController controller = loader.getController();
+        controller.setUsernameLabel();
+        Stage stage = (Stage) ((Node) actionEvent.getSource()).getScene().getWindow();
+        Scene scene = new Scene(root);
+        stage.setTitle("Special Tickets");
+        stage.setScene(scene);
+        stage.show();
+    }
 }

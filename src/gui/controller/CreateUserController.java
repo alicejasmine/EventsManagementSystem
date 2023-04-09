@@ -97,6 +97,12 @@ public class CreateUserController implements Initializable{
         stage.show();
     }
 
+    public void setUsernameLabel() {
+        usernameLabel.setText(model.getCurrentUser().getFirstName() + " " + model.getCurrentUser().getLastName());
+        if(model.getCurrentUser().isAdmin()){
+            coordinatorButton.setVisible(true);
+        }
+    }
 
     public void createUser(ActionEvent actionEvent) {
         if(!getUserNameTF().getText().isEmpty() && !getFirstNameTF().getText().isEmpty() && !getLastNameTF().getText().isEmpty() && !getPassTF().getText().isEmpty()){
