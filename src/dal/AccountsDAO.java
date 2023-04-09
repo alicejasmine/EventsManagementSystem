@@ -18,7 +18,7 @@ public class AccountsDAO {
     public User createUser(User user) {
 
         try (Connection connection = databaseConnector.getConnection()) {
-            String sql = "INSERT INTO ACCOUNTS(username, userpass, firstname, lastname) VALUES (?,?,?,?)";
+            String sql = "INSERT INTO accounts(username, userpass, firstname, lastname) VALUES (?,?,?,?)";
 
             PreparedStatement statement = connection.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
             statement.setString(1, user.getUserName());
@@ -35,6 +35,7 @@ public class AccountsDAO {
         } catch (SQLException e) {
             throw new RuntimeException(e);
         }
+
     }
 
     public List<User> getAllUsers()  {

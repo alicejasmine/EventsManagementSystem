@@ -1,22 +1,57 @@
 package gui.controller;
 
+import be.*;
+import be.Event;
+import gui.model.*;
 import javafx.event.*;
 import javafx.fxml.*;
 import javafx.scene.*;
 import javafx.scene.control.*;
+import javafx.scene.control.cell.*;
+import javafx.scene.image.*;
 import javafx.stage.*;
 
 import java.io.*;
+import java.net.*;
+import java.util.*;
 
-public class CreateUserController {
-    public Label usernameLabel;
-    public Button coordinatorButton;
-    public TableView userTableView;
-    public TableColumn userNameColumn;
-    public TableColumn firstNameColumn;
-    public TableColumn lastNameColumn;
+public class CreateUserController implements Initializable{
 
-    public void home(ActionEvent actionEvent) throws IOException {
+    public Button adminButton;
+    public Label errorLabel;
+    public ImageView logoHome;
+    @FXML private TextField userNameTF;
+    @FXML private TextField passTF;
+    @FXML private TextField firstNameTF;
+    @FXML private TextField lastNameTF;
+    @FXML private Button deleteUserButton;
+    @FXML private Button editUserButton;
+    @FXML private Label usernameLabel;
+    @FXML private Button coordinatorButton;
+    @FXML private TableView<User> userTableView;
+    @FXML private TableColumn<User, String> userNameColumn;
+    @FXML private TableColumn<User, String> firstNameColumn;
+    @FXML private TableColumn<User, String> lastNameColumn;
+
+    private Model model = Model.getModel();
+    @Override
+    public void initialize(URL location, ResourceBundle resources) {
+        try {
+            Image logoImage = new Image(new FileInputStream("resources/images/logoEASV.png"));
+            logoHome.setImage(logoImage);
+
+        } catch (FileNotFoundException e) {
+            throw new RuntimeException(e);
+        }
+
+        userTableView.setItems(model.getObsUser());
+        model.loadUserList();
+
+        userNameColumn.setCellValueFactory(new PropertyValueFactory<>("userName"));
+        firstNameColumn.setCellValueFactory(new PropertyValueFactory<>("firstName"));
+        lastNameColumn.setCellValueFactory(new PropertyValueFactory<>("lastName"));
+    }
+    @FXML private void home(ActionEvent actionEvent) throws IOException {
         FXMLLoader loader = new FXMLLoader(getClass().getResource("/gui/view/HomeView.fxml"));
         Parent root = loader.load();
         HomeViewController controller = loader.getController();
@@ -28,7 +63,7 @@ public class CreateUserController {
         stage.show();
     }
 
-    public void manageAllEvents(ActionEvent actionEvent) throws IOException {
+    @FXML private void manageAllEvents(ActionEvent actionEvent) throws IOException {
         FXMLLoader loader = new FXMLLoader(getClass().getResource("/gui/view/AllEvents.fxml"));
         Parent root = loader.load();
         EventsViewController controller = loader.getController();
@@ -40,7 +75,7 @@ public class CreateUserController {
         stage.show();
     }
 
-    public void specialTickets(ActionEvent actionEvent) throws IOException {
+    @FXML private void specialTickets(ActionEvent actionEvent) throws IOException {
         FXMLLoader loader = new FXMLLoader(getClass().getResource("/gui/view/SpecialTickets.fxml"));
         Parent root = loader.load();
         SpecialTicketsController controller = loader.getController();
@@ -52,7 +87,7 @@ public class CreateUserController {
         stage.show();
     }
 
-    public void logout(ActionEvent actionEvent) throws IOException {
+    @FXML private void logout(ActionEvent actionEvent) throws IOException {
 
         Parent root=FXMLLoader.load(getClass().getResource("/gui/view/Login.fxml"));
         Stage stage = (Stage) ((Node) actionEvent.getSource()).getScene().getWindow();
@@ -62,15 +97,81 @@ public class CreateUserController {
         stage.show();
     }
 
-    public void newUser(ActionEvent actionEvent) {
-    }
 
     public void createUser(ActionEvent actionEvent) {
+        if(!getUserNameTF().getText().isEmpty() && !getFirstNameTF().getText().isEmpty() && !getLastNameTF().getText().isEmpty() && !getPassTF().getText().isEmpty()){
+            User user = new User(getUserNameTF().getText(), getPassTF().getText(), getFirstNameTF().getText(), getLastNameTF().getText());
+            model.createUser(user);
+        }
     }
 
     public void deleteUser(ActionEvent actionEvent) {
+        if(userTableView.getSelectionModel().getSelectedItem() != null){
+            model.deleteUser(userTableView.getSelectionModel().getSelectedItem());
+            errorLabel.setText("");
+        }else errorLabel.setText("Please select an account to be deleted.");
     }
 
     public void editUser(ActionEvent actionEvent) {
+        if(userTableView.getSelectionModel().getSelectedItem() != null){
+            User selectedUser = userTableView.getSelectionModel().getSelectedItem();
+
+            if(!getUserNameTF().getText().isEmpty()){
+                selectedUser.setUserName(getUserNameTF().getText());
+            }
+            if(!getFirstNameTF().getText().isEmpty()){
+                selectedUser.setFirstName(getFirstNameTF().getText());
+            }
+            if(!getLastNameTF().getText().isEmpty()){
+                selectedUser.setLastName(getLastNameTF().getText());
+            }
+            if(!getPassTF().getText().isEmpty()){
+                selectedUser.setUserPass(getPassTF().getText());
+            }
+
+            if(!getUserNameTF().getText().isEmpty() && !getFirstNameTF().getText().isEmpty() && !getLastNameTF().getText().isEmpty() && !getPassTF().getText().isEmpty()){
+                User user = new User(getUserNameTF().getText(), getPassTF().getText(), getFirstNameTF().getText(), getLastNameTF().getText());
+                model.createUser(user);
+            }
+
+            model.updateUser(selectedUser);
+            errorLabel.setText("");
+        }else errorLabel.setText("Please select an account to be edited.");
+    }
+
+
+    public TextField getUserNameTF() {
+        return userNameTF;
+    }
+
+    public void setUserNameTF(TextField userNameTF) {
+        this.userNameTF = userNameTF;
+    }
+
+    public TextField getPassTF() {
+        return passTF;
+    }
+
+    public void setPassTF(TextField passTF) {
+        this.passTF = passTF;
+    }
+
+    public TextField getFirstNameTF() {
+        return firstNameTF;
+    }
+
+    public void setFirstNameTF(TextField firstNameTF) {
+        this.firstNameTF = firstNameTF;
+    }
+
+    public TextField getLastNameTF() {
+        return lastNameTF;
+    }
+
+    public void setLastNameTF(TextField lastNameTF) {
+        this.lastNameTF = lastNameTF;
+    }
+
+    public void makeAdmin(ActionEvent actionEvent) {
     }
 }

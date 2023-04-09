@@ -4,7 +4,6 @@
 <?import java.net.URL?>
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Button?>
-<?import javafx.scene.control.CheckBox?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
@@ -17,7 +16,7 @@
 <?import javafx.scene.layout.RowConstraints?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="650.0" prefWidth="1250.0" styleClass="anchorPane-home" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gui.controller.CreateUserController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="650.0" prefWidth="1250.0" styleClass="anchorPane-home" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gui.controller.CreateUserController">
    <children>
       <MFXButton layoutX="-23.0" maxWidth="1.7976931348623157E308" prefHeight="662.0" prefWidth="274.0" styleClass="redMenu" stylesheets="@../../css/style.css" text=" " textFill="#c00d0d" />
       <ImageView fx:id="logoHome" fitHeight="102.0" fitWidth="210.0" layoutX="22.0" layoutY="29.0" pickOnBounds="true" preserveRatio="true" AnchorPane.topAnchor="25.0">
@@ -35,7 +34,7 @@
             <Image url="@../../../resources/images/logoEASV.png" />
          </image>
       </ImageView>
-      <Button fx:id="coordinatorButton" alignment="BASELINE_LEFT" layoutX="18.0" layoutY="589.0" mnemonicParsing="false" onAction="#newUser" prefHeight="47.0" prefWidth="218.0" styleClass="yellow-menuButton" text="Add Coordinator" />
+      <Button fx:id="coordinatorButton" alignment="BASELINE_LEFT" layoutX="18.0" layoutY="589.0" mnemonicParsing="false" prefHeight="47.0" prefWidth="218.0" styleClass="yellow-menuButton" text="Add Coordinator" />
       <TableView fx:id="userTableView" layoutX="664.0" layoutY="170.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="376.0" prefWidth="627.0" AnchorPane.bottomAnchor="102.0" AnchorPane.leftAnchor="588.0" AnchorPane.rightAnchor="35.0" AnchorPane.topAnchor="172.0">
         <columns>
           <TableColumn fx:id="userNameColumn" prefWidth="220.0" text="User Name" />
@@ -80,22 +79,22 @@
                   <Insets left="20.0" />
                </padding>
             </Label>
-            <TextField GridPane.columnIndex="1">
+            <TextField fx:id="userNameTF" GridPane.columnIndex="1">
                <GridPane.margin>
                   <Insets right="5.0" />
                </GridPane.margin>
             </TextField>
-            <TextField prefHeight="35.0" prefWidth="192.0" GridPane.columnIndex="1" GridPane.rowIndex="1">
+            <TextField fx:id="passTF" prefHeight="35.0" prefWidth="192.0" GridPane.columnIndex="1" GridPane.rowIndex="1">
                <GridPane.margin>
                   <Insets right="5.0" />
                </GridPane.margin>
             </TextField>
-            <TextField GridPane.columnIndex="1" GridPane.rowIndex="2">
+            <TextField fx:id="firstNameTF" GridPane.columnIndex="1" GridPane.rowIndex="2">
                <GridPane.margin>
                   <Insets right="5.0" />
                </GridPane.margin>
             </TextField>
-            <TextField GridPane.columnIndex="1" GridPane.rowIndex="3">
+            <TextField fx:id="lastNameTF" GridPane.columnIndex="1" GridPane.rowIndex="3">
                <GridPane.margin>
                   <Insets right="5.0" />
                </GridPane.margin>
@@ -105,19 +104,10 @@
                   <Insets left="20.0" />
                </padding>
             </Label>
-            <Label prefHeight="42.0" prefWidth="102.0" styleClass="normal-text" text="Admin:" GridPane.rowIndex="4">
-               <padding>
-                  <Insets left="20.0" />
-               </padding>
-            </Label>
-            <CheckBox fx:id="adminCheck" mnemonicParsing="false" text="Yes" GridPane.columnIndex="1" GridPane.rowIndex="4">
-               <GridPane.margin>
-                  <Insets left="75.0" />
-               </GridPane.margin>
-            </CheckBox>
+            <Label prefHeight="23.0" prefWidth="209.0" text="All fields are necessary." GridPane.columnIndex="1" GridPane.rowIndex="4" />
          </children>
       </GridPane>
-      <Button layoutX="263.0" layoutY="574.0" mnemonicParsing="false" onAction="#createUser" prefWidth="70.0" styleClass="light-blue-button" text="New User" />
+      <Button layoutX="263.0" layoutY="567.0" mnemonicParsing="false" onAction="#createUser" prefWidth="70.0" styleClass="light-blue-button" text="New User" />
       <Label layoutX="263.0" layoutY="152.0" minHeight="-Infinity" minWidth="-Infinity" prefHeight="39.0" prefWidth="221.0" styleClass="small-title" text="Create New Coordinator">
          <font>
             <Font name="System Bold" size="14.0" />
@@ -126,9 +116,11 @@
             <Insets left="20.0" />
          </padding>
       </Label>
-      <Button layoutX="1148.0" layoutY="567.0" mnemonicParsing="false" onAction="#deleteUser" prefWidth="70.0" styleClass="red-button" text="Delete" />
+      <Button fx:id="deleteUserButton" layoutX="1148.0" layoutY="567.0" mnemonicParsing="false" onAction="#deleteUser" prefWidth="70.0" styleClass="red-button" text="Delete" />
       <Label layoutX="562.0" layoutY="64.0" styleClass="title" text="Coordinators" />
-      <Button layoutX="346.0" layoutY="574.0" mnemonicParsing="false" onAction="#editUser" prefWidth="70.0" styleClass="light-blue-button" text="Edit User" />
+      <Button fx:id="editUserButton" layoutX="346.0" layoutY="567.0" mnemonicParsing="false" onAction="#editUser" prefWidth="70.0" styleClass="light-blue-button" text="Edit User" />
+      <Button fx:id="adminButton" layoutX="1061.0" layoutY="567.0" mnemonicParsing="false" onAction="#makeAdmin" prefWidth="70.0" styleClass="light-blue-button" text="New Admin" />
+      <Label fx:id="errorLabel" alignment="CENTER" layoutX="588.0" layoutY="571.0" prefHeight="23.0" prefWidth="455.0" />
    </children>
    <stylesheets>
       <URL value="@../../css/style.css" />

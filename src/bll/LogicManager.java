@@ -31,7 +31,7 @@ public class LogicManager {
     public List<User> getAllUsers(){return accountsDAO.getAllUsers();}
     public void updateUser(User user){accountsDAO.updateUser(user);}
     public void deleteUser(User user){accountsDAO.deleteUser(user.getUserID());}
-    public User createUser(User user){return accountsDAO.createUser(user);}
+    public void createUser(User user){accountsDAO.createUser(user);}
 
     public User getUser(String userName, String userPass) {
         List<User> users = new ArrayList<>(getAllUsers());
