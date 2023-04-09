@@ -20,17 +20,16 @@ import java.util.*;
 
 public class HomeViewController implements Initializable {
 
-    public MFXButton up1Button;
-    public MFXButton up2Button;
-    public MFXButton up3Button;
-    public MFXButton up4Button;
-    public MFXButton add1Button;
-    public MFXButton add2Button;
-    public MFXButton add3Button;
-    public MFXButton add4Button;
-    public Label usernameLabel;
+    @FXML private MFXButton up1Button;
+    @FXML private MFXButton up2Button;
+    @FXML private MFXButton up3Button;
+    @FXML private MFXButton up4Button;
+    @FXML private MFXButton add1Button;
+    @FXML private MFXButton add2Button;
+    @FXML private MFXButton add3Button;
+    @FXML private MFXButton add4Button;
+    @FXML private Label usernameLabel;
     @FXML private Button coordinatorButton;
-
     @FXML
     private ImageView logoHome;
 
@@ -40,7 +39,7 @@ public class HomeViewController implements Initializable {
     private Model model = Model.getModel();
 
 
-    public void manageAllEvents(ActionEvent actionEvent) throws IOException {
+    @FXML private void manageAllEvents(ActionEvent actionEvent) throws IOException {
 
         FXMLLoader loader = new FXMLLoader(getClass().getResource("/gui/view/AllEvents.fxml"));
         Parent root = loader.load();
@@ -121,42 +120,42 @@ public class HomeViewController implements Initializable {
         }
     }
 
-    public void homeEventSelectionUpcoming1(ActionEvent actionEvent) {
+    @FXML private void homeEventSelectionUpcoming1(ActionEvent actionEvent) {
         model.setSelectedEvent(model.getUpcomingEvents().get(0));
         openEventWindow(actionEvent);
     }
 
-    public void homeEventSelectionUpcoming2(ActionEvent actionEvent) {
+    @FXML private void homeEventSelectionUpcoming2(ActionEvent actionEvent) {
         model.setSelectedEvent(model.getUpcomingEvents().get(1));
         openEventWindow(actionEvent);
     }
 
-    public void homeEventSelectionUpcoming3(ActionEvent actionEvent) {
+    @FXML private void homeEventSelectionUpcoming3(ActionEvent actionEvent) {
         model.setSelectedEvent(model.getUpcomingEvents().get(2));
         openEventWindow(actionEvent);
     }
 
-    public void homeEventSelectionUpcoming4(ActionEvent actionEvent) {
+    @FXML private void homeEventSelectionUpcoming4(ActionEvent actionEvent) {
         model.setSelectedEvent(model.getUpcomingEvents().get(3));
         openEventWindow(actionEvent);
     }
 
-    public void homeEventSelectionAdd1(ActionEvent actionEvent) {
+    @FXML private void homeEventSelectionAdd1(ActionEvent actionEvent) {
         model.setSelectedEvent(model.getRecentAddedEvents().get(0));
         openEventWindow(actionEvent);
     }
 
-    public void homeEventSelectionAdd2(ActionEvent actionEvent) {
+    @FXML private void homeEventSelectionAdd2(ActionEvent actionEvent) {
         model.setSelectedEvent(model.getRecentAddedEvents().get(1));
         openEventWindow(actionEvent);
     }
 
-    public void homeEventSelectionAdd3(ActionEvent actionEvent) {
+    @FXML private void homeEventSelectionAdd3(ActionEvent actionEvent) {
         model.setSelectedEvent(model.getRecentAddedEvents().get(2));
         openEventWindow(actionEvent);
     }
 
-    public void homeEventSelectionAdd4(ActionEvent actionEvent) {
+    @FXML private void homeEventSelectionAdd4(ActionEvent actionEvent) {
         model.setSelectedEvent(model.getRecentAddedEvents().get(3));
         openEventWindow(actionEvent);
     }
@@ -171,7 +170,7 @@ public class HomeViewController implements Initializable {
     /**
      * Method to open Special Tickets window in the same window
      */
-    public void specialTicketsOverview(ActionEvent actionEvent) throws IOException {
+    @FXML private void specialTicketsOverview(ActionEvent actionEvent) throws IOException {
 
         FXMLLoader loader = new FXMLLoader(getClass().getResource("/gui/view/SpecialTicketsOverview.fxml"));
         Parent root = loader.load();
@@ -185,7 +184,7 @@ public class HomeViewController implements Initializable {
 
     }
 
-    public void logout(ActionEvent actionEvent) throws IOException {
+    @FXML private void logout(ActionEvent actionEvent) throws IOException {
 
         Parent root=FXMLLoader.load(getClass().getResource("/gui/view/Login.fxml"));
         Stage stage = (Stage) ((Node) actionEvent.getSource()).getScene().getWindow();
@@ -195,7 +194,7 @@ public class HomeViewController implements Initializable {
         stage.show();
     }
 
-    public void newUser(ActionEvent actionEvent) throws IOException {
+    @FXML private void newUser(ActionEvent actionEvent) throws IOException {
         FXMLLoader loader = new FXMLLoader(getClass().getResource("/gui/view/CreateUser.fxml"));
         Parent root = loader.load();
         CreateUserController controller = loader.getController();
@@ -207,7 +206,7 @@ public class HomeViewController implements Initializable {
         stage.show();
     }
 
-    public void openCreateSpecialTicket(ActionEvent actionEvent) throws IOException {
+    @FXML private void openCreateSpecialTicket(ActionEvent actionEvent) throws IOException {
         FXMLLoader loader=new FXMLLoader(getClass().getResource("/gui/view/CreateSpecialTicket.fxml"));
         Parent root=loader.load();
         CreateSpecialTicketsController controller = loader.getController();
@@ -219,7 +218,7 @@ public class HomeViewController implements Initializable {
         stage.show();
     }
 
-    public void openSpecialTickets(ActionEvent actionEvent) throws IOException {
+    @FXML private void openSpecialTickets(ActionEvent actionEvent) throws IOException {
         FXMLLoader loader = new FXMLLoader(getClass().getResource("/gui/view/SpecialTickets.fxml"));
         Parent root = loader.load();
         SpecialTicketsController controller = loader.getController();

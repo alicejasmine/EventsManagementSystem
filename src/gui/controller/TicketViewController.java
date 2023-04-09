@@ -99,7 +99,7 @@ public class TicketViewController implements Initializable{
     }
 
 
-    public void openNewTicketView(ActionEvent actionEvent) throws IOException {
+    @FXML private void openNewTicketView(ActionEvent actionEvent) throws IOException {
         FXMLLoader loader = new FXMLLoader(getClass().getResource("/gui/view/NewTicketView.fxml"));
         Parent root = loader.load();
         Stage stage = new Stage();
@@ -109,7 +109,7 @@ public class TicketViewController implements Initializable{
         stage.show();
     }
 
-    public void saveTicket(ActionEvent actionEvent) {
+    @FXML private void saveTicket(ActionEvent actionEvent) {
         Ticket selectedTicket = ticketsTV.getSelectionModel().getSelectedItem();
         Event selectedEvent = model.getSelectedEvent();
         if ((selectedEvent == null) || (selectedTicket == null)){
@@ -128,7 +128,7 @@ public class TicketViewController implements Initializable{
 
     }}
 
-    public void printTicket(ActionEvent actionEvent) {
+    @FXML private void printTicket(ActionEvent actionEvent) {
         Ticket selectedTicket = ticketsTV.getSelectionModel().getSelectedItem();
         Event selectedEvent = model.getSelectedEvent();
 
@@ -159,7 +159,7 @@ public class TicketViewController implements Initializable{
         }
     }
 
-    public void openTicketPreview(ActionEvent actionEvent) throws IOException {
+    @FXML private void openTicketPreview(ActionEvent actionEvent) throws IOException {
         FXMLLoader loader = new FXMLLoader(getClass().getResource("/gui/view/TicketPreview.fxml"));
         Parent root = loader.load();
         Stage stage = new Stage();
@@ -169,7 +169,7 @@ public class TicketViewController implements Initializable{
         stage.show();
     }
 
-    public void returnHome(ActionEvent actionEvent) throws IOException {
+    @FXML private void returnHome(ActionEvent actionEvent) throws IOException {
         FXMLLoader loader = new FXMLLoader(getClass().getResource("/gui/view/HomeView.fxml"));
         Parent root = loader.load();
         HomeViewController controller = loader.getController();

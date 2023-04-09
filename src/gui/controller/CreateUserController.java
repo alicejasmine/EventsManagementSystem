@@ -17,9 +17,9 @@ import java.util.*;
 
 public class CreateUserController implements Initializable{
 
-    public Button adminButton;
-    public Label errorLabel;
-    public ImageView logoHome;
+    @FXML private Button adminButton;
+    @FXML private Label errorLabel;
+    @FXML private ImageView logoHome;
     @FXML private TextField userNameTF;
     @FXML private TextField passTF;
     @FXML private TextField firstNameTF;
@@ -104,7 +104,7 @@ public class CreateUserController implements Initializable{
         }
     }
 
-    public void createUser(ActionEvent actionEvent) {
+    @FXML private void createUser(ActionEvent actionEvent) {
         if(!getUserNameTF().getText().isEmpty() && !getFirstNameTF().getText().isEmpty() && !getLastNameTF().getText().isEmpty() && !getPassTF().getText().isEmpty()){
             User user = new User(getUserNameTF().getText(), getPassTF().getText(), getFirstNameTF().getText(), getLastNameTF().getText());
             model.createUser(user);
@@ -112,7 +112,7 @@ public class CreateUserController implements Initializable{
         }else errorLabel.setText("One or more fields are not completed. No user has been created.");
     }
 
-    public void deleteUser(ActionEvent actionEvent) {
+    @FXML private void deleteUser(ActionEvent actionEvent) {
         User selectedUser = userTableView.getSelectionModel().getSelectedItem();
 
         if(selectedUser != null){
@@ -133,7 +133,7 @@ public class CreateUserController implements Initializable{
         }else errorLabel.setText("Please select an account to be deleted.");
     }
 
-    public void editUser(ActionEvent actionEvent) {
+    @FXML private void editUser(ActionEvent actionEvent) {
         if(userTableView.getSelectionModel().getSelectedItem() != null){
             User selectedUser = userTableView.getSelectionModel().getSelectedItem();
 
@@ -193,7 +193,7 @@ public class CreateUserController implements Initializable{
         this.lastNameTF = lastNameTF;
     }
 
-    public void makeAdmin(ActionEvent actionEvent) {
+    @FXML private void makeAdmin(ActionEvent actionEvent) {
         User selectedUser = userTableView.getSelectionModel().getSelectedItem();
 
         if(selectedUser != null){
@@ -215,5 +215,29 @@ public class CreateUserController implements Initializable{
             errorLabel.setText("");
         }else errorLabel.setText("Please select an account to be promoted.");
 
+    }
+
+    @FXML private void openCreateSpecialTicket(ActionEvent actionEvent) throws IOException {
+        FXMLLoader loader=new FXMLLoader(getClass().getResource("/gui/view/CreateSpecialTicket.fxml"));
+        Parent root=loader.load();
+        CreateSpecialTicketsController controller = loader.getController();
+        controller.setUsernameLabel();
+        Stage stage = (Stage) ((Node) actionEvent.getSource()).getScene().getWindow();
+        Scene scene = new Scene(root);
+        stage.setTitle("Create Special Ticket");
+        stage.setScene(scene);
+        stage.show();
+    }
+
+    @FXML private void openSpecialTickets(ActionEvent actionEvent) throws IOException {
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/gui/view/SpecialTickets.fxml"));
+        Parent root = loader.load();
+        SpecialTicketsController controller = loader.getController();
+        controller.setUsernameLabel();
+        Stage stage = (Stage) ((Node) actionEvent.getSource()).getScene().getWindow();
+        Scene scene = new Scene(root);
+        stage.setTitle("Special Tickets");
+        stage.setScene(scene);
+        stage.show();
     }
 }

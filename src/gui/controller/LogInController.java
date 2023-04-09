@@ -42,7 +42,7 @@ public class LogInController implements Initializable{
     }
 
 
-    public void logIn(javafx.event.ActionEvent actionEvent) {
+    @FXML private void logIn(javafx.event.ActionEvent actionEvent) {
         model.loadUserList();
         model.loginUser(userId.getText(), passwordField.getText());
         if (model.getCurrentUser() != null) {

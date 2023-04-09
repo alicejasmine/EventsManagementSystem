@@ -193,18 +193,18 @@ public class EventsViewController implements Initializable {
 
 
 
-        public void logout(ActionEvent actionEvent) throws IOException {
-            Parent root=FXMLLoader.load(getClass().getResource("/gui/view/Login.fxml"));
-            Stage stage = (Stage) ((Node) actionEvent.getSource()).getScene().getWindow();
-            Scene scene = new Scene(root);
-            stage.setTitle("Event Manager");
-            stage.setScene(scene);
-            stage.show();
-        }
+    @FXML private void logout(ActionEvent actionEvent) throws IOException {
+        Parent root=FXMLLoader.load(getClass().getResource("/gui/view/Login.fxml"));
+        Stage stage = (Stage) ((Node) actionEvent.getSource()).getScene().getWindow();
+        Scene scene = new Scene(root);
+        stage.setTitle("Event Manager");
+        stage.setScene(scene);
+        stage.show();
+    }
 
 
 
-    public void specialTicketsOverview(ActionEvent actionEvent) throws IOException {
+    @FXML private void specialTicketsOverview(ActionEvent actionEvent) throws IOException {
         FXMLLoader loader = new FXMLLoader(getClass().getResource("/gui/view/SpecialTicketsOverview.fxml"));
         Parent root = loader.load();
         SpecialTicketsOverviewController controller = loader.getController();
@@ -216,7 +216,7 @@ public class EventsViewController implements Initializable {
         stage.show();
     }
 
-    public void openCreateSpecialTicket(ActionEvent actionEvent) throws IOException {
+    @FXML private void openCreateSpecialTicket(ActionEvent actionEvent) throws IOException {
         FXMLLoader loader=new FXMLLoader(getClass().getResource("/gui/view/CreateSpecialTicket.fxml"));
         Parent root=loader.load();
         CreateSpecialTicketsController controller = loader.getController();
@@ -228,7 +228,7 @@ public class EventsViewController implements Initializable {
         stage.show();
     }
 
-    public void openSpecialTickets(ActionEvent actionEvent) throws IOException {
+    @FXML private void openSpecialTickets(ActionEvent actionEvent) throws IOException {
         FXMLLoader loader = new FXMLLoader(getClass().getResource("/gui/view/SpecialTickets.fxml"));
         Parent root = loader.load();
         SpecialTicketsController controller = loader.getController();
@@ -240,7 +240,7 @@ public class EventsViewController implements Initializable {
         stage.show();
     }
 
-    public void manageCoordinators(ActionEvent actionEvent) throws IOException {
+    @FXML private void manageCoordinators(ActionEvent actionEvent) throws IOException {
         FXMLLoader loader = new FXMLLoader(getClass().getResource("/gui/view/CreateUser.fxml"));
         Parent root = loader.load();
         CreateUserController controller = loader.getController();
@@ -252,7 +252,7 @@ public class EventsViewController implements Initializable {
         stage.show();
     }
 
-    public void openTicketWindow(MouseEvent mouseEvent) throws IOException {
+    @FXML private void openTicketWindow(MouseEvent mouseEvent) throws IOException {
         if(mouseEvent.getClickCount() == 2) {
             FXMLLoader loader = new FXMLLoader(getClass().getResource("/gui/view/TicketView.fxml"));
             Parent root = loader.load();

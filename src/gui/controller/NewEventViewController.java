@@ -33,6 +33,7 @@ public class NewEventViewController{
 
     private Model model = Model.getModel();
 
+
     @FXML
     private void createEvent(ActionEvent actionEvent) {
         createNewEvent();
