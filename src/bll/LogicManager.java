@@ -11,6 +11,8 @@ public class LogicManager {
     private EventDAO eventDAO=new EventDAO();
     private AccountsDAO accountsDAO =  new AccountsDAO();
 
+    private AdminDAO adminDAO = new AdminDAO();
+
     /**
      * Event CRUD methods.
      */
@@ -35,7 +37,7 @@ public class LogicManager {
 
     public User getUser(String userName, String userPass) {
         List<User> users = new ArrayList<>(getAllUsers());
-        List<Integer> admins = new ArrayList<>(accountsDAO.getAllAdmins());
+        List<Admin> admins = new ArrayList<>(getAllAdmins());
 
         User currentUser = null;
         for (User user:users) {
@@ -49,12 +51,21 @@ public class LogicManager {
 
 
         if(currentUser !=null){
-            currentUser.setAdmin(admins.contains(currentUser.getUserID()));
-
+            for (Admin admin: admins) {
+                if(currentUser.getUserID() == admin.getUserID()){
+                    currentUser.setAdmin(true);
+                    break;
+                }
+            }
         }
 
         return currentUser;
     }
 
+    /**
+     * Admin methods.
+     */
+    public List<Admin> getAllAdmins(){return adminDAO.getAllAdmins();}
 
-    }
+    public void createAdmin(Admin admin){adminDAO.createAdmin(admin);}
+}

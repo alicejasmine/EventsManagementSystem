@@ -102,12 +102,27 @@ public class CreateUserController implements Initializable{
         if(!getUserNameTF().getText().isEmpty() && !getFirstNameTF().getText().isEmpty() && !getLastNameTF().getText().isEmpty() && !getPassTF().getText().isEmpty()){
             User user = new User(getUserNameTF().getText(), getPassTF().getText(), getFirstNameTF().getText(), getLastNameTF().getText());
             model.createUser(user);
-        }
+            errorLabel.setText("");
+        }else errorLabel.setText("One or more fields are not completed. No user has been created.");
     }
 
     public void deleteUser(ActionEvent actionEvent) {
-        if(userTableView.getSelectionModel().getSelectedItem() != null){
-            model.deleteUser(userTableView.getSelectionModel().getSelectedItem());
+        User selectedUser = userTableView.getSelectionModel().getSelectedItem();
+
+        if(selectedUser != null){
+            Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
+            alert.setTitle("Delete confirmation");
+            alert.setHeaderText("Do you really want to remove user " + selectedUser.getUserName() + "?");
+
+            Optional<ButtonType> result = alert.showAndWait();
+            if (result.get() == ButtonType.OK) { //... user chose OK
+                model.deleteUser(selectedUser);
+                model.loadUserList();
+                alert.close();
+            } else {
+                alert.close();
+            }
+
             errorLabel.setText("");
         }else errorLabel.setText("Please select an account to be deleted.");
     }
@@ -173,5 +188,26 @@ public class CreateUserController implements Initializable{
     }
 
     public void makeAdmin(ActionEvent actionEvent) {
+        User selectedUser = userTableView.getSelectionModel().getSelectedItem();
+
+        if(selectedUser != null){
+            Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
+            alert.setTitle("Allow administrator privileges.");
+            alert.setHeaderText("Do you really want to promote user " + selectedUser.getUserName() + " to admin?");
+
+            Optional<ButtonType> result = alert.showAndWait();
+            if (result.get() == ButtonType.OK) { //... user chose OK
+                Admin admin = new Admin(selectedUser.getUserID());
+
+                model.createAdmin(admin);
+                model.loadUserList();
+                alert.close();
+            } else {
+                alert.close();
+            }
+
+            errorLabel.setText("");
+        }else errorLabel.setText("Please select an account to be promoted.");
+
     }
 }

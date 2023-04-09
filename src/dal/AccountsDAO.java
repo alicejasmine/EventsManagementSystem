@@ -97,24 +97,4 @@ public class AccountsDAO {
 
     }
 
-    public List<Integer> getAllAdmins()  {
-        ArrayList<Integer> admins = new ArrayList<>();
-
-        try (Connection connection = databaseConnector.getConnection()) {
-            String sql = "SELECT * FROM event_admin";
-            Statement statement = connection.createStatement();
-
-            if(statement.execute(sql)) {
-                ResultSet resultSet = statement.getResultSet();
-
-                while (resultSet.next()) {
-                    int userID = resultSet.getInt("userid");
-                    admins.add(userID);
-                }
-            }
-        } catch (SQLException e) {
-            throw new RuntimeException(e);
-        }
-        return admins;
-    }
 }

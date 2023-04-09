@@ -251,6 +251,11 @@ public class Model {
         currentUser = bll.getUser(userName, userPass);
     }
 
+    /**
+     * Admin Methods
+     */
+    public void createAdmin(Admin admin){bll.createAdmin(admin);}
+
 
     public void search(String query, int idOfEvent) {
         eventFilteredTickets.clear();
@@ -271,6 +276,10 @@ public class Model {
         tlm.createSpecialTicket(selectedTicketType, selectedEvent);
 
     }
+
+
+
+
 
 
     public ObservableList getSpecialTicketsList() {
