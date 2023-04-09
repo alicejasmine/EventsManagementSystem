@@ -7,10 +7,11 @@ public class SpecialTicketWithTicketType {
     private String name;
     private String ticketTypeName;
 
-    public SpecialTicketWithTicketType(String specialTicketID, String name, String ticketTypeName) {
-        this.specialTicketID = specialTicketID;
+    public SpecialTicketWithTicketType( String ticketTypeName, String name,String specialTicketID) {
+
         this.name = name;
         this.ticketTypeName = ticketTypeName;
+        this.specialTicketID = specialTicketID;
     }
 
     public String getSpecialTicketID() {
