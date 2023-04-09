@@ -175,6 +175,8 @@ public class HomeViewController implements Initializable {
 
         FXMLLoader loader = new FXMLLoader(getClass().getResource("/gui/view/SpecialTicketsOverview.fxml"));
         Parent root = loader.load();
+        SpecialTicketsOverviewController controller = loader.getController();
+        controller.setUsernameLabel();
         Stage stage = (Stage) ((Node) actionEvent.getSource()).getScene().getWindow();
         Scene scene = new Scene(root);
         stage.setTitle("Special Tickets Overview");
@@ -196,6 +198,30 @@ public class HomeViewController implements Initializable {
     public void newUser(ActionEvent actionEvent) throws IOException {
         FXMLLoader loader = new FXMLLoader(getClass().getResource("/gui/view/CreateUser.fxml"));
         Parent root = loader.load();
+        Stage stage = (Stage) ((Node) actionEvent.getSource()).getScene().getWindow();
+        Scene scene = new Scene(root);
+        stage.setTitle("Special Tickets");
+        stage.setScene(scene);
+        stage.show();
+    }
+
+    public void openCreateSpecialTicket(ActionEvent actionEvent) throws IOException {
+        FXMLLoader loader=new FXMLLoader(getClass().getResource("/gui/view/CreateSpecialTicket.fxml"));
+        Parent root=loader.load();
+        CreateSpecialTicketsController controller = loader.getController();
+        controller.setUsernameLabel();
+        Stage stage = (Stage) ((Node) actionEvent.getSource()).getScene().getWindow();
+        Scene scene = new Scene(root);
+        stage.setTitle("Create Special Ticket");
+        stage.setScene(scene);
+        stage.show();
+    }
+
+    public void openSpecialTickets(ActionEvent actionEvent) throws IOException {
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/gui/view/SpecialTickets.fxml"));
+        Parent root = loader.load();
+        SpecialTicketsController controller = loader.getController();
+        controller.setUsernameLabel();
         Stage stage = (Stage) ((Node) actionEvent.getSource()).getScene().getWindow();
         Scene scene = new Scene(root);
         stage.setTitle("Special Tickets");

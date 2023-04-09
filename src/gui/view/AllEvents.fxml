@@ -29,9 +29,9 @@
       <AnchorPane minHeight="-Infinity" prefHeight="650.0" prefWidth="200.0" styleClass="anchorPane-events" stylesheets="@../../css/style.css" BorderPane.alignment="CENTER">
          <children>
             <MFXButton layoutX="-23.0" maxWidth="1.7976931348623157E308" prefHeight="662.0" prefWidth="274.0" styleClass="redMenu" stylesheets="@../../css/style.css" text=" " textFill="#c00d0d" />
-            <Button alignment="BASELINE_LEFT" layoutX="18.0" layoutY="148.0" mnemonicParsing="false" onAction="#home" prefHeight="47.0" prefWidth="218.0" styleClass="homeButton-events" text="Home" />
-            <Button alignment="BASELINE_LEFT" layoutX="18.0" layoutY="214.0" mnemonicParsing="false" prefHeight="47.0" prefWidth="218.0" styleClass="manageEventsButton-events" text="Manage Events" />
-            <Button alignment="BASELINE_LEFT" layoutX="18.0" layoutY="284.0" mnemonicParsing="false" onAction="#specialTicketsOverview" prefHeight="47.0" prefWidth="218.0" styleClass="specialTicketsButton-events" text="Special Tickets" />
+            <Button alignment="BASELINE_LEFT" layoutX="18.0" layoutY="148.0" mnemonicParsing="false" onAction="#home" prefHeight="47.0" prefWidth="218.0" styleClass="red-menuButton" text="Home" />
+            <Button alignment="BASELINE_LEFT" layoutX="18.0" layoutY="214.0" mnemonicParsing="false" prefHeight="47.0" prefWidth="218.0" styleClass="yellow-menuButton" text="Manage Events" />
+            <Button alignment="BASELINE_LEFT" layoutX="18.0" layoutY="284.0" mnemonicParsing="false" onAction="#specialTicketsOverview" prefHeight="47.0" prefWidth="218.0" styleClass="red-menuButton" text="Special Tickets" />
             <TableView fx:id="eventTV" layoutX="257.0" layoutY="180.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="376.0" prefWidth="627.0" AnchorPane.bottomAnchor="94.0" AnchorPane.leftAnchor="257.0" AnchorPane.rightAnchor="366.0" AnchorPane.topAnchor="180.0">
                <columns>
                   <TableColumn fx:id="columnEventNameTV" prefWidth="188.00006103515625" text="Event Name" />
@@ -147,6 +147,18 @@
                   <Image url="@../../../resources/images/logoEASV.png" />
                </image>
             </ImageView>
+            <Button layoutX="73.0" layoutY="335.0" mnemonicParsing="false" onAction="#openCreateSpecialTicket" text="Create Special Ticket">
+               <styleClass>
+                  <String fx:value="red-menuButton" />
+                  <String fx:value="sub-menu" />
+               </styleClass>
+            </Button>
+            <Button layoutX="73.0" layoutY="375.0" mnemonicParsing="false" onAction="#openSpecialTickets" text="Manage Special Tickets">
+               <styleClass>
+                  <String fx:value="red-menuButton" />
+                  <String fx:value="sub-menu" />
+               </styleClass>
+            </Button>
          </children>
       </AnchorPane>
    </top>

@@ -91,33 +91,32 @@ mfx-text-field {
     -fx-background-color: #C00D0D !important;
 }
 
-.homeButton-home, .manageEventsButton-events,.specialTicketsButton-special, .createSTButton-create {
+.yellow-menuButton,.specialTicketsButton-special, .createSTButton-create {
     -fx-background-color: #FBBC2D;
     -fx-text-fill: #000000;
 }
 
 
-.manageEventsButton-home, .specialTicketsButton-home, .homeButton-events, .specialTicketsButton-events,.homeButton-special, .manageEventsButton-special, .createSTButton-ST {
+.red-menuButton,.homeButton-special {
     -fx-background-color: #C00D0D;
     -fx-text-fill: #fff;
 }
 
 /*common MAIN MENU*/
-.homeButton-home, .manageEventsButton-home, .specialTicketsButton-home, .homeButton-events, .manageEventsButton-events, .specialTicketsButton-events, .homeButton-special, .manageEventsButton-special, .specialTicketsButton-special{
+.yellow-menuButton, .red-menuButton{
     -fx-font-family: 'Barlow';
     -fx-font-size: 20;
 }
 
 
-.homeButton-home:hover, .manageEventsButton-home:hover, .specialTicketsButton-home:hover, .homeButton-events:hover, .manageEventsButton-events:hover, .specialTicketsButton-events:hover,.createSTButton-ST:hover, .createSTButton-create:hover{
+.yellow-menuButton:hover,.red-menuButton:hover {
    /*-fx-underline: true;*/
     -fx-font-family: 'Barlow SemiBold';
 }
 
 
-
 /*common SUB MENU*/
-.createSTButton-create, .createSTButton-ST{
+.sub-menu{
     -fx-font-family: 'Barlow';
     -fx-font-size: 15;
 }

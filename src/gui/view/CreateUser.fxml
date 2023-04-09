@@ -17,17 +17,17 @@
 <?import javafx.scene.layout.RowConstraints?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="650.0" prefWidth="1250.0" styleClass="anchorPane-home" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gui.controller.CreateUserController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="650.0" prefWidth="1250.0" styleClass="anchorPane-home" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gui.controller.CreateUserController">
    <children>
-      <MFXButton layoutX="-23.0" maxWidth="1.7976931348623157E308" prefHeight="662.0" prefWidth="274.0" styleClass="redMenu" stylesheets="@../../css/style.css" text="Button" textFill="#c00d0d" />
+      <MFXButton layoutX="-23.0" maxWidth="1.7976931348623157E308" prefHeight="662.0" prefWidth="274.0" styleClass="redMenu" stylesheets="@../../css/style.css" text=" " textFill="#c00d0d" />
       <ImageView fx:id="logoHome" fitHeight="102.0" fitWidth="210.0" layoutX="22.0" layoutY="29.0" pickOnBounds="true" preserveRatio="true" AnchorPane.topAnchor="25.0">
          <image>
             <Image url="@../../../resources/images/logoEASV.png" />
          </image>
       </ImageView>
-      <Button alignment="BASELINE_LEFT" layoutX="18.0" layoutY="148.0" mnemonicParsing="false" onAction="#home" prefHeight="47.0" prefWidth="218.0" styleClass="manageEventsButton-home" text="Home" />
-      <Button alignment="BASELINE_LEFT" layoutX="18.0" layoutY="214.0" mnemonicParsing="false" onAction="#manageAllEvents" prefHeight="47.0" prefWidth="218.0" styleClass="manageEventsButton-home" text="Manage Events" />
-      <Button alignment="BASELINE_LEFT" layoutX="18.0" layoutY="284.0" mnemonicParsing="false" onAction="#specialTickets" prefHeight="47.0" prefWidth="218.0" styleClass="specialTicketsButton-home" text="Special Tickets" />
+      <Button alignment="BASELINE_LEFT" layoutX="18.0" layoutY="148.0" mnemonicParsing="false" onAction="#home" prefHeight="47.0" prefWidth="218.0" styleClass="red-menuButton" text="Home" />
+      <Button alignment="BASELINE_LEFT" layoutX="18.0" layoutY="214.0" mnemonicParsing="false" onAction="#manageAllEvents" prefHeight="47.0" prefWidth="218.0" styleClass="red-menuButton" text="Manage Events" />
+      <Button alignment="BASELINE_LEFT" layoutX="18.0" layoutY="284.0" mnemonicParsing="false" onAction="#specialTickets" prefHeight="47.0" prefWidth="218.0" styleClass="red-menuButton" text="Special Tickets" />
       <Label fx:id="usernameLabel" layoutX="972.0" layoutY="28.0" styleClass="username" text="Username" AnchorPane.topAnchor="25.0" />
       <Button layoutX="1073.0" layoutY="17.0" mnemonicParsing="false" onAction="#logout" styleClass="red-button" text="Log out" AnchorPane.topAnchor="17.0" />
       <ImageView fx:id="logoHome1" fitHeight="102.0" fitWidth="210.0" layoutX="-322.0" layoutY="38.0" pickOnBounds="true" preserveRatio="true">
@@ -35,7 +35,7 @@
             <Image url="@../../../resources/images/logoEASV.png" />
          </image>
       </ImageView>
-      <Button fx:id="coordinatorButton" alignment="BASELINE_LEFT" layoutX="18.0" layoutY="589.0" mnemonicParsing="false" onAction="#newUser" prefHeight="47.0" prefWidth="218.0" styleClass="specialTicketsButton-special" text="Add Coordinator" />
+      <Button fx:id="coordinatorButton" alignment="BASELINE_LEFT" layoutX="18.0" layoutY="589.0" mnemonicParsing="false" onAction="#newUser" prefHeight="47.0" prefWidth="218.0" styleClass="yellow-menuButton" text="Add Coordinator" />
       <TableView fx:id="userTableView" layoutX="664.0" layoutY="170.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="376.0" prefWidth="627.0" AnchorPane.bottomAnchor="102.0" AnchorPane.leftAnchor="588.0" AnchorPane.rightAnchor="35.0" AnchorPane.topAnchor="172.0">
         <columns>
           <TableColumn fx:id="userNameColumn" prefWidth="220.0" text="User Name" />

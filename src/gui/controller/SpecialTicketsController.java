@@ -57,16 +57,7 @@ public class SpecialTicketsController implements Initializable {
     public void setUsernameLabel() {
         usernameLabel.setText(model.getCurrentUser().getFirstName() + " " + model.getCurrentUser().getLastName());
     }
-    public void NewSpecialTicket(ActionEvent actionEvent) throws IOException {
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("/gui/view/NewSpecialTicketView.fxml"));
-        Parent root = loader.load();
-        Stage stage = new Stage();
-        Scene scene = new Scene(root);
-        stage.setTitle("New Special Ticket");
-        stage.setScene(scene);
-        stage.show();
 
-    }
 
     public void deleteSpecialTicket(ActionEvent actionEvent) {
     }
@@ -119,11 +110,26 @@ public class SpecialTicketsController implements Initializable {
 
 
     public void openCreateSpecialTicket(ActionEvent actionEvent) throws IOException {
-        Parent root=FXMLLoader.load(getClass().getResource("/gui/view/CreateSpecialTicket.fxml"));
+        FXMLLoader loader=new FXMLLoader(getClass().getResource("/gui/view/CreateSpecialTicket.fxml"));
+        Parent root=loader.load();
+        CreateSpecialTicketsController controller = loader.getController();
+        controller.setUsernameLabel();
         Stage stage = (Stage) ((Node) actionEvent.getSource()).getScene().getWindow();
         Scene scene = new Scene(root);
         stage.setTitle("Create Special Ticket");
         stage.setScene(scene);
         stage.show();
     }
+    public void openSpecialTicketsOverview(ActionEvent actionEvent) throws IOException {
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/gui/view/SpecialTicketsOverview.fxml"));
+        Parent root = loader.load();
+        SpecialTicketsOverviewController controller = loader.getController();
+        controller.setUsernameLabel();
+        Stage stage = (Stage) ((Node) actionEvent.getSource()).getScene().getWindow();
+        Scene scene = new Scene(root);
+        stage.setTitle("Special Tickets Overview");
+        stage.setScene(scene);
+        stage.show();
+    }
+
 }

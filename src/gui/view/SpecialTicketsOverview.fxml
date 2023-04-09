@@ -31,9 +31,9 @@
                   <Image url="@../../../resources/images/logoEASV.png" />
                </image>
             </ImageView>
-            <Button alignment="BASELINE_LEFT" layoutX="18.0" layoutY="152.0" mnemonicParsing="false" onAction="#home" prefHeight="47.0" prefWidth="218.0" styleClass="homeButton-special" text="Home" />
-            <Button alignment="BASELINE_LEFT" layoutX="18.0" layoutY="214.0" mnemonicParsing="false" onAction="#manageAllEvents" prefHeight="47.0" prefWidth="218.0" styleClass="manageEventsButton-special" text="Manage Events" />
-            <Button alignment="BASELINE_LEFT" layoutX="18.0" layoutY="284.0" mnemonicParsing="false" prefHeight="47.0" prefWidth="218.0" styleClass="specialTicketsButton-special" text="Special Tickets" />
+            <Button alignment="BASELINE_LEFT" layoutX="18.0" layoutY="152.0" mnemonicParsing="false" onAction="#home" prefHeight="47.0" prefWidth="218.0" styleClass="red-menuButton" text="Home" />
+            <Button alignment="BASELINE_LEFT" layoutX="18.0" layoutY="214.0" mnemonicParsing="false" onAction="#manageAllEvents" prefHeight="47.0" prefWidth="218.0" styleClass="red-menuButton" text="Manage Events" />
+            <Button alignment="BASELINE_LEFT" layoutX="18.0" layoutY="284.0" mnemonicParsing="false" prefHeight="47.0" prefWidth="218.0" styleClass="yellow-menuButton" text="Special Tickets" />
             <TableView fx:id="specialOTV" layoutX="314.0" layoutY="176.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="376.0" prefWidth="843.0" AnchorPane.bottomAnchor="98.0" AnchorPane.leftAnchor="314.0" AnchorPane.rightAnchor="93.0" AnchorPane.topAnchor="176.0">
                <columns>
                   <TableColumn fx:id="ColumnTicketTypeOTV" prefWidth="188.00006103515625" text="Ticket Type" />
@@ -55,8 +55,17 @@
             <Label fx:id="usernameLabel" layoutX="972.0" layoutY="28.0" styleClass="username" text="Username" />
             <Button layoutX="1073.0" layoutY="17.0" mnemonicParsing="false" onAction="#logout" styleClass="red-button" text="Log out" />
             <TextField layoutX="998.0" layoutY="139.0" promptText="Search" />
-            <Button layoutX="346.0" layoutY="586.0" mnemonicParsing="false" onAction="#openSpecialTickets" styleClass="light-blue-button" text="Manage" />
-            <Button layoutX="75.0" layoutY="348.0" mnemonicParsing="false" onAction="#openCreateSpecialTicket" styleClass="createSTButton-ST" text="Create Special Ticket" />
+            <Button layoutX="73.0" layoutY="335.0" mnemonicParsing="false" onAction="#openCreateSpecialTicket" text="Create Special Ticket">
+               <styleClass>
+                  <String fx:value="red-menuButton" />
+                  <String fx:value="sub-menu" />
+               </styleClass></Button>
+            <Button layoutX="73.0" layoutY="375.0" mnemonicParsing="false" onAction="#openSpecialTickets" text="Manage Special Tickets">
+               <styleClass>
+                  <String fx:value="red-menuButton" />
+                  <String fx:value="sub-menu" />
+               </styleClass>
+            </Button>
          </children>
       </AnchorPane>
    </top>

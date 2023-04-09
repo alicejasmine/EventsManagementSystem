@@ -13,8 +13,12 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 import javafx.stage.Stage;
 
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
@@ -22,7 +26,8 @@ import java.util.ResourceBundle;
 public class CreateSpecialTicketsController implements Initializable {
 
 
-
+    @FXML
+    private ImageView logo;
     private Model model = Model.getModel();
 
     @FXML
@@ -41,6 +46,14 @@ public class CreateSpecialTicketsController implements Initializable {
         model.loadEventList();
         ticketTypeComboBox.setItems(model.getTicketType());
         eventComboBox.setItems(model.getObsEvents());
+
+        try {
+            Image logoImage = new Image(new FileInputStream("resources/images/logoEASV.png"));
+            logo.setImage(logoImage);
+
+        } catch (FileNotFoundException e) {
+            throw new RuntimeException(e);
+        }
     }
 
     public void home(ActionEvent actionEvent) throws IOException {
@@ -80,6 +93,8 @@ public class CreateSpecialTicketsController implements Initializable {
     public void openSpecialTicketsOverview(ActionEvent actionEvent) throws IOException {
         FXMLLoader loader = new FXMLLoader(getClass().getResource("/gui/view/SpecialTicketsOverview.fxml"));
         Parent root = loader.load();
+        SpecialTicketsOverviewController controller = loader.getController();
+        controller.setUsernameLabel();
         Stage stage = (Stage) ((Node) actionEvent.getSource()).getScene().getWindow();
         Scene scene = new Scene(root);
         stage.setTitle("Special Tickets Overview");
@@ -110,8 +125,22 @@ public class CreateSpecialTicketsController implements Initializable {
     }
 
 
-
+    public void openSpecialTickets(ActionEvent actionEvent) throws IOException {
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/gui/view/SpecialTickets.fxml"));
+        Parent root = loader.load();
+        SpecialTicketsController controller = loader.getController();
+        controller.setUsernameLabel();
+        Stage stage = (Stage) ((Node) actionEvent.getSource()).getScene().getWindow();
+        Scene scene = new Scene(root);
+        stage.setTitle("Special Tickets");
+        stage.setScene(scene);
+        stage.show();
     }
+
+    public void setUsernameLabel() {
+        usernameLabel.setText(model.getCurrentUser().getFirstName() + " " + model.getCurrentUser().getLastName());
+    }
+}
 
 
 
