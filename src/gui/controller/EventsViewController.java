@@ -9,6 +9,7 @@ import javafx.scene.control.*;
 import javafx.scene.control.cell.*;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
+import javafx.scene.input.*;
 import javafx.stage.*;
 
 import java.io.*;
@@ -249,5 +250,19 @@ public class EventsViewController implements Initializable {
         stage.setTitle("Special Tickets");
         stage.setScene(scene);
         stage.show();
+    }
+
+    public void openTicketWindow(MouseEvent mouseEvent) throws IOException {
+        if(mouseEvent.getClickCount() == 2) {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/gui/view/TicketView.fxml"));
+            Parent root = loader.load();
+            TicketViewController controller = loader.getController();
+            controller.ticketViewLaunch();
+            Stage stage = (Stage) ((Node) mouseEvent.getSource()).getScene().getWindow();
+            Scene scene = new Scene(root);
+            stage.setTitle("Event and Ticket Information");
+            stage.setScene(scene);
+            stage.show();
+        }
     }
 }

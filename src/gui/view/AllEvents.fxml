@@ -33,7 +33,7 @@
             <Button fx:id="coordinatorButton" alignment="BASELINE_LEFT" layoutX="18.0" layoutY="589.0" mnemonicParsing="false" onAction="#manageCoordinators" prefHeight="47.0" prefWidth="218.0" styleClass="red-menuButton" text="Manage Coordinators" visible="false" />
             <Button alignment="BASELINE_LEFT" layoutX="18.0" layoutY="214.0" mnemonicParsing="false" prefHeight="47.0" prefWidth="218.0" styleClass="yellow-menuButton" text="Manage Events" />
             <Button alignment="BASELINE_LEFT" layoutX="18.0" layoutY="284.0" mnemonicParsing="false" onAction="#specialTicketsOverview" prefHeight="47.0" prefWidth="218.0" styleClass="red-menuButton" text="Special Tickets" />
-            <TableView fx:id="eventTV" layoutX="257.0" layoutY="180.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="376.0" prefWidth="627.0" AnchorPane.bottomAnchor="94.0" AnchorPane.leftAnchor="257.0" AnchorPane.rightAnchor="366.0" AnchorPane.topAnchor="180.0">
+            <TableView fx:id="eventTV" layoutX="257.0" layoutY="180.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" onMouseClicked="#openTicketWindow" prefHeight="376.0" prefWidth="627.0" AnchorPane.bottomAnchor="94.0" AnchorPane.leftAnchor="257.0" AnchorPane.rightAnchor="366.0" AnchorPane.topAnchor="180.0">
                <columns>
                   <TableColumn fx:id="columnEventNameTV" prefWidth="188.00006103515625" text="Event Name" />
                   <TableColumn fx:id="columnEventLocalTV" minWidth="0.0" prefWidth="176.00003051757812" text="Location" />
