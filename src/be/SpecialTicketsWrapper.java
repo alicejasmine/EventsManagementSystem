@@ -24,5 +24,8 @@ public class SpecialTicketsWrapper {
     public SpecialTicket getSpecialTicket() {
         return specialTicket;
     }
+
+
+
 }
 

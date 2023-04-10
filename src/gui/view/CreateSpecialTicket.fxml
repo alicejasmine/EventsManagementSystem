@@ -68,6 +68,7 @@
             </Button>
             <Label layoutX="344.0" layoutY="175.0" prefHeight="26.0" prefWidth="271.0" styleClass="small-windows-text" text="Select or create ticket type" />
             <Label layoutX="344.0" layoutY="236.0" prefHeight="26.0" prefWidth="271.0" styleClass="small-windows-text" text="Select event" />
+            <Label fx:id="addTypeErrorLabel" layoutX="918.0" layoutY="221.0" prefHeight="18.0" prefWidth="250.0" />
          </children>
       </AnchorPane>
    </top>

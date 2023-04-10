@@ -221,26 +221,31 @@ public class TicketLogicManager {
 
     public List<SpecialTicket> createSpecialTicket(TicketType selectedTicketType, Event selectedEvent, int maxQuantity) {
 
-            return specialTicketDAO.createSpecialTicket(selectedTicketType,selectedEvent,maxQuantity);
+        return specialTicketDAO.createSpecialTicket(selectedTicketType, selectedEvent, maxQuantity);
 
-        }
+    }
 
 
     public List<TicketType> getTicketTypes() {
         return ticketTypeDAO.getAllTicketTypes();
     }
 
-    public ObservableList getSpecialTicketsWithTicketType() {
+    public ObservableList getSpecialTicketsInfo() {
         return specialTicketDAO.getSpecialTicketsInfo();
 
     }
 
-    public ObservableList getSpecialTicketInfo() {
+    public ObservableList getSpecialTicketOverview() {
         try {
             return specialTicketDAO.getSpecialTicketOverview();
         } catch (SQLException e) {
             throw new RuntimeException(e);
         }
+    }
+
+
+    public void deleteSpecialTicket(SpecialTicket ticket) {
+        specialTicketDAO.deleteSpecialTicket(ticket);
     }
 
 

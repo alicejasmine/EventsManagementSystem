@@ -39,7 +39,7 @@
             <Button alignment="BASELINE_LEFT" layoutX="18.0" layoutY="152.0" mnemonicParsing="false" onAction="#home" prefHeight="47.0" prefWidth="218.0" styleClass="red-menuButton" text="Home" />
             <Button alignment="BASELINE_LEFT" layoutX="18.0" layoutY="214.0" mnemonicParsing="false" onAction="#manageAllEvents" prefHeight="47.0" prefWidth="218.0" styleClass="red-menuButton" text="Manage Events" />
             <Button alignment="BASELINE_LEFT" layoutX="18.0" layoutY="284.0" mnemonicParsing="false" onAction="#openSpecialTicketsOverview" prefHeight="47.0" prefWidth="218.0" styleClass="red-menuButton" text="Special Tickets" />
-            <TableView fx:id="specialTIcketsTV" layoutX="588.0" layoutY="172.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="376.0" prefWidth="627.0" AnchorPane.bottomAnchor="102.0" AnchorPane.leftAnchor="588.0" AnchorPane.rightAnchor="35.0" AnchorPane.topAnchor="172.0">
+            <TableView fx:id="specialTicketsTV" layoutX="588.0" layoutY="172.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="376.0" prefWidth="627.0" AnchorPane.bottomAnchor="102.0" AnchorPane.leftAnchor="588.0" AnchorPane.rightAnchor="35.0" AnchorPane.topAnchor="172.0">
                <columns>
                   <TableColumn fx:id="ColumnTicketTypeTV" prefWidth="175.99993896484375" text="Ticket Type" />
                   <TableColumn fx:id="ColumnEventNameTV" minWidth="0.0" prefWidth="149.60003662109375" text="Event Name" />
@@ -85,7 +85,7 @@
                         <Insets left="20.0" top="20.0" />
                      </padding>
                   </Label>
-                  <Label styleClass="normal-text" text="TEXT" GridPane.columnIndex="1">
+                  <Label fx:id="locationLabel" prefHeight="36.0" prefWidth="83.0" styleClass="normal-text" GridPane.columnIndex="1">
                      <padding>
                         <Insets left="5.0" top="10.0" />
                      </padding>
@@ -117,17 +117,17 @@
                         <Insets left="20.0" />
                      </padding>
                   </Label>
-                  <Label styleClass="normal-text" text="TEXT" GridPane.columnIndex="1" GridPane.rowIndex="1">
+                  <Label fx:id="dateLabel" prefHeight="26.0" prefWidth="83.0" styleClass="normal-text" GridPane.columnIndex="1" GridPane.rowIndex="1">
                      <padding>
                         <Insets left="5.0" />
                      </padding>
                   </Label>
-                  <Label alignment="TOP_LEFT" minWidth="-Infinity" prefHeight="92.0" prefWidth="83.0" styleClass="normal-text" text="TEXT" wrapText="true" GridPane.columnIndex="1" GridPane.rowIndex="2">
+                  <Label fx:id="startTimeLabel" alignment="TOP_LEFT" minWidth="-Infinity" prefHeight="92.0" prefWidth="83.0" styleClass="normal-text" wrapText="true" GridPane.columnIndex="1" GridPane.rowIndex="2">
                      <padding>
                         <Insets left="5.0" top="25.0" />
                      </padding>
                   </Label>
-                  <Label alignment="TOP_LEFT" prefHeight="92.0" prefWidth="99.0" styleClass="normal-text" text="TEXT" wrapText="true" GridPane.columnIndex="1" GridPane.rowIndex="3">
+                  <Label fx:id="endTimeLabel" alignment="TOP_LEFT" prefHeight="92.0" prefWidth="99.0" styleClass="normal-text" wrapText="true" GridPane.columnIndex="1" GridPane.rowIndex="3">
                      <padding>
                         <Insets left="5.0" top="25.0" />
                      </padding>
@@ -142,6 +142,8 @@
                         <Insets left="20.0" />
                      </padding>
                   </Label>
+                  <Label fx:id="notesLabel" prefHeight="26.0" prefWidth="96.0" GridPane.columnIndex="1" GridPane.rowIndex="4" />
+                  <Label fx:id="locationGuidanceLabel" prefHeight="26.0" prefWidth="84.0" GridPane.columnIndex="1" GridPane.rowIndex="5" />
                </children>
             </GridPane>
             <Button layoutX="275.0" layoutY="566.0" mnemonicParsing="false" onAction="#openTicketPreview" prefWidth="81.0" styleClass="white-button" text="Ticket Preview" />

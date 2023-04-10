@@ -24,9 +24,7 @@ public class Event {
         this.locationGuidance = locationGuidance;
     }
 
-    public Event() {
 
-    }
 
     public Event(String name, String location, Date date, Time time, String notes, Time endTime, String locationGuidance) {
         this.name = name;

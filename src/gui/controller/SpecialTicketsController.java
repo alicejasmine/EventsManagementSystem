@@ -1,5 +1,7 @@
 package gui.controller;
 
+import be.Event;
+import be.SpecialTicketsWrapper;
 import gui.model.*;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -23,10 +25,12 @@ import java.util.ResourceBundle;
 public class SpecialTicketsController implements Initializable {
 
 
-    @FXML private Label usernameLabel;
-    @FXML private Button coordinatorButton;
     @FXML
-    private TableView specialTIcketsTV;
+    private Label usernameLabel, locationLabel, endTimeLabel, startTimeLabel, dateLabel, notesLabel, locationGuidanceLabel, errorInfoLabel;
+    @FXML
+    private Button coordinatorButton;
+    @FXML
+    private TableView specialTicketsTV;
 
     @FXML
     private TableColumn ColumnTicketTypeTV, ColumnEventNameTV, ColumnTicketIDTV;
@@ -37,13 +41,14 @@ public class SpecialTicketsController implements Initializable {
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-        specialTIcketsTV.setItems(model.getSpecialTicketsInfo());
+        specialTicketsTV.setItems(model.getObsSpecialTickets());
+        model.loadSpecialTicketList();
 
 
         ColumnTicketTypeTV.setCellValueFactory(new PropertyValueFactory<>("ticketType"));
         ColumnEventNameTV.setCellValueFactory(new PropertyValueFactory<>("event"));
         ColumnTicketIDTV.setCellValueFactory(new PropertyValueFactory<>("specialTicket"));
-
+        setLabels();
 
         try {
             Image logoImage = new Image(new FileInputStream("resources/images/logoEASV.png"));
@@ -54,20 +59,41 @@ public class SpecialTicketsController implements Initializable {
         }
     }
 
+    private void setLabels() {
+        /*
+        SpecialTicketsWrapper selectedRow = (SpecialTicketsWrapper) specialTicketsTV.getSelectionModel().getSelectedItem();
+        System.out.println(selectedRow);
+        if (selectedRow != null) {
+            Event selectedEvent = selectedRow.getEvent();
+            //System.out.println(selectedEvent);
+        dateLabel.setText(selectedEvent.getDate().toString());
+        locationLabel.setText(selectedEvent.getLocation());
+        locationGuidanceLabel.setText(selectedEvent.getLocationGuidance());
+        notesLabel.setText(selectedEvent.getNotes());
+        startTimeLabel.setText(selectedEvent.getTime().toString());
+        endTimeLabel.setText(selectedEvent.getName());
+       
+         */
+    }
+
     public void setUsernameLabel() {
         usernameLabel.setText(model.getCurrentUser().getFirstName() + " " + model.getCurrentUser().getLastName());
-        if(model.getCurrentUser().isAdmin()){
+        if (model.getCurrentUser().isAdmin()) {
             coordinatorButton.setVisible(true);
         }
     }
 
 
-    @FXML private void deleteSpecialTicket(ActionEvent actionEvent) {
-
+    @FXML
+    private void deleteSpecialTicket(ActionEvent actionEvent) {
+        SpecialTicketsWrapper selectedTicket = (SpecialTicketsWrapper) specialTicketsTV.getSelectionModel().getSelectedItem();
+        System.out.println(selectedTicket);
+        model.deleteSpecialTicket(selectedTicket.getSpecialTicket());
     }
 
 
-    @FXML private void openTicketPreview(ActionEvent actionEvent) throws IOException {
+    @FXML
+    private void openTicketPreview(ActionEvent actionEvent) throws IOException {
 
         FXMLLoader loader = new FXMLLoader(getClass().getResource("/gui/view/TicketPreview.fxml"));
         Parent root = loader.load();
@@ -79,7 +105,8 @@ public class SpecialTicketsController implements Initializable {
 
     }
 
-    @FXML private void home(ActionEvent actionEvent) throws IOException {
+    @FXML
+    private void home(ActionEvent actionEvent) throws IOException {
         FXMLLoader loader = new FXMLLoader(getClass().getResource("/gui/view/HomeView.fxml"));
         Parent root = loader.load();
         HomeViewController controller = loader.getController();
@@ -91,7 +118,8 @@ public class SpecialTicketsController implements Initializable {
         stage.show();
     }
 
-    @FXML private void manageAllEvents(ActionEvent actionEvent) throws IOException {
+    @FXML
+    private void manageAllEvents(ActionEvent actionEvent) throws IOException {
         FXMLLoader loader = new FXMLLoader(getClass().getResource("/gui/view/AllEvents.fxml"));
         Parent root = loader.load();
         EventsViewController controller = loader.getController();
@@ -103,8 +131,9 @@ public class SpecialTicketsController implements Initializable {
         stage.show();
     }
 
-    @FXML private void logout(ActionEvent actionEvent) throws IOException {
-        Parent root=FXMLLoader.load(getClass().getResource("/gui/view/Login.fxml"));
+    @FXML
+    private void logout(ActionEvent actionEvent) throws IOException {
+        Parent root = FXMLLoader.load(getClass().getResource("/gui/view/Login.fxml"));
         Stage stage = (Stage) ((Node) actionEvent.getSource()).getScene().getWindow();
         Scene scene = new Scene(root);
         stage.setTitle("Login");
@@ -113,9 +142,10 @@ public class SpecialTicketsController implements Initializable {
     }
 
 
-    @FXML private void openCreateSpecialTicket(ActionEvent actionEvent) throws IOException {
-        FXMLLoader loader=new FXMLLoader(getClass().getResource("/gui/view/CreateSpecialTicket.fxml"));
-        Parent root=loader.load();
+    @FXML
+    private void openCreateSpecialTicket(ActionEvent actionEvent) throws IOException {
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/gui/view/CreateSpecialTicket.fxml"));
+        Parent root = loader.load();
         CreateSpecialTicketsController controller = loader.getController();
         controller.setUsernameLabel();
         Stage stage = (Stage) ((Node) actionEvent.getSource()).getScene().getWindow();
@@ -124,7 +154,9 @@ public class SpecialTicketsController implements Initializable {
         stage.setScene(scene);
         stage.show();
     }
-    @FXML private void openSpecialTicketsOverview(ActionEvent actionEvent) throws IOException {
+
+    @FXML
+    private void openSpecialTicketsOverview(ActionEvent actionEvent) throws IOException {
         FXMLLoader loader = new FXMLLoader(getClass().getResource("/gui/view/SpecialTicketsOverview.fxml"));
         Parent root = loader.load();
         SpecialTicketsOverviewController controller = loader.getController();
@@ -136,7 +168,8 @@ public class SpecialTicketsController implements Initializable {
         stage.show();
     }
 
-    @FXML private void manageCoordinators(ActionEvent actionEvent) throws IOException {
+    @FXML
+    private void manageCoordinators(ActionEvent actionEvent) throws IOException {
         FXMLLoader loader = new FXMLLoader(getClass().getResource("/gui/view/CreateUser.fxml"));
         Parent root = loader.load();
         CreateUserController controller = loader.getController();

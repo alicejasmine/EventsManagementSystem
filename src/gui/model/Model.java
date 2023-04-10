@@ -10,7 +10,7 @@ import java.util.*;
 public class Model {
 
     private ObservableList<Event> events = FXCollections.observableArrayList();
-    private final ObservableList<SpecialTicket> specialTickets = FXCollections.observableArrayList();
+    private final ObservableList<SpecialTicketsWrapper> specialTickets = FXCollections.observableArrayList();
 
     private final ObservableList<TicketType> ticketType = FXCollections.observableArrayList();
 
@@ -150,6 +150,11 @@ public class Model {
         recentlyAddedEvents();
     }
 
+    public void loadSpecialTicketList(){
+        specialTickets.clear();
+        specialTickets.addAll(tlm.getSpecialTicketsInfo());
+    }
+
     /**
      * Event methods.
      */
@@ -282,7 +287,7 @@ public class Model {
 
 
 
-    public ObservableList getSpecialTicketsList() {
+    public ObservableList getObsSpecialTickets() {
         return specialTickets;
     }
 
@@ -293,15 +298,21 @@ public class Model {
     
     public void deleteTicket (Ticket ticket) {
         tlm.deleteTicket(ticket);
+        tlm.deleteTicket(ticket);
 
+    }
+
+    public void deleteSpecialTicket (SpecialTicket ticket) {
+        tlm.deleteSpecialTicket(ticket);
+        loadSpecialTicketList();
     }
 
     public ObservableList getSpecialTicketsInfo() {
-        return tlm.getSpecialTicketsWithTicketType();
+        return tlm.getSpecialTicketsInfo();
     }
 
     public ObservableList getSpecialTicketOverviewInfo() {
-        return tlm.getSpecialTicketInfo();
+        return tlm.getSpecialTicketOverview();
     }
 
 }

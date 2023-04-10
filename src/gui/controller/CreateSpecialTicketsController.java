@@ -24,7 +24,6 @@ import java.util.ResourceBundle;
 
 public class CreateSpecialTicketsController implements Initializable {
 
-
     @FXML
     private Button coordinatorButton;
     @FXML
@@ -34,7 +33,7 @@ public class CreateSpecialTicketsController implements Initializable {
     @FXML
     private MFXComboBox ticketTypeComboBox, eventComboBox;
     @FXML
-    private Label usernameLabel,errorInfoLabel;
+    private Label usernameLabel, errorInfoLabel, addTypeErrorLabel;
 
     private Model model = Model.getModel();
 
@@ -108,7 +107,11 @@ public class CreateSpecialTicketsController implements Initializable {
     @FXML
     private void addTicketType(ActionEvent actionEvent) {
         String list = ticketTypeComboBox.getItems().toString();
-        if (!(list.contains(ticketTypeTextfield.getText())) && !ticketTypeTextfield.getText().isEmpty()) {
+        if (ticketTypeTextfield.getText().isEmpty()) {
+            addTypeErrorLabel.setText("please write a Ticket Type to add");
+        } else if (list.contains(ticketTypeTextfield.getText())) {
+            addTypeErrorLabel.setText("Ticket Type already exists");
+        } else {
             model.addTicketType(ticketTypeTextfield.getText());
         }
         ticketTypeTextfield.clear();
@@ -121,10 +124,12 @@ public class CreateSpecialTicketsController implements Initializable {
         TicketType selectedTicketType = (TicketType) ticketTypeComboBox.getSelectionModel().getSelectedItem();
         Event selectedEvent = (Event) eventComboBox.getSelectionModel().getSelectedItem();
 
-        if (selectedTicketType != null && selectedEvent != null) {
+        if (selectedTicketType != null && selectedEvent != null && !maxQuantityTextfield.getText().isEmpty()) {
             int maxQuantity = Integer.parseInt(maxQuantityTextfield.getText());
             model.createSpecialTicket(selectedTicketType, selectedEvent, maxQuantity);
-            errorInfoLabel.setText(maxQuantityTextfield.getText()+ " ticket(s) of type "+ selectedTicketType+" for the event " + selectedEvent + "created");
+            errorInfoLabel.setText(maxQuantityTextfield.getText() + " ticket(s) of type " + selectedTicketType + " for the event " + selectedEvent + " created");
+        } else {
+            errorInfoLabel.setText("Please provide ticket type, event and ticket quantity.");
         }
         maxQuantityTextfield.clear();
         ticketTypeComboBox.clear();

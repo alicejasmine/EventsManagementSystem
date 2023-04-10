@@ -40,6 +40,36 @@ public class SpecialTicketDAO {
         }
         return specialTickets;
     }
+
+
+
+    public List<SpecialTicket> getAllSpecialTickets()  {
+        ArrayList<SpecialTicket> specialTickets = new ArrayList<>();
+
+        try (Connection connection = databaseConnector.getConnection()) {
+            String sql = "SELECT * FROM SpecialTickets";
+            Statement statement = connection.createStatement();
+
+            if(statement.execute(sql)) {
+                ResultSet resultSet = statement.getResultSet();
+
+                while (resultSet.next()) {
+                    String id = resultSet.getString("SpecialTicketID");
+                    int eventID = resultSet.getInt("EventID");
+                    int ticketType = resultSet.getInt("TicketTypeID");
+
+                    SpecialTicket ticket = new SpecialTicket(id, eventID, ticketType);
+                    specialTickets.add(ticket);
+                }
+            }
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+        return specialTickets;
+    }
+
+
+
     /**
      * this method is used to get the data into the tableview in special tickets overview*/
 
@@ -108,6 +138,17 @@ public class SpecialTicketDAO {
         return specialTickets;
     }
 
+    public void deleteSpecialTicket(SpecialTicket ticket) {
+        String sql = "DELETE FROM SpecialTicket WHERE SpecialTicketID= ? ";
 
+        try (Connection conn = databaseConnector.getConnection();
+             PreparedStatement pstmt = conn.prepareStatement(sql)) {
+
+            pstmt.setString(1, ticket.getSpecialTicketID());
+            pstmt.executeUpdate();
+        } catch (SQLException e) {
+            System.out.println(e.getMessage());
+        }
+    }
 
 }
