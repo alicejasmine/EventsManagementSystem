@@ -14,7 +14,7 @@
 <?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.layout.HBox?>
 
-<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="650.0" prefWidth="1250.0" style="-fx-background-color: C9C5C5;" stylesheets="@../../css/style.css" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gui.controller.CreateSpecialTicketsController">
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="650.0" prefWidth="1250.0" style="-fx-background-color: C9C5C5;" stylesheets="@../../css/style.css" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gui.controller.CreateSpecialTicketsController">
    <right>
       <AnchorPane prefHeight="402.0" prefWidth="284.0" style="-fx-background-color: D9D9D9; -fx-background-radius: 7%;" BorderPane.alignment="CENTER">
          <BorderPane.margin>
@@ -35,7 +35,7 @@
             <Button alignment="BASELINE_LEFT" layoutX="18.0" layoutY="152.0" mnemonicParsing="false" onAction="#home" prefHeight="47.0" prefWidth="218.0" styleClass="red-menuButton" text="Home" />
             <Button alignment="BASELINE_LEFT" layoutX="18.0" layoutY="214.0" mnemonicParsing="false" onAction="#manageAllEvents" prefHeight="47.0" prefWidth="218.0" styleClass="red-menuButton" text="Manage Events" />
             <Button alignment="BASELINE_LEFT" layoutX="18.0" layoutY="284.0" mnemonicParsing="false" onAction="#openSpecialTicketsOverview" prefHeight="47.0" prefWidth="218.0" styleClass="red-menuButton" text="Special Tickets" />
-              <HBox alignment="CENTER_LEFT" layoutX="400.0" layoutY="284.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="61.0" prefWidth="356.0">
+              <HBox alignment="CENTER_LEFT" layoutX="340.0" layoutY="375.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="62.0" prefWidth="490.0">
                   <children>
                   <Button mnemonicParsing="false" onAction="#NewSpecialTicket" prefWidth="70.0" styleClass="light-blue-button" text="Create">
                      <HBox.margin>
@@ -54,12 +54,11 @@
                   <String fx:value="yellow-menuButton" />
                   <String fx:value="sub-menu" />
                </styleClass></Button>
-            <MFXComboBox fx:id="ticketTypeComboBox" floatingText="Ticket Type" layoutX="400.0" layoutY="156.0" />
-            <MFXComboBox fx:id="eventComboBox" floatingText="Event" layoutX="400.0" layoutY="218.0" />
-            <TextField fx:id="ticketTypeTextfield" layoutX="913.0" layoutY="163.0" />
-            <TextField fx:id="maxQuantityTextfield" layoutX="913.0" layoutY="222.0" />
-            <Label layoutX="817.0" layoutY="167.0" text="Ticket Type" />
-            <Label layoutX="817.0" layoutY="229.0" text="Max quantity" />
+            <MFXComboBox fx:id="ticketTypeComboBox" floatingText="Ticket Type" layoutX="631.0" layoutY="167.0" />
+            <MFXComboBox fx:id="eventComboBox" floatingText="Event" layoutX="631.0" layoutY="229.0" />
+            <TextField fx:id="ticketTypeTextfield" layoutX="913.0" layoutY="163.0" promptText="Add Ticket Type" />
+            <TextField fx:id="maxQuantityTextfield" layoutX="626.0" layoutY="295.0" prefHeight="26.0" prefWidth="122.0" />
+            <Label layoutX="344.0" layoutY="295.0" prefHeight="26.0" prefWidth="271.0" styleClass="small-windows-text" text="Select quantity of tickets to create" />
             <Button layoutX="1090.0" layoutY="159.0" mnemonicParsing="false" onAction="#addTicketType" styleClass="white-button" text="Add Type" />
             <Button layoutX="73.0" layoutY="375.0" mnemonicParsing="false" onAction="#openSpecialTickets" text="Manage Special Tickets">
                <styleClass>
@@ -67,6 +66,8 @@
                   <String fx:value="sub-menu" />
                </styleClass>
             </Button>
+            <Label layoutX="344.0" layoutY="175.0" prefHeight="26.0" prefWidth="271.0" styleClass="small-windows-text" text="Select or create ticket type" />
+            <Label layoutX="344.0" layoutY="236.0" prefHeight="26.0" prefWidth="271.0" styleClass="small-windows-text" text="Select event" />
          </children>
       </AnchorPane>
    </top>

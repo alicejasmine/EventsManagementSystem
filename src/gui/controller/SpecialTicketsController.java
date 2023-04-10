@@ -1,7 +1,6 @@
 package gui.controller;
 
 import gui.model.*;
-import javafx.beans.property.SimpleStringProperty;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -38,12 +37,12 @@ public class SpecialTicketsController implements Initializable {
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-        specialTIcketsTV.setItems(model.getSpecialTicketsWithTicketType());
+        specialTIcketsTV.setItems(model.getSpecialTicketsInfo());
 
 
-        ColumnTicketTypeTV.setCellValueFactory(new PropertyValueFactory<>("ticketTypeName"));
-        ColumnEventNameTV.setCellValueFactory(new PropertyValueFactory<>("name"));
-        ColumnTicketIDTV.setCellValueFactory(new PropertyValueFactory<>("specialTicketID"));
+        ColumnTicketTypeTV.setCellValueFactory(new PropertyValueFactory<>("ticketType"));
+        ColumnEventNameTV.setCellValueFactory(new PropertyValueFactory<>("event"));
+        ColumnTicketIDTV.setCellValueFactory(new PropertyValueFactory<>("specialTicket"));
 
 
         try {
@@ -64,6 +63,7 @@ public class SpecialTicketsController implements Initializable {
 
 
     @FXML private void deleteSpecialTicket(ActionEvent actionEvent) {
+
     }
 
 

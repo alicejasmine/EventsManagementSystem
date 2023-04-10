@@ -19,7 +19,6 @@ import com.google.zxing.MultiFormatWriter;
 import com.google.zxing.WriterException;
 import com.google.zxing.client.j2se.MatrixToImageWriter;
 import com.google.zxing.common.BitMatrix;
-import com.microsoft.sqlserver.jdbc.SQLServerException;
 import dal.*;
 import javafx.collections.ObservableList;
 import org.apache.pdfbox.Loader;
@@ -71,7 +70,7 @@ public class TicketLogicManager {
         ticketDAO.createTicket(ticket);
     }
 
-    public void deleteTicket (Ticket ticket) {
+    public void deleteTicket(Ticket ticket) {
         ticketDAO.deleteTicket(ticket);
     }
 
@@ -215,32 +214,34 @@ public class TicketLogicManager {
     }
 
 
-    public void addTicketType(String ticketTypeName, int maxQuantity) {
-        TicketType ticketType=new TicketType(ticketTypeName,maxQuantity);
-         ticketTypeDAO.createTicketType(ticketType);
+    public void addTicketType(String ticketTypeName) {
+        TicketType ticketType = new TicketType(ticketTypeName);
+        ticketTypeDAO.createTicketType(ticketType);
     }
 
-    public void createSpecialTicket(TicketType selectedTicketType, Event selectedEvent) {
-        String str = generateType1UUID().toString();
-        SpecialTicket specialTicket=new SpecialTicket(str,selectedTicketType.getTicketTypeID(),selectedEvent.getId());
-        specialTicketDAO.createSpecialTicket(specialTicket);
+    public List<SpecialTicket> createSpecialTicket(TicketType selectedTicketType, Event selectedEvent, int maxQuantity) {
 
-    }
+            return specialTicketDAO.createSpecialTicket(selectedTicketType,selectedEvent,maxQuantity);
+
+        }
+
 
     public List<TicketType> getTicketTypes() {
         return ticketTypeDAO.getAllTicketTypes();
     }
 
-    public ObservableList getSpecialTicketsWithTicketType()  {
-        return ticketTypeDAO.getSpecialTicketsWithTicketType();
+    public ObservableList getSpecialTicketsWithTicketType() {
+        return specialTicketDAO.getSpecialTicketsInfo();
 
     }
 
     public ObservableList getSpecialTicketInfo() {
         try {
-            return specialTicketDAO.getSpecialTicketInfo();
+            return specialTicketDAO.getSpecialTicketOverview();
         } catch (SQLException e) {
             throw new RuntimeException(e);
         }
     }
+
+
 }

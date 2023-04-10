@@ -1,14 +1,15 @@
 package dal;
 
 
-import be.SpecialTicket;
-import be.SpecialTicketInfo;
+import be.*;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 
 import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
+
+import static bll.TicketLogicManager.generateType1UUID;
 
 public class SpecialTicketDAO {
 
@@ -19,32 +20,37 @@ public class SpecialTicketDAO {
     }
 
 
-    public SpecialTicket createSpecialTicket(SpecialTicket t) {
+    public List<SpecialTicket> createSpecialTicket(TicketType selectedTicketType, Event selectedEvent, int maxQuantity) {
+        List<SpecialTicket> specialTickets = new ArrayList<>();
+
         try (Connection connection = databaseConnector.getConnection()) {
             String sql = "INSERT INTO SpecialTicket(SpecialTicketID, TicketTypeID, EventID) VALUES (?, ?, ?)";
-
             PreparedStatement statement = connection.prepareStatement(sql);
 
-            statement.setString(1, t.getSpecialTicketID());
-            statement.setInt(2, t.getTicketTypeID());
-            statement.setInt(3, t.getEventID());
-            statement.execute();
-
-            return new SpecialTicket(t.getSpecialTicketID(), t.getTicketTypeID(), t.getEventID());
+            for (int i = 1; i <= maxQuantity; i++) {
+                String specialTicketID = generateType1UUID().toString();
+                statement.setString(1, specialTicketID);
+                statement.setInt(2, selectedTicketType.getTicketTypeID());
+                statement.setInt(3, selectedEvent.getId());
+                statement.executeUpdate();
+                specialTickets.add(new SpecialTicket(specialTicketID, selectedTicketType.getTicketTypeID(), selectedEvent.getId()));
+            }
         } catch (SQLException e) {
             throw new RuntimeException(e);
         }
+        return specialTickets;
     }
+    /**
+     * this method is used to get the data into the tableview in special tickets overview*/
 
+    public ObservableList<SpecialTicketOverviewWrapper> getSpecialTicketOverview() throws SQLException {
+        ObservableList<SpecialTicketOverviewWrapper> ticketInfoList = FXCollections.observableArrayList();
 
-    public ObservableList<SpecialTicketInfo> getSpecialTicketInfo() throws SQLException {
-        ObservableList<SpecialTicketInfo> ticketInfoList = FXCollections.observableArrayList();
-
-        String sql = "SELECT stt.TicketTypeName, e.Name, COUNT(st.SpecialTicketID) AS SoldSpecialTickets, stt.MaxQuantity - COUNT(st.SpecialTicketID) AS AvailableSpecialTickets " +
+        String sql = "SELECT stt.TicketTypeName, e.Name, COUNT(st.SpecialTicketID) AS AvailableSpecialTickets " +
                 "FROM SpecialTicket st " +
-                "INNER JOIN SpecialTicketType stt ON st.TicketTypeID = stt.TicketTypeID " +
-                "INNER JOIN Event e ON st.EventID = e.EventID " +
-                "GROUP BY stt.TicketTypeName, e.Name, stt.MaxQuantity";
+                "JOIN SpecialTicketType stt ON st.TicketTypeID = stt.TicketTypeID " +
+                "JOIN Event e ON st.EventID = e.EventID " +
+                "GROUP BY stt.TicketTypeName, e.Name";
 
         try (Connection connection = databaseConnector.getConnection()) {
             PreparedStatement statement = connection.prepareStatement(sql);
@@ -54,16 +60,54 @@ public class SpecialTicketDAO {
             while (resultSet.next()) {
                 String ticketTypeName = resultSet.getString("TicketTypeName");
                 String eventName = resultSet.getString("Name");
-                int soldSpecialTickets = resultSet.getInt("SoldSpecialTickets");
                 int availableSpecialTickets = resultSet.getInt("AvailableSpecialTickets");
 
-                SpecialTicketInfo ticketInfo = new SpecialTicketInfo(ticketTypeName, eventName, soldSpecialTickets, availableSpecialTickets);
+                Event event = new Event(eventName);
+                TicketType ticketType = new TicketType(ticketTypeName);
+                SpecialTicketOverviewWrapper ticketInfo = new SpecialTicketOverviewWrapper(event, ticketType, availableSpecialTickets);
                 ticketInfoList.add(ticketInfo);
+
+
             }
         } catch (SQLException e) {
             throw new RuntimeException(e);
         }
         return ticketInfoList;
     }
+
+    /**
+     * this method is used to get the data into the tableview in special tickets*/
+
+    public ObservableList<SpecialTicketsWrapper> getSpecialTicketsInfo() {
+        ObservableList<SpecialTicketsWrapper> specialTickets = FXCollections.observableArrayList();
+        String sql = "SELECT tt.TicketTypeName, st.SpecialTicketID, e.Name " +
+                "FROM SpecialTicket st " +
+                "JOIN SpecialTicketType tt ON st.TicketTypeID = tt.TicketTypeID" +
+                " JOIN Event e ON st.EventID=e.EventID";
+        try (Connection connection = databaseConnector.getConnection()) {
+            PreparedStatement ps = connection.prepareStatement(sql);
+            ResultSet resultSet = ps.executeQuery();
+
+            while (resultSet.next()) {
+                String ticketTypeName = resultSet.getString("TicketTypeName");
+                String specialTicketID = resultSet.getString("SpecialTicketID");
+                String eventName = resultSet.getString("Name");
+
+                Event event = new Event(eventName);
+                TicketType ticketType = new TicketType(ticketTypeName);
+                SpecialTicket specialTicket= new SpecialTicket(specialTicketID);
+
+                SpecialTicketsWrapper specialTicketsWrapper = new SpecialTicketsWrapper(ticketType,event, specialTicket);
+                specialTickets.add(specialTicketsWrapper);
+            }
+
+
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+        return specialTickets;
+    }
+
+
 
 }

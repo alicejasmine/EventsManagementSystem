@@ -38,6 +38,10 @@ public class Event {
         this.locationGuidance = locationGuidance;
     }
 
+    public Event(String name) {
+        this.name = name;
+    }
+
     public int getId() {
         return id;
     }

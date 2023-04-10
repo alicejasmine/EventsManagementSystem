@@ -14,7 +14,7 @@
 <?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.layout.HBox?>
 
-<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="650.0" prefWidth="1250.0" style="-fx-background-color: C9C5C5;" stylesheets="@../../css/style.css" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gui.controller.SpecialTicketsOverviewController">
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="650.0" prefWidth="1250.0" style="-fx-background-color: C9C5C5;" stylesheets="@../../css/style.css" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gui.controller.SpecialTicketsOverviewController">
    <right>
       <AnchorPane prefHeight="402.0" prefWidth="284.0" style="-fx-background-color: D9D9D9; -fx-background-radius: 7%;" BorderPane.alignment="CENTER">
          <BorderPane.margin>
@@ -36,10 +36,9 @@
             <Button alignment="BASELINE_LEFT" layoutX="18.0" layoutY="284.0" mnemonicParsing="false" prefHeight="47.0" prefWidth="218.0" styleClass="yellow-menuButton" text="Special Tickets" />
             <TableView fx:id="specialOTV" layoutX="314.0" layoutY="176.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="376.0" prefWidth="843.0" AnchorPane.bottomAnchor="98.0" AnchorPane.leftAnchor="314.0" AnchorPane.rightAnchor="93.0" AnchorPane.topAnchor="176.0">
                <columns>
-                  <TableColumn fx:id="ColumnTicketTypeOTV" prefWidth="188.00006103515625" text="Ticket Type" />
-                  <TableColumn fx:id="ColumnEventNameOTV" minWidth="0.0" prefWidth="176.00003051757812" text="Event Name" />
-                  <TableColumn fx:id="ColumnSoldTicketsOTV" prefWidth="258.3333740234375" text="Sold tickets" />
-                  <TableColumn fx:id="ColumnAvailableTicketsOTV" prefWidth="258.3333740234375" text="Available tickets" />
+                  <TableColumn fx:id="ColumnTicketTypeOTV" prefWidth="332.8000183105469" text="Ticket Type" />
+                  <TableColumn fx:id="ColumnEventNameOTV" minWidth="0.0" prefWidth="282.4000244140625" text="Event Name" />
+                  <TableColumn fx:id="ColumnAvailableTicketsOTV" prefWidth="224.800048828125" text="Available tickets" />
                </columns>
                <styleClass>
                   <String fx:value="table-view" />

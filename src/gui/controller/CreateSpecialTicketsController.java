@@ -25,7 +25,8 @@ import java.util.ResourceBundle;
 public class CreateSpecialTicketsController implements Initializable {
 
 
-    @FXML private Button coordinatorButton;
+    @FXML
+    private Button coordinatorButton;
     @FXML
     private ImageView logo;
     @FXML
@@ -33,7 +34,7 @@ public class CreateSpecialTicketsController implements Initializable {
     @FXML
     private MFXComboBox ticketTypeComboBox, eventComboBox;
     @FXML
-    private Label usernameLabel;
+    private Label usernameLabel,errorInfoLabel;
 
     private Model model = Model.getModel();
 
@@ -53,7 +54,8 @@ public class CreateSpecialTicketsController implements Initializable {
         }
     }
 
-    @FXML private void home(ActionEvent actionEvent) throws IOException {
+    @FXML
+    private void home(ActionEvent actionEvent) throws IOException {
         FXMLLoader loader = new FXMLLoader(getClass().getResource("/gui/view/HomeView.fxml"));
         Parent root = loader.load();
         HomeViewController controller = loader.getController();
@@ -65,7 +67,8 @@ public class CreateSpecialTicketsController implements Initializable {
         stage.show();
     }
 
-    @FXML private void manageAllEvents(ActionEvent actionEvent) throws IOException {
+    @FXML
+    private void manageAllEvents(ActionEvent actionEvent) throws IOException {
         FXMLLoader loader = new FXMLLoader(getClass().getResource("/gui/view/AllEvents.fxml"));
         Parent root = loader.load();
         EventsViewController controller = loader.getController();
@@ -77,7 +80,8 @@ public class CreateSpecialTicketsController implements Initializable {
         stage.show();
     }
 
-    @FXML private void logout(ActionEvent actionEvent) throws IOException {
+    @FXML
+    private void logout(ActionEvent actionEvent) throws IOException {
         Parent root = FXMLLoader.load(getClass().getResource("/gui/view/Login.fxml"));
         Stage stage = (Stage) ((Node) actionEvent.getSource()).getScene().getWindow();
         Scene scene = new Scene(root);
@@ -87,7 +91,8 @@ public class CreateSpecialTicketsController implements Initializable {
     }
 
 
-    @FXML private void openSpecialTicketsOverview(ActionEvent actionEvent) throws IOException {
+    @FXML
+    private void openSpecialTicketsOverview(ActionEvent actionEvent) throws IOException {
         FXMLLoader loader = new FXMLLoader(getClass().getResource("/gui/view/SpecialTicketsOverview.fxml"));
         Parent root = loader.load();
         SpecialTicketsOverviewController controller = loader.getController();
@@ -100,29 +105,35 @@ public class CreateSpecialTicketsController implements Initializable {
     }
 
 
-
-    @FXML private void addTicketType(ActionEvent actionEvent) {
+    @FXML
+    private void addTicketType(ActionEvent actionEvent) {
         String list = ticketTypeComboBox.getItems().toString();
-        if (!(list.contains(ticketTypeTextfield.getText())) && !ticketTypeTextfield.getText().isEmpty() && !maxQuantityTextfield.getText().isEmpty()) {
-            int maxQuantity = Integer.parseInt(maxQuantityTextfield.getText());
-            model.addTicketType(ticketTypeTextfield.getText(), maxQuantity);
+        if (!(list.contains(ticketTypeTextfield.getText())) && !ticketTypeTextfield.getText().isEmpty()) {
+            model.addTicketType(ticketTypeTextfield.getText());
         }
         ticketTypeTextfield.clear();
-        maxQuantityTextfield.clear();
+
     }
 
 
-
-    @FXML private void NewSpecialTicket(ActionEvent actionEvent) {
+    @FXML
+    private void NewSpecialTicket(ActionEvent actionEvent) {
         TicketType selectedTicketType = (TicketType) ticketTypeComboBox.getSelectionModel().getSelectedItem();
         Event selectedEvent = (Event) eventComboBox.getSelectionModel().getSelectedItem();
-        if (selectedTicketType != null)  { //&& selectedEvent != null)
-            model.createSpecialTicket(selectedTicketType, selectedEvent);
+
+        if (selectedTicketType != null && selectedEvent != null) {
+            int maxQuantity = Integer.parseInt(maxQuantityTextfield.getText());
+            model.createSpecialTicket(selectedTicketType, selectedEvent, maxQuantity);
+            errorInfoLabel.setText(maxQuantityTextfield.getText()+ " ticket(s) of type "+ selectedTicketType+" for the event " + selectedEvent + "created");
         }
+        maxQuantityTextfield.clear();
+        ticketTypeComboBox.clear();
+        eventComboBox.clear();
     }
 
 
-    @FXML private void openSpecialTickets(ActionEvent actionEvent) throws IOException {
+    @FXML
+    private void openSpecialTickets(ActionEvent actionEvent) throws IOException {
         FXMLLoader loader = new FXMLLoader(getClass().getResource("/gui/view/SpecialTickets.fxml"));
         Parent root = loader.load();
         SpecialTicketsController controller = loader.getController();
@@ -136,12 +147,13 @@ public class CreateSpecialTicketsController implements Initializable {
 
     public void setUsernameLabel() {
         usernameLabel.setText(model.getCurrentUser().getFirstName() + " " + model.getCurrentUser().getLastName());
-        if(model.getCurrentUser().isAdmin()){
+        if (model.getCurrentUser().isAdmin()) {
             coordinatorButton.setVisible(true);
         }
     }
 
-    @FXML private void manageCoordinators(ActionEvent actionEvent) throws IOException {
+    @FXML
+    private void manageCoordinators(ActionEvent actionEvent) throws IOException {
         FXMLLoader loader = new FXMLLoader(getClass().getResource("/gui/view/CreateUser.fxml"));
         Parent root = loader.load();
         CreateUserController controller = loader.getController();

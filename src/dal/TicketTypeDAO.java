@@ -1,7 +1,8 @@
 package dal;
 
+import be.Event;
 import be.SpecialTicket;
-import be.SpecialTicketWithTicketType;
+import be.SpecialTicketsWrapper;
 import be.TicketType;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -22,19 +23,18 @@ public class TicketTypeDAO {
     public TicketType createTicketType(TicketType t) {
 
         try (Connection connection = databaseConnector.getConnection()) {
-            String sql = "INSERT INTO SpecialTicketType(TicketTypeName, MaxQuantity) VALUES (?,?)";
+            String sql = "INSERT INTO SpecialTicketType(TicketTypeName) VALUES (?)";
 
             PreparedStatement statement = connection.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
 
             statement.setString(1, t.getTicketTypeName());
-            statement.setInt(2, t.getMaxQuantity());
             statement.execute();
 
             ResultSet keys = statement.getGeneratedKeys();
             keys.next();
             int id = keys.getInt(1);
 
-            return new TicketType(id, t.getTicketTypeName(), t.getMaxQuantity());
+            return new TicketType(id, t.getTicketTypeName());
         } catch (SQLException e) {
             throw new RuntimeException(e);
         }
@@ -55,9 +55,8 @@ public class TicketTypeDAO {
                 while (resultSet.next()) {
                     int ticketTypeID = resultSet.getInt("TicketTypeID");
                     String ticketTypeName = resultSet.getString("TicketTypeName");
-                    int maxQuantity = resultSet.getInt("MaxQuantity");
 
-                    TicketType type = new TicketType(ticketTypeID, ticketTypeName, maxQuantity);
+                    TicketType type = new TicketType(ticketTypeID, ticketTypeName);
                     ticketType.add(type);
                 }
             }
@@ -68,28 +67,5 @@ public class TicketTypeDAO {
     }
 
 
-    public ObservableList<SpecialTicketWithTicketType> getSpecialTicketsWithTicketType () {
-        ObservableList<SpecialTicketWithTicketType> specialTickets = FXCollections.observableArrayList();
-        String sql = "SELECT tt.TicketTypeName, st.SpecialTicketID, e.Name " +
-                "FROM SpecialTicket st " +
-                "JOIN SpecialTicketType tt ON st.TicketTypeID = tt.TicketTypeID" +
-                 " JOIN Event e ON st.EventID=e.EventID";
-        try (Connection connection = databaseConnector.getConnection()) {
-            PreparedStatement ps = connection.prepareStatement(sql);
-            ResultSet resultSet = ps.executeQuery();
-
-                while (resultSet.next()) {
-                    String ticketTypeName = resultSet.getString("TicketTypeName");
-                    String specialTicketID = resultSet.getString("SpecialTicketID");
-                    String eventName = resultSet.getString("Name");
-                    SpecialTicketWithTicketType specialTicket = new SpecialTicketWithTicketType(ticketTypeName, eventName, specialTicketID);
-                    specialTickets.add(specialTicket);
-                }
-
-        } catch (SQLException e) {
-            throw new RuntimeException(e);
-        }
-        return specialTickets;
-    }
 
 }

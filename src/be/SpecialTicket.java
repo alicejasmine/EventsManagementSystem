@@ -2,21 +2,23 @@ package be;
 
 public class SpecialTicket {
 
-    private String SpecialTicketID;
+    private String specialTicketID;
     private int ticketTypeID;
     private int eventID;
 
     public SpecialTicket(String specialTicketID, int ticketTypeID, int eventID) {
-        SpecialTicketID = specialTicketID;
+        this.specialTicketID = specialTicketID;
         this.ticketTypeID = ticketTypeID;
         this.eventID = eventID;
     }
 
-    public SpecialTicket(TicketType selectedTicketType, Event selectedEvent) {
+
+    public SpecialTicket(String specialTicketID) {
+        this.specialTicketID=specialTicketID;
     }
 
     public String getSpecialTicketID() {
-        return SpecialTicketID;
+        return specialTicketID;
     }
 
     public int getTicketTypeID() {
@@ -25,5 +27,11 @@ public class SpecialTicket {
 
     public int getEventID() {
         return eventID;
+    }
+
+    @Override
+    public String toString() {
+        return specialTicketID;
+
     }
 }

@@ -264,16 +264,16 @@ public class Model {
 
 
 
-    public void addTicketType(String ticketTypeName, int maxQuantity) {
-        tlm.addTicketType(ticketTypeName, maxQuantity);
+    public void addTicketType(String ticketTypeName) {
+        tlm.addTicketType(ticketTypeName);
         loadTicketTypeList();
     }
 
 
 
-    public void createSpecialTicket(TicketType selectedTicketType, Event selectedEvent) {
+    public void createSpecialTicket(TicketType selectedTicketType, Event selectedEvent, int maxQuantity) {
 
-        tlm.createSpecialTicket(selectedTicketType, selectedEvent);
+        tlm.createSpecialTicket(selectedTicketType, selectedEvent, maxQuantity);
 
     }
 
@@ -296,13 +296,14 @@ public class Model {
 
     }
 
-    public ObservableList getSpecialTicketsWithTicketType() {
+    public ObservableList getSpecialTicketsInfo() {
         return tlm.getSpecialTicketsWithTicketType();
     }
 
-    public ObservableList getSpecialTicketInfo() {
+    public ObservableList getSpecialTicketOverviewInfo() {
         return tlm.getSpecialTicketInfo();
     }
+
 }
 
 

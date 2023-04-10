@@ -31,17 +31,16 @@ public class SpecialTicketsOverviewController implements Initializable {
     @FXML
     private TableView specialOTV;
     @FXML
-    private TableColumn ColumnTicketTypeOTV, ColumnEventNameOTV, ColumnSoldTicketsOTV, ColumnAvailableTicketsOTV;
+    private TableColumn ColumnTicketTypeOTV, ColumnEventNameOTV, ColumnAvailableTicketsOTV;
 
     private Model model = Model.getModel();
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-        specialOTV.setItems(model.getSpecialTicketInfo());
-        ColumnTicketTypeOTV.setCellValueFactory(new PropertyValueFactory<>("ticketTypeName"));
-        ColumnEventNameOTV.setCellValueFactory(new PropertyValueFactory<>("name"));
-        ColumnSoldTicketsOTV.setCellValueFactory(new PropertyValueFactory<>("soldSpecialTickets"));
-        ColumnAvailableTicketsOTV.setCellValueFactory(new PropertyValueFactory<>("availableSpecialTickets"));
+        specialOTV.setItems(model.getSpecialTicketOverviewInfo());
+        ColumnTicketTypeOTV.setCellValueFactory(new PropertyValueFactory<>("ticketType"));
+        ColumnEventNameOTV.setCellValueFactory(new PropertyValueFactory<>("event"));
+        ColumnAvailableTicketsOTV.setCellValueFactory(new PropertyValueFactory<>("availableTickets"));
 
 
         try {
