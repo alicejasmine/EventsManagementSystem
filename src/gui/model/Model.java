@@ -3,7 +3,10 @@ package gui.model;
 import be.*;
 import bll.*;
 import javafx.collections.*;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 
+import java.io.IOException;
 import java.time.*;
 import java.util.*;
 
@@ -232,6 +235,16 @@ public class Model {
 
     public void printTicket(Event event, Ticket ticket) {
         tlm.printTicket(tlm.writeEventInfoOnTicket(event, ticket));
+    }
+
+
+
+    public ImageView createTicketPreview(Event event, Ticket ticket) {
+        try {
+            return tlm.createTicketPreview(event,ticket);
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
     }
 
     /**

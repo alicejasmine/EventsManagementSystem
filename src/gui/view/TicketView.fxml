@@ -157,7 +157,7 @@
             </Label>
          </children>
       </GridPane>
-      <Label fx:id="errorLabel" layoutX="486.0" layoutY="541.0" prefHeight="17.0" prefWidth="571.0" />
+      <Label fx:id="errorLabel" layoutX="415.0" layoutY="618.0" prefHeight="17.0" prefWidth="571.0" />
       <TextField fx:id="textFieldSearchTickets" layoutX="987.0" layoutY="86.0" promptText="Search" />
    </children>
 </AnchorPane>

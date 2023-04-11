@@ -30,10 +30,17 @@ public class SpecialTicketsController implements Initializable {
     @FXML
     private Button coordinatorButton;
     @FXML
-    private TableView specialTicketsTV;
+    private TableView<SpecialTicketsWrapper> specialTicketsTV;
+
 
     @FXML
-    private TableColumn ColumnTicketTypeTV, ColumnEventNameTV, ColumnTicketIDTV;
+    private TableColumn<SpecialTicketsWrapper,String> ColumnTicketTypeTV;
+
+    @FXML
+    private TableColumn<SpecialTicketsWrapper,String> ColumnEventNameTV;
+
+    @FXML
+    private TableColumn<SpecialTicketsWrapper,String> ColumnTicketIDTV;
     @FXML
     private ImageView logo;
 
@@ -60,20 +67,24 @@ public class SpecialTicketsController implements Initializable {
     }
 
     private void setLabels() {
-        /*
-        SpecialTicketsWrapper selectedRow = (SpecialTicketsWrapper) specialTicketsTV.getSelectionModel().getSelectedItem();
-        System.out.println(selectedRow);
-        if (selectedRow != null) {
-            Event selectedEvent = selectedRow.getEvent();
-            //System.out.println(selectedEvent);
-        dateLabel.setText(selectedEvent.getDate().toString());
-        locationLabel.setText(selectedEvent.getLocation());
-        locationGuidanceLabel.setText(selectedEvent.getLocationGuidance());
-        notesLabel.setText(selectedEvent.getNotes());
-        startTimeLabel.setText(selectedEvent.getTime().toString());
-        endTimeLabel.setText(selectedEvent.getName());
-       
-         */
+
+        specialTicketsTV.getSelectionModel().selectedItemProperty().addListener(((observableValue, oldUser, selectedUser) -> {
+            if (selectedUser != null) {
+                Event selectedEvent = selectedUser.getEvent();
+                dateLabel.setText(selectedEvent.getDate().toString());
+                locationLabel.setText(selectedEvent.getLocation());
+                notesLabel.setText(selectedEvent.getNotes());
+                startTimeLabel.setText(selectedEvent.getTime().toString());
+                if (selectedEvent.getEndTime() != null) {
+                    endTimeLabel.setText(selectedEvent.getEndTime().toString());
+                }
+                if (selectedEvent.getLocationGuidance() != null) {
+                    locationGuidanceLabel.setText(selectedEvent.getLocationGuidance());
+                }
+            }
+        }));
+
+
     }
 
     public void setUsernameLabel() {
@@ -87,7 +98,6 @@ public class SpecialTicketsController implements Initializable {
     @FXML
     private void deleteSpecialTicket(ActionEvent actionEvent) {
         SpecialTicketsWrapper selectedTicket = (SpecialTicketsWrapper) specialTicketsTV.getSelectionModel().getSelectedItem();
-        System.out.println(selectedTicket);
         model.deleteSpecialTicket(selectedTicket.getSpecialTicket());
     }
 

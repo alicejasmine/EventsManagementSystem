@@ -63,37 +63,21 @@
             <Label layoutX="518.0" layoutY="51.0" styleClass="title" text="Special Tickets" />
             <Label fx:id="usernameLabel" layoutX="972.0" layoutY="28.0" styleClass="username" text="Username" />
             <Button layoutX="1073.0" layoutY="17.0" mnemonicParsing="false" onAction="#logout" styleClass="red-button" text="Log out" />
-            <GridPane layoutX="269.0" layoutY="202.0" prefHeight="347.0" prefWidth="282.0" styleClass="gridPane">
+            <GridPane layoutX="269.0" layoutY="202.0" prefHeight="347.0" prefWidth="303.0" styleClass="gridPane">
               <columnConstraints>
-                <ColumnConstraints hgrow="SOMETIMES" maxWidth="198.0" minWidth="10.0" prefWidth="172.6666259765625" />
-                <ColumnConstraints hgrow="SOMETIMES" maxWidth="94.666748046875" minWidth="2.0" prefWidth="27.3333740234375" />
+                <ColumnConstraints hgrow="SOMETIMES" maxWidth="198.0" minWidth="10.0" prefWidth="115.99995930989583" />
+                <ColumnConstraints hgrow="SOMETIMES" maxWidth="197.99995930989584" minWidth="2.0" prefWidth="188.00004069010419" />
               </columnConstraints>
               <rowConstraints>
                 <RowConstraints maxHeight="63.66668701171875" minHeight="10.0" prefHeight="56.99997965494792" vgrow="SOMETIMES" />
                 <RowConstraints maxHeight="111.6666259765625" minHeight="10.0" prefHeight="54.333333333333336" vgrow="SOMETIMES" />
                 <RowConstraints maxHeight="142.0" minHeight="10.0" prefHeight="55.000000000000014" vgrow="SOMETIMES" />
-                  <RowConstraints maxHeight="142.0" minHeight="10.0" prefHeight="86.33331298828125" vgrow="SOMETIMES" />
-                  <RowConstraints maxHeight="142.0" minHeight="10.0" prefHeight="86.33331298828125" vgrow="SOMETIMES" />
+                  <RowConstraints maxHeight="142.0" minHeight="10.0" prefHeight="51.800024414062506" vgrow="SOMETIMES" />
+                  <RowConstraints maxHeight="142.0" minHeight="10.0" prefHeight="94.9999755859375" vgrow="SOMETIMES" />
                   <RowConstraints maxHeight="142.0" minHeight="10.0" prefHeight="86.33331298828125" vgrow="SOMETIMES" />
               </rowConstraints>
                <children>
-                  <Label styleClass="normal-text" stylesheets="@../../css/style.css" text="Location">
-                     <GridPane.margin>
-                        <Insets />
-                     </GridPane.margin>
-                     <padding>
-                        <Insets left="20.0" top="20.0" />
-                     </padding>
-                  </Label>
-                  <Label fx:id="locationLabel" prefHeight="36.0" prefWidth="83.0" styleClass="normal-text" GridPane.columnIndex="1">
-                     <padding>
-                        <Insets left="5.0" top="10.0" />
-                     </padding>
-                     <GridPane.margin>
-                        <Insets top="10.0" />
-                     </GridPane.margin>
-                  </Label>
-                  <Label prefHeight="42.0" prefWidth="102.0" styleClass="normal-text" text="Date" GridPane.rowIndex="1">
+                  <Label styleClass="normal-text" stylesheets="@../../css/style.css" text="Location:">
                      <GridPane.margin>
                         <Insets />
                      </GridPane.margin>
@@ -101,7 +85,20 @@
                         <Insets left="20.0" />
                      </padding>
                   </Label>
-                  <Label prefHeight="42.0" prefWidth="102.0" styleClass="normal-text" text="Start Time:" GridPane.rowIndex="2">
+                  <Label fx:id="locationLabel" prefHeight="36.0" prefWidth="204.0" styleClass="normal-text" GridPane.columnIndex="1">
+                     <GridPane.margin>
+                        <Insets />
+                     </GridPane.margin>
+                  </Label>
+                  <Label prefHeight="42.0" prefWidth="102.0" styleClass="normal-text" text="Date:" GridPane.rowIndex="1">
+                     <GridPane.margin>
+                        <Insets />
+                     </GridPane.margin>
+                     <padding>
+                        <Insets left="20.0" />
+                     </padding>
+                  </Label>
+                  <Label prefHeight="42.0" prefWidth="117.0" styleClass="normal-text" text="Start Time:" GridPane.rowIndex="2">
                      <GridPane.margin>
                         <Insets />
                      </GridPane.margin>
@@ -117,33 +114,21 @@
                         <Insets left="20.0" />
                      </padding>
                   </Label>
-                  <Label fx:id="dateLabel" prefHeight="26.0" prefWidth="83.0" styleClass="normal-text" GridPane.columnIndex="1" GridPane.rowIndex="1">
-                     <padding>
-                        <Insets left="5.0" />
-                     </padding>
-                  </Label>
-                  <Label fx:id="startTimeLabel" alignment="TOP_LEFT" minWidth="-Infinity" prefHeight="92.0" prefWidth="83.0" styleClass="normal-text" wrapText="true" GridPane.columnIndex="1" GridPane.rowIndex="2">
-                     <padding>
-                        <Insets left="5.0" top="25.0" />
-                     </padding>
-                  </Label>
-                  <Label fx:id="endTimeLabel" alignment="TOP_LEFT" prefHeight="92.0" prefWidth="99.0" styleClass="normal-text" wrapText="true" GridPane.columnIndex="1" GridPane.rowIndex="3">
-                     <padding>
-                        <Insets left="5.0" top="25.0" />
-                     </padding>
-                  </Label>
+                  <Label fx:id="dateLabel" prefHeight="26.0" prefWidth="209.0" styleClass="normal-text" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+                  <Label fx:id="startTimeLabel" prefHeight="42.0" prefWidth="188.0" styleClass="normal-text" wrapText="true" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+                  <Label fx:id="endTimeLabel" prefHeight="42.0" prefWidth="188.0" styleClass="normal-text" wrapText="true" GridPane.columnIndex="1" GridPane.rowIndex="3" />
                   <Label prefHeight="42.0" prefWidth="126.0" styleClass="normal-text" text="Notes:" GridPane.rowIndex="4">
                      <padding>
                         <Insets left="20.0" />
                      </padding>
                   </Label>
-                  <Label prefHeight="42.0" prefWidth="199.0" styleClass="normal-text" text="Location Guidance:" GridPane.rowIndex="5">
+                  <Label prefHeight="76.0" prefWidth="174.0" styleClass="normal-text" text="Location Guidance: " wrapText="true" GridPane.rowIndex="5">
                      <padding>
                         <Insets left="20.0" />
                      </padding>
                   </Label>
-                  <Label fx:id="notesLabel" prefHeight="26.0" prefWidth="96.0" GridPane.columnIndex="1" GridPane.rowIndex="4" />
-                  <Label fx:id="locationGuidanceLabel" prefHeight="26.0" prefWidth="84.0" GridPane.columnIndex="1" GridPane.rowIndex="5" />
+                  <Label fx:id="notesLabel" prefHeight="53.0" prefWidth="188.0" style="-fx-wrap-text: true;" styleClass="normal-text" GridPane.columnIndex="1" GridPane.rowIndex="4" />
+                  <Label fx:id="locationGuidanceLabel" prefHeight="38.0" prefWidth="188.0" style="-fx-wrap-text: true;" styleClass="normal-text" GridPane.columnIndex="1" GridPane.rowIndex="5" />
                </children>
             </GridPane>
             <Button layoutX="275.0" layoutY="566.0" mnemonicParsing="false" onAction="#openTicketPreview" prefWidth="81.0" styleClass="white-button" text="Ticket Preview" />

@@ -4,6 +4,7 @@ import java.awt.*;
 import java.awt.image.BufferedImage;
 import java.awt.print.PrinterException;
 import java.awt.print.PrinterJob;
+import java.io.ByteArrayOutputStream;
 import java.io.File;
 import java.io.IOException;
 import java.sql.SQLException;
@@ -21,6 +22,9 @@ import com.google.zxing.client.j2se.MatrixToImageWriter;
 import com.google.zxing.common.BitMatrix;
 import dal.*;
 import javafx.collections.ObservableList;
+import javafx.embed.swing.SwingFXUtils;
+import javafx.scene.image.ImageView;
+import javafx.scene.image.WritableImage;
 import org.apache.pdfbox.Loader;
 import org.apache.pdfbox.pdmodel.common.PDRectangle;
 import org.apache.pdfbox.pdmodel.graphics.image.LosslessFactory;
@@ -30,6 +34,7 @@ import org.apache.pdfbox.pdmodel.PDPage;
 import org.apache.pdfbox.pdmodel.PDPageContentStream;
 import org.apache.pdfbox.pdmodel.font.*;
 import org.apache.pdfbox.printing.PDFPageable;
+import org.apache.pdfbox.rendering.PDFRenderer;
 import org.apache.pdfbox.util.Matrix;
 
 public class TicketLogicManager {
@@ -41,11 +46,7 @@ public class TicketLogicManager {
 
 
     public static void main(String[] args) throws IOException, WriterException, PrinterException {
-        //saveTicket(eventDAO.getAllEvents().get(0),ticketDAO.getAllTickets().get(0));
-        //PDDocument document= writeEventInfoOnTicket(eventDAO.getAllEvents().get(0),ticketDAO.getAllTickets().get(0));
-        //printPDF(document);
-        //for(int i = 0; i < 100; i++){
-        //    System.out.println(generateType1UUID());}
+
     }
 
     public List<Ticket> searchTickets(String query, int idOfEvent) {
@@ -187,9 +188,18 @@ public class TicketLogicManager {
         } catch (IOException | PrinterException e) {
 
         }
-
-
     }
+
+    public ImageView createTicketPreview(Event event, Ticket ticket) throws IOException {
+        if(event!=null){
+        PDDocument document = writeEventInfoOnTicket(event, ticket);
+        PDFRenderer pdfRenderer=new PDFRenderer(document);
+        BufferedImage bufferedImage=pdfRenderer.renderImage(0);
+        WritableImage fxImage= SwingFXUtils.toFXImage(bufferedImage,null);
+        ImageView imageView=new ImageView(fxImage);
+       return imageView;
+    } throw new IllegalStateException("Event cannot be null");}
+
 
     private static long get64LeastSignificantBits() {
         Random random = new Random();

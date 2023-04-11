@@ -110,7 +110,7 @@ public class SpecialTicketDAO {
 
     public ObservableList<SpecialTicketsWrapper> getSpecialTicketsInfo() {
         ObservableList<SpecialTicketsWrapper> specialTickets = FXCollections.observableArrayList();
-        String sql = "SELECT tt.TicketTypeName, st.SpecialTicketID, e.Name " +
+        String sql = "SELECT tt.TicketTypeName, st.SpecialTicketID, e.EventID, e.Name, e.Location, e.Date, e.Time, e.Notes, e.EndTime, e.LocationGuidance " +
                 "FROM SpecialTicket st " +
                 "JOIN SpecialTicketType tt ON st.TicketTypeID = tt.TicketTypeID" +
                 " JOIN Event e ON st.EventID=e.EventID";
@@ -121,9 +121,17 @@ public class SpecialTicketDAO {
             while (resultSet.next()) {
                 String ticketTypeName = resultSet.getString("TicketTypeName");
                 String specialTicketID = resultSet.getString("SpecialTicketID");
-                String eventName = resultSet.getString("Name");
 
-                Event event = new Event(eventName);
+                int eventID=resultSet.getInt("EventID");
+                String eventName = resultSet.getString("Name");
+                String eventLocation=resultSet.getString("Location");
+                Date eventDate=resultSet.getDate("Date");
+                Time eventStart=resultSet.getTime("Time");
+                Time eventEnd=resultSet.getTime("EndTime");
+                String eventLocationGuidance=resultSet.getString("LocationGuidance");
+                String eventNotes=resultSet.getString("Notes");
+
+                Event event = new Event(eventID,eventName, eventLocation, eventDate, eventStart, eventNotes, eventEnd,eventLocationGuidance);
                 TicketType ticketType = new TicketType(ticketTypeName);
                 SpecialTicket specialTicket= new SpecialTicket(specialTicketID);
 
@@ -137,7 +145,8 @@ public class SpecialTicketDAO {
         }
         return specialTickets;
     }
-
+/**
+ * method to delete a selected special ticket from database */
     public void deleteSpecialTicket(SpecialTicket ticket) {
         String sql = "DELETE FROM SpecialTicket WHERE SpecialTicketID= ? ";
 

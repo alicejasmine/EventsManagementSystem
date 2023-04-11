@@ -19,7 +19,7 @@ import java.io.*;
 import java.net.URL;
 import java.util.ResourceBundle;
 
-public class TicketViewController implements Initializable{
+public class TicketViewController implements Initializable {
 
     @FXML
     private TextField textFieldSearchTickets;
@@ -53,19 +53,15 @@ public class TicketViewController implements Initializable{
     private Stage previousWindow;
 
 
-
     private Model model = Model.getModel();
 
-    public void initialize(URL url, ResourceBundle rb)
-    {
+    public void initialize(URL url, ResourceBundle rb) {
         textFieldSearchTickets.textProperty().addListener(new ChangeListener<String>() {
             @Override
             public void changed(ObservableValue<? extends String> observable, String oldValue, String newValue) {
                 model.search(newValue, selectedEvent.getId());
             }
         });
-
-
 
 
     }
@@ -99,7 +95,8 @@ public class TicketViewController implements Initializable{
     }
 
 
-    @FXML private void openNewTicketView(ActionEvent actionEvent) throws IOException {
+    @FXML
+    private void openNewTicketView(ActionEvent actionEvent) throws IOException {
         FXMLLoader loader = new FXMLLoader(getClass().getResource("/gui/view/NewTicketView.fxml"));
         Parent root = loader.load();
         Stage stage = new Stage();
@@ -109,16 +106,16 @@ public class TicketViewController implements Initializable{
         stage.show();
     }
 
-    @FXML private void saveTicket(ActionEvent actionEvent) {
+    @FXML
+    private void saveTicket(ActionEvent actionEvent) {
         Ticket selectedTicket = ticketsTV.getSelectionModel().getSelectedItem();
         Event selectedEvent = model.getSelectedEvent();
-        if ((selectedEvent == null) || (selectedTicket == null)){
+        if ((selectedEvent == null) || (selectedTicket == null)) {
             errorLabel.setText("Please select a ticket to save");
-        }
-        else{
-        String s = selectedTicket.getTicketID();
-        String filename = "Ticket-" + selectedEvent.getName() + "-" + s.substring(s.length() - 4) + ".pdf";
-        File file = new File("resources/" + filename);
+        } else {
+            String s = selectedTicket.getTicketID();
+            String filename = "Ticket-" + selectedEvent.getName() + "-" + s.substring(s.length() - 4) + ".pdf";
+            File file = new File("resources/" + filename);
             if (file.exists()) {
                 errorLabel.setText("Error: File already saved");
             } else {
@@ -126,9 +123,11 @@ public class TicketViewController implements Initializable{
                 errorLabel.setText("File saved in resources folder");
             }
 
-    }}
+        }
+    }
 
-    @FXML private void printTicket(ActionEvent actionEvent) {
+    @FXML
+    private void printTicket(ActionEvent actionEvent) {
         Ticket selectedTicket = ticketsTV.getSelectionModel().getSelectedItem();
         Event selectedEvent = model.getSelectedEvent();
 
@@ -140,7 +139,7 @@ public class TicketViewController implements Initializable{
 
     }
 
-    public void setBackArrow(){
+    public void setBackArrow() {
 
         try {
             Image logoImage = new Image(new FileInputStream("resources/images/backArrow.png"));
@@ -159,17 +158,27 @@ public class TicketViewController implements Initializable{
         }
     }
 
-    @FXML private void openTicketPreview(ActionEvent actionEvent) throws IOException {
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("/gui/view/TicketPreview.fxml"));
-        Parent root = loader.load();
-        Stage stage = new Stage();
-        Scene scene = new Scene(root);
-        stage.setTitle("Ticket Preview");
-        stage.setScene(scene);
-        stage.show();
+    @FXML
+    private void openTicketPreview(ActionEvent actionEvent) throws IOException {
+        if (ticketsTV.getSelectionModel().getSelectedItem() != null) {
+            Ticket selectedTicket = ticketsTV.getSelectionModel().getSelectedItem();
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/gui/view/TicketPreview.fxml"));
+            Parent root = loader.load();
+            TicketPreviewController controller = loader.getController();
+            controller.setEvent(selectedEvent);
+            controller.setTicket(selectedTicket);
+            controller.renderTicket();
+            Stage stage = new Stage();
+            Scene scene = new Scene(root);
+            stage.setTitle("Ticket Preview");
+            stage.setScene(scene);
+            stage.show();
+        }
+        else{errorLabel.setText("Please select a ticket to see its preview");}
     }
 
-    @FXML private void returnHome(ActionEvent actionEvent) throws IOException {
+    @FXML
+    private void returnHome(ActionEvent actionEvent) throws IOException {
         FXMLLoader loader = new FXMLLoader(getClass().getResource("/gui/view/HomeView.fxml"));
         Parent root = loader.load();
         HomeViewController controller = loader.getController();
