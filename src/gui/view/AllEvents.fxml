@@ -18,7 +18,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="650.0" prefWidth="1250.0" style="-fx-background-color: C9C5C5;" stylesheets="@../../css/style.css" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gui.controller.EventsViewController">
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="650.0" prefWidth="1250.0" style="-fx-background-color: C9C5C5;" stylesheets="@../../css/style.css" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gui.controller.EventsViewController">
    <right>
       <AnchorPane prefHeight="402.0" prefWidth="284.0" style="-fx-background-color: D9D9D9; -fx-background-radius: 7%;" BorderPane.alignment="CENTER">
          <BorderPane.margin>
@@ -42,13 +42,9 @@
                   <String fx:value="table-cell" />
                </styleClass>
             </TableView>
-              <HBox alignment="CENTER_LEFT" layoutX="271.0" layoutY="577.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="50.0" prefWidth="707.0">
+              <HBox alignment="CENTER_LEFT" layoutX="271.0" layoutY="577.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="50.0" prefWidth="626.0">
                   <children>
-                  <Button fx:id="newEventButton" mnemonicParsing="false" onAction="#newEvent" prefWidth="70.0" styleClass="light-blue-button" text="Create">
-                     <HBox.margin>
-                        <Insets right="30.0" />
-                     </HBox.margin>
-                  </Button>
+                      <Label fx:id="errorInfoLabel" alignment="CENTER" prefHeight="46.0" prefWidth="421.0" wrapText="true" />
                   <Button fx:id="deleteEventButton" mnemonicParsing="false" onAction="#deleteEvent" prefWidth="70.0" styleClass="red-button" text="Delete">
                      <HBox.margin>
                         <Insets right="30.0" />
@@ -59,7 +55,6 @@
                         <Insets right="30.0" />
                      </HBox.margin>
                   </Button>
-                      <Label fx:id="errorInfoLabel" alignment="CENTER" prefHeight="46.0" prefWidth="368.0" wrapText="true" />
                   </children>
               </HBox>
             <Label layoutX="518.0" layoutY="51.0" styleClass="title" text="All events" />

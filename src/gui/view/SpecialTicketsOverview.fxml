@@ -59,7 +59,7 @@
                         <Insets />
                      </VBox.margin>
                   </Button>
-                  <Button alignment="BASELINE_LEFT" mnemonicParsing="false" prefHeight="47.0" prefWidth="218.0" styleClass="red-menuButton" text="Manage Events" />
+                  <Button alignment="BASELINE_LEFT" mnemonicParsing="false" onAction="#manageAllEvents" prefHeight="47.0" prefWidth="218.0" styleClass="red-menuButton" text="Manage Events" />
                   <Button mnemonicParsing="false" onAction="#newEventWindow" text="Create New Event">
                      <styleClass>
                         <String fx:value="red-menuButton" />
