@@ -31,7 +31,7 @@ public class EventDAO {
     public Event createEvent(Event event) {
 
         try (Connection connection = databaseConnector.getConnection()) {
-            String sql = "INSERT INTO EVENT(Name, Location, Date, Time, Notes, EndTime, LocationGuidance) VALUES (?,?,?,?,?,?,?)";
+            String sql = "INSERT INTO EVENT(Name, Location, Date, Time, Notes, EndTime, LocationGuidance, FilePath) VALUES (?,?,?,?,?,?,?,?)";
 
             PreparedStatement statement = connection.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
             statement.setString(1, event.getName());
@@ -41,13 +41,14 @@ public class EventDAO {
             statement.setString(5, event.getNotes());
             statement.setTime(6, event.getEndTime());
             statement.setString(7, event.getLocationGuidance());
+            statement.setString(8, event.getImageFilePath());
             statement.execute();
 
             ResultSet keys = statement.getGeneratedKeys();
             keys.next();
             int id = keys.getInt(1);
 
-            return new Event(id, event.getName(), event.getLocation(), event.getDate(), event.getTime(), event.getNotes(), event.getEndTime(), event.getLocationGuidance());
+            return new Event(id, event.getName(), event.getLocation(), event.getDate(), event.getTime(), event.getNotes(), event.getEndTime(), event.getLocationGuidance(), event.getImageFilePath());
         } catch (SQLException e) {
             throw new RuntimeException(e);
         }
@@ -78,7 +79,7 @@ public class EventDAO {
         try (Connection connection = databaseConnector.getConnection()) {
             String sql = "UPDATE Event SET Name = COALESCE(?, Name), Location = COALESCE(?, Location), " +
                     "Date = COALESCE(?, Date), Time = COALESCE(?, Time), Notes = COALESCE(?, Notes), " +
-                    "EndTime = COALESCE(?, EndTime), LocationGuidance = COALESCE(?, LocationGuidance) " +
+                    "EndTime = COALESCE(?, EndTime), LocationGuidance = COALESCE(?, LocationGuidance), FilePath = COALESCE(?, FilePath) " +
                     "WHERE EventID = ?";
 //COALESCE used so that attribute is updated only if new value is not null, otherwise old value is left
             PreparedStatement statement = connection.prepareStatement(sql);
@@ -90,7 +91,8 @@ public class EventDAO {
             statement.setString(5, event.getNotes());
             statement.setTime(6, event.getEndTime());
             statement.setString(7, event.getLocationGuidance());
-            statement.setInt(8, event.getId());
+            statement.setString(8, event.getImageFilePath());
+            statement.setInt(9, event.getId());
             statement.executeUpdate();
 
         } catch (SQLException e) {
@@ -121,8 +123,9 @@ public class EventDAO {
                     String notes = resultSet.getString("Notes");
                     Time endTime = resultSet.getTime("EndTime");
                     String locationGuidance = resultSet.getString("LocationGuidance");
+                    String imageFilePath = resultSet.getString("FilePath");
 
-                    Event event = new Event(id, name, location, date, time, notes, endTime, locationGuidance);
+                    Event event = new Event(id, name, location, date, time, notes, endTime, locationGuidance, imageFilePath);
                     events.add(event);
                 }
             }

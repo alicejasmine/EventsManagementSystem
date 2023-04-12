@@ -13,7 +13,9 @@ public class Event {
     private Time endTime;
     private String locationGuidance;
 
-    public Event(int id, String name, String location, java.sql.Date date, Time time, String notes, Time endTime, String locationGuidance) {
+    private String imageFilePath;
+
+    public Event(int id, String name, String location, java.sql.Date date, Time time, String notes, Time endTime, String locationGuidance, String imageFilePath) {
         this.id = id;
         this.name = name;
         this.location = location;
@@ -22,11 +24,12 @@ public class Event {
         this.notes = notes;
         this.endTime = endTime;
         this.locationGuidance = locationGuidance;
+        this.imageFilePath = imageFilePath;
     }
 
 
 
-    public Event(String name, String location, Date date, Time time, String notes, Time endTime, String locationGuidance) {
+    public Event(String name, String location, Date date, Time time, String notes, Time endTime, String locationGuidance, String imageFilePath) {
         this.name = name;
         this.location = location;
         this.date = date;
@@ -34,6 +37,7 @@ public class Event {
         this.notes = notes;
         this.endTime = endTime;
         this.locationGuidance = locationGuidance;
+        this.imageFilePath = imageFilePath;
     }
 
     public Event(String name) {
@@ -102,8 +106,30 @@ public class Event {
         this.locationGuidance = locationGuidance;
     }
 
+    public void setId(int id) {
+        this.id = id;
+    }
+
+    public String getImageFilePath() {
+        return imageFilePath;
+    }
+
+    public void setImageFilePath(String imageFilePath) {
+        this.imageFilePath = imageFilePath;
+    }
+
     @Override
     public String toString() {
-        return name;
+        return "Event{" +
+                "id=" + id +
+                ", name='" + name + '\'' +
+                ", location='" + location + '\'' +
+                ", date=" + date +
+                ", time=" + time +
+                ", notes='" + notes + '\'' +
+                ", endTime=" + endTime +
+                ", locationGuidance='" + locationGuidance + '\'' +
+                ", imageFilePath='" + imageFilePath + '\'' +
+                '}';
     }
 }
