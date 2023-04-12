@@ -126,7 +126,7 @@ public class HomeViewController implements Initializable {
         if(model.getRecentAddedEvents() != null){
             if(!model.getRecentAddedEvents().get(0).getImageFilePath().equals(" ")) {
                 try {
-                    Image previewImage = new Image(new FileInputStream(model.getUpcomingEvents().get(0).getImageFilePath()));
+                    Image previewImage = new Image(new FileInputStream(model.getRecentAddedEvents().get(0).getImageFilePath()));
                     add1ImageView.setImage(previewImage);
                 } catch (FileNotFoundException e) {
                     System.out.println("Image file not found for recently added event 1.");
@@ -136,7 +136,7 @@ public class HomeViewController implements Initializable {
         if(model.getRecentAddedEvents().size() >= 2){
             if(!model.getRecentAddedEvents().get(1).getImageFilePath().equals(" ")) {
                 try {
-                    Image previewImage = new Image(new FileInputStream(model.getUpcomingEvents().get(1).getImageFilePath()));
+                    Image previewImage = new Image(new FileInputStream(model.getRecentAddedEvents().get(1).getImageFilePath()));
                     add2ImageView.setImage(previewImage);
                 } catch (FileNotFoundException e) {
                     System.out.println("Image file not found for recently added event 2.");
@@ -146,7 +146,7 @@ public class HomeViewController implements Initializable {
         if(model.getRecentAddedEvents().size() >= 3){
             if(!model.getRecentAddedEvents().get(2).getImageFilePath().equals(" ")) {
                 try {
-                    Image previewImage = new Image(new FileInputStream(model.getUpcomingEvents().get(2).getImageFilePath()));
+                    Image previewImage = new Image(new FileInputStream(model.getRecentAddedEvents().get(2).getImageFilePath()));
                     add3ImageView.setImage(previewImage);
                 } catch (FileNotFoundException e) {
                     System.out.println("Image file not found for recently added event 3.");
@@ -156,7 +156,7 @@ public class HomeViewController implements Initializable {
         if(model.getRecentAddedEvents().size() >= 4){
             if(!model.getRecentAddedEvents().get(3).getImageFilePath().equals(" ")) {
                 try {
-                    Image previewImage = new Image(new FileInputStream(model.getUpcomingEvents().get(3).getImageFilePath()));
+                    Image previewImage = new Image(new FileInputStream(model.getRecentAddedEvents().get(3).getImageFilePath()));
                     add4ImageView.setImage(previewImage);
                 } catch (FileNotFoundException e) {
                     System.out.println("Image file not found for recently added event 4.");

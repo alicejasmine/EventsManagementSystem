@@ -26,7 +26,7 @@
       </ImageView>
       <MFXTextField fx:id="userId" floatMode="INLINE" floatingText="username" layoutX="572.0" layoutY="257.0" prefHeight="49.0" prefWidth="134.0" />
       <MFXPasswordField fx:id="passwordField" floatMode="INLINE" floatingText="password" layoutX="572.0" layoutY="325.0" prefHeight="49.0" prefWidth="134.0" />
-      <MFXButton layoutX="597.0" layoutY="428.0" onAction="#logIn" prefHeight="32.0" prefWidth="84.0" styleClass="light-blue-button" text="Login" />
+      <MFXButton defaultButton="true" layoutX="597.0" layoutY="428.0" onAction="#logIn" prefHeight="32.0" prefWidth="84.0" styleClass="light-blue-button" text="Login" />
 
    </children>
 </AnchorPane>
