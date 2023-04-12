@@ -17,10 +17,10 @@
 
 <AnchorPane maxHeight="-Infinity" prefHeight="651.0" prefWidth="1250.0" styleClass="anchorPane-tickets" stylesheets="@../../css/style.css" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gui.controller.NewEventViewController">
     <children>
-      <Label layoutX="294.0" layoutY="33.0" style="-fx-font-size: 32;" styleClass="title" text="Create new Event" />
-      <Button fx:id="neCreateButton" layoutX="795.0" layoutY="603.0" mnemonicParsing="false" onAction="#createEvent" styleClass="light-blue-button" text="Create" />
+      <Label layoutX="294.0" layoutY="25.0" style="-fx-font-size: 32;" styleClass="title" text="Create new Event" />
+      <Button fx:id="neCreateButton" layoutX="750.0" layoutY="617.0" mnemonicParsing="false" onAction="#createEvent" styleClass="light-blue-button" text="Create" />
       <Label fx:id="creationErrorLabel" alignment="CENTER" layoutX="293.0" layoutY="606.0" prefHeight="52.0" prefWidth="494.0" style="-fx-font-size: 13;" styleClass="normal-text" text="Mandatory fields are marked with *" textFill="#030303" />
-      <HBox layoutX="294.0" layoutY="72.0" prefHeight="531.0" prefWidth="576.0" style="-fx-background-color: D9D9D9;">
+      <HBox layoutX="294.0" layoutY="72.0" prefHeight="531.0" prefWidth="576.0">
          <children>
             <VBox prefHeight="531.0" prefWidth="193.0" spacing="20.0">
                <children>
@@ -127,7 +127,7 @@
             </VBox>
          </children>
       </HBox>
-      <ImageView fitHeight="386.0" fitWidth="360.0" layoutX="881.0" layoutY="176.0" pickOnBounds="true" preserveRatio="true" />
+      <ImageView fx:id="eventImagePreview" fitHeight="386.0" fitWidth="360.0" layoutX="881.0" layoutY="176.0" pickOnBounds="true" preserveRatio="true" />
       <MFXButton layoutX="-23.0" maxWidth="1.7976931348623157E308" prefHeight="662.0" prefWidth="274.0" styleClass="redMenu" stylesheets="@../../css/style.css" text=" " textFill="#c00d0d" />
       <ImageView fx:id="logoHome" fitHeight="102.0" fitWidth="210.0" layoutX="22.0" layoutY="29.0" pickOnBounds="true" preserveRatio="true">
          <image>

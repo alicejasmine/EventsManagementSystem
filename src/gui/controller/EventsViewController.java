@@ -96,8 +96,10 @@ public class EventsViewController implements Initializable {
                 (observable, oldValue, selectedUser) -> {
                     if (selectedUser != null) {
                         eventNotesLabel.setText(selectedUser.getNotes());
-                        eventEndTimeLabel.setText(selectedUser.getEndTime().toString());
                         locationGuidanceLabel.setText(selectedUser.getLocationGuidance());
+                        if(selectedUser.getEndTime() != null){
+                        eventEndTimeLabel.setText(selectedUser.getEndTime().toString());
+                        }else eventEndTimeLabel.setText("This party doesn't stop!");
                     }
                 });
     }

@@ -11,6 +11,7 @@ import javafx.scene.control.*;
 import javafx.scene.image.*;
 import javafx.stage.*;
 
+
 import java.io.*;
 import java.net.*;
 import java.nio.file.*;
@@ -18,8 +19,11 @@ import java.sql.*;
 import java.sql.Date;
 import java.time.*;
 import java.util.*;
+import java.util.ResourceBundle;
 
 public class NewEventViewController implements Initializable{
+    @FXML
+    private ImageView eventImagePreview;
     @FXML
     private TextField neImage;
     @FXML
@@ -41,7 +45,7 @@ public class NewEventViewController implements Initializable{
     @FXML
     private Button neCreateButton;
 
-    private String selectedFile;
+    private String selectedFile = "";
     private Model model = Model.getModel();
 
 
@@ -82,6 +86,8 @@ public class NewEventViewController implements Initializable{
         eTimeCBH.setItems(model.getHoursTime());
         eTimeCBM.setItems(model.getMinsTime());
 
+
+
         datePickerNewEvent.setValue(datePickerNewEvent.getCurrentDate());
         creationErrorLabel.setText("Required fields are marked with *.");
     }
@@ -99,18 +105,30 @@ public class NewEventViewController implements Initializable{
     private String getSelectedFile() {return selectedFile;}
 
     public void imageFileExplorer(ActionEvent actionEvent) {
-        FileChooser fileChooser = new FileChooser();
-        setFileChooser(fileChooser);
-        File file = fileChooser.showOpenDialog(new Stage());
+        try {
+            FileChooser fileChooser = new FileChooser();
+            setFileChooser(fileChooser);
+            File file = fileChooser.showOpenDialog(new Stage());
 
-        Path movefrom = FileSystems.getDefault().getPath(file.getPath());
-        Path target = FileSystems.getDefault().getPath("resources/EventImages/"+file.getName());
-        try{Files.move(movefrom,target, StandardCopyOption.ATOMIC_MOVE); }catch (IOException e){
-            System.out.println("File move failed.");
+            try{
+                Path movefrom = FileSystems.getDefault().getPath(file.getPath());
+                Path target = FileSystems.getDefault().getPath("resources/EventImages/"+file.getName());
+                Files.move(movefrom,target, StandardCopyOption.ATOMIC_MOVE);
+                selectedFile = target.toString();
+                neImage.setText(file.getName());
+
+                Image previewImage = new Image(new FileInputStream("resources/EventImages/"+file.getName()));
+                eventImagePreview.setImage(previewImage);
+            }catch (NullPointerException n){
+                System.out.println("File move failed.");
+            }
+
+
+        } catch(IOException e){
+            System.out.println("File selection has failed");
         }
 
-        selectedFile = target.toString();
-        neImage.setText(file.getName());
+
     }
 
     /**
@@ -225,5 +243,7 @@ public class NewEventViewController implements Initializable{
         } catch (FileNotFoundException e) {
             throw new RuntimeException(e);
         }
+
+
     }
 }
