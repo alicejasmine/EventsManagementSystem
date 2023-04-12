@@ -2,6 +2,7 @@ package gui.controller;
 
 import be.*;
 import gui.model.*;
+import javafx.beans.property.SimpleStringProperty;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -52,10 +53,10 @@ public class SpecialTicketsController implements Initializable {
         specialTicketsTV.setItems(model.getObsSpecialTickets());
         model.loadSpecialTicketList();
 
-
         ColumnTicketTypeTV.setCellValueFactory(new PropertyValueFactory<>("ticketType"));
-        ColumnEventNameTV.setCellValueFactory(new PropertyValueFactory<>("event"));
+        ColumnEventNameTV.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().getEvent().getName()));
         ColumnTicketIDTV.setCellValueFactory(new PropertyValueFactory<>("specialTicket"));
+
         setLabels();
 
         try {

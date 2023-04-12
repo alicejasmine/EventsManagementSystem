@@ -1,6 +1,9 @@
 package gui.controller;
 
+import be.SpecialTicketOverviewWrapper;
+import be.SpecialTicketsWrapper;
 import gui.model.Model;
+import javafx.beans.property.SimpleStringProperty;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -29,19 +32,28 @@ public class SpecialTicketsOverviewController implements Initializable {
     @FXML
     private ImageView logo;
     @FXML
-    private TableView specialOTV;
+    private TableView<SpecialTicketOverviewWrapper> specialOTV;
     @FXML
-    private TableColumn ColumnTicketTypeOTV, ColumnEventNameOTV, ColumnAvailableTicketsOTV;
+    private TableColumn<SpecialTicketOverviewWrapper, String> ColumnTicketTypeOTV;
+
+    @FXML
+    private TableColumn<SpecialTicketOverviewWrapper, String> ColumnEventNameOTV;
+    @FXML
+    private TableColumn<SpecialTicketOverviewWrapper, Integer> ColumnAvailableTicketsOTV;
 
     private Model model = Model.getModel();
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-        specialOTV.setItems(model.getSpecialTicketOverviewInfo());
-        ColumnTicketTypeOTV.setCellValueFactory(new PropertyValueFactory<>("ticketType"));
-        ColumnEventNameOTV.setCellValueFactory(new PropertyValueFactory<>("event"));
-        ColumnAvailableTicketsOTV.setCellValueFactory(new PropertyValueFactory<>("availableTickets"));
+        specialOTV.setItems(model.getObsSpecialTicketsOverview());
+        model.loadSpecialTicketOverviewList();
 
+
+
+
+        ColumnTicketTypeOTV.setCellValueFactory(new PropertyValueFactory<>("ticketType"));
+        ColumnEventNameOTV.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().getEvent().getName()));
+        ColumnAvailableTicketsOTV.setCellValueFactory(new PropertyValueFactory<>("availableTickets"));
 
         try {
             Image logoImage = new Image(new FileInputStream("resources/images/logoEASV.png"));

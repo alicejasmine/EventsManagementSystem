@@ -361,12 +361,12 @@ public class TicketLogicManager {
         return ticketTypeDAO.getAllTicketTypes();
     }
 
-    public ObservableList getSpecialTicketsInfo() {
+    public ObservableList<SpecialTicketsWrapper> getSpecialTicketsInfo() {
         return specialTicketDAO.getSpecialTicketsInfo();
 
     }
 
-    public ObservableList getSpecialTicketOverview() {
+    public ObservableList<SpecialTicketOverviewWrapper> getSpecialTicketOverview() {
         try {
             return specialTicketDAO.getSpecialTicketOverview();
         } catch (SQLException e) {

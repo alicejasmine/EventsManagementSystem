@@ -14,6 +14,7 @@ public class Model {
 
     private ObservableList<Event> events = FXCollections.observableArrayList();
     private final ObservableList<SpecialTicketsWrapper> specialTickets = FXCollections.observableArrayList();
+    private final ObservableList<SpecialTicketOverviewWrapper> specialTicketsOverview=FXCollections.observableArrayList();
 
     private final ObservableList<TicketType> ticketType = FXCollections.observableArrayList();
 
@@ -156,6 +157,11 @@ public class Model {
     public void loadSpecialTicketList(){
         specialTickets.clear();
         specialTickets.addAll(tlm.getSpecialTicketsInfo());
+    }
+
+    public void loadSpecialTicketOverviewList(){
+        specialTicketsOverview.clear();
+        specialTicketsOverview.addAll(tlm.getSpecialTicketOverview());
     }
 
     /**
@@ -321,11 +327,13 @@ public class Model {
 
 
 
-    public ObservableList getObsSpecialTickets() {
+    public ObservableList<SpecialTicketsWrapper> getObsSpecialTickets() {
         return specialTickets;
     }
 
-
+    public ObservableList<SpecialTicketOverviewWrapper> getObsSpecialTicketsOverview() {
+        return specialTicketsOverview;
+    }
     public ObservableList<TicketType> getTicketType() {
         return ticketType;}
 
@@ -341,11 +349,11 @@ public class Model {
         loadSpecialTicketList();
     }
 
-    public ObservableList getSpecialTicketsInfo() {
+    public ObservableList<SpecialTicketsWrapper> getSpecialTicketsInfo() {
         return tlm.getSpecialTicketsInfo();
     }
 
-    public ObservableList getSpecialTicketOverviewInfo() {
+    public ObservableList<SpecialTicketOverviewWrapper> getSpecialTicketOverviewInfo() {
         return tlm.getSpecialTicketOverview();
     }
 

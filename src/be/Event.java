@@ -120,16 +120,6 @@ public class Event {
 
     @Override
     public String toString() {
-        return "Event{" +
-                "id=" + id +
-                ", name='" + name + '\'' +
-                ", location='" + location + '\'' +
-                ", date=" + date +
-                ", time=" + time +
-                ", notes='" + notes + '\'' +
-                ", endTime=" + endTime +
-                ", locationGuidance='" + locationGuidance + '\'' +
-                ", imageFilePath='" + imageFilePath + '\'' +
-                '}';
+        return  name ;
     }
 }

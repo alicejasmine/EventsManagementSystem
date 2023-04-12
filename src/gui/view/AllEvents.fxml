@@ -18,7 +18,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="650.0" prefWidth="1250.0" style="-fx-background-color: C9C5C5;" stylesheets="@../../css/style.css" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gui.controller.EventsViewController">
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="650.0" prefWidth="1250.0" style="-fx-background-color: C9C5C5;" stylesheets="@../../css/style.css" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gui.controller.EventsViewController">
    <right>
       <AnchorPane prefHeight="402.0" prefWidth="284.0" style="-fx-background-color: D9D9D9; -fx-background-radius: 7%;" BorderPane.alignment="CENTER">
          <BorderPane.margin>
@@ -30,7 +30,7 @@
       <AnchorPane minHeight="-Infinity" prefHeight="650.0" prefWidth="200.0" styleClass="anchorPane-events" stylesheets="@../../css/style.css" BorderPane.alignment="CENTER">
          <children>
             <MFXButton layoutX="-23.0" maxWidth="1.7976931348623157E308" mouseTransparent="true" prefHeight="662.0" prefWidth="274.0" styleClass="redMenu" stylesheets="@../../css/style.css" text=" " textFill="#c00d0d" />
-            <TableView fx:id="eventTV" layoutX="257.0" layoutY="180.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" onMouseClicked="#openTicketWindow" prefHeight="376.0" prefWidth="627.0" AnchorPane.bottomAnchor="94.0" AnchorPane.leftAnchor="257.0" AnchorPane.rightAnchor="366.0" AnchorPane.topAnchor="180.0">
+            <TableView fx:id="eventTV" layoutX="272.0" layoutY="175.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" onMouseClicked="#openTicketWindow" prefHeight="376.0" prefWidth="627.0" AnchorPane.bottomAnchor="99.0" AnchorPane.leftAnchor="272.0" AnchorPane.rightAnchor="351.0" AnchorPane.topAnchor="175.0">
                <columns>
                   <TableColumn fx:id="columnEventNameTV" prefWidth="188.00006103515625" text="Event Name" />
                   <TableColumn fx:id="columnEventLocalTV" minWidth="0.0" prefWidth="176.00003051757812" text="Location" />
@@ -42,7 +42,7 @@
                   <String fx:value="table-cell" />
                </styleClass>
             </TableView>
-              <HBox alignment="CENTER_LEFT" layoutX="282.0" layoutY="586.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="50.0" prefWidth="707.0">
+              <HBox alignment="CENTER_LEFT" layoutX="271.0" layoutY="577.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="50.0" prefWidth="707.0">
                   <children>
                   <Button fx:id="newEventButton" mnemonicParsing="false" onAction="#newEvent" prefWidth="70.0" styleClass="light-blue-button" text="Create">
                      <HBox.margin>
@@ -67,8 +67,8 @@
             <Button layoutX="1073.0" layoutY="17.0" mnemonicParsing="false" onAction="#logout" styleClass="red-button" text="Log out" />
             <GridPane layoutX="932.0" layoutY="231.0" prefHeight="316.0" prefWidth="282.0" styleClass="gridPane">
               <columnConstraints>
-                <ColumnConstraints hgrow="SOMETIMES" maxWidth="198.0" minWidth="10.0" prefWidth="172.6666259765625" />
-                <ColumnConstraints hgrow="SOMETIMES" maxWidth="94.666748046875" minWidth="2.0" prefWidth="27.3333740234375" />
+                <ColumnConstraints hgrow="SOMETIMES" maxWidth="198.0" minWidth="10.0" prefWidth="152.0" />
+                <ColumnConstraints hgrow="SOMETIMES" maxWidth="130.0" minWidth="2.0" prefWidth="130.0" />
               </columnConstraints>
               <rowConstraints>
                 <RowConstraints maxHeight="63.66668701171875" minHeight="10.0" prefHeight="26.3333740234375" vgrow="SOMETIMES" />
@@ -77,7 +77,7 @@
                   <RowConstraints maxHeight="142.0" minHeight="10.0" prefHeight="86.33331298828125" vgrow="SOMETIMES" />
               </rowConstraints>
                <children>
-                  <Label styleClass="normal-text" stylesheets="@../../css/style.css" text="Tickets available/sold:">
+                  <Label styleClass="normal-text" stylesheets="@../../css/style.css" text="Tickets available/sold:" visible="false">
                      <padding>
                         <Insets bottom="20.0" left="20.0" top="20.0" />
                      </padding>
@@ -85,7 +85,7 @@
                         <Insets />
                      </GridPane.margin>
                   </Label>
-                  <Label fx:id="availableSoldTickets" styleClass="normal-text" text="TEXT" GridPane.columnIndex="1">
+                  <Label fx:id="availableSoldTickets" styleClass="normal-text" GridPane.columnIndex="1">
                      <padding>
                         <Insets left="5.0" />
                      </padding>
@@ -114,24 +114,23 @@
                         <Insets />
                      </GridPane.margin>
                   </Label>
-                  <Label fx:id="eventEndTimeLabel" styleClass="normal-text" text="TEXT" GridPane.columnIndex="1" GridPane.rowIndex="1">
+                  <Label fx:id="eventEndTimeLabel" prefHeight="26.0" prefWidth="127.0" styleClass="normal-text" text=" " GridPane.columnIndex="1" GridPane.rowIndex="1">
                      <padding>
                         <Insets left="5.0" />
                      </padding>
                   </Label>
-                  <Label fx:id="eventNotesLabel" alignment="TOP_LEFT" minWidth="-Infinity" prefHeight="92.0" prefWidth="83.0" styleClass="normal-text" text="TEXT" wrapText="true" GridPane.columnIndex="1" GridPane.rowIndex="2">
+                  <Label fx:id="eventNotesLabel" alignment="TOP_LEFT" minWidth="-Infinity" prefHeight="92.0" prefWidth="129.0" style="-fx-font-size: 14;" styleClass="normal-text" wrapText="true" GridPane.columnIndex="1" GridPane.rowIndex="2">
                      <padding>
                         <Insets left="5.0" top="25.0" />
                      </padding>
                   </Label>
-                  <Label fx:id="locationGuidanceLabel" alignment="TOP_LEFT" prefHeight="92.0" prefWidth="99.0" styleClass="normal-text" text="TEXT" wrapText="true" GridPane.columnIndex="1" GridPane.rowIndex="3">
+                  <Label fx:id="locationGuidanceLabel" alignment="TOP_LEFT" prefHeight="92.0" prefWidth="135.0" style="-fx-font-size: 14;" styleClass="normal-text" wrapText="true" GridPane.columnIndex="1" GridPane.rowIndex="3">
                      <padding>
                         <Insets left="5.0" top="25.0" />
                      </padding>
                   </Label>
                </children>
             </GridPane>
-            <Button fx:id="ticketInfo" layoutX="932.0" layoutY="569.0" mnemonicParsing="false" onAction="#ticketInfo" prefWidth="81.0" styleClass="white-button" text="Tickets Info" />
             <Label layoutX="932.0" layoutY="175.0" minHeight="-Infinity" minWidth="-Infinity" prefHeight="39.0" prefWidth="221.0" styleClass="small-title" text="Event Information">
                <font>
                   <Font name="System Bold" size="14.0" />
@@ -184,6 +183,7 @@
                   <Button fx:id="coordinatorButton" alignment="BASELINE_LEFT" mnemonicParsing="false" onAction="#manageCoordinators" prefHeight="47.0" prefWidth="218.0" styleClass="red-menuButton" text="Manage Coordinators" visible="false" />
                </children>
             </VBox>
+            <Button fx:id="ticketInfo" layoutX="931.0" layoutY="585.0" mnemonicParsing="false" onAction="#ticketInfo" prefWidth="81.0" styleClass="white-button" text="Tickets Info" />
          </children>
       </AnchorPane>
    </top>
