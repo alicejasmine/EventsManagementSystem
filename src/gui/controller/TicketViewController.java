@@ -115,12 +115,12 @@ public class TicketViewController implements Initializable {
         } else {
             String s = selectedTicket.getTicketID();
             String filename = "Ticket-" + selectedEvent.getName() + "-" + s.substring(s.length() - 4) + ".pdf";
-            File file = new File("resources/" + filename);
+            File file = new File("resources/Tickets/" + filename);
             if (file.exists()) {
                 errorLabel.setText("Error: File already saved");
             } else {
                 model.saveTicket(selectedEvent, selectedTicket);
-                errorLabel.setText("File saved in resources folder");
+                errorLabel.setText("File saved.");
             }
 
         }

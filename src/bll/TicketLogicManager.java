@@ -4,7 +4,6 @@ import java.awt.*;
 import java.awt.image.BufferedImage;
 import java.awt.print.PrinterException;
 import java.awt.print.PrinterJob;
-import java.io.ByteArrayOutputStream;
 import java.io.File;
 import java.io.IOException;
 import java.sql.SQLException;
@@ -81,7 +80,7 @@ public class TicketLogicManager {
     public static PDDocument writeEventInfoOnTicket(Event event, Ticket ticket) {
 
         try {
-            String inputFilePath = "resources/ticketType1-input.pdf";
+            String inputFilePath = "resources/TicketsBackground/Ticket-background.pdf";
             File inputFile = new File(inputFilePath);
             PDDocument doc = Loader.loadPDF(inputFile);
             PDPage page = doc.getPage(0);
@@ -155,6 +154,80 @@ public class TicketLogicManager {
 
     }
 
+    /**
+     * Method to print event info on a SpecialTicket using Apache PDFbox libraries and QR code
+     */
+    public static PDDocument writeEventInfoOnSpecialTicket(Event event, SpecialTicket specialTicket, TicketType ticketType) {
+
+        try {
+            String inputFilePath = "resources/TicketsBackground/SpecialTicket-background.pdf";
+            File inputFile = new File(inputFilePath);
+            PDDocument doc = Loader.loadPDF(inputFile);
+            PDPage page = doc.getPage(0);
+
+            //Create a new content stream to write on the ticket
+            //5th parameters needs to be true to have right coordinate system and text not upside down
+            PDPageContentStream contentStream = new PDPageContentStream(doc, page, PDPageContentStream.AppendMode.APPEND, true, true);
+
+            PDFont pdfFont = new PDType1Font(Standard14Fonts.FontName.HELVETICA_BOLD);
+            contentStream.setFont(pdfFont, 25);
+            contentStream.setNonStrokingColor(Color.white);
+
+            PDRectangle pageSize = page.getMediaBox();
+            float pageWidth = pageSize.getWidth();
+            float pageHeight = pageSize.getHeight();
+
+            float margin = 20;
+            float x = pageWidth / 4;
+            float y = pageHeight - margin;
+
+            //Write Event Info
+            contentStream.beginText();
+
+            if (event.getName().equals("No Event")) {
+
+                contentStream.newLineAtOffset(x, y - 80);
+                contentStream.setFont(pdfFont, 25);
+                contentStream.showText(ticketType.getTicketTypeName());
+
+            } else {
+                contentStream.newLineAtOffset(x, y-30);
+                contentStream.showText(ticketType.getTicketTypeName());
+
+                contentStream.setTextMatrix(Matrix.getTranslateInstance(x, y - 70));
+                contentStream.setFont(pdfFont, 18);
+                contentStream.newLine();
+                contentStream.showText(event.getName());
+
+                contentStream.setTextMatrix(Matrix.getTranslateInstance(x, y - 90));
+                contentStream.newLine();
+                contentStream.showText(event.getDate().toString());
+
+                contentStream.setTextMatrix(Matrix.getTranslateInstance(x, y - 110));
+                contentStream.newLine();
+                contentStream.showText("Start time: " + event.getTime().toString());
+
+            }
+            contentStream.endText();
+
+
+            //Write QR CODE
+
+            int qrCodeSize = 80;
+            BitMatrix bitMatrix = new MultiFormatWriter().encode(specialTicket.getSpecialTicketID(), BarcodeFormat.QR_CODE, qrCodeSize, qrCodeSize);
+            BufferedImage qrImage = MatrixToImageWriter.toBufferedImage(bitMatrix);
+            PDImageXObject qrImageXObject = LosslessFactory.createFromImage(doc, qrImage);
+            contentStream.drawImage(qrImageXObject, margin, (pageHeight - qrCodeSize) / 2 + 5, qrCodeSize, qrCodeSize);
+            contentStream.close();
+            return doc;
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        } catch (WriterException e) {
+            throw new RuntimeException(e);
+        }
+
+
+    }
 
     /**
      * method to save the ticket with the last 4 digits of the ticketID
@@ -163,16 +236,33 @@ public class TicketLogicManager {
         try {
             PDDocument document = writeEventInfoOnTicket(event, ticket);
             String s = ticket.getTicketID();
-            String outputFilePath = "resources/Ticket-" + event.getName() + "-" + s.substring(s.length() - 4) + ".pdf";
+            String outputFilePath = "resources/Tickets/Ticket-" + event.getName() + "-" + s.substring(s.length() - 4) + ".pdf";
             File outputFile = new File(outputFilePath);
             document.save(outputFile);
             document.close();
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
-
-
     }
+
+    /**
+     * method to save the special ticket with the last 4 digits of the ticketID
+     *
+     * @return
+     */
+    public static void saveSpecialTicket(Event event, SpecialTicket specialTicket, TicketType ticketType) {
+        try {
+            PDDocument document = writeEventInfoOnSpecialTicket(event, specialTicket, ticketType);
+            String s = specialTicket.getSpecialTicketID();
+            String outputFilePath = "resources/SpecialTickets/SpecialTicket-" + event.getName() + "-" + s.substring(s.length() - 4) + ".pdf";
+            File outputFile = new File(outputFilePath);
+            document.save(outputFile);
+            document.close();
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
+    }
+
 
     /**
      * method to print the ticket
@@ -190,16 +280,47 @@ public class TicketLogicManager {
         }
     }
 
-    public ImageView createTicketPreview(Event event, Ticket ticket) throws IOException {
-        if(event!=null){
-        PDDocument document = writeEventInfoOnTicket(event, ticket);
-        PDFRenderer pdfRenderer=new PDFRenderer(document);
-        BufferedImage bufferedImage=pdfRenderer.renderImage(0);
-        WritableImage fxImage= SwingFXUtils.toFXImage(bufferedImage,null);
-        ImageView imageView=new ImageView(fxImage);
-       return imageView;
-    } throw new IllegalStateException("Event cannot be null");}
 
+    /**
+     * method to print the ticket
+     */
+    public void printSpecialTicket(PDDocument document) {
+        try {
+            PrinterJob job = PrinterJob.getPrinterJob();
+            job.setPageable(new PDFPageable(document));
+            if (job.printDialog()) {
+                job.print();
+            }
+            document.close();
+        } catch (IOException | PrinterException e) {
+
+        }
+    }
+
+    public ImageView createTicketPreview(Event event, Ticket ticket) throws IOException {
+        if (event != null) {
+            PDDocument document = writeEventInfoOnTicket(event, ticket);
+            PDFRenderer pdfRenderer = new PDFRenderer(document);
+            BufferedImage bufferedImage = pdfRenderer.renderImage(0);
+            WritableImage fxImage = SwingFXUtils.toFXImage(bufferedImage, null);
+            ImageView imageView = new ImageView(fxImage);
+            return imageView;
+        }
+        throw new IllegalStateException("Event cannot be null");
+    }
+
+
+    public ImageView createSpecialTicketPreview(Event event, SpecialTicket specialTicket, TicketType ticketType) throws IOException {
+        if (event != null) {
+            PDDocument document = writeEventInfoOnSpecialTicket(event, specialTicket, ticketType);
+            PDFRenderer pdfRenderer = new PDFRenderer(document);
+            BufferedImage bufferedImage = pdfRenderer.renderImage(0);
+            WritableImage fxImage = SwingFXUtils.toFXImage(bufferedImage, null);
+            ImageView imageView = new ImageView(fxImage);
+            return imageView;
+        }
+        throw new IllegalStateException("Event cannot be null");
+    }
 
     private static long get64LeastSignificantBits() {
         Random random = new Random();

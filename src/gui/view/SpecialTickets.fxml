@@ -142,12 +142,11 @@
             </Label>
             <ButtonBar layoutX="940.0" layoutY="566.0" prefHeight="40.0" prefWidth="200.0">
               <buttons>
-                  <Button mnemonicParsing="false" prefWidth="70.0" styleClass="light-blue-button" text="Save" />
-                  <Button layoutX="135.0" layoutY="14.0" mnemonicParsing="false" prefWidth="70.0" styleClass="light-blue-button" text="Print" />
-                  <Button layoutX="49.0" layoutY="14.0" mnemonicParsing="false" prefWidth="70.0" styleClass="light-blue-button" text="Email" />
+                  <Button mnemonicParsing="false" onAction="#saveSpecialTicket" prefWidth="70.0" styleClass="light-blue-button" text="Save" />
+                  <Button layoutX="135.0" layoutY="14.0" mnemonicParsing="false" onAction="#printSpecialTicket" prefWidth="70.0" styleClass="light-blue-button" text="Print" />
               </buttons>
             </ButtonBar>
-            <TextField layoutX="1056.0" layoutY="135.0" promptText="Search" />
+            <TextField layoutX="1056.0" layoutY="135.0" promptText="Search" visible="false" />
             <Button layoutX="73.0" layoutY="335.0" mnemonicParsing="false" onAction="#openCreateSpecialTicket" text="Create Special Ticket">
                <styleClass>
                   <String fx:value="red-menuButton" />

@@ -3,9 +3,9 @@ package gui.model;
 import be.*;
 import bll.*;
 import javafx.collections.*;
-import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 
+import java.io.File;
 import java.io.IOException;
 import java.time.*;
 import java.util.*;
@@ -247,6 +247,27 @@ public class Model {
         }
     }
 
+    public void saveSpecialTicket(Event event, SpecialTicket specialTicket, TicketType ticketType) {
+          tlm.saveSpecialTicket(event, specialTicket,ticketType);
+    }
+
+
+    public void printSpecialTicket(Event event, SpecialTicket specialTicket, TicketType ticketType) {
+        tlm.printSpecialTicket(tlm.writeEventInfoOnSpecialTicket(event, specialTicket,ticketType));
+    }
+
+
+
+    public ImageView createSpecialTicketPreview(Event event, SpecialTicket specialTicket, TicketType ticketType) {
+        try {
+            return tlm.createSpecialTicketPreview(event,specialTicket, ticketType);
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
+    }
+
+
+
     /**
      * User methods.
      */
@@ -327,6 +348,7 @@ public class Model {
     public ObservableList getSpecialTicketOverviewInfo() {
         return tlm.getSpecialTicketOverview();
     }
+
 
 }
 
