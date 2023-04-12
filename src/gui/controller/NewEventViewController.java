@@ -45,7 +45,7 @@ public class NewEventViewController implements Initializable{
     @FXML
     private Button neCreateButton;
 
-    private String selectedFile = "";
+    private String selectedFile = " ";
     private Model model = Model.getModel();
 
 

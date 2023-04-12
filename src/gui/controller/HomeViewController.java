@@ -10,6 +10,7 @@ import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
+import javafx.scene.paint.*;
 import javafx.stage.Stage;
 
 import java.io.FileInputStream;
@@ -20,6 +21,21 @@ import java.util.*;
 
 public class HomeViewController implements Initializable {
 
+
+    public ImageView up2ImageView;
+
+    public ImageView up3ImageView;
+
+    public ImageView up4ImageView;
+
+    public ImageView add1ImageView;
+
+    public ImageView add2ImageView;
+    public ImageView add3ImageView;
+
+    public ImageView add4ImageView;
+
+    @FXML private ImageView up1ImageView;
     @FXML private MFXButton up1Button;
     @FXML private MFXButton up2Button;
     @FXML private MFXButton up3Button;
@@ -66,30 +82,86 @@ public class HomeViewController implements Initializable {
 
     private void eventButtonCreation(){
         if(model.getUpcomingEvents() != null){
-            up1Button.setText(model.getUpcomingEvents().get(0).getName() + "\n\n" + model.getUpcomingEvents().get(0).getDate());
+            if(!model.getUpcomingEvents().get(0).getImageFilePath().equals(" ")) {
+                try {
+                    Image previewImage = new Image(new FileInputStream(model.getUpcomingEvents().get(0).getImageFilePath()));
+                    up1ImageView.setImage(previewImage);
+                } catch (FileNotFoundException e) {
+                    System.out.println("file not found for upcoming event 1 image.");
+                }
+            } else {up1Button.setText(model.getUpcomingEvents().get(0).getName() + "\n\n" + model.getUpcomingEvents().get(0).getDate());}
         }else up1Button.setDisable(true);
         if(model.getUpcomingEvents().size() >= 2){
-            up2Button.setText(model.getUpcomingEvents().get(1).getName() + "\n\n" + model.getUpcomingEvents().get(1).getDate());
+            if(!model.getUpcomingEvents().get(1).getImageFilePath().equals(" ")) {
+                try {
+                    Image previewImage = new Image(new FileInputStream(model.getUpcomingEvents().get(1).getImageFilePath()));
+                    up2ImageView.setImage(previewImage);
+                } catch (FileNotFoundException e) {
+                    System.out.println("file not found for upcoming event 2 image.");
+                }
+            } else {up2Button.setText(model.getUpcomingEvents().get(1).getName() + "\n\n" + model.getUpcomingEvents().get(1).getDate());}
         }else up2Button.setDisable(true);
         if(model.getUpcomingEvents().size() >= 3){
-            up3Button.setText(model.getUpcomingEvents().get(2).getName() + "\n\n" + model.getUpcomingEvents().get(2).getDate());
+            if(!model.getUpcomingEvents().get(2).getImageFilePath().equals(" ")) {
+                try {
+                    Image previewImage = new Image(new FileInputStream(model.getUpcomingEvents().get(2).getImageFilePath()));
+                    up3ImageView.setImage(previewImage);
+                } catch (FileNotFoundException e) {
+                    System.out.println("file not found for upcoming event 3 image.");
+                }
+            } else {up3Button.setText(model.getUpcomingEvents().get(2).getName() + "\n\n" + model.getUpcomingEvents().get(2).getDate());}
         }else up3Button.setDisable(true);
         if(model.getUpcomingEvents().size() >= 4) {
-            up4Button.setText(model.getUpcomingEvents().get(3).getName() + "\n\n" + model.getUpcomingEvents().get(3).getDate());
+            if(!model.getUpcomingEvents().get(3).getImageFilePath().equals(" ")) {
+                try {
+                    Image previewImage = new Image(new FileInputStream(model.getUpcomingEvents().get(3).getImageFilePath()));
+                    up4ImageView.setImage(previewImage);
+                } catch (FileNotFoundException e) {
+                    System.out.println("file not found for upcoming event 4 image.");
+                }
+            } else {up4Button.setText(model.getUpcomingEvents().get(3).getName() + "\n\n" + model.getUpcomingEvents().get(3).getDate());}
         }else up4Button.setDisable(true);
 
 
         if(model.getRecentAddedEvents() != null){
-            add1Button.setText(model.getRecentAddedEvents().get(0).getName() + "\n\n" + model.getRecentAddedEvents().get(0).getDate());
+            if(!model.getRecentAddedEvents().get(0).getImageFilePath().equals(" ")) {
+                try {
+                    Image previewImage = new Image(new FileInputStream(model.getUpcomingEvents().get(0).getImageFilePath()));
+                    add1ImageView.setImage(previewImage);
+                } catch (FileNotFoundException e) {
+                    System.out.println("Image file not found for recently added event 1.");
+                }
+            } else {add1Button.setText(model.getRecentAddedEvents().get(0).getName() + "\n\n" + model.getRecentAddedEvents().get(0).getDate());}
         } else add1Button.setDisable(true);
         if(model.getRecentAddedEvents().size() >= 2){
-            add2Button.setText(model.getRecentAddedEvents().get(1).getName() + "\n\n" + model.getRecentAddedEvents().get(1).getDate());
+            if(!model.getRecentAddedEvents().get(1).getImageFilePath().equals(" ")) {
+                try {
+                    Image previewImage = new Image(new FileInputStream(model.getUpcomingEvents().get(1).getImageFilePath()));
+                    add2ImageView.setImage(previewImage);
+                } catch (FileNotFoundException e) {
+                    System.out.println("Image file not found for recently added event 2.");
+                }
+            } else {add2Button.setText(model.getRecentAddedEvents().get(1).getName() + "\n\n" + model.getRecentAddedEvents().get(1).getDate());}
         } else add2Button.setDisable(true);
         if(model.getRecentAddedEvents().size() >= 3){
-            add3Button.setText(model.getRecentAddedEvents().get(2).getName() + "\n\n" + model.getRecentAddedEvents().get(2).getDate());
+            if(!model.getRecentAddedEvents().get(2).getImageFilePath().equals(" ")) {
+                try {
+                    Image previewImage = new Image(new FileInputStream(model.getUpcomingEvents().get(2).getImageFilePath()));
+                    add3ImageView.setImage(previewImage);
+                } catch (FileNotFoundException e) {
+                    System.out.println("Image file not found for recently added event 3.");
+                }
+            } else {add3Button.setText(model.getRecentAddedEvents().get(2).getName() + "\n\n" + model.getRecentAddedEvents().get(2).getDate());}
         } else add3Button.setDisable(true);
         if(model.getRecentAddedEvents().size() >= 4){
-            add4Button.setText(model.getRecentAddedEvents().get(3).getName() + "\n\n" + model.getRecentAddedEvents().get(3).getDate());
+            if(!model.getRecentAddedEvents().get(3).getImageFilePath().equals(" ")) {
+                try {
+                    Image previewImage = new Image(new FileInputStream(model.getUpcomingEvents().get(3).getImageFilePath()));
+                    add4ImageView.setImage(previewImage);
+                } catch (FileNotFoundException e) {
+                    System.out.println("Image file not found for recently added event 4.");
+                }
+            } else {add4Button.setText(model.getRecentAddedEvents().get(3).getName() + "\n\n" + model.getRecentAddedEvents().get(3).getDate());}
         } else add4Button.setDisable(true);
     }
 
