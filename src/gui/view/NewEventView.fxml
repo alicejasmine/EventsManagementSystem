@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import io.github.palexdev.materialfx.controls.MFXButton?>
 <?import io.github.palexdev.materialfx.controls.MFXComboBox?>
 <?import io.github.palexdev.materialfx.controls.MFXDatePicker?>
 <?import java.lang.String?>
@@ -8,197 +9,171 @@
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.TextArea?>
 <?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
-<?import javafx.scene.layout.ColumnConstraints?>
-<?import javafx.scene.layout.GridPane?>
-<?import javafx.scene.layout.RowConstraints?>
-<?import javafx.scene.text.Font?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
 
-<AnchorPane prefHeight="700.0" prefWidth="670.0" styleClass="small-windows" stylesheets="@../../css/style.css" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gui.controller.NewEventViewController">
+<AnchorPane maxHeight="-Infinity" prefHeight="651.0" prefWidth="1250.0" styleClass="anchorPane-tickets" stylesheets="@../../css/style.css" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gui.controller.NewEventViewController">
     <children>
-      <GridPane layoutX="485.0" layoutY="78.0" prefHeight="483.0" prefWidth="583.0" AnchorPane.leftAnchor="50.0">
-        <columnConstraints>
-          <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-          <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-            <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-        </columnConstraints>
-        <rowConstraints>
-          <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-          <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-          <RowConstraints maxHeight="71.19998779296874" minHeight="10.0" prefHeight="71.19998779296874" vgrow="SOMETIMES" />
-            <RowConstraints maxHeight="49.600012207031256" minHeight="10.0" prefHeight="37.600012207031256" vgrow="SOMETIMES" />
-            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-            <RowConstraints maxHeight="109.20001831054685" minHeight="10.0" prefHeight="76.4000305175781" vgrow="SOMETIMES" />
-            <RowConstraints maxHeight="55.60001220703123" minHeight="10.0" prefHeight="44.39996948242185" vgrow="SOMETIMES" />
-        </rowConstraints>
+      <Label layoutX="294.0" layoutY="33.0" style="-fx-font-size: 32;" styleClass="title" text="Create new Event" />
+      <Button fx:id="neCreateButton" layoutX="795.0" layoutY="603.0" mnemonicParsing="false" onAction="#createEvent" styleClass="light-blue-button" text="Create" />
+      <Label fx:id="creationErrorLabel" alignment="CENTER" layoutX="293.0" layoutY="606.0" prefHeight="52.0" prefWidth="494.0" style="-fx-font-size: 13;" styleClass="normal-text" text="Mandatory fields are marked with *" textFill="#030303" />
+      <HBox layoutX="294.0" layoutY="72.0" prefHeight="531.0" prefWidth="576.0" style="-fx-background-color: D9D9D9;">
          <children>
-            <TextField fx:id="neNameTF" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="30.0" prefWidth="322.0" promptText="Event Name" GridPane.columnIndex="1" />
-            <Label prefHeight="33.0" prefWidth="112.0" text="*Event Title:">
-               <padding>
-                  <Insets left="5.0" />
-               </padding>
-               <styleClass>
-                  <String fx:value="small-windows" />
-                  <String fx:value="small-windows-text" />
-               </styleClass>
-               <GridPane.margin>
-                  <Insets left="65.0" top="20.0" />
-               </GridPane.margin>
-            </Label>
-            <Label prefHeight="42.0" prefWidth="102.0" text="*Location:" GridPane.rowIndex="1">
-               <padding>
-                  <Insets left="5.0" />
-               </padding>
-               <styleClass>
-                  <String fx:value="small-windows" />
-                  <String fx:value="small-windows-text" />
-               </styleClass>
-               <GridPane.margin>
-                  <Insets left="65.0" top="20.0" />
-               </GridPane.margin>
-            </Label>
-            <Label prefHeight="42.0" prefWidth="102.0" text="Date:" GridPane.rowIndex="2">
-               <padding>
-                  <Insets left="5.0" top="20.0" />
-               </padding>
-               <styleClass>
-                  <String fx:value="small-windows" />
-                  <String fx:value="small-windows-text" />
-               </styleClass>
-               <GridPane.margin>
-                  <Insets left="65.0" top="20.0" />
-               </GridPane.margin>
-            </Label>
-            <Label prefHeight="42.0" prefWidth="102.0" text="*Start Time:" GridPane.rowIndex="3">
-               <padding>
-                  <Insets left="5.0" />
-               </padding>
-               <styleClass>
-                  <String fx:value="small-windows" />
-                  <String fx:value="small-windows-text" />
-               </styleClass>
-               <GridPane.margin>
-                  <Insets left="65.0" top="20.0" />
-               </GridPane.margin>
-            </Label>
-            <Label prefHeight="42.0" prefWidth="102.0" text="*Notes:" GridPane.rowIndex="5">
-               <padding>
-                  <Insets left="5.0" />
-               </padding>
-               <styleClass>
-                  <String fx:value="small-windows" />
-                  <String fx:value="small-windows-text" />
-               </styleClass>
-               <GridPane.margin>
-                  <Insets left="65.0" top="80.0" />
-               </GridPane.margin>
-            </Label>
-            <Label prefHeight="42.0" prefWidth="102.0" text="End Time:" GridPane.rowIndex="4">
-               <styleClass>
-                  <String fx:value="small-windows" />
-                  <String fx:value="small-windows-text" />
-               </styleClass>
-               <padding>
-                  <Insets left="5.0" top="30.0" />
-               </padding>
-               <GridPane.margin>
-                  <Insets left="65.0" top="20.0" />
-               </GridPane.margin>
-            </Label>
-            <Label prefHeight="42.0" prefWidth="137.0" text="Location Info:" GridPane.rowIndex="6">
-               <padding>
-                  <Insets left="5.0" />
-               </padding>
-               <styleClass>
-                  <String fx:value="small-windows" />
-                  <String fx:value="small-windows-text" />
-               </styleClass>
-               <GridPane.margin>
-                  <Insets left="65.0" top="100.0" />
-               </GridPane.margin>
-            </Label>
-            <Label prefHeight="42.0" prefWidth="102.0" text="*Image:" GridPane.rowIndex="7">
-               <padding>
-                  <Insets left="5.0" />
-               </padding>
-               <styleClass>
-                  <String fx:value="small-windows" />
-                  <String fx:value="small-windows-text" />
-               </styleClass>
-               <GridPane.margin>
-                  <Insets left="65.0" top="80.0" />
-               </GridPane.margin>
-            </Label>
-            <TextField fx:id="neImage" maxWidth="-Infinity" minWidth="-Infinity" prefHeight="30.0" prefWidth="231.0" promptText="Image" GridPane.columnIndex="1" GridPane.rowIndex="7">
-               <GridPane.margin>
-                  <Insets top="80.0" />
-               </GridPane.margin>
-            </TextField>
-            <Button mnemonicParsing="false" styleClass="white-button" text="Select" GridPane.columnIndex="2" GridPane.rowIndex="7">
-               <GridPane.margin>
-                  <Insets left="60.0" top="80.0" />
-               </GridPane.margin>
-            </Button>
-            <TextField fx:id="neLocationTF" maxWidth="-Infinity" minWidth="-Infinity" prefHeight="30.0" prefWidth="322.0" promptText="Event location" GridPane.columnIndex="1" GridPane.rowIndex="1">
-               <GridPane.margin>
-                  <Insets top="20.0" />
-               </GridPane.margin>
-            </TextField>
-            <MFXDatePicker fx:id="datePickerNewEvent" maxWidth="-Infinity" prefHeight="38.0" prefWidth="119.2" GridPane.columnIndex="1" GridPane.rowIndex="2">
-               <padding>
-                  <Insets top="20.0" />
-               </padding>
-               <GridPane.margin>
-                  <Insets top="20.0" />
-               </GridPane.margin>
-            </MFXDatePicker>
-            <MFXComboBox fx:id="timeCBH" borderGap="0.0" promptText="Hour" GridPane.columnIndex="1" GridPane.rowIndex="3">
-               <GridPane.margin>
-                  <Insets top="20.0" />
-               </GridPane.margin>
-            </MFXComboBox>
-            <Label alignment="CENTER" prefHeight="38.0" prefWidth="28.0" text=":" textFill="WHITE" GridPane.columnIndex="1" GridPane.rowIndex="3">
-               <font>
-                  <Font name="System Bold" size="18.0" />
-               </font>
-            </Label>
-            <MFXComboBox fx:id="timeCBM" promptText="Min" GridPane.columnIndex="2" GridPane.rowIndex="3">
-               <GridPane.margin>
-                  <Insets top="20.0" />
-               </GridPane.margin>
-            </MFXComboBox>
-            <MFXComboBox fx:id="eTimeCBH" promptText="Hour" GridPane.columnIndex="1" GridPane.rowIndex="4">
-               <GridPane.margin>
-                  <Insets top="40.0" />
-               </GridPane.margin>
-            </MFXComboBox>
-            <MFXComboBox fx:id="eTimeCBM" promptText="Min" GridPane.columnIndex="2" GridPane.rowIndex="4">
-               <GridPane.margin>
-                  <Insets top="40.0" />
-               </GridPane.margin>
-            </MFXComboBox>
-            <TextArea fx:id="neNotesTF" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="67.0" prefWidth="322.0" promptText="Event Notes" GridPane.columnIndex="1" GridPane.rowIndex="5">
-               <padding>
-                  <Insets bottom="10.0" top="20.0" />
-               </padding>
-               <GridPane.margin>
-                  <Insets top="80.0" />
-               </GridPane.margin>
-            </TextArea>
-            <TextArea fx:id="neLocationInfoTF" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="67.0" prefWidth="322.0" promptText="Event Location Information (Parking, Directions, etc.)- Optional" GridPane.columnIndex="1" GridPane.rowIndex="6">
-               <padding>
-                  <Insets top="20.0" />
-               </padding>
-               <GridPane.margin>
-                  <Insets top="100.0" />
-               </GridPane.margin>
-            </TextArea>
+            <VBox prefHeight="531.0" prefWidth="193.0" spacing="20.0">
+               <children>
+                  <Label prefHeight="33.0" prefWidth="112.0" styleClass="normal-text" text="*Event Title:">
+                     <padding>
+                        <Insets left="5.0" />
+                     </padding>
+                  </Label>
+                  <Label prefHeight="42.0" prefWidth="102.0" styleClass="normal-text" text="*Location:">
+                     <padding>
+                        <Insets left="5.0" />
+                     </padding>
+                  </Label>
+                  <Label prefHeight="42.0" prefWidth="102.0" styleClass="normal-text" text="Date:">
+                     <padding>
+                        <Insets left="5.0" />
+                     </padding>
+                  </Label>
+                  <Label prefHeight="42.0" prefWidth="102.0" styleClass="normal-text" text="*Start Time:">
+                     <padding>
+                        <Insets left="5.0" />
+                     </padding>
+                  </Label>
+                  <Label prefHeight="42.0" prefWidth="102.0" styleClass="normal-text" text="End Time:">
+                     <padding>
+                        <Insets left="5.0" />
+                     </padding>
+                     <VBox.margin>
+                        <Insets top="10.0" />
+                     </VBox.margin>
+                  </Label>
+                  <Label prefHeight="42.0" prefWidth="102.0" styleClass="normal-text" text="*Notes:">
+                     <padding>
+                        <Insets left="5.0" />
+                     </padding>
+                     <VBox.margin>
+                        <Insets top="10.0" />
+                     </VBox.margin>
+                  </Label>
+                  <Label prefHeight="42.0" prefWidth="137.0" styleClass="normal-text" text="Location Info:">
+                     <padding>
+                        <Insets left="5.0" />
+                     </padding>
+                     <VBox.margin>
+                        <Insets top="30.0" />
+                     </VBox.margin>
+                  </Label>
+                  <Label prefHeight="42.0" prefWidth="102.0" styleClass="normal-text" text="Image:">
+                     <padding>
+                        <Insets left="5.0" />
+                     </padding>
+                     <VBox.margin>
+                        <Insets top="12.0" />
+                     </VBox.margin>
+                  </Label>
+               </children>
+            </VBox>
+            <VBox prefHeight="531.0" prefWidth="375.0" spacing="25.0">
+               <children>
+                  <TextField fx:id="neNameTF" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="30.0" prefWidth="322.0" promptText="Event Name">
+                     <VBox.margin>
+                        <Insets top="5.0" />
+                     </VBox.margin>
+                  </TextField>
+                  <TextField fx:id="neLocationTF" maxWidth="-Infinity" minWidth="-Infinity" prefHeight="30.0" prefWidth="322.0" promptText="Event location" />
+                  <MFXDatePicker fx:id="datePickerNewEvent" maxWidth="-Infinity" prefHeight="52.0" prefWidth="237.0">
+                     <padding>
+                        <Insets top="20.0" />
+                     </padding>
+                  </MFXDatePicker>
+                  <HBox prefHeight="100.0" prefWidth="200.0">
+                     <children>
+                        <MFXComboBox fx:id="timeCBH" borderGap="0.0" promptText="Hour" />
+                        <MFXComboBox fx:id="timeCBM" promptText="Min">
+                           <HBox.margin>
+                              <Insets left="5.0" />
+                           </HBox.margin>
+                        </MFXComboBox>
+                     </children>
+                  </HBox>
+                  <HBox prefHeight="100.0" prefWidth="200.0">
+                     <children>
+                        <MFXComboBox fx:id="eTimeCBH" promptText="Hour" />
+                        <MFXComboBox fx:id="eTimeCBM" promptText="Min">
+                           <HBox.margin>
+                              <Insets left="5.0" />
+                           </HBox.margin>
+                        </MFXComboBox>
+                     </children>
+                  </HBox>
+                  <TextArea fx:id="neNotesTF" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="59.0" prefWidth="322.0" promptText="Event Notes" />
+                  <TextArea fx:id="neLocationInfoTF" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="67.0" prefWidth="322.0" promptText="Event Location Information (Parking, Directions, etc.)- Optional" />
+                  <HBox prefHeight="100.0" prefWidth="200.0">
+                     <children>
+                        <TextField fx:id="neImage" maxWidth="-Infinity" minWidth="-Infinity" prefHeight="30.0" prefWidth="231.0" promptText="Image" />
+                        <Button mnemonicParsing="false" onAction="#imageFileExplorer" styleClass="white-button" text="Select">
+                           <HBox.margin>
+                              <Insets left="5.0" />
+                           </HBox.margin>
+                        </Button>
+                     </children>
+                  </HBox>
+               </children>
+            </VBox>
          </children>
-      </GridPane>
-      <Label layoutX="188.0" layoutY="24.0" style="-fx-font-size: 32;" styleClass="title" text="Create new Event" textFill="WHITE" />
-      <Button fx:id="neCreateButton" layoutX="119.0" layoutY="647.0" mnemonicParsing="false" onAction="#createEvent" styleClass="light-blue-button" text="Create" />
-      <Button fx:id="neCancelButton" layoutX="245.0" layoutY="647.0" mnemonicParsing="false" onAction="#cancelNewindow" styleClass="red-button" text="Cancel" />
-      <Label fx:id="creationErrorLabel" layoutX="122.0" layoutY="610.0" prefHeight="26.0" prefWidth="439.0" style="-fx-font-size: 13;" styleClass="normal-text" text="Label" textFill="WHITE" />
+      </HBox>
+      <ImageView fitHeight="386.0" fitWidth="360.0" layoutX="881.0" layoutY="176.0" pickOnBounds="true" preserveRatio="true" />
+      <MFXButton layoutX="-23.0" maxWidth="1.7976931348623157E308" prefHeight="662.0" prefWidth="274.0" styleClass="redMenu" stylesheets="@../../css/style.css" text=" " textFill="#c00d0d" />
+      <ImageView fx:id="logoHome" fitHeight="102.0" fitWidth="210.0" layoutX="22.0" layoutY="29.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../../../resources/images/logoEASV.png" />
+         </image>
+      </ImageView>
+      <VBox layoutX="22.0" layoutY="122.0" prefHeight="522.0" prefWidth="229.0" spacing="10.0">
+         <children>
+            <Button alignment="BASELINE_LEFT" mnemonicParsing="false" onAction="#home" prefHeight="47.0" prefWidth="218.0" styleClass="red-menuButton" text="Home">
+               <VBox.margin>
+                  <Insets />
+               </VBox.margin>
+            </Button>
+            <Button alignment="BASELINE_LEFT" mnemonicParsing="false" onAction="#manageAllEvents" prefHeight="47.0" prefWidth="218.0" styleClass="red-menuButton" text="Manage Events" />
+            <Button mnemonicParsing="false" text="Create New Event">
+               <styleClass>
+                  <String fx:value="yellow-menuButton" />
+                  <String fx:value="sub-menu" />
+               </styleClass>
+               <VBox.margin>
+                  <Insets left="50.0" />
+               </VBox.margin>
+            </Button>
+            <Button alignment="BASELINE_LEFT" mnemonicParsing="false" onAction="#specialTicketsOverview" prefHeight="47.0" prefWidth="218.0" styleClass="red-menuButton" text="Special Tickets" />
+            <Button mnemonicParsing="false" onAction="#openCreateSpecialTicket" prefHeight="29.0" prefWidth="164.0" text="Create Special Ticket">
+               <styleClass>
+                  <String fx:value="red-menuButton" />
+                  <String fx:value="sub-menu" />
+               </styleClass>
+               <VBox.margin>
+                  <Insets left="50.0" />
+               </VBox.margin>
+            </Button>
+            <Button mnemonicParsing="false" onAction="#openSpecialTickets" text="Manage Special Tickets">
+               <styleClass>
+                  <String fx:value="red-menuButton" />
+                  <String fx:value="sub-menu" />
+               </styleClass>
+               <VBox.margin>
+                  <Insets left="50.0" />
+               </VBox.margin>
+            </Button>
+            <Button fx:id="coordinatorButton" alignment="BASELINE_LEFT" mnemonicParsing="false" onAction="#manageCoordinators" prefHeight="47.0" prefWidth="218.0" styleClass="red-menuButton" text="Manage Coordinators" visible="false" />
+         </children>
+      </VBox>
+      <Label fx:id="usernameLabel" layoutX="972.0" layoutY="28.0" styleClass="username" text="Username" />
+      <Button layoutX="1073.0" layoutY="17.0" mnemonicParsing="false" onAction="#logout" styleClass="red-button" text="Log out" />
     </children>
 </AnchorPane>

@@ -39,18 +39,7 @@ public class HomeViewController implements Initializable {
     private Model model = Model.getModel();
 
 
-    @FXML private void manageAllEvents(ActionEvent actionEvent) throws IOException {
 
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("/gui/view/AllEvents.fxml"));
-        Parent root = loader.load();
-        EventsViewController controller = loader.getController();
-        controller.setUsernameLabel();
-        Stage stage = (Stage) ((Node) actionEvent.getSource()).getScene().getWindow();
-        Scene scene = new Scene(root);
-        stage.setTitle("Event and Ticket Information");
-        stage.setScene(scene);
-        stage.show();
-    }
 
 
 
@@ -104,21 +93,7 @@ public class HomeViewController implements Initializable {
         } else add4Button.setDisable(true);
     }
 
-    private void openEventWindow(ActionEvent actionEvent) {
-        try {
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("/gui/view/TicketView.fxml"));
-            Parent root = loader.load();
-            TicketViewController controller = loader.getController();
-            controller.ticketViewLaunch();
-            Stage stage = (Stage) ((Node) actionEvent.getSource()).getScene().getWindow();
-            Scene scene = new Scene(root);
-            stage.setTitle("Event and Ticket Information");
-            stage.setScene(scene);
-            stage.show();
-        }catch (IOException e){
-            System.out.println("No selected event to open event ticket window.");
-        }
-    }
+
 
     @FXML private void homeEventSelectionUpcoming1(ActionEvent actionEvent) {
         model.setSelectedEvent(model.getUpcomingEvents().get(0));
@@ -171,7 +146,6 @@ public class HomeViewController implements Initializable {
      * Method to open Special Tickets window in the same window
      */
     @FXML private void specialTicketsOverview(ActionEvent actionEvent) throws IOException {
-
         FXMLLoader loader = new FXMLLoader(getClass().getResource("/gui/view/SpecialTicketsOverview.fxml"));
         Parent root = loader.load();
         SpecialTicketsOverviewController controller = loader.getController();
@@ -181,9 +155,18 @@ public class HomeViewController implements Initializable {
         stage.setTitle("Special Tickets Overview");
         stage.setScene(scene);
         stage.show();
-
     }
-
+    @FXML private void manageAllEvents(ActionEvent actionEvent) throws IOException {
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/gui/view/AllEvents.fxml"));
+        Parent root = loader.load();
+        EventsViewController controller = loader.getController();
+        controller.setUsernameLabel();
+        Stage stage = (Stage) ((Node) actionEvent.getSource()).getScene().getWindow();
+        Scene scene = new Scene(root);
+        stage.setTitle("Event and Ticket Information");
+        stage.setScene(scene);
+        stage.show();
+    }
     @FXML private void logout(ActionEvent actionEvent) throws IOException {
 
         Parent root=FXMLLoader.load(getClass().getResource("/gui/view/Login.fxml"));
@@ -194,7 +177,7 @@ public class HomeViewController implements Initializable {
         stage.show();
     }
 
-    @FXML private void newUser(ActionEvent actionEvent) throws IOException {
+    @FXML private void manageCoordinators(ActionEvent actionEvent) throws IOException {
         FXMLLoader loader = new FXMLLoader(getClass().getResource("/gui/view/CreateUser.fxml"));
         Parent root = loader.load();
         CreateUserController controller = loader.getController();
@@ -229,4 +212,36 @@ public class HomeViewController implements Initializable {
         stage.setScene(scene);
         stage.show();
     }
+    private void openEventWindow(ActionEvent actionEvent) {
+        try {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/gui/view/TicketView.fxml"));
+            Parent root = loader.load();
+            TicketViewController controller = loader.getController();
+            controller.ticketViewLaunch();
+            Stage stage = (Stage) ((Node) actionEvent.getSource()).getScene().getWindow();
+            Scene scene = new Scene(root);
+            stage.setTitle("Event and Ticket Information");
+            stage.setScene(scene);
+            stage.show();
+        }catch (IOException e){
+            System.out.println("No selected event to open event ticket window.");
+        }
+    }
+    @FXML private void newEventWindow(ActionEvent actionEvent) {
+        try {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/gui/view/NewEventView.fxml"));
+            Parent root = loader.load();
+            NewEventViewController controller = loader.getController();
+            controller.launchNewEventWindow();
+            controller.setUsernameLabel();
+            Stage stage = (Stage) ((Node) actionEvent.getSource()).getScene().getWindow();
+            Scene scene = new Scene(root);
+            stage.setTitle("Add new Event");
+            stage.setScene(scene);
+            stage.show();
+        }catch (IOException e){
+            System.out.println("Error launching new event window.");
+        }
+    }
+
 }

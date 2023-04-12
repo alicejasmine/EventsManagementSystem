@@ -252,4 +252,36 @@ public class SpecialTicketsController implements Initializable {
             errorInfoLabel.setText("Please select a ticket to print");
         }
     }
+
+    @FXML private void newEventWindow(ActionEvent actionEvent) {
+        try {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/gui/view/NewEventView.fxml"));
+            Parent root = loader.load();
+            NewEventViewController controller = loader.getController();
+            controller.launchNewEventWindow();
+            controller.setUsernameLabel();
+            Stage stage = (Stage) ((Node) actionEvent.getSource()).getScene().getWindow();
+            Scene scene = new Scene(root);
+            stage.setTitle("Add new Event");
+            stage.setScene(scene);
+            stage.show();
+        }catch (IOException e){
+            System.out.println("Error launching new event window.");
+        }
+    }
+
+    /**
+     * Method to open Special Tickets window in the same window
+     */
+    @FXML private void specialTicketsOverview(ActionEvent actionEvent) throws IOException {
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/gui/view/SpecialTicketsOverview.fxml"));
+        Parent root = loader.load();
+        SpecialTicketsOverviewController controller = loader.getController();
+        controller.setUsernameLabel();
+        Stage stage = (Stage) ((Node) actionEvent.getSource()).getScene().getWindow();
+        Scene scene = new Scene(root);
+        stage.setTitle("Special Tickets Overview");
+        stage.setScene(scene);
+        stage.show();
+    }
 }

@@ -31,6 +31,7 @@ public class NewTicketViewController {
         }
         else{creationErrorLabel.setText("Insert name and email");}
 
+
     }
 
     private void closeWindow(){

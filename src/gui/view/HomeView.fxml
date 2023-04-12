@@ -3,6 +3,7 @@
 <?import io.github.palexdev.materialfx.controls.MFXButton?>
 <?import java.lang.String?>
 <?import java.net.URL?>
+<?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.image.Image?>
@@ -10,6 +11,7 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.StackPane?>
 <?import javafx.scene.layout.TilePane?>
+<?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
@@ -80,28 +82,46 @@
             <Image url="@../../../resources/images/logoEASV.png" />
          </image>
       </ImageView>
-      <Button alignment="BASELINE_LEFT" layoutX="18.0" layoutY="148.0" mnemonicParsing="false" prefHeight="47.0" prefWidth="218.0" styleClass="yellow-menuButton" text="Home" />
-      <Button alignment="BASELINE_LEFT" layoutX="18.0" layoutY="214.0" mnemonicParsing="false" onAction="#manageAllEvents" prefHeight="47.0" prefWidth="218.0" styleClass="red-menuButton" text="Manage Events" />
-      <Button alignment="BASELINE_LEFT" layoutX="18.0" layoutY="284.0" mnemonicParsing="false" onAction="#specialTicketsOverview" prefHeight="47.0" prefWidth="218.0" styleClass="red-menuButton" text="Special Tickets" />
       <Label fx:id="usernameLabel" layoutX="972.0" layoutY="28.0" styleClass="username" text="Username" />
       <Button layoutX="1073.0" layoutY="17.0" mnemonicParsing="false" onAction="#logout" styleClass="red-button" text="Log out" AnchorPane.topAnchor="17.0" />
-      <MFXButton layoutX="-370.0" prefHeight="662.0" prefWidth="274.0" styleClass="redMenu" stylesheets="@../../css/style.css" text="Button" textFill="#c00d0d" />
       <Button alignment="BASELINE_LEFT" layoutX="-326.0" layoutY="157.0" mnemonicParsing="false" prefHeight="47.0" prefWidth="218.0" styleClass="homeButton-home" text="Home" />
       <Button alignment="BASELINE_LEFT" layoutX="-326.0" layoutY="223.0" mnemonicParsing="false" onAction="#manageAllEvents" prefHeight="47.0" prefWidth="218.0" styleClass="manageEventsButton-home" text="Manage Events" />
       <Button alignment="BASELINE_LEFT" layoutX="-326.0" layoutY="293.0" mnemonicParsing="false" prefHeight="47.0" prefWidth="218.0" styleClass="specialTicketsButton-home" text="Special Tickets" />
-      <Button fx:id="coordinatorButton" alignment="BASELINE_LEFT" layoutX="18.0" layoutY="589.0" mnemonicParsing="false" onAction="#newUser" prefHeight="47.0" prefWidth="218.0" styleClass="red-menuButton" text="Manage Coordinators" visible="false" />
-      <Button layoutX="73.0" layoutY="335.0" mnemonicParsing="false" onAction="#openCreateSpecialTicket" text="Create Special Ticket">
-         <styleClass>
-            <String fx:value="red-menuButton" />
-            <String fx:value="sub-menu" />
-         </styleClass>
-      </Button>
-      <Button layoutX="73.0" layoutY="375.0" mnemonicParsing="false" onAction="#openSpecialTickets" text="Manage Special Tickets">
-         <styleClass>
-            <String fx:value="red-menuButton" />
-            <String fx:value="sub-menu" />
-         </styleClass>
-      </Button>
+      <VBox layoutX="22.0" layoutY="122.0" prefHeight="522.0" prefWidth="229.0" spacing="10.0">
+         <children>
+            <Button alignment="BASELINE_LEFT" mnemonicParsing="false" prefHeight="47.0" prefWidth="218.0" styleClass="yellow-menuButton" text="Home" />
+            <Button alignment="BASELINE_LEFT" mnemonicParsing="false" onAction="#manageAllEvents" prefHeight="47.0" prefWidth="218.0" styleClass="red-menuButton" text="Manage Events" />
+            <Button mnemonicParsing="false" onAction="#newEventWindow" text="Create New Event">
+               <styleClass>
+                  <String fx:value="red-menuButton" />
+                  <String fx:value="sub-menu" />
+               </styleClass>
+               <VBox.margin>
+                  <Insets left="50.0" />
+               </VBox.margin>
+            </Button>
+            <Button alignment="BASELINE_LEFT" mnemonicParsing="false" onAction="#specialTicketsOverview" prefHeight="47.0" prefWidth="218.0" styleClass="red-menuButton" text="Special Tickets" />
+            <Button mnemonicParsing="false" onAction="#openCreateSpecialTicket" prefHeight="29.0" prefWidth="164.0" text="Create Special Ticket">
+               <styleClass>
+                  <String fx:value="red-menuButton" />
+                  <String fx:value="sub-menu" />
+               </styleClass>
+               <VBox.margin>
+                  <Insets left="50.0" />
+               </VBox.margin>
+            </Button>
+            <Button mnemonicParsing="false" onAction="#openSpecialTickets" text="Manage Special Tickets">
+               <styleClass>
+                  <String fx:value="red-menuButton" />
+                  <String fx:value="sub-menu" />
+               </styleClass>
+               <VBox.margin>
+                  <Insets left="50.0" />
+               </VBox.margin>
+            </Button>
+            <Button fx:id="coordinatorButton" alignment="BASELINE_LEFT" mnemonicParsing="false" onAction="#manageCoordinators" prefHeight="47.0" prefWidth="218.0" styleClass="red-menuButton" text="Manage Coordinators" visible="false" />
+         </children>
+      </VBox>
    </children>
    <stylesheets>
       <URL value="@../../css/style.css" />

@@ -6,7 +6,9 @@ import gui.model.*;
 import io.github.palexdev.materialfx.controls.*;
 import javafx.event.*;
 import javafx.fxml.*;
+import javafx.scene.*;
 import javafx.scene.control.*;
+import javafx.scene.image.*;
 import javafx.stage.*;
 
 import java.io.*;
@@ -16,7 +18,13 @@ import java.sql.Date;
 import java.time.*;
 import java.util.*;
 
-public class NewEventViewController{
+public class NewEventViewController implements Initializable{
+    @FXML
+    private Label usernameLabel;
+    @FXML
+    private Button coordinatorButton;
+    @FXML
+    private ImageView logoHome;
     @FXML
     private MFXDatePicker datePickerNewEvent;
     @FXML
@@ -28,7 +36,7 @@ public class NewEventViewController{
     @FXML
     private TextArea neNotesTF, neLocationInfoTF;
     @FXML
-    private Button neCreateButton, neCancelButton;
+    private Button neCreateButton;
 
 
     private Model model = Model.getModel();
@@ -38,16 +46,7 @@ public class NewEventViewController{
     private void createEvent(ActionEvent actionEvent) {
         createNewEvent();
     }
-    @FXML
-    private void cancelNewindow(ActionEvent actionEvent) {
-        closeWindow();
-    }
 
-
-    private void closeWindow(){
-        Stage stage = (Stage) neCancelButton.getScene().getWindow();
-        stage.close();
-    }
 
     private void createNewEvent(){
 
@@ -68,7 +67,6 @@ public class NewEventViewController{
             e = new Event(getNeNameTF(), getNeLocationTF(), getDatePickerNewEvent(), startTime, getNeNotesTF(), endTime, getNeLocationInfoTF());
             model.addEvent(e);
             creationErrorLabel.setText("Event Created!");
-            closeWindow();
         }else creationErrorLabel.setText("Creation failed. Please fill all fields marked with *.");
 
 
@@ -96,4 +94,108 @@ public class NewEventViewController{
     private String getNeLocationTF() {return neLocationTF.getText();}
     private String getNeNotesTF() {return neNotesTF.getText();}
     private String getNeLocationInfoTF() {return neLocationInfoTF.getText();}
+
+    public void imageFileExplorer(ActionEvent actionEvent) {
+    }
+
+    public void setUsernameLabel() {
+        usernameLabel.setText(model.getCurrentUser().getFirstName() + " " + model.getCurrentUser().getLastName());
+        if(model.getCurrentUser().isAdmin()){
+            coordinatorButton.setVisible(true);
+        }
+    }
+
+    /**
+     * Method to open Special Tickets window in the same window
+     */
+    @FXML private void specialTicketsOverview(ActionEvent actionEvent) throws IOException {
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/gui/view/SpecialTicketsOverview.fxml"));
+        Parent root = loader.load();
+        SpecialTicketsOverviewController controller = loader.getController();
+        controller.setUsernameLabel();
+        Stage stage = (Stage) ((Node) actionEvent.getSource()).getScene().getWindow();
+        Scene scene = new Scene(root);
+        stage.setTitle("Special Tickets Overview");
+        stage.setScene(scene);
+        stage.show();
+    }
+    @FXML private void manageAllEvents(ActionEvent actionEvent) throws IOException {
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/gui/view/AllEvents.fxml"));
+        Parent root = loader.load();
+        EventsViewController controller = loader.getController();
+        controller.setUsernameLabel();
+        Stage stage = (Stage) ((Node) actionEvent.getSource()).getScene().getWindow();
+        Scene scene = new Scene(root);
+        stage.setTitle("Event and Ticket Information");
+        stage.setScene(scene);
+        stage.show();
+    }
+    @FXML private void logout(ActionEvent actionEvent) throws IOException {
+
+        Parent root=FXMLLoader.load(getClass().getResource("/gui/view/Login.fxml"));
+        Stage stage = (Stage) ((Node) actionEvent.getSource()).getScene().getWindow();
+        Scene scene = new Scene(root);
+        stage.setTitle("Event Manager");
+        stage.setScene(scene);
+        stage.show();
+    }
+
+    @FXML private void manageCoordinators(ActionEvent actionEvent) throws IOException {
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/gui/view/CreateUser.fxml"));
+        Parent root = loader.load();
+        CreateUserController controller = loader.getController();
+        controller.setUsernameLabel();
+        Stage stage = (Stage) ((Node) actionEvent.getSource()).getScene().getWindow();
+        Scene scene = new Scene(root);
+        stage.setTitle("Special Tickets");
+        stage.setScene(scene);
+        stage.show();
+    }
+
+    @FXML private void openCreateSpecialTicket(ActionEvent actionEvent) throws IOException {
+        FXMLLoader loader=new FXMLLoader(getClass().getResource("/gui/view/CreateSpecialTicket.fxml"));
+        Parent root=loader.load();
+        CreateSpecialTicketsController controller = loader.getController();
+        controller.setUsernameLabel();
+        Stage stage = (Stage) ((Node) actionEvent.getSource()).getScene().getWindow();
+        Scene scene = new Scene(root);
+        stage.setTitle("Create Special Ticket");
+        stage.setScene(scene);
+        stage.show();
+    }
+
+    @FXML private void openSpecialTickets(ActionEvent actionEvent) throws IOException {
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/gui/view/SpecialTickets.fxml"));
+        Parent root = loader.load();
+        SpecialTicketsController controller = loader.getController();
+        controller.setUsernameLabel();
+        Stage stage = (Stage) ((Node) actionEvent.getSource()).getScene().getWindow();
+        Scene scene = new Scene(root);
+        stage.setTitle("Special Tickets");
+        stage.setScene(scene);
+        stage.show();
+    }
+
+    @FXML private void home(ActionEvent actionEvent) throws IOException {
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/gui/view/HomeView.fxml"));
+        Parent root = loader.load();
+        HomeViewController controller = loader.getController();
+        controller.setUsernameLabel();
+        Stage stage = (Stage) ((Node) actionEvent.getSource()).getScene().getWindow();
+        Scene scene = new Scene(root);
+        stage.setTitle("Home");
+        stage.setScene(scene);
+        stage.show();
+    }
+
+    @Override
+    public void initialize(URL location, ResourceBundle resources) {
+        try {
+            Image logoImage = new Image(new FileInputStream("resources/images/logoEASV.png"));
+            logoHome.setImage(logoImage);
+
+        } catch (FileNotFoundException e) {
+            throw new RuntimeException(e);
+        }
+    }
 }

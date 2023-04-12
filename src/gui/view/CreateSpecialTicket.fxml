@@ -13,8 +13,9 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
 
-<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="650.0" prefWidth="1250.0" style="-fx-background-color: C9C5C5;" stylesheets="@../../css/style.css" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gui.controller.CreateSpecialTicketsController">
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="650.0" prefWidth="1250.0" style="-fx-background-color: C9C5C5;" stylesheets="@../../css/style.css" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gui.controller.CreateSpecialTicketsController">
    <right>
       <AnchorPane prefHeight="402.0" prefWidth="284.0" style="-fx-background-color: D9D9D9; -fx-background-radius: 7%;" BorderPane.alignment="CENTER">
          <BorderPane.margin>
@@ -31,10 +32,6 @@
                   <Image url="@../../../resources/images/logoEASV.png" />
                </image>
             </ImageView>
-            <Button fx:id="coordinatorButton" alignment="BASELINE_LEFT" layoutX="18.0" layoutY="589.0" mnemonicParsing="false" onAction="#manageCoordinators" prefHeight="47.0" prefWidth="218.0" styleClass="red-menuButton" text="Manage Coordinators" visible="false" />
-            <Button alignment="BASELINE_LEFT" layoutX="18.0" layoutY="152.0" mnemonicParsing="false" onAction="#home" prefHeight="47.0" prefWidth="218.0" styleClass="red-menuButton" text="Home" />
-            <Button alignment="BASELINE_LEFT" layoutX="18.0" layoutY="214.0" mnemonicParsing="false" onAction="#manageAllEvents" prefHeight="47.0" prefWidth="218.0" styleClass="red-menuButton" text="Manage Events" />
-            <Button alignment="BASELINE_LEFT" layoutX="18.0" layoutY="284.0" mnemonicParsing="false" onAction="#openSpecialTicketsOverview" prefHeight="47.0" prefWidth="218.0" styleClass="red-menuButton" text="Special Tickets" />
               <HBox alignment="CENTER_LEFT" layoutX="340.0" layoutY="375.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="62.0" prefWidth="490.0">
                   <children>
                   <Button mnemonicParsing="false" onAction="#NewSpecialTicket" prefWidth="70.0" styleClass="light-blue-button" text="Create">
@@ -49,26 +46,54 @@
             <Label fx:id="usernameLabel" layoutX="972.0" layoutY="28.0" styleClass="username" text="Username" />
             <Button layoutX="1073.0" layoutY="17.0" mnemonicParsing="false" onAction="#logout" styleClass="red-button" text="Log out" />
             <ButtonBar layoutX="940.0" layoutY="566.0" prefHeight="40.0" prefWidth="200.0" />
-            <Button layoutX="73.0" layoutY="335.0" mnemonicParsing="false" prefHeight="35.0" prefWidth="171.0" text="Create Special Ticket">
-               <styleClass>
-                  <String fx:value="yellow-menuButton" />
-                  <String fx:value="sub-menu" />
-               </styleClass></Button>
             <MFXComboBox fx:id="ticketTypeComboBox" floatingText="Ticket Type" layoutX="631.0" layoutY="167.0" />
             <MFXComboBox fx:id="eventComboBox" floatingText="Event" layoutX="631.0" layoutY="229.0" />
             <TextField fx:id="ticketTypeTextfield" layoutX="913.0" layoutY="163.0" promptText="Add Ticket Type" />
             <TextField fx:id="maxQuantityTextfield" layoutX="626.0" layoutY="295.0" prefHeight="26.0" prefWidth="122.0" />
             <Label layoutX="344.0" layoutY="295.0" prefHeight="26.0" prefWidth="271.0" styleClass="small-windows-text" text="Select quantity of tickets to create" />
             <Button layoutX="1090.0" layoutY="159.0" mnemonicParsing="false" onAction="#addTicketType" styleClass="white-button" text="Add Type" />
-            <Button layoutX="73.0" layoutY="375.0" mnemonicParsing="false" onAction="#openSpecialTickets" text="Manage Special Tickets">
-               <styleClass>
-                  <String fx:value="red-menuButton" />
-                  <String fx:value="sub-menu" />
-               </styleClass>
-            </Button>
             <Label layoutX="344.0" layoutY="175.0" prefHeight="26.0" prefWidth="271.0" styleClass="small-windows-text" text="Select or create ticket type" />
             <Label layoutX="344.0" layoutY="236.0" prefHeight="26.0" prefWidth="271.0" styleClass="small-windows-text" text="Select event" />
             <Label fx:id="addTypeErrorLabel" layoutX="918.0" layoutY="221.0" prefHeight="18.0" prefWidth="250.0" />
+            <VBox layoutX="22.0" layoutY="122.0" prefHeight="522.0" prefWidth="229.0" spacing="10.0">
+               <children>
+                  <Button alignment="BASELINE_LEFT" mnemonicParsing="false" onAction="#home" prefHeight="47.0" prefWidth="218.0" styleClass="red-menuButton" text="Home">
+                     <VBox.margin>
+                        <Insets />
+                     </VBox.margin>
+                  </Button>
+                  <Button alignment="BASELINE_LEFT" mnemonicParsing="false" onAction="#manageAllEvents" prefHeight="47.0" prefWidth="218.0" styleClass="red-menuButton" text="Manage Events" />
+                  <Button mnemonicParsing="false" onAction="#newEventWindow" text="Create New Event">
+                     <styleClass>
+                        <String fx:value="red-menuButton" />
+                        <String fx:value="sub-menu" />
+                     </styleClass>
+                     <VBox.margin>
+                        <Insets left="50.0" />
+                     </VBox.margin>
+                  </Button>
+                  <Button alignment="BASELINE_LEFT" mnemonicParsing="false" onAction="#specialTicketsOverview" prefHeight="47.0" prefWidth="218.0" styleClass="red-menuButton" text="Special Tickets" />
+                  <Button mnemonicParsing="false" prefHeight="35.0" prefWidth="171.0" text="Create Special Ticket">
+                     <styleClass>
+                        <String fx:value="yellow-menuButton" />
+                        <String fx:value="sub-menu" />
+                     </styleClass>
+                     <VBox.margin>
+                        <Insets left="50.0" />
+                     </VBox.margin>
+                  </Button>
+                  <Button mnemonicParsing="false" onAction="#openSpecialTickets" text="Manage Special Tickets">
+                     <styleClass>
+                        <String fx:value="red-menuButton" />
+                        <String fx:value="sub-menu" />
+                     </styleClass>
+                     <VBox.margin>
+                        <Insets left="50.0" />
+                     </VBox.margin>
+                  </Button>
+                  <Button fx:id="coordinatorButton" alignment="BASELINE_LEFT" mnemonicParsing="false" onAction="#manageCoordinators" prefHeight="47.0" prefWidth="218.0" styleClass="red-menuButton" text="Manage Coordinators" visible="false" />
+               </children>
+            </VBox>
          </children>
       </AnchorPane>
    </top>

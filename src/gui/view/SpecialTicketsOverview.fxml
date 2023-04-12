@@ -13,8 +13,9 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
 
-<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="650.0" prefWidth="1250.0" style="-fx-background-color: C9C5C5;" stylesheets="@../../css/style.css" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gui.controller.SpecialTicketsOverviewController">
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="650.0" prefWidth="1250.0" style="-fx-background-color: C9C5C5;" stylesheets="@../../css/style.css" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gui.controller.SpecialTicketsOverviewController">
    <right>
       <AnchorPane prefHeight="402.0" prefWidth="284.0" style="-fx-background-color: D9D9D9; -fx-background-radius: 7%;" BorderPane.alignment="CENTER">
          <BorderPane.margin>
@@ -31,9 +32,6 @@
                   <Image url="@../../../resources/images/logoEASV.png" />
                </image>
             </ImageView>
-            <Button alignment="BASELINE_LEFT" layoutX="18.0" layoutY="152.0" mnemonicParsing="false" onAction="#home" prefHeight="47.0" prefWidth="218.0" styleClass="red-menuButton" text="Home" />
-            <Button alignment="BASELINE_LEFT" layoutX="18.0" layoutY="214.0" mnemonicParsing="false" onAction="#manageAllEvents" prefHeight="47.0" prefWidth="218.0" styleClass="red-menuButton" text="Manage Events" />
-            <Button alignment="BASELINE_LEFT" layoutX="18.0" layoutY="284.0" mnemonicParsing="false" prefHeight="47.0" prefWidth="218.0" styleClass="yellow-menuButton" text="Special Tickets" />
             <TableView fx:id="specialOTV" layoutX="314.0" layoutY="176.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="376.0" prefWidth="843.0" AnchorPane.bottomAnchor="98.0" AnchorPane.leftAnchor="314.0" AnchorPane.rightAnchor="93.0" AnchorPane.topAnchor="176.0">
                <columns>
                   <TableColumn fx:id="ColumnTicketTypeOTV" prefWidth="332.8000183105469" text="Ticket Type" />
@@ -54,18 +52,45 @@
             <Label fx:id="usernameLabel" layoutX="972.0" layoutY="28.0" styleClass="username" text="Username" />
             <Button layoutX="1073.0" layoutY="17.0" mnemonicParsing="false" onAction="#logout" styleClass="red-button" text="Log out" />
             <TextField layoutX="998.0" layoutY="139.0" promptText="Search" />
-            <Button layoutX="73.0" layoutY="335.0" mnemonicParsing="false" onAction="#openCreateSpecialTicket" text="Create Special Ticket">
-               <styleClass>
-                  <String fx:value="red-menuButton" />
-                  <String fx:value="sub-menu" />
-               </styleClass></Button>
-            <Button layoutX="73.0" layoutY="375.0" mnemonicParsing="false" onAction="#openSpecialTickets" text="Manage Special Tickets">
-               <styleClass>
-                  <String fx:value="red-menuButton" />
-                  <String fx:value="sub-menu" />
-               </styleClass>
-            </Button>
-            <Button fx:id="coordinatorButton" alignment="BASELINE_LEFT" layoutX="18.0" layoutY="589.0" mnemonicParsing="false" onAction="#manageCoordinators" prefHeight="47.0" prefWidth="218.0" styleClass="red-menuButton" text="Manage Coordinators" visible="false" />
+            <VBox layoutX="22.0" layoutY="122.0" prefHeight="522.0" prefWidth="229.0" spacing="10.0">
+               <children>
+                  <Button alignment="BASELINE_LEFT" mnemonicParsing="false" onAction="#home" prefHeight="47.0" prefWidth="218.0" styleClass="red-menuButton" text="Home">
+                     <VBox.margin>
+                        <Insets />
+                     </VBox.margin>
+                  </Button>
+                  <Button alignment="BASELINE_LEFT" mnemonicParsing="false" prefHeight="47.0" prefWidth="218.0" styleClass="red-menuButton" text="Manage Events" />
+                  <Button mnemonicParsing="false" onAction="#newEventWindow" text="Create New Event">
+                     <styleClass>
+                        <String fx:value="red-menuButton" />
+                        <String fx:value="sub-menu" />
+                     </styleClass>
+                     <VBox.margin>
+                        <Insets left="50.0" />
+                     </VBox.margin>
+                  </Button>
+                  <Button alignment="BASELINE_LEFT" mnemonicParsing="false" prefHeight="47.0" prefWidth="218.0" styleClass="yellow-menuButton" text="Special Tickets" />
+                  <Button mnemonicParsing="false" onAction="#openCreateSpecialTicket" prefHeight="29.0" prefWidth="164.0" text="Create Special Ticket">
+                     <styleClass>
+                        <String fx:value="red-menuButton" />
+                        <String fx:value="sub-menu" />
+                     </styleClass>
+                     <VBox.margin>
+                        <Insets left="50.0" />
+                     </VBox.margin>
+                  </Button>
+                  <Button mnemonicParsing="false" onAction="#openSpecialTickets" text="Manage Special Tickets">
+                     <styleClass>
+                        <String fx:value="red-menuButton" />
+                        <String fx:value="sub-menu" />
+                     </styleClass>
+                     <VBox.margin>
+                        <Insets left="50.0" />
+                     </VBox.margin>
+                  </Button>
+                  <Button fx:id="coordinatorButton" alignment="BASELINE_LEFT" mnemonicParsing="false" onAction="#manageCoordinators" prefHeight="47.0" prefWidth="218.0" styleClass="red-menuButton" text="Manage Coordinators" visible="false" />
+               </children>
+            </VBox>
          </children>
       </AnchorPane>
    </top>

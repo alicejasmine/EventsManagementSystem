@@ -15,6 +15,7 @@
 <?import javafx.scene.layout.ColumnConstraints?>
 <?import javafx.scene.layout.GridPane?>
 <?import javafx.scene.layout.RowConstraints?>
+<?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="650.0" prefWidth="1250.0" styleClass="anchorPane-home" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gui.controller.CreateUserController">
@@ -25,21 +26,6 @@
             <Image url="@../../../resources/images/logoEASV.png" />
          </image>
       </ImageView>
-      <Button layoutX="73.0" layoutY="335.0" mnemonicParsing="false" onAction="#openCreateSpecialTicket" text="Create Special Ticket">
-         <styleClass>
-            <String fx:value="red-menuButton" />
-            <String fx:value="sub-menu" />
-         </styleClass>
-      </Button>
-      <Button alignment="BASELINE_LEFT" layoutX="18.0" layoutY="148.0" mnemonicParsing="false" onAction="#home" prefHeight="47.0" prefWidth="218.0" styleClass="red-menuButton" text="Home" />
-      <Button alignment="BASELINE_LEFT" layoutX="18.0" layoutY="214.0" mnemonicParsing="false" onAction="#manageAllEvents" prefHeight="47.0" prefWidth="218.0" styleClass="red-menuButton" text="Manage Events" />
-      <Button alignment="BASELINE_LEFT" layoutX="18.0" layoutY="284.0" mnemonicParsing="false" onAction="#specialTickets" prefHeight="47.0" prefWidth="218.0" styleClass="red-menuButton" text="Special Tickets" />
-      <Button layoutX="73.0" layoutY="375.0" mnemonicParsing="false" onAction="#openSpecialTickets" text="Manage Special Tickets">
-         <styleClass>
-            <String fx:value="red-menuButton" />
-            <String fx:value="sub-menu" />
-         </styleClass>
-      </Button>
       <Label fx:id="usernameLabel" layoutX="972.0" layoutY="28.0" styleClass="username" text="Username" AnchorPane.topAnchor="25.0" />
       <Button layoutX="1073.0" layoutY="17.0" mnemonicParsing="false" onAction="#logout" styleClass="red-button" text="Log out" AnchorPane.topAnchor="17.0" />
       <ImageView fx:id="logoHome1" fitHeight="102.0" fitWidth="210.0" layoutX="-322.0" layoutY="38.0" pickOnBounds="true" preserveRatio="true">
@@ -47,7 +33,6 @@
             <Image url="@../../../resources/images/logoEASV.png" />
          </image>
       </ImageView>
-      <Button fx:id="coordinatorButton" alignment="BASELINE_LEFT" layoutX="18.0" layoutY="589.0" mnemonicParsing="false" prefHeight="47.0" prefWidth="218.0" styleClass="yellow-menuButton" text="Manage Coordinators" />
       <TableView fx:id="userTableView" layoutX="664.0" layoutY="170.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="376.0" prefWidth="627.0" AnchorPane.bottomAnchor="102.0" AnchorPane.leftAnchor="588.0" AnchorPane.rightAnchor="35.0" AnchorPane.topAnchor="172.0">
         <columns>
           <TableColumn fx:id="userNameColumn" prefWidth="220.0" text="User Name" />
@@ -134,6 +119,45 @@
       <Button fx:id="editUserButton" layoutX="346.0" layoutY="567.0" mnemonicParsing="false" onAction="#editUser" prefWidth="70.0" styleClass="light-blue-button" text="Edit User" />
       <Button fx:id="adminButton" layoutX="1061.0" layoutY="567.0" mnemonicParsing="false" onAction="#makeAdmin" prefWidth="70.0" styleClass="light-blue-button" text="New Admin" />
       <Label fx:id="errorLabel" alignment="CENTER" layoutX="588.0" layoutY="571.0" prefHeight="23.0" prefWidth="455.0" />
+      <VBox layoutX="22.0" layoutY="122.0" prefHeight="522.0" prefWidth="229.0" spacing="10.0">
+         <children>
+            <Button alignment="BASELINE_LEFT" mnemonicParsing="false" onAction="#home" prefHeight="47.0" prefWidth="218.0" styleClass="red-menuButton" text="Home">
+               <VBox.margin>
+                  <Insets />
+               </VBox.margin>
+            </Button>
+            <Button alignment="BASELINE_LEFT" mnemonicParsing="false" onAction="#manageAllEvents" prefHeight="47.0" prefWidth="218.0" styleClass="red-menuButton" text="Manage Events" />
+            <Button mnemonicParsing="false" onAction="#newEventWindow" text="Create New Event">
+               <styleClass>
+                  <String fx:value="red-menuButton" />
+                  <String fx:value="sub-menu" />
+               </styleClass>
+               <VBox.margin>
+                  <Insets left="50.0" />
+               </VBox.margin>
+            </Button>
+            <Button alignment="BASELINE_LEFT" mnemonicParsing="false" onAction="#specialTicketsOverview" prefHeight="47.0" prefWidth="218.0" styleClass="red-menuButton" text="Special Tickets" />
+            <Button mnemonicParsing="false" onAction="#openCreateSpecialTicket" prefHeight="29.0" prefWidth="164.0" text="Create Special Ticket">
+               <styleClass>
+                  <String fx:value="red-menuButton" />
+                  <String fx:value="sub-menu" />
+               </styleClass>
+               <VBox.margin>
+                  <Insets left="50.0" />
+               </VBox.margin>
+            </Button>
+            <Button mnemonicParsing="false" onAction="#openSpecialTickets" text="Manage Special Tickets">
+               <styleClass>
+                  <String fx:value="red-menuButton" />
+                  <String fx:value="sub-menu" />
+               </styleClass>
+               <VBox.margin>
+                  <Insets left="50.0" />
+               </VBox.margin>
+            </Button>
+            <Button fx:id="coordinatorButton" alignment="BASELINE_LEFT" mnemonicParsing="false" prefHeight="47.0" prefWidth="218.0" styleClass="yellow-menuButton" text="Manage Coordinators" />
+         </children>
+      </VBox>
    </children>
    <stylesheets>
       <URL value="@../../css/style.css" />

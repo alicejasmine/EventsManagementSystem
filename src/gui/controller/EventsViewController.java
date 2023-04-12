@@ -265,4 +265,21 @@ public class EventsViewController implements Initializable {
             stage.show();
         }
     }
+
+    @FXML private void newEventWindow(ActionEvent actionEvent) {
+        try {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/gui/view/NewEventView.fxml"));
+            Parent root = loader.load();
+            NewEventViewController controller = loader.getController();
+            controller.launchNewEventWindow();
+            controller.setUsernameLabel();
+            Stage stage = (Stage) ((Node) actionEvent.getSource()).getScene().getWindow();
+            Scene scene = new Scene(root);
+            stage.setTitle("Add new Event");
+            stage.setScene(scene);
+            stage.show();
+        }catch (IOException e){
+            System.out.println("Error launching new event window.");
+        }
+    }
 }
