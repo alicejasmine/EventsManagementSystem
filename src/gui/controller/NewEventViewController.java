@@ -13,12 +13,15 @@ import javafx.stage.*;
 
 import java.io.*;
 import java.net.*;
+import java.nio.file.*;
 import java.sql.*;
 import java.sql.Date;
 import java.time.*;
 import java.util.*;
 
 public class NewEventViewController implements Initializable{
+    @FXML
+    private TextField neImage;
     @FXML
     private Label usernameLabel;
     @FXML
@@ -38,7 +41,7 @@ public class NewEventViewController implements Initializable{
     @FXML
     private Button neCreateButton;
 
-
+    private String selectedFile;
     private Model model = Model.getModel();
 
 
@@ -64,12 +67,10 @@ public class NewEventViewController implements Initializable{
         Event e = null;
 
         if(!getNeNameTF().isEmpty()&& !getNeLocationTF().isEmpty() && !getNeNotesTF().isEmpty() && startTime != null) {
-            e = new Event(getNeNameTF(), getNeLocationTF(), getDatePickerNewEvent(), startTime, getNeNotesTF(), endTime, getNeLocationInfoTF());
+            e = new Event(getNeNameTF(), getNeLocationTF(), getDatePickerNewEvent(), startTime, getNeNotesTF(), endTime, getNeLocationInfoTF(), getSelectedFile());
             model.addEvent(e);
             creationErrorLabel.setText("Event Created!");
         }else creationErrorLabel.setText("Creation failed. Please fill all fields marked with *.");
-
-
     }
 
 
@@ -95,7 +96,34 @@ public class NewEventViewController implements Initializable{
     private String getNeNotesTF() {return neNotesTF.getText();}
     private String getNeLocationInfoTF() {return neLocationInfoTF.getText();}
 
+    private String getSelectedFile() {return selectedFile;}
+
     public void imageFileExplorer(ActionEvent actionEvent) {
+        FileChooser fileChooser = new FileChooser();
+        setFileChooser(fileChooser);
+        File file = fileChooser.showOpenDialog(new Stage());
+
+        Path movefrom = FileSystems.getDefault().getPath(file.getPath());
+        Path target = FileSystems.getDefault().getPath("resources/EventImages/"+file.getName());
+        try{Files.move(movefrom,target, StandardCopyOption.ATOMIC_MOVE); }catch (IOException e){
+            System.out.println("File move failed.");
+        }
+
+        selectedFile = target.toString();
+        neImage.setText(file.getName());
+    }
+
+    /**
+     * Mehod to configure the file chooser and select which file type are accepted
+     */
+    private static void setFileChooser(FileChooser fileChooser) {
+        fileChooser.setTitle("Select event Image");
+        fileChooser.setInitialDirectory(
+                new File(System.getProperty("user.home"))
+        );
+        fileChooser.getExtensionFilters().addAll(
+                new FileChooser.ExtensionFilter("Image files", "*.jpg", "*.bmp", "*.png", "*.jpeg")
+        );
     }
 
     public void setUsernameLabel() {
