@@ -48,9 +48,6 @@ public class SpecialTicketsOverviewController implements Initializable {
         specialOTV.setItems(model.getObsSpecialTicketsOverview());
         model.loadSpecialTicketOverviewList();
 
-
-
-
         ColumnTicketTypeOTV.setCellValueFactory(new PropertyValueFactory<>("ticketType"));
         ColumnEventNameOTV.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().getEvent().getName()));
         ColumnAvailableTicketsOTV.setCellValueFactory(new PropertyValueFactory<>("availableTickets"));
