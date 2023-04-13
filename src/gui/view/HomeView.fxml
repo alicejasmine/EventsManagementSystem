@@ -60,13 +60,13 @@
          <children>
             <StackPane prefHeight="150.0" prefWidth="200.0">
                <children>
-                  <MFXButton fx:id="add1Button" buttonType="RAISED" depthLevel="LEVEL5" onAction="#homeEventSelectionAdd4" prefHeight="119.0" prefWidth="161.0" rippleColor="#bcba40" styleClass="event-tile" text=" " />
+                  <MFXButton fx:id="add1Button" buttonType="RAISED" depthLevel="LEVEL5" onAction="#homeEventSelectionAdd4" prefHeight="119.0" prefWidth="161.0" rippleColor="#bcba40" style="-fx-background-color: black;" styleClass="event-tile" text=" " />
                   <ImageView fx:id="add1ImageView" fitHeight="117.0" fitWidth="145.0" mouseTransparent="true" pickOnBounds="true" preserveRatio="true" />
                </children>
             </StackPane>
             <StackPane prefHeight="150.0" prefWidth="200.0">
                <children>
-                  <MFXButton fx:id="add2Button" buttonType="RAISED" depthLevel="LEVEL5" onAction="#homeEventSelectionAdd1" prefHeight="119.0" prefWidth="161.0" rippleColor="#bcba40" styleClass="event-tile" text=" " />
+                  <MFXButton fx:id="add2Button" buttonType="RAISED" depthLevel="LEVEL5" onAction="#homeEventSelectionAdd1" prefHeight="119.0" prefWidth="161.0" rippleColor="#bcba40" style="-fx-background-color: black;" styleClass="event-tile" text=" " />
                   <ImageView fx:id="add2ImageView" fitHeight="117.0" fitWidth="145.0" mouseTransparent="true" pickOnBounds="true" preserveRatio="true" />
                </children>
             </StackPane>
