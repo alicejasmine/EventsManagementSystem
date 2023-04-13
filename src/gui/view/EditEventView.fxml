@@ -118,28 +118,6 @@
                   <Insets left="65.0" top="100.0" />
                </GridPane.margin>
             </Label>
-            <Label prefHeight="42.0" prefWidth="102.0" text="*Image:" GridPane.rowIndex="7">
-               <padding>
-                  <Insets left="5.0" />
-               </padding>
-               <styleClass>
-                  <String fx:value="small-windows" />
-                  <String fx:value="small-windows-text" />
-               </styleClass>
-               <GridPane.margin>
-                  <Insets left="65.0" top="80.0" />
-               </GridPane.margin>
-            </Label>
-            <TextField fx:id="neImage" maxWidth="-Infinity" minWidth="-Infinity" prefHeight="30.0" prefWidth="231.0" promptText="Image" GridPane.columnIndex="1" GridPane.rowIndex="7">
-               <GridPane.margin>
-                  <Insets top="80.0" />
-               </GridPane.margin>
-            </TextField>
-            <Button mnemonicParsing="false" styleClass="white-button" text="Select" GridPane.columnIndex="2" GridPane.rowIndex="7">
-               <GridPane.margin>
-                  <Insets left="60.0" top="80.0" />
-               </GridPane.margin>
-            </Button>
             <TextField fx:id="editLocationTF" maxWidth="-Infinity" minWidth="-Infinity" prefHeight="30.0" prefWidth="322.0" promptText="Event location" GridPane.columnIndex="1" GridPane.rowIndex="1">
                <GridPane.margin>
                   <Insets top="20.0" />
@@ -197,8 +175,8 @@
          </children>
       </GridPane>
       <Label layoutX="257.0" layoutY="30.0" style="-fx-font-size: 32;" styleClass="title" text="Edit Event" textFill="WHITE" />
-      <Button fx:id="editEventButton" layoutX="119.0" layoutY="647.0" mnemonicParsing="false" onAction="#editEvent" styleClass="light-blue-button" text="Edit" />
-      <Button fx:id="editCancelButton" layoutX="245.0" layoutY="647.0" mnemonicParsing="false" onAction="#cancelEditWindow" styleClass="red-button" text="Cancel" />
-      <Label fx:id="editErrorLabel" layoutX="122.0" layoutY="610.0" prefHeight="26.0" prefWidth="439.0" style="-fx-font-size: 13;" styleClass="normal-text" text="Label" textFill="WHITE" />
+      <Button fx:id="editEventButton" layoutX="115.0" layoutY="614.0" mnemonicParsing="false" onAction="#editEvent" styleClass="light-blue-button" text="Edit" />
+      <Button fx:id="editCancelButton" layoutX="241.0" layoutY="614.0" mnemonicParsing="false" onAction="#cancelEditWindow" styleClass="red-button" text="Cancel" />
+      <Label fx:id="editErrorLabel" layoutX="122.0" layoutY="561.0" prefHeight="26.0" prefWidth="439.0" style="-fx-font-size: 13;" styleClass="normal-text" text="Label" textFill="WHITE" />
     </children>
 </AnchorPane>
