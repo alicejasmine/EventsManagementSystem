@@ -119,15 +119,11 @@ public class TicketLogicManager {
 
             contentStream.setTextMatrix(Matrix.getTranslateInstance(x, y - 70));
             contentStream.newLine();
-            contentStream.showText("Start time: " + event.getTime().toString());
+            contentStream.showText("Start time: " + event.getTime().toString()+ "  " + " End Time: " + event.getEndTime().toString());
 
             contentStream.setTextMatrix(Matrix.getTranslateInstance(x, y - 90));
             contentStream.newLine();
             contentStream.showText(event.getNotes());
-
-            contentStream.setTextMatrix(Matrix.getTranslateInstance(x, y - 110));
-            contentStream.newLine();
-            contentStream.showText("End Time: " + event.getEndTime().toString());
 
             contentStream.setTextMatrix(Matrix.getTranslateInstance(x, y - 130));
             contentStream.newLine();
@@ -184,30 +180,22 @@ public class TicketLogicManager {
             //Write Event Info
             contentStream.beginText();
 
-            if (event.getName().equals("No Event")) {
 
-                contentStream.newLineAtOffset(x, y - 80);
-                contentStream.setFont(pdfFont, 25);
-                contentStream.showText(ticketType.getTicketTypeName());
+            contentStream.newLineAtOffset(x, y - 30);
+            contentStream.showText(ticketType.getTicketTypeName());
 
-            } else {
-                contentStream.newLineAtOffset(x, y-30);
-                contentStream.showText(ticketType.getTicketTypeName());
+            contentStream.setTextMatrix(Matrix.getTranslateInstance(x, y - 70));
+            contentStream.setFont(pdfFont, 18);
+            contentStream.newLine();
+            contentStream.showText(event.getName());
 
-                contentStream.setTextMatrix(Matrix.getTranslateInstance(x, y - 70));
-                contentStream.setFont(pdfFont, 18);
-                contentStream.newLine();
-                contentStream.showText(event.getName());
+            contentStream.setTextMatrix(Matrix.getTranslateInstance(x, y - 90));
+            contentStream.newLine();
+            contentStream.showText(event.getDate().toString());
 
-                contentStream.setTextMatrix(Matrix.getTranslateInstance(x, y - 90));
-                contentStream.newLine();
-                contentStream.showText(event.getDate().toString());
-
-                contentStream.setTextMatrix(Matrix.getTranslateInstance(x, y - 110));
-                contentStream.newLine();
-                contentStream.showText("Start time: " + event.getTime().toString());
-
-            }
+            contentStream.setTextMatrix(Matrix.getTranslateInstance(x, y - 110));
+            contentStream.newLine();
+            contentStream.showText("Start time: " + event.getTime().toString());
             contentStream.endText();
 
 
@@ -220,9 +208,11 @@ public class TicketLogicManager {
             contentStream.drawImage(qrImageXObject, margin, (pageHeight - qrCodeSize) / 2 + 5, qrCodeSize, qrCodeSize);
             contentStream.close();
             return doc;
-        } catch (IOException e) {
+        } catch (
+                IOException e) {
             throw new RuntimeException(e);
-        } catch (WriterException e) {
+        } catch (
+                WriterException e) {
             throw new RuntimeException(e);
         }
 

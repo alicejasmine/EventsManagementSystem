@@ -73,16 +73,7 @@ public class SpecialTicketsController implements Initializable {
         specialTicketsTV.getSelectionModel().selectedItemProperty().addListener(((observableValue, oldUser, selectedUser) -> {
             if (selectedUser != null) {
                 Event selectedEvent = selectedUser.getEvent();
-
-                if (Objects.equals(selectedUser.getEvent().getName(), "No Event")) {
-                    dateLabel.setText(" ");
-                    locationLabel.setText(" ");
-                    notesLabel.setText(" ");
-                    startTimeLabel.setText(" ");
-                    endTimeLabel.setText("");
-                    locationGuidanceLabel.setText("");
-                } else {
-
+                
                     dateLabel.setText(selectedEvent.getDate().toString());
                     locationLabel.setText(selectedEvent.getLocation());
                     notesLabel.setText(selectedEvent.getNotes());
@@ -94,7 +85,7 @@ public class SpecialTicketsController implements Initializable {
                         locationGuidanceLabel.setText(selectedEvent.getLocationGuidance());
                     }
                 }
-            }
+
         }));
 
 
