@@ -22,19 +22,13 @@ import java.util.*;
 public class HomeViewController implements Initializable {
 
 
-    public ImageView up2ImageView;
-
-    public ImageView up3ImageView;
-
-    public ImageView up4ImageView;
-
-    public ImageView add1ImageView;
-
-    public ImageView add2ImageView;
-    public ImageView add3ImageView;
-
-    public ImageView add4ImageView;
-
+    @FXML private ImageView up2ImageView;
+    @FXML private ImageView up3ImageView;
+    @FXML private ImageView up4ImageView;
+    @FXML private ImageView add1ImageView;
+    @FXML private ImageView add2ImageView;
+    @FXML private ImageView add3ImageView;
+    @FXML private ImageView add4ImageView;
     @FXML private ImageView up1ImageView;
     @FXML private MFXButton up1Button;
     @FXML private MFXButton up2Button;
@@ -50,13 +44,7 @@ public class HomeViewController implements Initializable {
     private ImageView logoHome;
 
 
-
-
     private Model model = Model.getModel();
-
-
-
-
 
 
     @Override
@@ -95,6 +83,7 @@ public class HomeViewController implements Initializable {
             if(!model.getUpcomingEvents().get(1).getImageFilePath().equals(" ")) {
                 try {
                     Image previewImage = new Image(new FileInputStream(model.getUpcomingEvents().get(1).getImageFilePath()));
+                    up2Button.setText(model.getUpcomingEvents().get(1).getName() + "\n\n" + model.getUpcomingEvents().get(1).getDate());
                     up2ImageView.setImage(previewImage);
                 } catch (FileNotFoundException e) {
                     System.out.println("file not found for upcoming event 2 image.");

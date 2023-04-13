@@ -6,9 +6,18 @@ import io.github.palexdev.materialfx.controls.*;
 import javafx.event.*;
 import javafx.fxml.*;
 import javafx.scene.control.*;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 import javafx.stage.*;
 
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.IOException;
 import java.net.*;
+import java.nio.file.FileSystems;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.StandardCopyOption;
 import java.sql.*;
 import java.sql.Date;
 import java.time.*;
@@ -16,6 +25,10 @@ import java.util.*;
 
 public class EditEventController implements Initializable {
 
+    @FXML
+    private ImageView eventImagePreview;
+    @FXML
+    private TextField eeImage;
     @FXML
     private MFXDatePicker datePickerEditEvent;
     @FXML
@@ -32,6 +45,7 @@ public class EditEventController implements Initializable {
     @FXML
     private Button editEventButton, editCancelButton;
 
+    private String selectedFile = " ";
 
     private Event eventToBeEdited;
     private Model model = Model.getModel();
@@ -46,6 +60,46 @@ public class EditEventController implements Initializable {
         editExitTimeCBM.setItems(model.getMinsTime());
 
         editErrorLabel.setText("Required fields are marked with *.");
+    }
+
+    public void imageFileExplorer(ActionEvent actionEvent) {
+        try {
+            FileChooser fileChooser = new FileChooser();
+            setFileChooser(fileChooser);
+            File file = fileChooser.showOpenDialog(new Stage());
+
+            try{
+                Path movefrom = FileSystems.getDefault().getPath(file.getPath());
+                Path target = FileSystems.getDefault().getPath("resources/EventImages/"+file.getName());
+                Files.move(movefrom,target, StandardCopyOption.ATOMIC_MOVE);
+                selectedFile = target.toString();
+                eeImage.setText(file.getName());
+
+                Image previewImage = new Image(new FileInputStream("resources/EventImages/"+file.getName()));
+                eventImagePreview.setImage(previewImage);
+            }catch (NullPointerException n){
+                System.out.println("File move failed.");
+            }
+
+
+        } catch(IOException e){
+            System.out.println("File selection has failed");
+        }
+
+
+    }
+
+    /**
+     * Mehod to configure the file chooser and select which file type are accepted
+     */
+    private static void setFileChooser(FileChooser fileChooser) {
+        fileChooser.setTitle("Select event Image");
+        fileChooser.setInitialDirectory(
+                new File(System.getProperty("user.home"))
+        );
+        fileChooser.getExtensionFilters().addAll(
+                new FileChooser.ExtensionFilter("Image files", "*.jpg", "*.bmp", "*.png", "*.jpeg")
+        );
     }
 
     private void editEventInformation(){
@@ -71,6 +125,7 @@ public class EditEventController implements Initializable {
             eventToBeEdited.setName(getNeNameTF());
             eventToBeEdited.setNotes(getNeNotesTF());
             eventToBeEdited.setLocationGuidance(getNeLocationInfoTF());
+            eventToBeEdited.setImageFilePath(selectedFile);
             model.updateEvent(eventToBeEdited);
             editErrorLabel.setText("Event edited!");
             closeWindow();
@@ -85,6 +140,7 @@ public class EditEventController implements Initializable {
         editLocationInfoTF.setText(editEvent.getLocationGuidance());
         editNameTF.setText(editEvent.getName());
         editNotesTF.setText(editEvent.getNotes());
+        eeImage.setText(editEvent.getImageFilePath());
 
         editTimeCBH.selectItem(editEvent.getTime().toLocalTime().getHour());
         editTimeCBM.selectItem(editEvent.getTime().toLocalTime().getMinute());
@@ -121,4 +177,8 @@ public class EditEventController implements Initializable {
     private String getNeLocationTF() {return editLocationTF.getText();}
     private String getNeNotesTF() {return editNotesTF.getText();}
     private String getNeLocationInfoTF() {return editLocationInfoTF.getText();}
+
+    public TextField getEeImage() {
+        return eeImage;
+    }
 }
