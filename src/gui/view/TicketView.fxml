@@ -85,71 +85,71 @@
             <RowConstraints maxHeight="42.3333740234375" minHeight="10.0" prefHeight="18.3333740234375" vgrow="SOMETIMES" />
         </rowConstraints>
          <children>
-            <Label prefHeight="66.0" prefWidth="115.0" text="Location:">
+            <Label prefHeight="66.0" prefWidth="115.0" styleClass="normal-text" text="Location:">
                <padding>
                   <Insets bottom="20.0" left="20.0" top="20.0" />
                </padding>
             </Label>
-            <Label prefHeight="42.0" prefWidth="102.0" text="Date:" GridPane.rowIndex="1">
+            <Label prefHeight="42.0" prefWidth="102.0" styleClass="normal-text" text="Date:" GridPane.rowIndex="1">
                <padding>
                   <Insets bottom="20.0" left="20.0" top="20.0" />
                </padding>
             </Label>
-            <Label prefHeight="66.0" prefWidth="116.0" text="Start Time:" GridPane.rowIndex="2">
+            <Label prefHeight="66.0" prefWidth="116.0" styleClass="normal-text" text="Start Time:" GridPane.rowIndex="2">
                <padding>
                   <Insets bottom="20.0" left="20.0" top="20.0" />
                </padding>
             </Label>
-            <Label prefWidth="117.0" text="End Time:" GridPane.rowIndex="3">
+            <Label prefWidth="117.0" styleClass="normal-text" text="End Time:" GridPane.rowIndex="3">
                <padding>
                   <Insets bottom="20.0" left="20.0" top="20.0" />
                </padding></Label>
-            <Label prefHeight="42.0" prefWidth="102.0" text="Notes:" GridPane.rowIndex="4">
+            <Label prefHeight="42.0" prefWidth="102.0" styleClass="normal-text" text="Notes:" GridPane.rowIndex="4">
                <padding>
                   <Insets bottom="20.0" left="20.0" top="20.0" />
                </padding>
             </Label>
-            <Label prefHeight="66.0" prefWidth="135.0" text="Location info:" GridPane.rowIndex="5">
+            <Label prefHeight="66.0" prefWidth="135.0" styleClass="normal-text" text="Location info:" GridPane.rowIndex="5">
                <padding>
                   <Insets bottom="20.0" left="20.0" top="20.0" />
                </padding>
             </Label>
-            <Label prefHeight="76.0" prefWidth="209.0" text="Available/sold tickets:" GridPane.rowIndex="6">
+            <Label prefHeight="76.0" prefWidth="209.0" text="Available/sold tickets:" visible="false" GridPane.rowIndex="6">
                <padding>
                   <Insets bottom="30.0" left="20.0" top="20.0" />
                </padding>
             </Label>
-            <Label fx:id="eventLocationLabel" text="TEXT" GridPane.columnIndex="1">
+            <Label fx:id="eventLocationLabel" prefHeight="26.0" prefWidth="130.0" styleClass="normal-text" GridPane.columnIndex="1">
                <padding>
                   <Insets left="5.0" />
                </padding>
             </Label>
-            <Label fx:id="eventDateLabel" text="TEXT" GridPane.columnIndex="1" GridPane.rowIndex="1">
+            <Label fx:id="eventDateLabel" prefHeight="26.0" prefWidth="132.0" styleClass="normal-text" GridPane.columnIndex="1" GridPane.rowIndex="1">
                <padding>
                   <Insets left="5.0" />
                </padding>
             </Label>
-            <Label fx:id="eventStartTimeLabel" text="TEXT" GridPane.columnIndex="1" GridPane.rowIndex="2">
+            <Label fx:id="eventStartTimeLabel" prefHeight="26.0" prefWidth="142.0" styleClass="normal-text" GridPane.columnIndex="1" GridPane.rowIndex="2">
                <padding>
                   <Insets left="5.0" />
                </padding>
             </Label>
-            <Label fx:id="eventNotesLabel" prefHeight="57.0" prefWidth="178.0" text="TEXT" wrapText="true" GridPane.columnIndex="1" GridPane.rowIndex="4">
+            <Label fx:id="eventNotesLabel" prefHeight="57.0" prefWidth="178.0" style="-fx-font-size: 14;" styleClass="normal-text" wrapText="true" GridPane.columnIndex="1" GridPane.rowIndex="4">
                <padding>
                   <Insets left="5.0" />
                </padding>
             </Label>
-            <Label fx:id="eventGuidanceLocationLabel" prefHeight="101.0" prefWidth="197.0" text="TEXT" wrapText="true" GridPane.columnIndex="1" GridPane.rowIndex="5">
+            <Label fx:id="eventGuidanceLocationLabel" prefHeight="101.0" prefWidth="197.0" style="-fx-font-size: 14;" styleClass="normal-text" wrapText="true" GridPane.columnIndex="1" GridPane.rowIndex="5">
                <padding>
                   <Insets left="5.0" />
                </padding>
             </Label>
-            <Label fx:id="eventEndTimeLabel" text="TEXT" GridPane.columnIndex="1" GridPane.rowIndex="3">
+            <Label fx:id="eventEndTimeLabel" prefHeight="26.0" prefWidth="138.0" styleClass="normal-text" GridPane.columnIndex="1" GridPane.rowIndex="3">
                <padding>
                   <Insets left="5.0" />
                </padding>
             </Label>
-            <Label fx:id="AvailableSoldTickets" prefHeight="34.0" prefWidth="63.0" text="TEXT" wrapText="true" GridPane.columnIndex="1" GridPane.rowIndex="6">
+            <Label fx:id="AvailableSoldTickets" prefHeight="38.0" prefWidth="141.0" styleClass="normal-text" wrapText="true" GridPane.columnIndex="1" GridPane.rowIndex="6">
                <padding>
                   <Insets bottom="10.0" left="5.0" />
                </padding>

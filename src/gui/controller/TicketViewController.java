@@ -91,7 +91,7 @@ public class TicketViewController implements Initializable {
         eventNotesLabel.setText(selectedEvent.getNotes());
         eventStartTimeLabel.setText(selectedEvent.getTime().toString());
         eventNameLabel.setText(selectedEvent.getName());
-        eventEndTimeLabel.setText(selectedEvent.getName());
+        eventEndTimeLabel.setText(selectedEvent.getEndTime().toString());
     }
 
 
