@@ -1,8 +1,9 @@
 package gui.controller;
 
 import be.SpecialTicketOverviewWrapper;
-import be.SpecialTicketsWrapper;
 import gui.model.Model;
+import javafx.beans.property.IntegerProperty;
+import javafx.beans.property.SimpleIntegerProperty;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -46,11 +47,12 @@ public class SpecialTicketsOverviewController implements Initializable {
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         specialOTV.setItems(model.getObsSpecialTicketsOverview());
-        model.loadSpecialTicketOverviewList();
+        model.loadSpecialTicketOverview();
 
-        ColumnTicketTypeOTV.setCellValueFactory(new PropertyValueFactory<>("ticketType"));
+        ColumnTicketTypeOTV.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().getTicketType().getTicketTypeName()));
         ColumnEventNameOTV.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().getEvent().getName()));
-        ColumnAvailableTicketsOTV.setCellValueFactory(new PropertyValueFactory<>("availableTickets"));
+        ColumnAvailableTicketsOTV.setCellValueFactory(cellData -> new SimpleIntegerProperty(cellData.getValue().getAvailableTickets()).asObject());
+
 
         try {
             Image logoImage = new Image(new FileInputStream("resources/images/logoEASV.png"));

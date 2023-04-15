@@ -216,8 +216,57 @@ public class TicketLogicManager {
             throw new RuntimeException(e);
         }
 
+    }
+
+
+    private PDDocument writeEventInfoOnSpecialTicketWithoutEvent(SpecialTicketWithoutEvent selectedSpecialTicket, TicketType selectedTicketType) {
+        try {
+            String inputFilePath = "resources/TicketsBackground/SpecialTicket-background.pdf";
+            File inputFile = new File(inputFilePath);
+            PDDocument doc = Loader.loadPDF(inputFile);
+            PDPage page = doc.getPage(0);
+
+            PDPageContentStream contentStream = new PDPageContentStream(doc, page, PDPageContentStream.AppendMode.APPEND, true, true);
+
+            PDFont pdfFont = new PDType1Font(Standard14Fonts.FontName.HELVETICA_BOLD);
+            contentStream.setFont(pdfFont, 25);
+            contentStream.setNonStrokingColor(Color.white);
+
+            PDRectangle pageSize = page.getMediaBox();
+            float pageWidth = pageSize.getWidth();
+            float pageHeight = pageSize.getHeight();
+
+            float margin = 20;
+            float x = pageWidth / 4;
+            float y = pageHeight - margin;
+
+            //Write Event Info
+            contentStream.beginText();
+
+            contentStream.newLineAtOffset(x, y - 30);
+            contentStream.showText(selectedTicketType.getTicketTypeName());
+            contentStream.endText();
+
+            //Write QR CODE
+
+            int qrCodeSize = 80;
+            BitMatrix bitMatrix = new MultiFormatWriter().encode(selectedSpecialTicket.getSpecialTicketID(), BarcodeFormat.QR_CODE, qrCodeSize, qrCodeSize);
+            BufferedImage qrImage = MatrixToImageWriter.toBufferedImage(bitMatrix);
+            PDImageXObject qrImageXObject = LosslessFactory.createFromImage(doc, qrImage);
+            contentStream.drawImage(qrImageXObject, margin, (pageHeight - qrCodeSize) / 2 + 5, qrCodeSize, qrCodeSize);
+            contentStream.close();
+            return doc;
+        } catch (
+                IOException e) {
+            throw new RuntimeException(e);
+        } catch (
+                WriterException e) {
+            throw new RuntimeException(e);
+        }
 
     }
+
+
 
     /**
      * method to save the ticket with the last 4 digits of the ticketID
@@ -312,6 +361,19 @@ public class TicketLogicManager {
         throw new IllegalStateException("Event cannot be null");
     }
 
+
+    public ImageView createSpecialTicketWithoutEventPreview(SpecialTicketWithoutEvent selectedSpecialTicket, TicketType selectedTicketType) throws IOException {
+        PDDocument document = writeEventInfoOnSpecialTicketWithoutEvent(selectedSpecialTicket, selectedTicketType);
+        PDFRenderer pdfRenderer = new PDFRenderer(document);
+        BufferedImage bufferedImage = pdfRenderer.renderImage(0);
+        WritableImage fxImage = SwingFXUtils.toFXImage(bufferedImage, null);
+        ImageView imageView = new ImageView(fxImage);
+        return imageView;
+
+    }
+
+
+
     private static long get64LeastSignificantBits() {
         Random random = new Random();
         long random63BitLong = random.nextLong() & 0x3FFFFFFFFFFFFFFFL;
@@ -367,6 +429,20 @@ public class TicketLogicManager {
 
     public void deleteSpecialTicket(SpecialTicket ticket) {
         specialTicketDAO.deleteSpecialTicket(ticket);
+    }
+
+
+    public List<SpecialTicketWithoutEvent> createSpecialTicketWithoutEvent(TicketType selectedTicketType, int maxQuantity) {
+
+        return specialTicketDAO.createSpecialTicketWithoutEvent(selectedTicketType, maxQuantity);
+    }
+
+    public ObservableList<SpecialTicketsWithoutEventWrapper> getSpecialTicketsWithoutEventInfo() {
+        return specialTicketDAO.getSpecialTicketsWithoutEventInfo();
+    }
+
+    public void deleteSpecialTicketWithouEvent(SpecialTicketWithoutEvent specialTicketWithoutEvent) {
+        specialTicketDAO.deleteSpecialTicketWithoutEvent(specialTicketWithoutEvent);
     }
 
 

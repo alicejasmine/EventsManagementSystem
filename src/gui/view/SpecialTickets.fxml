@@ -20,7 +20,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="650.0" prefWidth="1250.0" style="-fx-background-color: C9C5C5;" stylesheets="@../../css/style.css" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gui.controller.SpecialTicketsController">
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="650.0" prefWidth="1250.0" style="-fx-background-color: C9C5C5;" stylesheets="@../../css/style.css" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gui.controller.SpecialTicketsController">
    <right>
       <AnchorPane prefHeight="402.0" prefWidth="284.0" style="-fx-background-color: D9D9D9; -fx-background-radius: 7%;" BorderPane.alignment="CENTER">
          <BorderPane.margin>
@@ -129,7 +129,7 @@
                   <Label fx:id="locationGuidanceLabel" prefHeight="63.0" prefWidth="188.0" style="-fx-wrap-text: true; -fx-font-size: 14;" styleClass="normal-text" GridPane.columnIndex="1" GridPane.rowIndex="5" />
                </children>
             </GridPane>
-            <Button layoutX="275.0" layoutY="566.0" mnemonicParsing="false" onAction="#openTicketPreview" prefWidth="81.0" styleClass="white-button" text="Ticket Preview" />
+            <Button layoutX="436.0" layoutY="569.0" mnemonicParsing="false" onAction="#openTicketPreview" prefWidth="81.0" styleClass="white-button" text="Ticket Preview" />
             <Label layoutX="275.0" layoutY="152.0" minHeight="-Infinity" minWidth="-Infinity" prefHeight="39.0" prefWidth="221.0" styleClass="small-title" text="Event Information">
                <font>
                   <Font name="System Bold" size="14.0" />
@@ -162,7 +162,7 @@
                         <Insets left="50.0" />
                      </VBox.margin>
                   </Button>
-                  <Button alignment="BASELINE_LEFT" mnemonicParsing="false" onAction="#specialTicketsOverview" prefHeight="47.0" prefWidth="218.0" styleClass="red-menuButton" text="Special Tickets" />
+                  <Button alignment="BASELINE_LEFT" mnemonicParsing="false" onAction="#openSpecialTicketsOverview" prefHeight="47.0" prefWidth="218.0" styleClass="red-menuButton" text="Special Tickets" />
                   <Button mnemonicParsing="false" onAction="#openCreateSpecialTicket" prefHeight="29.0" prefWidth="164.0" text="Create Special Ticket">
                      <styleClass>
                         <String fx:value="red-menuButton" />
@@ -184,6 +184,7 @@
                   <Button fx:id="coordinatorButton" alignment="BASELINE_LEFT" mnemonicParsing="false" onAction="#manageCoordinators" prefHeight="47.0" prefWidth="218.0" styleClass="red-menuButton" text="Manage Coordinators" visible="false" />
                </children>
             </VBox>
+            <Button layoutX="1074.0" layoutY="132.0" mnemonicParsing="false" onAction="#switchToWithoutEvent" prefHeight="32.0" prefWidth="132.0" styleClass="white-button" text="Tickets without events" />
          </children>
       </AnchorPane>
    </top>

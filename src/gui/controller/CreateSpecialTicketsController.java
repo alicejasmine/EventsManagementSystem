@@ -4,6 +4,7 @@ import be.Event;
 import be.TicketType;
 import gui.model.Model;
 import io.github.palexdev.materialfx.controls.MFXComboBox;
+import javafx.collections.FXCollections;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -24,16 +25,17 @@ import java.util.ResourceBundle;
 
 public class CreateSpecialTicketsController implements Initializable {
 
+
     @FXML
     private Button coordinatorButton;
     @FXML
     private ImageView logo;
     @FXML
-    private TextField ticketTypeTextfield, maxQuantityTextfield;
+    private TextField ticketTypeTextfield, maxQuantityTextfield1,maxQuantityTextfield2;;
     @FXML
-    private MFXComboBox ticketTypeComboBox, eventComboBox;
+    private MFXComboBox ticketTypeComboBox1, eventComboBox, ticketTypeComboBox2;
     @FXML
-    private Label usernameLabel, errorInfoLabel, addTypeErrorLabel;
+    private Label usernameLabel, errorInfoLabel1, addTypeErrorLabel,errorInfoLabel2;
 
     private Model model = Model.getModel();
 
@@ -41,8 +43,10 @@ public class CreateSpecialTicketsController implements Initializable {
     public void initialize(URL location, ResourceBundle resources) {
         model.loadTicketTypeList();
         model.loadEventList();
-        ticketTypeComboBox.setItems(model.getTicketType());
+        ticketTypeComboBox1.setItems(model.getTicketTypes());
         eventComboBox.setItems(model.getObsEvents());
+
+        ticketTypeComboBox2.setItems(model.getTicketTypes());
 
         try {
             Image logoImage = new Image(new FileInputStream("resources/images/logoEASV.png"));
@@ -106,34 +110,55 @@ public class CreateSpecialTicketsController implements Initializable {
 
     @FXML
     private void addTicketType(ActionEvent actionEvent) {
-        String list = ticketTypeComboBox.getItems().toString();
-        if (ticketTypeTextfield.getText().isEmpty()) {
-            addTypeErrorLabel.setText("please write a Ticket Type to add");
-        } else if (list.contains(ticketTypeTextfield.getText())) {
-            addTypeErrorLabel.setText("Ticket Type already exists");
+        String ticketType = ticketTypeTextfield.getText();
+
+        if (ticketType.isEmpty()) {
+            addTypeErrorLabel.setText("Please write a Ticket Type to add.");
+        } else if (ticketTypeComboBox1.getItems().toString().contains(ticketType)) {
+            addTypeErrorLabel.setText("Ticket Type already exists.");
         } else {
-            model.addTicketType(ticketTypeTextfield.getText());
+            model.addTicketType(ticketType);
+            addTypeErrorLabel.setText("Ticket Type " + ticketTypeTextfield.getText()+ " added.");
+            ticketTypeTextfield.clear();
         }
-        ticketTypeTextfield.clear();
 
     }
 
 
+
+
     @FXML
     private void NewSpecialTicket(ActionEvent actionEvent) {
-        TicketType selectedTicketType = (TicketType) ticketTypeComboBox.getSelectionModel().getSelectedItem();
+        TicketType selectedTicketType = (TicketType) ticketTypeComboBox1.getSelectionModel().getSelectedItem();
         Event selectedEvent = (Event) eventComboBox.getSelectionModel().getSelectedItem();
 
-        if (selectedTicketType != null && selectedEvent != null && !maxQuantityTextfield.getText().isEmpty()) {
-            int maxQuantity = Integer.parseInt(maxQuantityTextfield.getText());
+        if (selectedTicketType != null && selectedEvent != null && !maxQuantityTextfield1.getText().isEmpty()) {
+            int maxQuantity = Integer.parseInt(maxQuantityTextfield1.getText());
             model.createSpecialTicket(selectedTicketType, selectedEvent, maxQuantity);
-            errorInfoLabel.setText(maxQuantityTextfield.getText() + " ticket(s) of type " + selectedTicketType + " for the event " + selectedEvent + " created");
+            errorInfoLabel1.setText(maxQuantityTextfield1.getText() + " ticket(s) of type " + selectedTicketType + " for the event " + selectedEvent + " created");
         } else {
-            errorInfoLabel.setText("Please provide ticket type, event and ticket quantity.");
+            errorInfoLabel1.setText("Please provide ticket type, event and ticket quantity.");
         }
-        maxQuantityTextfield.clear();
-        ticketTypeComboBox.clear();
+        maxQuantityTextfield1.clear();
+        ticketTypeComboBox1.clear();
         eventComboBox.clear();
+    }
+
+
+    @FXML
+    private void NewSpecialTicketWithoutEvent(ActionEvent actionEvent) {
+        TicketType selectedTicketType = (TicketType) ticketTypeComboBox2.getSelectionModel().getSelectedItem();
+
+        if (selectedTicketType != null  && !maxQuantityTextfield2.getText().isEmpty()) {
+            int maxQuantity = Integer.parseInt(maxQuantityTextfield2.getText());
+            model.createSpecialTicketWithoutEvent(selectedTicketType, maxQuantity);
+            errorInfoLabel2.setText(maxQuantityTextfield2.getText() + " ticket(s) of type " + selectedTicketType + " created");
+        } else {
+            errorInfoLabel2.setText("Please provide ticket type, event and ticket quantity.");
+        }
+        maxQuantityTextfield2.clear();
+        ticketTypeComboBox2.clear();
+
     }
 
 

@@ -5,7 +5,6 @@ import bll.*;
 import javafx.collections.*;
 import javafx.scene.image.ImageView;
 
-import java.io.File;
 import java.io.IOException;
 import java.time.*;
 import java.util.*;
@@ -14,6 +13,7 @@ public class Model {
 
     private ObservableList<Event> events = FXCollections.observableArrayList();
     private final ObservableList<SpecialTicketsWrapper> specialTickets = FXCollections.observableArrayList();
+    private final ObservableList<SpecialTicketsWithoutEventWrapper> specialTicketsWithoutEvent = FXCollections.observableArrayList();
     private final ObservableList<SpecialTicketOverviewWrapper> specialTicketsOverview=FXCollections.observableArrayList();
 
     private final ObservableList<TicketType> ticketType = FXCollections.observableArrayList();
@@ -154,12 +154,17 @@ public class Model {
         recentlyAddedEvents();
     }
 
-    public void loadSpecialTicketList(){
+    public void loadSpecialTicket(){
         specialTickets.clear();
         specialTickets.addAll(tlm.getSpecialTicketsInfo());
     }
 
-    public void loadSpecialTicketOverviewList(){
+    public void loadSpecialTicketWithoutEvent(){
+        specialTicketsWithoutEvent.clear();
+        specialTicketsWithoutEvent.addAll(tlm.getSpecialTicketsWithoutEventInfo());
+    }
+
+    public void loadSpecialTicketOverview(){
         specialTicketsOverview.clear();
         specialTicketsOverview.addAll(tlm.getSpecialTicketOverview());
     }
@@ -272,6 +277,13 @@ public class Model {
         }
     }
 
+    public ImageView createSpecialTicketWithoutEventPreview(SpecialTicketWithoutEvent selectedSpecialTicket, TicketType selectedTicketType) {
+        try {
+            return tlm.createSpecialTicketWithoutEventPreview(selectedSpecialTicket, selectedTicketType);
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        } }
+
 
 
     /**
@@ -322,6 +334,12 @@ public class Model {
 
     }
 
+    public void createSpecialTicketWithoutEvent(TicketType selectedTicketType, int maxQuantity) {
+
+        tlm.createSpecialTicketWithoutEvent(selectedTicketType, maxQuantity);
+
+    }
+
 
 
 
@@ -331,10 +349,14 @@ public class Model {
         return specialTickets;
     }
 
+    public ObservableList<SpecialTicketsWithoutEventWrapper> getObsSpecialTicketsWithoutEvent() {
+        return specialTicketsWithoutEvent;
+    }
+
     public ObservableList<SpecialTicketOverviewWrapper> getObsSpecialTicketsOverview() {
         return specialTicketsOverview;
     }
-    public ObservableList<TicketType> getTicketType() {
+    public ObservableList<TicketType> getTicketTypes() {
         return ticketType;}
 
     
@@ -346,7 +368,7 @@ public class Model {
 
     public void deleteSpecialTicket (SpecialTicket ticket) {
         tlm.deleteSpecialTicket(ticket);
-        loadSpecialTicketList();
+        loadSpecialTicket();
     }
 
     public ObservableList<SpecialTicketsWrapper> getSpecialTicketsInfo() {
@@ -355,6 +377,12 @@ public class Model {
 
     public ObservableList<SpecialTicketOverviewWrapper> getSpecialTicketOverviewInfo() {
         return tlm.getSpecialTicketOverview();
+    }
+
+
+    public void deleteSpecialTicketWithoutEvent(SpecialTicketWithoutEvent specialTicketWithoutEvent) {
+        tlm.deleteSpecialTicketWithouEvent(specialTicketWithoutEvent);
+        loadSpecialTicketWithoutEvent();
     }
 
 

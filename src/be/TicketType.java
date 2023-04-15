@@ -25,12 +25,9 @@ public class TicketType {
         return ticketTypeName;
     }
 
-    public void setTicketTypeName(String ticketTypeName) {
-        this.ticketTypeName = ticketTypeName;
-    }
 
     @Override
     public String toString() {
-        return ticketTypeName ;
+        return ticketTypeName;
     }
 }

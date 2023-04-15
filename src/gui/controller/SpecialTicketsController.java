@@ -11,7 +11,6 @@ import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
-import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.stage.Stage;
@@ -21,10 +20,10 @@ import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.net.URL;
-import java.util.Objects;
 import java.util.ResourceBundle;
 
 public class SpecialTicketsController implements Initializable {
+
 
 
     @FXML
@@ -51,11 +50,12 @@ public class SpecialTicketsController implements Initializable {
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         specialTicketsTV.setItems(model.getObsSpecialTickets());
-        model.loadSpecialTicketList();
+        model.loadSpecialTicket();
 
-        ColumnTicketTypeTV.setCellValueFactory(new PropertyValueFactory<>("ticketType"));
+        ColumnTicketTypeTV.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().getTicketType().getTicketTypeName()));
         ColumnEventNameTV.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().getEvent().getName()));
-        ColumnTicketIDTV.setCellValueFactory(new PropertyValueFactory<>("specialTicket"));
+        ColumnTicketIDTV.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().getSpecialTicket().getSpecialTicketID()));
+
 
         setLabels();
 
@@ -102,6 +102,8 @@ public class SpecialTicketsController implements Initializable {
     @FXML
     private void deleteSpecialTicket(ActionEvent actionEvent) {
         SpecialTicketsWrapper selectedTicket = (SpecialTicketsWrapper) specialTicketsTV.getSelectionModel().getSelectedItem();
+        System.out.println(selectedTicket);
+        System.out.println(selectedTicket.getSpecialTicket().getTicketTypeID());
         model.deleteSpecialTicket(selectedTicket.getSpecialTicket());
     }
 
@@ -183,18 +185,7 @@ public class SpecialTicketsController implements Initializable {
         stage.show();
     }
 
-    @FXML
-    private void openSpecialTicketsOverview(ActionEvent actionEvent) throws IOException {
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("/gui/view/SpecialTicketsOverview.fxml"));
-        Parent root = loader.load();
-        SpecialTicketsOverviewController controller = loader.getController();
-        controller.setUsernameLabel();
-        Stage stage = (Stage) ((Node) actionEvent.getSource()).getScene().getWindow();
-        Scene scene = new Scene(root);
-        stage.setTitle("Special Tickets Overview");
-        stage.setScene(scene);
-        stage.show();
-    }
+
 
     @FXML
     private void manageCoordinators(ActionEvent actionEvent) throws IOException {
@@ -265,7 +256,7 @@ public class SpecialTicketsController implements Initializable {
     /**
      * Method to open Special Tickets window in the same window
      */
-    @FXML private void specialTicketsOverview(ActionEvent actionEvent) throws IOException {
+    @FXML private void openSpecialTicketsOverview(ActionEvent actionEvent) throws IOException {
         FXMLLoader loader = new FXMLLoader(getClass().getResource("/gui/view/SpecialTicketsOverview.fxml"));
         Parent root = loader.load();
         SpecialTicketsOverviewController controller = loader.getController();
@@ -276,4 +267,17 @@ public class SpecialTicketsController implements Initializable {
         stage.setScene(scene);
         stage.show();
     }
+
+
+    public void switchToWithoutEvent(ActionEvent actionEvent) throws IOException {
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/gui/view/SpecialTicketsWithoutEvent.fxml"));
+        Parent root = loader.load();
+        SpecialTicketsWithoutEventController controller=loader.getController();
+        controller.setUsernameLabel();
+        Scene scene = new Scene(root);
+        Stage stage = (Stage) ((Node) actionEvent.getSource()).getScene().getWindow();
+        stage.setScene(scene);
+        stage.show();
+    }
 }
+

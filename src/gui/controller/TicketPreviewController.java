@@ -1,9 +1,6 @@
 package gui.controller;
 
-import be.Event;
-import be.SpecialTicket;
-import be.Ticket;
-import be.TicketType;
+import be.*;
 import gui.model.Model;
 import javafx.event.ActionEvent;
 import javafx.fxml.*;
@@ -25,6 +22,8 @@ public class TicketPreviewController implements Initializable {
     private TicketType selectedTicketType;
 
     private SpecialTicket selectedSpecialTicket;
+
+    private SpecialTicketWithoutEvent selectedSpecialTicketWithoutEvent;
 
 
     @FXML
@@ -70,4 +69,14 @@ public class TicketPreviewController implements Initializable {
             ticketImageView.setImage(model.createSpecialTicketPreview(selectedEvent, selectedSpecialTicket, selectedTicketType).getImage());
         }
     }
+
+    public void setSelectedSpecialTicketWithoutEvent(SpecialTicketWithoutEvent selectedSpecialTicket) {
+        this.selectedSpecialTicketWithoutEvent =selectedSpecialTicket;
+    }
+
+    public void renderSpecialTicketWithoutEvent() {
+        if(selectedSpecialTicketWithoutEvent != null) {
+            ticketImageView.setImage(model.createSpecialTicketWithoutEventPreview(selectedSpecialTicketWithoutEvent, selectedTicketType).getImage());
+
+    }  }
 }

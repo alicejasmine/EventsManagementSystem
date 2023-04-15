@@ -13,9 +13,6 @@ public class SpecialTicket {
     }
 
 
-    public SpecialTicket(String specialTicketID) {
-        this.specialTicketID=specialTicketID;
-    }
 
     public String getSpecialTicketID() {
         return specialTicketID;
