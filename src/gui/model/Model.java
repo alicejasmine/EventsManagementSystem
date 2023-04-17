@@ -386,6 +386,13 @@ public class Model {
     }
 
 
+    public void saveSpecialTicketWithoutEvent(SpecialTicketWithoutEvent selectedSpecialTicket, TicketType selectedTicketType) {
+        tlm.saveSpecialTicketWithoutEvent(selectedSpecialTicket,selectedTicketType);
+    }
+
+    public void printSpecialTicketWithoutEvent(SpecialTicketWithoutEvent selectedSpecialTicket, TicketType selectedTicketType) {
+        tlm.printTicket(tlm.writeInfoOnSpecialTicketWithoutEvent(selectedSpecialTicket,selectedTicketType));
+    }
 }
 
 

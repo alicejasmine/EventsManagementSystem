@@ -219,7 +219,7 @@ public class TicketLogicManager {
     }
 
 
-    private PDDocument writeEventInfoOnSpecialTicketWithoutEvent(SpecialTicketWithoutEvent selectedSpecialTicket, TicketType selectedTicketType) {
+    public PDDocument writeInfoOnSpecialTicketWithoutEvent(SpecialTicketWithoutEvent selectedSpecialTicket, TicketType selectedTicketType) {
         try {
             String inputFilePath = "resources/TicketsBackground/SpecialTicket-background.pdf";
             File inputFile = new File(inputFilePath);
@@ -363,7 +363,7 @@ public class TicketLogicManager {
 
 
     public ImageView createSpecialTicketWithoutEventPreview(SpecialTicketWithoutEvent selectedSpecialTicket, TicketType selectedTicketType) throws IOException {
-        PDDocument document = writeEventInfoOnSpecialTicketWithoutEvent(selectedSpecialTicket, selectedTicketType);
+        PDDocument document = writeInfoOnSpecialTicketWithoutEvent(selectedSpecialTicket, selectedTicketType);
         PDFRenderer pdfRenderer = new PDFRenderer(document);
         BufferedImage bufferedImage = pdfRenderer.renderImage(0);
         WritableImage fxImage = SwingFXUtils.toFXImage(bufferedImage, null);
@@ -446,4 +446,16 @@ public class TicketLogicManager {
     }
 
 
+    public void saveSpecialTicketWithoutEvent(SpecialTicketWithoutEvent selectedSpecialTicket, TicketType selectedTicketType) {
+        try {
+            PDDocument document = writeInfoOnSpecialTicketWithoutEvent(selectedSpecialTicket,selectedTicketType);
+            String s = selectedSpecialTicket.getSpecialTicketID();
+            String outputFilePath = "resources/SpecialTickets/SpecialTicket-"+ s.substring(s.length() - 4) + ".pdf";
+            File outputFile = new File(outputFilePath);
+            document.save(outputFile);
+            document.close();
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
+    }
 }

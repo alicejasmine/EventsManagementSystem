@@ -18,6 +18,7 @@ import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.stage.Stage;
 
+import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.IOException;
@@ -104,9 +105,38 @@ public class SpecialTicketsWithoutEventController implements Initializable {
     }
 
     public void saveSpecialTicket(ActionEvent actionEvent) {
+        SpecialTicketsWithoutEventWrapper selectedRow = specialTicketsWithoutEventTV.getSelectionModel().getSelectedItem();
+        SpecialTicketWithoutEvent selectedSpecialTicket = selectedRow.getSpecialTicketWithoutEvent();
+        TicketType selectedTicketType = selectedRow.getTicketType();
+
+        if (selectedSpecialTicket == null) {
+            errorLabel.setText("Please select a ticket to save");
+        } else {
+            String s = selectedSpecialTicket.getSpecialTicketID();
+            String filename = "SpecialTicket-" + s.substring(s.length() - 4) + ".pdf";
+            File file = new File("resources/SpecialTickets/" + filename);
+            if (file.exists()) {
+                errorLabel.setText("Error: File already saved");
+            } else {
+                model.saveSpecialTicketWithoutEvent(selectedSpecialTicket,selectedTicketType);
+                errorLabel.setText("File saved");
+            }
+
+        }
     }
 
     public void printSpecialTicket(ActionEvent actionEvent) {
+        SpecialTicketsWithoutEventWrapper selectedRow = specialTicketsWithoutEventTV.getSelectionModel().getSelectedItem();
+        SpecialTicketWithoutEvent selectedSpecialTicket = selectedRow.getSpecialTicketWithoutEvent();
+        TicketType selectedTicketType = selectedRow.getTicketType();
+
+
+        if (selectedSpecialTicket != null) {
+            model.printSpecialTicketWithoutEvent(selectedSpecialTicket, selectedTicketType);
+        } else {
+            errorLabel.setText("Please select a ticket to print");
+        }
+
     }
 
     public void home(ActionEvent actionEvent) throws IOException {
