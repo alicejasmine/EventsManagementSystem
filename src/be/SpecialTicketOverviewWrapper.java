@@ -26,5 +26,14 @@ public class SpecialTicketOverviewWrapper {
     public void setAvailableTickets(int availableTickets) {
         this.availableTickets = availableTickets;
     }
+
+    @Override
+    public String toString() {
+        return "SpecialTicketOverviewWrapper{" +
+                "event=" + event +
+                ", ticketType=" + ticketType +
+                ", availableTickets=" + availableTickets +
+                '}';
+    }
 }
 

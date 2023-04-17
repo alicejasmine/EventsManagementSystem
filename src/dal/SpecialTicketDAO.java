@@ -55,7 +55,13 @@ public class SpecialTicketDAO {
                 "FROM SpecialTicket st " +
                 "JOIN SpecialTicketType stt ON st.TicketTypeID = stt.TicketTypeID " +
                 "JOIN Event e ON st.EventID = e.EventID " +
-                "GROUP BY stt.TicketTypeName,stt.TicketTypeID, e.Name";
+                "GROUP BY stt.TicketTypeName,stt.TicketTypeID, e.Name " +
+                "UNION " +
+                "SELECT stt.TicketTypeName, stt.TicketTypeID, NULL AS EventName, COUNT(stwe.SpecialTicketID) AS AvailableSpecialTickets " +
+                "FROM SpecialTicketsWithoutEvent stwe " +
+                "JOIN SpecialTicketType stt ON stwe.TicketTypeID = stt.TicketTypeID " +
+                "GROUP BY stt.TicketTypeName, stt.TicketTypeID ";
+
 
         try (Connection connection = databaseConnector.getConnection()) {
             PreparedStatement statement = connection.prepareStatement(sql);
@@ -64,7 +70,7 @@ public class SpecialTicketDAO {
 
             while (resultSet.next()) {
                 String ticketTypeName = resultSet.getString("TicketTypeName");
-                int ticketTypeID=resultSet.getInt("TicketTypeID");
+                int ticketTypeID = resultSet.getInt("TicketTypeID");
                 String eventName = resultSet.getString("Name");
                 int availableSpecialTickets = resultSet.getInt("AvailableSpecialTickets");
 
@@ -73,8 +79,7 @@ public class SpecialTicketDAO {
                 TicketType ticketType = new TicketType(ticketTypeID, ticketTypeName);
                 SpecialTicketOverviewWrapper ticketInfo = new SpecialTicketOverviewWrapper(event, ticketType, availableSpecialTickets);
                 ticketInfoList.add(ticketInfo);
-
-
+                
             }
         } catch (SQLException e) {
             throw new RuntimeException(e);
@@ -98,7 +103,7 @@ public class SpecialTicketDAO {
 
             while (resultSet.next()) {
                 String ticketTypeName = resultSet.getString("TicketTypeName");
-                int ticketTypeID=resultSet.getInt("TicketTypeID");
+                int ticketTypeID = resultSet.getInt("TicketTypeID");
                 String specialTicketID = resultSet.getString("SpecialTicketID");
 
                 int eventID = resultSet.getInt("EventID");
@@ -113,7 +118,7 @@ public class SpecialTicketDAO {
 
                 Event event = new Event(eventID, eventName, eventLocation, eventDate, eventStart, eventNotes, eventEnd, eventLocationGuidance, filePath);
                 TicketType ticketType = new TicketType(ticketTypeID, ticketTypeName);
-                SpecialTicket specialTicket = new SpecialTicket(specialTicketID,ticketTypeID, event.getId());
+                SpecialTicket specialTicket = new SpecialTicket(specialTicketID, ticketTypeID, event.getId());
 
                 SpecialTicketsWrapper specialTicketsWrapper = new SpecialTicketsWrapper(ticketType, event, specialTicket);
                 specialTickets.add(specialTicketsWrapper);
@@ -183,10 +188,8 @@ public class SpecialTicketDAO {
                 int ticketTypeID = resultSet.getInt("TicketTypeID");
 
 
-
-
-                TicketType ticketType = new TicketType(ticketTypeID,ticketTypeName);
-                SpecialTicketWithoutEvent specialTicketWithoutEvent = new SpecialTicketWithoutEvent(specialTicketID,ticketTypeID);
+                TicketType ticketType = new TicketType(ticketTypeID, ticketTypeName);
+                SpecialTicketWithoutEvent specialTicketWithoutEvent = new SpecialTicketWithoutEvent(specialTicketID, ticketTypeID);
 
                 SpecialTicketsWithoutEventWrapper specialTicketWithoutEventWrapper = new SpecialTicketsWithoutEventWrapper(ticketType, specialTicketWithoutEvent);
                 specialTicketsWithoutEvent.add(specialTicketWithoutEventWrapper);
@@ -202,16 +205,16 @@ public class SpecialTicketDAO {
 
     public void deleteSpecialTicketWithoutEvent(SpecialTicketWithoutEvent ticket) {
 
-            String sql = "DELETE FROM SpecialTicketsWithoutEvent WHERE SpecialTicketID= ? ";
+        String sql = "DELETE FROM SpecialTicketsWithoutEvent WHERE SpecialTicketID= ? ";
 
-            try (Connection conn = databaseConnector.getConnection();
-                 PreparedStatement pstmt = conn.prepareStatement(sql)) {
+        try (Connection conn = databaseConnector.getConnection();
+             PreparedStatement pstmt = conn.prepareStatement(sql)) {
 
-                pstmt.setString(1, ticket.getSpecialTicketID());
-                pstmt.executeUpdate();
-            } catch (SQLException e) {
-                System.out.println(e.getMessage());
-            }
+            pstmt.setString(1, ticket.getSpecialTicketID());
+            pstmt.executeUpdate();
+        } catch (SQLException e) {
+            System.out.println(e.getMessage());
+        }
 
     }
 }
