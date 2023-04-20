@@ -95,4 +95,28 @@ class EventDAOTest {
         assertNotNull(listEvent);
         assertEquals(10, listEvent.size()); // requires the size of the table as the first param
     }
+
+    @Test
+    void getEventById() {
+
+        //Arrange
+        Event expectedEvent = new Event("EASV Party", "EASV Bar", Date.valueOf("2023-12-20"), Time.valueOf("19:00:00"), "Notes", Time.valueOf("23:00:00"), "Location Guidance", "File Path");
+        EventDAO eventDAO = new EventDAO();
+        Event createdEvent = eventDAO.createEvent(expectedEvent);
+        int eventID = createdEvent.getId();
+
+        //Act
+        Event actualEvent = eventDAO.getEventById(eventID);
+
+        //Assert
+        assertNotNull(actualEvent);
+        assertEquals(expectedEvent.getName(), actualEvent.getName());
+        assertEquals(expectedEvent.getLocation(), actualEvent.getLocation());
+        assertEquals(expectedEvent.getDate(), actualEvent.getDate());
+        assertEquals(expectedEvent.getTime(), actualEvent.getTime());
+        assertEquals(expectedEvent.getNotes(), actualEvent.getNotes());
+        assertEquals(expectedEvent.getEndTime(), actualEvent.getEndTime());
+        assertEquals(expectedEvent.getLocationGuidance(), actualEvent.getLocationGuidance());
+        assertEquals(expectedEvent.getImageFilePath(), actualEvent.getImageFilePath());
+    }
 }
