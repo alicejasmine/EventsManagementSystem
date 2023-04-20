@@ -1,6 +1,7 @@
 package dal;
 
 import be.Event;
+import dal.*;
 import com.microsoft.sqlserver.jdbc.SQLServerException;
 import org.junit.jupiter.api.Test;
 
@@ -8,6 +9,8 @@ import java.sql.Connection;
 import java.sql.Date;
 import java.sql.SQLException;
 import java.sql.Time;
+import java.util.ArrayList;
+import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.*;
 
@@ -15,10 +18,8 @@ class EventDAOTest {
     private EventDAO eventDAO = new EventDAO();
 
 
-
-
     @Test
-    void createEvent()  {
+    void createEvent() {
 
         //Arrange
         String expectedName = "Christmas Party";
@@ -50,7 +51,7 @@ class EventDAOTest {
         } catch (Exception e) {
             throw new RuntimeException(e);
         }
-        }
+    }
 
 
     @Test
@@ -63,5 +64,8 @@ class EventDAOTest {
 
     @Test
     void getAllEvents() {
+        List<Event> listEvent = eventDAO.getAllEvents();
+        assertNotNull(listEvent);
+        assertEquals(10, listEvent.size()); // requires the size of the table as the first param
     }
 }

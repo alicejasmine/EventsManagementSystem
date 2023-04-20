@@ -188,14 +188,9 @@ public class Model {
     }
 
     public ObservableList<Event> recentlyAddedEvents() {
-        List<Event> recentEventIDs = new ArrayList<>();
-
-        recentEventIDs.addAll(events);
-
-        Collections.sort(recentEventIDs, Comparator.comparing(Event::getId).reversed());
-
+        List<Event> recentEventIDs = new ArrayList<>(events);
+        recentEventIDs.sort(Comparator.comparing(Event::getId).reversed());
         recentAddedEvents.addAll(recentEventIDs);
-
         return recentAddedEvents;
     }
 
