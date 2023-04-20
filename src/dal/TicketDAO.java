@@ -66,6 +66,10 @@ public class TicketDAO {
         return tickets;
     }
 
+    /**
+     * Method to get tickets associated with the event, searches by ID of the event.
+     * Returns the list of the tickets.
+     */
     public List<Ticket> getTicketForEvent(int idOfEvent) {
         ArrayList<Ticket> ticketsForEvent = new ArrayList<>();
 
@@ -93,6 +97,9 @@ public class TicketDAO {
         return ticketsForEvent;
     }
 
+    /**
+     * Method to delete ticket by ID.
+     */
     public void deleteTicket(Ticket ticket) {
         String sql = "DELETE FROM Tickets WHERE TicketID= ?";
 

@@ -56,6 +56,9 @@ public class TicketViewController implements Initializable {
     private Model model = Model.getModel();
 
     public void initialize(URL url, ResourceBundle rb) {
+        /**
+         * Listens for changes in the text field, sets the selected event ID.
+         */
         textFieldSearchTickets.textProperty().addListener(new ChangeListener<String>() {
             @Override
             public void changed(ObservableValue<? extends String> observable, String oldValue, String newValue) {

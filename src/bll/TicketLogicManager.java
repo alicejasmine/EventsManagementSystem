@@ -48,6 +48,9 @@ public class TicketLogicManager {
 
     }
 
+    /**
+     * Method for filtering tickets. Takes a query and ID of the event, returns filtered list of tickets.
+     */
     public List<Ticket> searchTickets(String query, int idOfEvent) {
         List<Ticket> tickets = ticketDAO.getTicketForEvent(idOfEvent);
         List<Ticket> filtered = new ArrayList<>();

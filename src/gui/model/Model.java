@@ -310,6 +310,9 @@ public class Model {
     public void createAdmin(Admin admin){bll.createAdmin(admin);}
 
 
+    /**
+     * Method for searching tickets, clears the list and adds all results to given list.
+     */
     public void search(String query, int idOfEvent) {
         eventFilteredTickets.clear();
         eventFilteredTickets.addAll(tlm.searchTickets(query, idOfEvent));
