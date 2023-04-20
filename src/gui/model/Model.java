@@ -335,11 +335,6 @@ public class Model {
 
     }
 
-
-
-
-
-
     public ObservableList<SpecialTicketsWrapper> getObsSpecialTickets() {
         return specialTickets;
     }
@@ -357,8 +352,7 @@ public class Model {
     
     public void deleteTicket (Ticket ticket) {
         tlm.deleteTicket(ticket);
-        tlm.deleteTicket(ticket);
-
+        loadTicketList();
     }
 
     public void deleteSpecialTicket (SpecialTicket ticket) {

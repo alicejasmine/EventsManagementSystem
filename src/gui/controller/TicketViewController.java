@@ -127,6 +127,12 @@ public class TicketViewController implements Initializable {
     }
 
     @FXML
+    private void deleteTicket(ActionEvent actionEvent) {
+        Ticket selectedTicket = ticketsTV.getSelectionModel().getSelectedItem();
+        model.deleteTicket(selectedTicket);
+    }
+
+    @FXML
     private void printTicket(ActionEvent actionEvent) {
         Ticket selectedTicket = ticketsTV.getSelectionModel().getSelectedItem();
         Event selectedEvent = model.getSelectedEvent();

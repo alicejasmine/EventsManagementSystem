@@ -61,7 +61,7 @@
       <ButtonBar layoutX="410.0" layoutY="559.0" prefHeight="40.0" prefWidth="0.0">
          <buttons>
           <Button fx:id="newTicketButton" mnemonicParsing="false" onAction="#openNewTicketView" styleClass="light-blue-button" text="Create" />
-            <Button mnemonicParsing="false" onAction="#openNewTicketView" styleClass="red-button" text="Delete" />
+            <Button mnemonicParsing="false" onAction="#deleteTicket" styleClass="red-button" text="Delete" />
          </buttons>
       </ButtonBar>
       <Button layoutX="51.0" layoutY="562.0" mnemonicParsing="false" onAction="#openTicketPreview" text="Ticket Preview">
