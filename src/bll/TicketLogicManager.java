@@ -64,6 +64,10 @@ public class TicketLogicManager {
         return ticketDAO.getAllTickets();
     }
 
+    public List<Ticket> getEventFilteredTickets(int eventID){
+        List<Ticket> eventTickets = ticketDAO.getTicketForEvent(eventID);
+        return eventTickets;}
+
     public void crateTicket(String customerName, String customerEmail, int eventID) {
         String str = generateType1UUID().toString();
         Ticket ticket = new Ticket(str, customerName, customerEmail, eventID);

@@ -126,6 +126,7 @@ public class Model {
         tickets.addAll(tlm.getAllTickets());
     }
 
+
     public void loadTicketTypeList() {
         ticketType.clear();
         ticketType.addAll(tlm.getTicketTypes());
@@ -226,11 +227,11 @@ public class Model {
 
     public ObservableList<Ticket> eventFilteredTickets() {
         eventFilteredTickets.clear();
-        for (Ticket ticket : tickets) {
-            if (ticket.getEventID() == selectedEvent.getId()) {
-                eventFilteredTickets.add(ticket);
-            }
+
+        if (selectedEvent != null) {
+            eventFilteredTickets.addAll(tlm.getEventFilteredTickets(selectedEvent.getId()));
         }
+
         return eventFilteredTickets;
     }
 
@@ -352,7 +353,7 @@ public class Model {
     
     public void deleteTicket (Ticket ticket) {
         tlm.deleteTicket(ticket);
-        loadTicketList();
+        loadEventTicketList();
     }
 
     public void deleteSpecialTicket (SpecialTicket ticket) {

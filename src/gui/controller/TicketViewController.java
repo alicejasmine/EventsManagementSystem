@@ -70,7 +70,7 @@ public class TicketViewController implements Initializable {
     public void ticketViewLaunch() {
 
         selectedEvent = model.getSelectedEvent();
-        model.loadTicketList();
+        model.loadEventTicketList();
         setTV();
         setLabels();
         setBackArrow();
