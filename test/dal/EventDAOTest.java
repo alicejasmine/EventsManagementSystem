@@ -56,6 +56,15 @@ class EventDAOTest {
 
     @Test
     void deleteEvent() {
+        //Arrange
+        int expectedID = 47; //ID needs to be adjusted every time before test!
+
+        //Act
+        eventDAO.deleteEvent(expectedID);
+
+        //Assert
+        Event event = eventDAO.getEventById(expectedID);
+        assertNull(event);
     }
 
     @Test
