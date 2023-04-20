@@ -22,6 +22,7 @@ import java.util.*;
 public class HomeViewController implements Initializable {
 
 
+    @FXML private Label errorLabelHome;
     @FXML private Label up1Label;
     @FXML private Label up2Label;
     @FXML private Label up3Label;
@@ -71,8 +72,6 @@ public class HomeViewController implements Initializable {
         } catch (FileNotFoundException e) {
             throw new RuntimeException(e);
         }
-
-
         eventButtonCreation();
     }
 
@@ -86,6 +85,7 @@ public class HomeViewController implements Initializable {
                     up1ImageView.setImage(previewImage);
                 } catch (FileNotFoundException e) {
                     System.out.println("file not found for upcoming event 1 image.");
+                    errorLabelHome.setText("An event indicates it should have an image but either the path is invalid or the file has been deleted.");
                 }
             }else{up1Button.setText(model.getUpcomingEvents().get(0).getName() + "\n\n" + model.getUpcomingEvents().get(0).getDate());}
         }else up1Button.setDisable(true);
@@ -97,7 +97,7 @@ public class HomeViewController implements Initializable {
                     Image previewImage = new Image(new FileInputStream(model.getUpcomingEvents().get(1).getImageFilePath()));
                     up2ImageView.setImage(previewImage);
                 } catch (FileNotFoundException e) {
-                    System.out.println("file not found for upcoming event 2 image.");
+                    errorLabelHome.setText("An event indicates it should have an image but either the path is invalid or the file has been deleted.");
                 }
 
             } else{up2Button.setText(model.getUpcomingEvents().get(1).getName() + "\n\n" + model.getUpcomingEvents().get(1).getDate());}
@@ -110,8 +110,7 @@ public class HomeViewController implements Initializable {
                     Image previewImage = new Image(new FileInputStream(model.getUpcomingEvents().get(2).getImageFilePath()));
                     up3ImageView.setImage(previewImage);
                 } catch (FileNotFoundException e) {
-                    System.out.println("file not found for upcoming event 3 image.");
-                    up3Button.setStyle("-fx-text-fill: black");
+                    errorLabelHome.setText("An event indicates it should have an image but either the path is invalid or the file has been deleted.");
                 }
             } else {up3Button.setText(model.getUpcomingEvents().get(2).getName() + "\n\n" + model.getUpcomingEvents().get(2).getDate());}
         }else up3Button.setDisable(true);
@@ -123,7 +122,7 @@ public class HomeViewController implements Initializable {
                     Image previewImage = new Image(new FileInputStream(model.getUpcomingEvents().get(3).getImageFilePath()));
                     up4ImageView.setImage(previewImage);
                 } catch (FileNotFoundException e) {
-                    System.out.println("file not found for upcoming event 4 image.");
+                    errorLabelHome.setText("An event indicates it should have an image but either the path is invalid or the file has been deleted.");
                 }
 
             } else {up4Button.setText(model.getUpcomingEvents().get(3).getName() + "\n\n" + model.getUpcomingEvents().get(3).getDate());}
@@ -138,7 +137,7 @@ public class HomeViewController implements Initializable {
                     Image previewImage = new Image(new FileInputStream(model.getRecentAddedEvents().get(0).getImageFilePath()));
                     add1ImageView.setImage(previewImage);
                 } catch (FileNotFoundException e) {
-                    System.out.println("Image file not found for recently added event 1.");
+                    errorLabelHome.setText("An event indicates it should have an image but either the path is invalid or the file has been deleted.");
                 }
             } else{add1Button.setText(model.getRecentAddedEvents().get(0).getName() + "\n\n" + model.getRecentAddedEvents().get(0).getDate());}
         } else add1Button.setDisable(true);
@@ -150,7 +149,7 @@ public class HomeViewController implements Initializable {
                     Image previewImage = new Image(new FileInputStream(model.getRecentAddedEvents().get(1).getImageFilePath()));
                     add2ImageView.setImage(previewImage);
                 } catch (FileNotFoundException e) {
-                    System.out.println("Image file not found for recently added event 2.");
+                    errorLabelHome.setText("An event indicates it should have an image but either the path is invalid or the file has been deleted.");
                 }
             }else{add2Button.setText(model.getRecentAddedEvents().get(1).getName() + "\n\n" + model.getRecentAddedEvents().get(1).getDate());}
         } else add2Button.setDisable(true);
@@ -162,7 +161,7 @@ public class HomeViewController implements Initializable {
                     Image previewImage = new Image(new FileInputStream(model.getRecentAddedEvents().get(2).getImageFilePath()));
                     add3ImageView.setImage(previewImage);
                 } catch (FileNotFoundException e) {
-                    System.out.println("Image file not found for recently added event 3.");
+                    errorLabelHome.setText("An event indicates it should have an image but either the path is invalid or the file has been deleted.");
                 }
             }else{add3Button.setText(model.getRecentAddedEvents().get(2).getName() + "\n\n" + model.getRecentAddedEvents().get(2).getDate());}
         } else add3Button.setDisable(true);
@@ -174,7 +173,7 @@ public class HomeViewController implements Initializable {
                     Image previewImage = new Image(new FileInputStream(model.getRecentAddedEvents().get(3).getImageFilePath()));
                     add4ImageView.setImage(previewImage);
                 } catch (FileNotFoundException e) {
-                    System.out.println("Image file not found for recently added event 4.");
+                    errorLabelHome.setText("An event indicates it should have an image but either the path is invalid or the file has been deleted.");
                 }
             } else{add4Button.setText(model.getRecentAddedEvents().get(3).getName() + "\n\n" + model.getRecentAddedEvents().get(3).getDate());}
         } else add4Button.setDisable(true);
