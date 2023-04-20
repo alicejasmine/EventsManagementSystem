@@ -33,25 +33,41 @@
             <StackPane prefHeight="150.0" prefWidth="200.0">
                <children>
                   <MFXButton fx:id="up1Button" buttonType="RAISED" depthLevel="LEVEL5" onAction="#homeEventSelectionUpcoming1" prefHeight="119.0" prefWidth="161.0" rippleColor="#bcba40" styleClass="event-tile" stylesheets="@../../css/style.css" text=" " />
-                  <ImageView fx:id="up1ImageView" fitHeight="110.0" fitWidth="143.0" mouseTransparent="true" pickOnBounds="true" preserveRatio="true" />
+                  <ImageView fx:id="up1ImageView" fitHeight="110.0" fitWidth="143.0" mouseTransparent="true" opacity="0.4" pickOnBounds="true" preserveRatio="true" />
+                  <Label fx:id="up1Label" alignment="CENTER" prefHeight="70.0" prefWidth="161.0" textAlignment="CENTER" textFill="WHITE" wrapText="true">
+                     <font>
+                        <Font name="System Bold" size="14.0" />
+                     </font></Label>
                </children>
             </StackPane>
             <StackPane prefHeight="150.0" prefWidth="200.0">
                <children>
                   <MFXButton fx:id="up2Button" buttonType="RAISED" depthLevel="LEVEL5" onAction="#homeEventSelectionUpcoming2" prefHeight="119.0" prefWidth="161.0" rippleColor="#bcba40" style="-fx-background-color: black;" styleClass="event-tile" text=" " textFill="WHITE" />
                   <ImageView fx:id="up2ImageView" fitHeight="110.0" fitWidth="143.0" mouseTransparent="true" opacity="0.4" pickOnBounds="true" preserveRatio="true" />
+                  <Label fx:id="up2Label" alignment="CENTER" prefHeight="70.0" prefWidth="161.0" textAlignment="CENTER" textFill="WHITE" wrapText="true">
+                     <font>
+                        <Font name="System Bold" size="14.0" />
+                     </font></Label>
                </children>
             </StackPane>
             <StackPane prefHeight="150.0" prefWidth="200.0">
                <children>
                   <MFXButton fx:id="up3Button" buttonType="RAISED" depthLevel="LEVEL5" onAction="#homeEventSelectionUpcoming3" prefHeight="119.0" prefWidth="161.0" rippleColor="#bcba40" styleClass="event-tile" text=" " />
-                  <ImageView fx:id="up3ImageView" fitHeight="110.0" fitWidth="143.0" mouseTransparent="true" pickOnBounds="true" preserveRatio="true" />
+                  <ImageView fx:id="up3ImageView" fitHeight="110.0" fitWidth="143.0" mouseTransparent="true" opacity="0.4" pickOnBounds="true" preserveRatio="true" />
+                  <Label fx:id="up3Label" alignment="CENTER" prefHeight="70.0" prefWidth="161.0" textAlignment="CENTER" textFill="WHITE" wrapText="true">
+                     <font>
+                        <Font name="System Bold" size="14.0" />
+                     </font></Label>
                </children>
             </StackPane>
             <StackPane prefHeight="150.0" prefWidth="200.0">
                <children>
                   <MFXButton fx:id="up4Button" buttonType="RAISED" depthLevel="LEVEL5" onAction="#homeEventSelectionUpcoming4" prefHeight="119.0" prefWidth="161.0" rippleColor="#bcba40" styleClass="event-tile" text=" " />
-                  <ImageView fx:id="up4ImageView" fitHeight="110.0" fitWidth="143.0" mouseTransparent="true" pickOnBounds="true" preserveRatio="true" />
+                  <ImageView fx:id="up4ImageView" fitHeight="110.0" fitWidth="143.0" mouseTransparent="true" opacity="0.4" pickOnBounds="true" preserveRatio="true" />
+                  <Label fx:id="up4Label" alignment="CENTER" prefHeight="70.0" prefWidth="161.0" text=" " textAlignment="CENTER" textFill="WHITE" wrapText="true">
+                     <font>
+                        <Font name="System Bold" size="14.0" />
+                     </font></Label>
                </children>
             </StackPane>
          </children>
@@ -61,25 +77,41 @@
             <StackPane prefHeight="150.0" prefWidth="200.0">
                <children>
                   <MFXButton fx:id="add1Button" buttonType="RAISED" depthLevel="LEVEL5" onAction="#homeEventSelectionAdd4" prefHeight="119.0" prefWidth="161.0" rippleColor="#bcba40" style="-fx-background-color: black;" styleClass="event-tile" text=" " />
-                  <ImageView fx:id="add1ImageView" fitHeight="117.0" fitWidth="145.0" mouseTransparent="true" pickOnBounds="true" preserveRatio="true" />
+                  <ImageView fx:id="add1ImageView" fitHeight="117.0" fitWidth="145.0" mouseTransparent="true" opacity="0.4" pickOnBounds="true" preserveRatio="true" />
+                  <Label fx:id="added1Label" alignment="CENTER" prefHeight="70.0" prefWidth="161.0" textAlignment="CENTER" textFill="WHITE" wrapText="true">
+                     <font>
+                        <Font name="System Bold" size="14.0" />
+                     </font></Label>
                </children>
             </StackPane>
             <StackPane prefHeight="150.0" prefWidth="200.0">
                <children>
                   <MFXButton fx:id="add2Button" buttonType="RAISED" depthLevel="LEVEL5" onAction="#homeEventSelectionAdd1" prefHeight="119.0" prefWidth="161.0" rippleColor="#bcba40" style="-fx-background-color: black;" styleClass="event-tile" text=" " />
-                  <ImageView fx:id="add2ImageView" fitHeight="117.0" fitWidth="145.0" mouseTransparent="true" pickOnBounds="true" preserveRatio="true" />
+                  <ImageView fx:id="add2ImageView" fitHeight="117.0" fitWidth="145.0" mouseTransparent="true" opacity="0.4" pickOnBounds="true" preserveRatio="true" />
+                  <Label fx:id="added2Label" alignment="CENTER" prefHeight="70.0" prefWidth="161.0" textAlignment="CENTER" textFill="WHITE" wrapText="true">
+                     <font>
+                        <Font name="System Bold" size="14.0" />
+                     </font></Label>
                </children>
             </StackPane>
             <StackPane prefHeight="150.0" prefWidth="200.0">
                <children>
                   <MFXButton fx:id="add3Button" buttonType="RAISED" depthLevel="LEVEL5" onAction="#homeEventSelectionAdd2" prefHeight="119.0" prefWidth="161.0" rippleColor="#bcba40" styleClass="event-tile" text=" " />
-                  <ImageView fx:id="add3ImageView" fitHeight="117.0" fitWidth="145.0" mouseTransparent="true" pickOnBounds="true" preserveRatio="true" />
+                  <ImageView fx:id="add3ImageView" fitHeight="117.0" fitWidth="145.0" mouseTransparent="true" opacity="0.4" pickOnBounds="true" preserveRatio="true" />
+                  <Label fx:id="added3Label" alignment="CENTER" prefHeight="70.0" prefWidth="161.0" textAlignment="CENTER" textFill="WHITE" wrapText="true">
+                     <font>
+                        <Font name="System Bold" size="14.0" />
+                     </font></Label>
                </children>
             </StackPane>
             <StackPane prefHeight="150.0" prefWidth="200.0">
                <children>
                   <MFXButton fx:id="add4Button" buttonType="RAISED" depthLevel="LEVEL5" onAction="#homeEventSelectionAdd3" prefHeight="119.0" prefWidth="161.0" rippleColor="#bcba40" styleClass="event-tile" text=" " />
-                  <ImageView fx:id="add4ImageView" fitHeight="117.0" fitWidth="145.0" mouseTransparent="true" pickOnBounds="true" preserveRatio="true" />
+                  <ImageView fx:id="add4ImageView" fitHeight="117.0" fitWidth="145.0" mouseTransparent="true" opacity="0.4" pickOnBounds="true" preserveRatio="true" />
+                  <Label fx:id="added4Label" alignment="CENTER" prefHeight="70.0" prefWidth="161.0" textAlignment="CENTER" textFill="WHITE" wrapText="true">
+                     <font>
+                        <Font name="System Bold" size="14.0" />
+                     </font></Label>
                </children>
             </StackPane>
          </children>
@@ -130,6 +162,11 @@
             <Button fx:id="coordinatorButton" alignment="BASELINE_LEFT" mnemonicParsing="false" onAction="#manageCoordinators" prefHeight="47.0" prefWidth="218.0" styleClass="red-menuButton" text="Manage Coordinators" visible="false" />
          </children>
       </VBox>
+      <Label fx:id="errorLabelHome" alignment="CENTER" layoutX="387.0" layoutY="560.0" prefHeight="58.0" prefWidth="766.0" wrapText="true">
+         <font>
+            <Font size="14.0" />
+         </font>
+      </Label>
    </children>
    <stylesheets>
       <URL value="@../../css/style.css" />
