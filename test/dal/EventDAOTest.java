@@ -60,6 +60,33 @@ class EventDAOTest {
 
     @Test
     void updateEvent() {
+        //Arrange
+        int expectedID = 43; //requires to change id for existing event in the database
+        String expectedName = "Updated Name";
+        String expectedLocation = "Updated Location";
+        Date expectedDate = Date.valueOf("2023-04-20");
+        Time expectedTime = Time.valueOf("14:00:00");
+        String expectedNotes = "Updated Notes";
+        Time expectedEndTime = Time.valueOf("16:00:00");
+        String expectedLocationGuidance = "Updated Location Guidance";
+        String expectedFilePath = "Updated File Path";
+
+        Event event = new Event(expectedID, expectedName, expectedLocation, expectedDate, expectedTime, expectedNotes, expectedEndTime, expectedLocationGuidance, expectedFilePath);
+
+        //Act
+        eventDAO.updateEvent(event);
+        Event updatedEvent = eventDAO.getEventById(expectedID);
+
+        //Assert
+        assertNotNull(updatedEvent);
+        assertEquals(expectedName, updatedEvent.getName());
+        assertEquals(expectedLocation, updatedEvent.getLocation());
+        assertEquals(expectedDate, updatedEvent.getDate());
+        assertEquals(expectedTime, updatedEvent.getTime());
+        assertEquals(expectedNotes, updatedEvent.getNotes());
+        assertEquals(expectedEndTime, updatedEvent.getEndTime());
+        assertEquals(expectedLocationGuidance, updatedEvent.getLocationGuidance());
+        assertEquals(expectedFilePath, updatedEvent.getImageFilePath());
     }
 
     @Test

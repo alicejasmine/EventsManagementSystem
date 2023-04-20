@@ -135,4 +135,14 @@ public class EventDAO {
         return events;
     }
 
-}
+    /**method to get a specific event by id*/
+    public Event getEventById(int id) {
+            List<Event> allEvents = getAllEvents();
+            for (Event event : allEvents) {
+                if (event.getId() == id) {
+                    return event;
+                }
+            }
+            return null;
+        }
+    }
