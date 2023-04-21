@@ -36,8 +36,8 @@ public class Model {
     private ObservableList<Integer> minsTime = FXCollections.observableArrayList();
 
 
-    private final int[] hours = {0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24};
-    private final int[] mins = {0, 15, 30, 45};
+    private final int[] hours = {0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24}; // we are using a 24-hour clock for our time selections
+    private final int[] mins = {0, 15, 30, 45}; // we are diving the event starting times into hour quarters.
 
     private LogicManager bll = new LogicManager();
     private TicketLogicManager tlm = new TicketLogicManager();
@@ -86,7 +86,7 @@ public class Model {
         return selectedTicket;
     }
 
-    public static Model getModel() {
+    public static Model getModel() { // this is how we fetch the single instance of our model.
         if (model == null) {
             model = new Model();
         }
@@ -95,7 +95,7 @@ public class Model {
 
     public User getCurrentUser() {
         return currentUser;
-    }
+    } // the current user logged in
 
     private void setCurrentUser(User currentUser) {
         this.currentUser = currentUser;
@@ -103,6 +103,7 @@ public class Model {
 
     /**
      * Loading methods.
+     * All of these methods are clearing and filling our lists.
      */
     public void loadTime() {
         hoursTime.clear();
@@ -188,33 +189,34 @@ public class Model {
         loadEventList();
     }
 
-    public ObservableList<Event> recentlyAddedEvents() {
+    public ObservableList<Event> recentlyAddedEvents() {// we are sorting our events by event ID and making the highest IDs first. This assures we have the 4 most recently created events.
         List<Event> recentEventIDs = new ArrayList<>(events);
         recentEventIDs.sort(Comparator.comparing(Event::getId).reversed());
         recentAddedEvents.addAll(recentEventIDs);
         return recentAddedEvents;
     }
 
+
     public ObservableList<Event> upcomingEvents() {
         List<Event> upcomingDates = new ArrayList<>();
         Date todayDate = Date.from(Instant.now());
 
-        for (Event event : events) {
+        for (Event event : events) {// we are checking if the event is after todays date
             if (event.getDate().after(todayDate)) {
                 upcomingDates.add(event);
             }
         }
-        Collections.sort(upcomingDates, Comparator.comparing(Event::getDate));
+        Collections.sort(upcomingDates, Comparator.comparing(Event::getDate)); //if there are upcoming events we are sorting them by date
 
         upcomingEvents.addAll(upcomingDates);
 
         for (Event event : upcomingDates) {
-            if (!upcomingEvents.contains(event)) {
+            if (!upcomingEvents.contains(event)) {// if we have events we are adding them to a new list
                 upcomingEvents.add(event);
             }
         }
 
-        return upcomingEvents;
+        return upcomingEvents; // return the list of sorted events.
     }
 
     /**
@@ -225,7 +227,7 @@ public class Model {
         loadTicketList();
     }
 
-    public ObservableList<Ticket> eventFilteredTickets() {
+    public ObservableList<Ticket> eventFilteredTickets() {//makes a list of tickets for the event that is currently selected.
         eventFilteredTickets.clear();
 
         if (selectedEvent != null) {
@@ -280,7 +282,10 @@ public class Model {
             throw new RuntimeException(e);
         } }
 
-
+    public void deleteTicket (Ticket ticket) {
+        tlm.deleteTicket(ticket);
+        loadEventTicketList();
+    }
 
     /**
      * User methods.
@@ -354,10 +359,7 @@ public class Model {
         return ticketType;}
 
     
-    public void deleteTicket (Ticket ticket) {
-        tlm.deleteTicket(ticket);
-        loadEventTicketList();
-    }
+
 
     public void deleteSpecialTicket (SpecialTicket ticket) {
         tlm.deleteSpecialTicket(ticket);

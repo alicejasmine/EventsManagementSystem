@@ -73,8 +73,8 @@ public class TicketLogicManager {
     }
 
     public void crateTicket(String customerName, String customerEmail, int eventID) {
-        String str = generateType1UUID().toString();
-        Ticket ticket = new Ticket(str, customerName, customerEmail, eventID);
+        String str = generateType1UUID().toString(); // we generate the UUID for our ticket.
+        Ticket ticket = new Ticket(str, customerName, customerEmail, eventID); // Construct the ticket with the UUID and the information given to us.
         ticketDAO.createTicket(ticket);
     }
 

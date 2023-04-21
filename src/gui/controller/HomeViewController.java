@@ -75,6 +75,14 @@ public class HomeViewController implements Initializable {
         eventButtonCreation();
     }
 
+    /**
+     * This method is how we are making our buttons change dynamically based on what information is available.
+     * Each button goes through a check, first does the relevant event exist? For example, are there any upcoming events? If so we gather up to 4. If not we disable buttons.
+     * Next we check if the user input a filepath, if so, we attempt to fetch it.
+     * We change the button to black and place the image with reduced opacity over it, and then place a white text label over that image.
+     * If there is no image we keep our white buttons with black text.
+     * If there should be an image but it is invalid, the button will be black with white text and the user will be warned.
+     */
     private void eventButtonCreation(){
         if(model.getUpcomingEvents() != null){
             if(!model.getUpcomingEvents().get(0).getImageFilePath().equals(" ")) {
@@ -180,7 +188,9 @@ public class HomeViewController implements Initializable {
     }
 
 
-
+    /**
+     * These 8 action events are what happens when the user clicks one of our home event buttons.
+     */
     @FXML private void homeEventSelectionUpcoming1(ActionEvent actionEvent) {
         model.setSelectedEvent(model.getUpcomingEvents().get(0));
         openEventWindow(actionEvent);

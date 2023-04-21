@@ -41,7 +41,10 @@ public class LogInController implements Initializable{
         }
     }
 
-
+    /**
+     * We load our list of users and their passwords and then check the entered values to see if they match one of the users in the list.
+     * We return an error if not.
+     */
     @FXML private void logIn(javafx.event.ActionEvent actionEvent) {
         model.loadUserList();
         model.loginUser(userId.getText(), passwordField.getText());

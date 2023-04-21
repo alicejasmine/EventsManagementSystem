@@ -69,7 +69,11 @@ public class TicketViewController implements Initializable {
 
     }
 
-
+    /**
+     * We fetch the event that was selected from the previous window in our model
+     * load the tickets for that event
+     * set tableview and labels based on that event.
+     */
     public void ticketViewLaunch() {
 
         selectedEvent = model.getSelectedEvent();
@@ -79,15 +83,14 @@ public class TicketViewController implements Initializable {
         setBackArrow();
     }
 
-    private void setTV() {
+    private void setTV() { // sets our table view with the event tickets
         ticketsTV.setItems(model.eventFilteredTickets());
-
         columnCustomerName.setCellValueFactory(new PropertyValueFactory<>("customerName"));
         columnCustomerEmail.setCellValueFactory(new PropertyValueFactory<>("customerEmail"));
         columnTicketID.setCellValueFactory(new PropertyValueFactory<>("ticketID"));
     }
 
-    private void setLabels() {
+    private void setLabels() { // sets our labels with event information
         eventDateLabel.setText(selectedEvent.getDate().toString());
         eventLocationLabel.setText(selectedEvent.getLocation());
         eventGuidanceLocationLabel.setText(selectedEvent.getLocationGuidance());

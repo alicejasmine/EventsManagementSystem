@@ -62,6 +62,10 @@ public class EditEventController implements Initializable {
         editErrorLabel.setText("Required fields are marked with *.");
     }
 
+    /**
+     * This method controls what we are doing with the chosen image file by the user.
+     * We move the file to a local folder .../resources/EventImages/FILENAME
+     */
     public void imageFileExplorer(ActionEvent actionEvent) {
         try {
             FileChooser fileChooser = new FileChooser();
@@ -85,8 +89,6 @@ public class EditEventController implements Initializable {
         } catch(IOException e){
             System.out.println("File selection has failed");
         }
-
-
     }
 
     /**
@@ -102,6 +104,9 @@ public class EditEventController implements Initializable {
         );
     }
 
+    /**
+     * We take all user input information and pass it forward to ultimately update our event with any changes.
+     */
     private void editEventInformation(){
 
         Time startTime = null;
@@ -134,7 +139,7 @@ public class EditEventController implements Initializable {
 
     }
 
-    public void setEditEventValues(Event editEvent){
+    public void setEditEventValues(Event editEvent){// we use this method to set our fields with the information that is already associated with the event.
         datePickerEditEvent.setValue(editEvent.getDate().toLocalDate());
         editLocationTF.setText(editEvent.getLocation());
         editLocationInfoTF.setText(editEvent.getLocationGuidance());

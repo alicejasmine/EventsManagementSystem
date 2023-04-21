@@ -54,7 +54,10 @@ public class NewEventViewController implements Initializable{
         createNewEvent();
     }
 
-
+    /**
+     * This is the method that collects our information and constructs a new event to be added to the database.
+     * There are several checks on fields to assure that they are not null.
+     */
     private void createNewEvent(){
 
         Time startTime = null;
@@ -77,7 +80,10 @@ public class NewEventViewController implements Initializable{
         }else creationErrorLabel.setText("Creation failed. Please fill all fields marked with *.");
     }
 
-
+    /**
+     * When this window is opened elsewhere this method is used to set everything up as needed.
+     * We fetch our time selections from the model and set the date picker to today's date.
+     */
     public void launchNewEventWindow(){
         model.loadTime();
 
@@ -101,9 +107,12 @@ public class NewEventViewController implements Initializable{
     private String getNeLocationTF() {return neLocationTF.getText();}
     private String getNeNotesTF() {return neNotesTF.getText();}
     private String getNeLocationInfoTF() {return neLocationInfoTF.getText();}
-
     private String getSelectedFile() {return selectedFile;}
 
+    /**
+     * This method controls what we are doing with the chosen image file by the user.
+     * We move the file to a local folder .../resources/EventImages/FILENAME
+     */
     public void imageFileExplorer(ActionEvent actionEvent) {
         try {
             FileChooser fileChooser = new FileChooser();
@@ -144,7 +153,7 @@ public class NewEventViewController implements Initializable{
         );
     }
 
-    public void setUsernameLabel() {
+    public void setUsernameLabel() {// this sets the label in the upper right corner with the user name
         usernameLabel.setText(model.getCurrentUser().getFirstName() + " " + model.getCurrentUser().getLastName());
         if(model.getCurrentUser().isAdmin()){
             coordinatorButton.setVisible(true);

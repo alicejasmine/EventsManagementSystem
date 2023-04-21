@@ -35,7 +35,7 @@ public class CreateUserController implements Initializable{
 
     private Model model = Model.getModel();
     @Override
-    public void initialize(URL location, ResourceBundle resources) {
+    public void initialize(URL location, ResourceBundle resources) { // We use this to set our tableview with our users and set the EASV logo.
         try {
             Image logoImage = new Image(new FileInputStream("resources/images/logoEASV.png"));
             logoHome.setImage(logoImage);
@@ -86,7 +86,7 @@ public class CreateUserController implements Initializable{
         stage.show();
     }
 
-    public void setUsernameLabel() {
+    public void setUsernameLabel() { // This is used to set the username label with the users name.
         usernameLabel.setText(model.getCurrentUser().getFirstName() + " " + model.getCurrentUser().getLastName());
         if(model.getCurrentUser().isAdmin()){
             coordinatorButton.setVisible(true);
@@ -101,7 +101,7 @@ public class CreateUserController implements Initializable{
         }else errorLabel.setText("One or more fields are not completed. No user has been created.");
     }
 
-    @FXML private void deleteUser(ActionEvent actionEvent) {
+    @FXML private void deleteUser(ActionEvent actionEvent) {// If the user tries to delete another user we ask for confirmation to assure they wish to do so.
         User selectedUser = userTableView.getSelectionModel().getSelectedItem();
 
         if(selectedUser != null){
@@ -122,7 +122,7 @@ public class CreateUserController implements Initializable{
         }else errorLabel.setText("Please select an account to be deleted.");
     }
 
-    @FXML private void editUser(ActionEvent actionEvent) {
+    @FXML private void editUser(ActionEvent actionEvent) {// if a user is selected to be edited we pass all of the information forward to update the user in the database.
         if(userTableView.getSelectionModel().getSelectedItem() != null){
             User selectedUser = userTableView.getSelectionModel().getSelectedItem();
 
@@ -182,7 +182,7 @@ public class CreateUserController implements Initializable{
         this.lastNameTF = lastNameTF;
     }
 
-    @FXML private void makeAdmin(ActionEvent actionEvent) {
+    @FXML private void makeAdmin(ActionEvent actionEvent) {// if a user is selected to be promoted to admin we give an alert confirmation.
         User selectedUser = userTableView.getSelectionModel().getSelectedItem();
 
         if(selectedUser != null){

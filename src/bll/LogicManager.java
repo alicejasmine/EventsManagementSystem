@@ -36,14 +36,14 @@ public class LogicManager {
     public void createUser(User user){accountsDAO.createUser(user);}
 
     public User getUser(String userName, String userPass) {
-        List<User> users = new ArrayList<>(getAllUsers());
-        List<Admin> admins = new ArrayList<>(getAllAdmins());
+        List<User> users = new ArrayList<>(getAllUsers()); // list of users
+        List<Admin> admins = new ArrayList<>(getAllAdmins()); // list of admins
 
         User currentUser = null;
         for (User user:users) {
-            if (user.getUserName().equals(userName)){
-                if(user.getUserPass().equals(userPass)){
-                    currentUser = user;
+            if (user.getUserName().equals(userName)){ // we check all of our users to see if any have this user name
+                if(user.getUserPass().equals(userPass)){ // if we do have a user with the username, we compare the password
+                    currentUser = user; // if user and pass match, we set our user.
                     break;
                 }
             }
@@ -52,7 +52,7 @@ public class LogicManager {
 
         if(currentUser !=null){
             for (Admin admin: admins) {
-                if(currentUser.getUserID() == admin.getUserID()){
+                if(currentUser.getUserID() == admin.getUserID()){ // we check the userID against the userIDs stored in the admin table, if it is in the table the user is an admin.
                     currentUser.setAdmin(true);
                     break;
                 }

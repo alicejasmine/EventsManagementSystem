@@ -58,7 +58,9 @@ public class EventsViewController implements Initializable {
 
     private Model model = Model.getModel();
 
-
+    /**
+     * We use initialize to set the tableview of events as well as a listener to change the selected event in the model.
+     */
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         try {
@@ -84,14 +86,15 @@ public class EventsViewController implements Initializable {
         eventInfoView();
     }
 
-    public void setUsernameLabel() {
+
+    public void setUsernameLabel() {// set our username label to the users name
         usernameLabel.setText(model.getCurrentUser().getFirstName() + " " + model.getCurrentUser().getLastName());
         if(model.getCurrentUser().isAdmin()){
             coordinatorButton.setVisible(true);
         }
     }
 
-    private void eventInfoView() {
+    private void eventInfoView() {// sets the labels for an event when it is clicked on the tv.
         eventTV.getSelectionModel().selectedItemProperty().addListener(
                 (observable, oldValue, selectedUser) -> {
                     if (selectedUser != null) {
@@ -104,7 +107,7 @@ public class EventsViewController implements Initializable {
                 });
     }
 
-    private void deleteAlert() {
+    private void deleteAlert() {// This is an alert to both warn the user that they clicked delete, and of what event will be deleted.
         Event selectedEvent = null;
         if (eventTV.getSelectionModel().getSelectedItem() != null) {
             selectedEvent = eventTV.getSelectionModel().getSelectedItem();
