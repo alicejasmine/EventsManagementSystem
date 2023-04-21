@@ -18,7 +18,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="650.0" prefWidth="1250.0" styleClass="anchorPane-home" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gui.controller.CreateUserController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="650.0" prefWidth="1250.0" styleClass="anchorPane-home" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gui.controller.CreateUserController">
    <children>
       <MFXButton layoutX="-23.0" maxWidth="1.7976931348623157E308" prefHeight="662.0" prefWidth="274.0" styleClass="redMenu" stylesheets="@../../css/style.css" text=" " textFill="#c00d0d" />
       <ImageView fx:id="logoHome" fitHeight="102.0" fitWidth="210.0" layoutX="22.0" layoutY="29.0" pickOnBounds="true" preserveRatio="true" AnchorPane.topAnchor="25.0">
@@ -26,7 +26,7 @@
             <Image url="@../../../resources/images/logoEASV.png" />
          </image>
       </ImageView>
-      <Label fx:id="usernameLabel" layoutX="972.0" layoutY="28.0" styleClass="username" text="Username" />
+      <Label fx:id="usernameLabel" alignment="CENTER" layoutX="906.0" layoutY="28.0" prefHeight="20.0" prefWidth="164.0" styleClass="username" text="Username" />
       <Button layoutX="1073.0" layoutY="17.0" mnemonicParsing="false" onAction="#logout" styleClass="red-button" text="Log out" AnchorPane.topAnchor="17.0" />
       <ImageView fx:id="logoHome1" fitHeight="102.0" fitWidth="210.0" layoutX="-322.0" layoutY="38.0" pickOnBounds="true" preserveRatio="true">
          <image>

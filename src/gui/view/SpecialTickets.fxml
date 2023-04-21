@@ -20,7 +20,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="650.0" prefWidth="1250.0" style="-fx-background-color: C9C5C5;" stylesheets="@../../css/style.css" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gui.controller.SpecialTicketsController">
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="650.0" prefWidth="1250.0" style="-fx-background-color: C9C5C5;" stylesheets="@../../css/style.css" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gui.controller.SpecialTicketsController">
    <right>
       <AnchorPane prefHeight="402.0" prefWidth="284.0" style="-fx-background-color: D9D9D9; -fx-background-radius: 7%;" BorderPane.alignment="CENTER">
          <BorderPane.margin>
@@ -59,7 +59,7 @@
                   </children>
               </HBox>
             <Label layoutX="518.0" layoutY="51.0" styleClass="title" text="Special Tickets" />
-            <Label fx:id="usernameLabel" layoutX="972.0" layoutY="28.0" styleClass="username" text="Username" />
+            <Label fx:id="usernameLabel" alignment="CENTER" layoutX="903.0" layoutY="28.0" prefHeight="20.0" prefWidth="169.0" styleClass="username" text="Username" />
             <Button layoutX="1073.0" layoutY="17.0" mnemonicParsing="false" onAction="#logout" styleClass="red-button" text="Log out" />
             <GridPane layoutX="269.0" layoutY="202.0" prefHeight="347.0" prefWidth="303.0" styleClass="gridPane">
               <columnConstraints>

@@ -173,7 +173,7 @@
             <Button fx:id="coordinatorButton" alignment="BASELINE_LEFT" mnemonicParsing="false" onAction="#manageCoordinators" prefHeight="47.0" prefWidth="218.0" styleClass="red-menuButton" text="Manage Coordinators" visible="false" />
          </children>
       </VBox>
-      <Label fx:id="usernameLabel" layoutX="972.0" layoutY="28.0" styleClass="username" text="Username" />
+      <Label fx:id="usernameLabel" alignment="CENTER" layoutX="903.0" layoutY="28.0" prefHeight="20.0" prefWidth="164.0" styleClass="username" text="Username" />
       <Button layoutX="1073.0" layoutY="17.0" mnemonicParsing="false" onAction="#logout" styleClass="red-button" text="Log out" />
     </children>
 </AnchorPane>
