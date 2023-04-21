@@ -172,6 +172,9 @@ public class SpecialTicketDAO {
         return specialTickets;
     }
 
+    /**
+     * method to retrieve information on special tickets without event**/
+
     public ObservableList<SpecialTicketsWithoutEventWrapper> getSpecialTicketsWithoutEventInfo() {
         ObservableList<SpecialTicketsWithoutEventWrapper> specialTicketsWithoutEvent = FXCollections.observableArrayList();
         String sql = "SELECT tt.TicketTypeName, tt.TicketTypeID, st.SpecialTicketID " +
@@ -203,6 +206,9 @@ public class SpecialTicketDAO {
         return specialTicketsWithoutEvent;
     }
 
+
+    /**
+     * method to delete a special ticket without event**/
     public void deleteSpecialTicketWithoutEvent(SpecialTicketWithoutEvent ticket) {
 
         String sql = "DELETE FROM SpecialTicketsWithoutEvent WHERE SpecialTicketID= ? ";

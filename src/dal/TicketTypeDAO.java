@@ -19,7 +19,8 @@ public class TicketTypeDAO {
         databaseConnector = new DatabaseConnector();
     }
 
-
+/**
+ * method to create a new ticket type in the database **/
     public TicketType createTicketType(TicketType t) {
 
         try (Connection connection = databaseConnector.getConnection()) {
@@ -40,6 +41,8 @@ public class TicketTypeDAO {
         }
     }
 
+    /**
+     * method to get a list of all ticket types in the database**/
 
     public List<TicketType> getAllTicketTypes() {
 

@@ -67,9 +67,10 @@ public class TicketLogicManager {
         return ticketDAO.getAllTickets();
     }
 
-    public List<Ticket> getEventFilteredTickets(int eventID){
+    public List<Ticket> getEventFilteredTickets(int eventID) {
         List<Ticket> eventTickets = ticketDAO.getTicketForEvent(eventID);
-        return eventTickets;}
+        return eventTickets;
+    }
 
     public void crateTicket(String customerName, String customerEmail, int eventID) {
         String str = generateType1UUID().toString();
@@ -82,7 +83,7 @@ public class TicketLogicManager {
     }
 
     /**
-     * Method to print event info on a ticket using Apache PDFbox libraries and QR code
+     * Method to write event info and QR code on a ticket
      */
     public static PDDocument writeEventInfoOnTicket(Event event, Ticket ticket) {
 
@@ -126,7 +127,7 @@ public class TicketLogicManager {
 
             contentStream.setTextMatrix(Matrix.getTranslateInstance(x, y - 70));
             contentStream.newLine();
-            contentStream.showText("Start time: " + event.getTime().toString()+ "  " + " End Time: " + event.getEndTime().toString());
+            contentStream.showText("Start time: " + event.getTime().toString() + "  " + " End Time: " + event.getEndTime().toString());
 
             contentStream.setTextMatrix(Matrix.getTranslateInstance(x, y - 90));
             contentStream.newLine();
@@ -157,8 +158,9 @@ public class TicketLogicManager {
 
     }
 
+
     /**
-     * Method to print event info on a SpecialTicket using Apache PDFbox libraries and QR code
+     * Method to write event info and QR code on a special ticket
      */
     public static PDDocument writeEventInfoOnSpecialTicket(Event event, SpecialTicket specialTicket, TicketType ticketType) {
 
@@ -226,6 +228,9 @@ public class TicketLogicManager {
     }
 
 
+    /**
+     * Method to write info and QR code on a special ticket without event
+     */
     public PDDocument writeInfoOnSpecialTicketWithoutEvent(SpecialTicketWithoutEvent selectedSpecialTicket, TicketType selectedTicketType) {
         try {
             String inputFilePath = "resources/TicketsBackground/SpecialTicket-background.pdf";
@@ -272,7 +277,6 @@ public class TicketLogicManager {
         }
 
     }
-
 
 
     /**
@@ -328,7 +332,7 @@ public class TicketLogicManager {
 
 
     /**
-     * method to print the ticket
+     * method to print the special ticket
      */
     public void printSpecialTicket(PDDocument document) {
         try {
@@ -343,6 +347,9 @@ public class TicketLogicManager {
         }
     }
 
+    /**
+     * method to transform ticket document into image to show a preview
+     **/
     public ImageView createTicketPreview(Event event, Ticket ticket) throws IOException {
         if (event != null) {
             PDDocument document = writeEventInfoOnTicket(event, ticket);
@@ -355,7 +362,9 @@ public class TicketLogicManager {
         throw new IllegalStateException("Event cannot be null");
     }
 
-
+    /**
+     * method to transform a special ticket document into image to show a preview
+     **/
     public ImageView createSpecialTicketPreview(Event event, SpecialTicket specialTicket, TicketType ticketType) throws IOException {
         if (event != null) {
             PDDocument document = writeEventInfoOnSpecialTicket(event, specialTicket, ticketType);
@@ -368,6 +377,9 @@ public class TicketLogicManager {
         throw new IllegalStateException("Event cannot be null");
     }
 
+    /**
+     * method to transform a special ticket without event document into image to show a preview
+     **/
 
     public ImageView createSpecialTicketWithoutEventPreview(SpecialTicketWithoutEvent selectedSpecialTicket, TicketType selectedTicketType) throws IOException {
         PDDocument document = writeInfoOnSpecialTicketWithoutEvent(selectedSpecialTicket, selectedTicketType);
@@ -378,7 +390,6 @@ public class TicketLogicManager {
         return imageView;
 
     }
-
 
 
     private static long get64LeastSignificantBits() {
@@ -452,12 +463,14 @@ public class TicketLogicManager {
         specialTicketDAO.deleteSpecialTicketWithoutEvent(specialTicketWithoutEvent);
     }
 
-
+    /**
+     * method to save special tickets without event
+     **/
     public void saveSpecialTicketWithoutEvent(SpecialTicketWithoutEvent selectedSpecialTicket, TicketType selectedTicketType) {
         try {
-            PDDocument document = writeInfoOnSpecialTicketWithoutEvent(selectedSpecialTicket,selectedTicketType);
+            PDDocument document = writeInfoOnSpecialTicketWithoutEvent(selectedSpecialTicket, selectedTicketType);
             String s = selectedSpecialTicket.getSpecialTicketID();
-            String outputFilePath = "resources/SpecialTickets/SpecialTicket-"+ s.substring(s.length() - 4) + ".pdf";
+            String outputFilePath = "resources/SpecialTickets/SpecialTicket-" + s.substring(s.length() - 4) + ".pdf";
             File outputFile = new File(outputFilePath);
             document.save(outputFile);
             document.close();

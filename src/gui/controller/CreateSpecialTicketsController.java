@@ -31,11 +31,12 @@ public class CreateSpecialTicketsController implements Initializable {
     @FXML
     private ImageView logo;
     @FXML
-    private TextField ticketTypeTextfield, maxQuantityTextfield1,maxQuantityTextfield2;;
+    private TextField ticketTypeTextfield, maxQuantityTextfield1, maxQuantityTextfield2;
+    ;
     @FXML
     private MFXComboBox ticketTypeComboBox1, eventComboBox, ticketTypeComboBox2;
     @FXML
-    private Label usernameLabel, errorInfoLabel1, addTypeErrorLabel,errorInfoLabel2;
+    private Label usernameLabel, errorInfoLabel1, addTypeErrorLabel, errorInfoLabel2;
 
     private Model model = Model.getModel();
 
@@ -95,20 +96,6 @@ public class CreateSpecialTicketsController implements Initializable {
 
 
     @FXML
-    private void openSpecialTicketsOverview(ActionEvent actionEvent) throws IOException {
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("/gui/view/SpecialTicketsOverview.fxml"));
-        Parent root = loader.load();
-        SpecialTicketsOverviewController controller = loader.getController();
-        controller.setUsernameLabel();
-        Stage stage = (Stage) ((Node) actionEvent.getSource()).getScene().getWindow();
-        Scene scene = new Scene(root);
-        stage.setTitle("Special Tickets Overview");
-        stage.setScene(scene);
-        stage.show();
-    }
-
-
-    @FXML
     private void addTicketType(ActionEvent actionEvent) {
         String ticketType = ticketTypeTextfield.getText();
 
@@ -118,13 +105,11 @@ public class CreateSpecialTicketsController implements Initializable {
             addTypeErrorLabel.setText("Ticket Type already exists.");
         } else {
             model.addTicketType(ticketType);
-            addTypeErrorLabel.setText("Ticket Type " + ticketTypeTextfield.getText()+ " added.");
+            addTypeErrorLabel.setText("Ticket Type " + ticketTypeTextfield.getText() + " added.");
             ticketTypeTextfield.clear();
         }
 
     }
-
-
 
 
     @FXML
@@ -149,7 +134,7 @@ public class CreateSpecialTicketsController implements Initializable {
     private void NewSpecialTicketWithoutEvent(ActionEvent actionEvent) {
         TicketType selectedTicketType = (TicketType) ticketTypeComboBox2.getSelectionModel().getSelectedItem();
 
-        if (selectedTicketType != null  && !maxQuantityTextfield2.getText().isEmpty()) {
+        if (selectedTicketType != null && !maxQuantityTextfield2.getText().isEmpty()) {
             int maxQuantity = Integer.parseInt(maxQuantityTextfield2.getText());
             model.createSpecialTicketWithoutEvent(selectedTicketType, maxQuantity);
             errorInfoLabel2.setText(maxQuantityTextfield2.getText() + " ticket(s) of type " + selectedTicketType + " created");
@@ -195,7 +180,8 @@ public class CreateSpecialTicketsController implements Initializable {
         stage.show();
     }
 
-    @FXML private void newEventWindow(ActionEvent actionEvent) {
+    @FXML
+    private void newEventWindow(ActionEvent actionEvent) {
         try {
             FXMLLoader loader = new FXMLLoader(getClass().getResource("/gui/view/NewEventView.fxml"));
             Parent root = loader.load();
@@ -207,7 +193,7 @@ public class CreateSpecialTicketsController implements Initializable {
             stage.setTitle("Add new Event");
             stage.setScene(scene);
             stage.show();
-        }catch (IOException e){
+        } catch (IOException e) {
             System.out.println("Error launching new event window.");
         }
     }
@@ -215,7 +201,8 @@ public class CreateSpecialTicketsController implements Initializable {
     /**
      * Method to open Special Tickets window in the same window
      */
-    @FXML private void specialTicketsOverview(ActionEvent actionEvent) throws IOException {
+    @FXML
+    private void specialTicketsOverview(ActionEvent actionEvent) throws IOException {
         FXMLLoader loader = new FXMLLoader(getClass().getResource("/gui/view/SpecialTicketsOverview.fxml"));
         Parent root = loader.load();
         SpecialTicketsOverviewController controller = loader.getController();

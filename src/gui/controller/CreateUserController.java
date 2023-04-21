@@ -75,17 +75,6 @@ public class CreateUserController implements Initializable{
         stage.show();
     }
 
-    @FXML private void specialTickets(ActionEvent actionEvent) throws IOException {
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("/gui/view/SpecialTickets.fxml"));
-        Parent root = loader.load();
-        SpecialTicketsController controller = loader.getController();
-        controller.setUsernameLabel();
-        Stage stage = (Stage) ((Node) actionEvent.getSource()).getScene().getWindow();
-        Scene scene = new Scene(root);
-        stage.setTitle("Special Tickets");
-        stage.setScene(scene);
-        stage.show();
-    }
 
     @FXML private void logout(ActionEvent actionEvent) throws IOException {
 
